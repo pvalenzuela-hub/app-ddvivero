@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DetalleLotes" targetNamespace="http://tempuri.org/DetalleLotes.xsd" xmlns:mstns="http://tempuri.org/DetalleLotes.xsd" xmlns="http://tempuri.org/DetalleLotes.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections>
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="GESTConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="GESTConnectionString (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.GestionVivero.My.MySettings.GlobalReference.Default.GESTConnectionString" Provider="System.Data.SqlClient" />
+        </Connections>
+        <Tables>
+          <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="PEDIDO_HEADERTableAdapter" GeneratorDataComponentClassName="PEDIDO_HEADERTableAdapter" Name="PEDIDO_HEADER" UserDataComponentName="PEDIDO_HEADERTableAdapter">
+            <MainSource>
+              <DbSource ConnectionRef="GESTConnectionString (MySettings)" DbObjectType="Unknown" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
+                <SelectCommand>
+                  <DbCommand CommandType="Text" ModifiedByUser="true">
+                    <CommandText>SELECT     PEDIDO_HEADER.IdPedido, PEDIDO_HEADER.IDCLIENTE, PEDIDO_HEADER.IdFormaEntrega, PEDIDO_HEADER.IdVendedor, 
+                      PEDIDO_HEADER.FECHA, PEDIDO_HEADER.FECHA_ENTREGA, PEDIDO_HEADER.DIR_ENTREGA, PEDIDO_HEADER.COSTO_FLETE, 
+                      PEDIDO_HEADER.COMENTARIO, PEDIDO_HEADER.DESCUENTO, PEDIDO_HEADER.ABONO, PEDIDO_HEADER.TOTAL_NETO, 
+                      PEDIDO_HEADER.TOTAL_PEDIDO, PEDIDO_HEADER.TOTAL_PAGOS, PEDIDO_DETALLE.CANTIDAD, PEDIDO_DETALLE.IdTipoBandeja, 
+                      PEDIDO_DETALLE.IdPedidodet, PEDIDO_DETALLE.Cant_Bandeja, PEDIDO_DETALLE.ESTADO, PEDIDO_DETALLE.Fecha_Inicio, 
+                      PEDIDO_DETALLE.Fecha_Entrega AS Expr1, PEDIDO_DETALLE.Conteo_Inicial, PEDIDO_DETALLE.Conteo_Final
+FROM         PEDIDO_HEADER INNER JOIN
+                      PEDIDO_DETALLE ON PEDIDO_HEADER.IdPedido = PEDIDO_DETALLE.IdPedido</CommandText>
+                    <Parameters />
+                  </DbCommand>
+                </SelectCommand>
+              </DbSource>
+            </MainSource>
+            <Mappings>
+              <Mapping SourceColumn="IdPedido" DataSetColumn="IdPedido" />
+              <Mapping SourceColumn="IDCLIENTE" DataSetColumn="IDCLIENTE" />
+              <Mapping SourceColumn="IdFormaEntrega" DataSetColumn="IdFormaEntrega" />
+              <Mapping SourceColumn="IdVendedor" DataSetColumn="IdVendedor" />
+              <Mapping SourceColumn="FECHA" DataSetColumn="FECHA" />
+              <Mapping SourceColumn="FECHA_ENTREGA" DataSetColumn="FECHA_ENTREGA" />
+              <Mapping SourceColumn="DIR_ENTREGA" DataSetColumn="DIR_ENTREGA" />
+              <Mapping SourceColumn="COSTO_FLETE" DataSetColumn="COSTO_FLETE" />
+              <Mapping SourceColumn="COMENTARIO" DataSetColumn="COMENTARIO" />
+              <Mapping SourceColumn="DESCUENTO" DataSetColumn="DESCUENTO" />
+              <Mapping SourceColumn="ABONO" DataSetColumn="ABONO" />
+              <Mapping SourceColumn="TOTAL_NETO" DataSetColumn="TOTAL_NETO" />
+              <Mapping SourceColumn="TOTAL_PEDIDO" DataSetColumn="TOTAL_PEDIDO" />
+              <Mapping SourceColumn="TOTAL_PAGOS" DataSetColumn="TOTAL_PAGOS" />
+              <Mapping SourceColumn="CANTIDAD" DataSetColumn="CANTIDAD" />
+              <Mapping SourceColumn="IdTipoBandeja" DataSetColumn="IdTipoBandeja" />
+              <Mapping SourceColumn="IdPedidodet" DataSetColumn="IdPedidodet" />
+              <Mapping SourceColumn="Cant_Bandeja" DataSetColumn="Cant_Bandeja" />
+              <Mapping SourceColumn="ESTADO" DataSetColumn="ESTADO" />
+              <Mapping SourceColumn="Fecha_Inicio" DataSetColumn="Fecha_Inicio" />
+              <Mapping SourceColumn="Expr1" DataSetColumn="Expr1" />
+              <Mapping SourceColumn="Conteo_Inicial" DataSetColumn="Conteo_Inicial" />
+              <Mapping SourceColumn="Conteo_Final" DataSetColumn="Conteo_Final" />
+            </Mappings>
+            <Sources />
+          </TableAdapter>
+        </Tables>
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DetalleLotes" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_DataSetName="DetalleLotes" msprop:Generator_UserDSName="DetalleLotes" msprop:EnableTableAdapterManager="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="PEDIDO_HEADER" msprop:Generator_UserTableName="PEDIDO_HEADER" msprop:Generator_RowDeletedName="PEDIDO_HEADERRowDeleted" msprop:Generator_TableClassName="PEDIDO_HEADERDataTable" msprop:Generator_RowChangedName="PEDIDO_HEADERRowChanged" msprop:Generator_RowClassName="PEDIDO_HEADERRow" msprop:Generator_RowChangingName="PEDIDO_HEADERRowChanging" msprop:Generator_RowEvArgName="PEDIDO_HEADERRowChangeEvent" msprop:Generator_RowEvHandlerName="PEDIDO_HEADERRowChangeEventHandler" msprop:Generator_TablePropName="PEDIDO_HEADER" msprop:Generator_TableVarName="tablePEDIDO_HEADER" msprop:Generator_RowDeletingName="PEDIDO_HEADERRowDeleting">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="IdPedido" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="IdPedido" msprop:Generator_ColumnPropNameInRow="IdPedido" msprop:Generator_ColumnVarNameInTable="columnIdPedido" msprop:Generator_ColumnPropNameInTable="IdPedidoColumn" type="xs:int" />
+              <xs:element name="IDCLIENTE" msprop:Generator_UserColumnName="IDCLIENTE" msprop:Generator_ColumnPropNameInRow="IDCLIENTE" msprop:Generator_ColumnVarNameInTable="columnIDCLIENTE" msprop:Generator_ColumnPropNameInTable="IDCLIENTEColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="IdFormaEntrega" msprop:Generator_UserColumnName="IdFormaEntrega" msprop:Generator_ColumnPropNameInRow="IdFormaEntrega" msprop:Generator_ColumnVarNameInTable="columnIdFormaEntrega" msprop:Generator_ColumnPropNameInTable="IdFormaEntregaColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="IdVendedor" msprop:Generator_UserColumnName="IdVendedor" msprop:Generator_ColumnPropNameInRow="IdVendedor" msprop:Generator_ColumnVarNameInTable="columnIdVendedor" msprop:Generator_ColumnPropNameInTable="IdVendedorColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="FECHA" msprop:Generator_UserColumnName="FECHA" msprop:Generator_ColumnPropNameInRow="FECHA" msprop:Generator_ColumnVarNameInTable="columnFECHA" msprop:Generator_ColumnPropNameInTable="FECHAColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="FECHA_ENTREGA" msprop:Generator_UserColumnName="FECHA_ENTREGA" msprop:Generator_ColumnPropNameInRow="FECHA_ENTREGA" msprop:Generator_ColumnVarNameInTable="columnFECHA_ENTREGA" msprop:Generator_ColumnPropNameInTable="FECHA_ENTREGAColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="DIR_ENTREGA" msprop:Generator_UserColumnName="DIR_ENTREGA" msprop:Generator_ColumnPropNameInRow="DIR_ENTREGA" msprop:Generator_ColumnVarNameInTable="columnDIR_ENTREGA" msprop:Generator_ColumnPropNameInTable="DIR_ENTREGAColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="50" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="COSTO_FLETE" msprop:Generator_UserColumnName="COSTO_FLETE" msprop:Generator_ColumnPropNameInRow="COSTO_FLETE" msprop:Generator_ColumnVarNameInTable="columnCOSTO_FLETE" msprop:Generator_ColumnPropNameInTable="COSTO_FLETEColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="COMENTARIO" msprop:Generator_UserColumnName="COMENTARIO" msprop:Generator_ColumnPropNameInRow="COMENTARIO" msprop:Generator_ColumnVarNameInTable="columnCOMENTARIO" msprop:Generator_ColumnPropNameInTable="COMENTARIOColumn" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="100" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="DESCUENTO" msprop:Generator_UserColumnName="DESCUENTO" msprop:Generator_ColumnPropNameInRow="DESCUENTO" msprop:Generator_ColumnVarNameInTable="columnDESCUENTO" msprop:Generator_ColumnPropNameInTable="DESCUENTOColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="ABONO" msprop:Generator_UserColumnName="ABONO" msprop:Generator_ColumnPropNameInRow="ABONO" msprop:Generator_ColumnVarNameInTable="columnABONO" msprop:Generator_ColumnPropNameInTable="ABONOColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_NETO" msprop:Generator_UserColumnName="TOTAL_NETO" msprop:Generator_ColumnPropNameInRow="TOTAL_NETO" msprop:Generator_ColumnVarNameInTable="columnTOTAL_NETO" msprop:Generator_ColumnPropNameInTable="TOTAL_NETOColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_PEDIDO" msprop:Generator_UserColumnName="TOTAL_PEDIDO" msprop:Generator_ColumnPropNameInRow="TOTAL_PEDIDO" msprop:Generator_ColumnVarNameInTable="columnTOTAL_PEDIDO" msprop:Generator_ColumnPropNameInTable="TOTAL_PEDIDOColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="TOTAL_PAGOS" msprop:Generator_UserColumnName="TOTAL_PAGOS" msprop:Generator_ColumnPropNameInRow="TOTAL_PAGOS" msprop:Generator_ColumnVarNameInTable="columnTOTAL_PAGOS" msprop:Generator_ColumnPropNameInTable="TOTAL_PAGOSColumn" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CANTIDAD" msprop:Generator_UserColumnName="CANTIDAD" msprop:Generator_ColumnPropNameInRow="CANTIDAD" msprop:Generator_ColumnVarNameInTable="columnCANTIDAD" msprop:Generator_ColumnPropNameInTable="CANTIDADColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="IdTipoBandeja" msprop:Generator_UserColumnName="IdTipoBandeja" msprop:Generator_ColumnPropNameInRow="IdTipoBandeja" msprop:Generator_ColumnVarNameInTable="columnIdTipoBandeja" msprop:Generator_ColumnPropNameInTable="IdTipoBandejaColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="IdPedidodet" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_UserColumnName="IdPedidodet" msprop:Generator_ColumnPropNameInRow="IdPedidodet" msprop:Generator_ColumnVarNameInTable="columnIdPedidodet" msprop:Generator_ColumnPropNameInTable="IdPedidodetColumn" type="xs:int" />
+              <xs:element name="Cant_Bandeja" msprop:Generator_UserColumnName="Cant_Bandeja" msprop:Generator_ColumnPropNameInRow="Cant_Bandeja" msprop:Generator_ColumnVarNameInTable="columnCant_Bandeja" msprop:Generator_ColumnPropNameInTable="Cant_BandejaColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="ESTADO" msprop:Generator_UserColumnName="ESTADO" msprop:Generator_ColumnPropNameInRow="ESTADO" msprop:Generator_ColumnVarNameInTable="columnESTADO" msprop:Generator_ColumnPropNameInTable="ESTADOColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Fecha_Inicio" msprop:Generator_UserColumnName="Fecha_Inicio" msprop:Generator_ColumnPropNameInRow="Fecha_Inicio" msprop:Generator_ColumnVarNameInTable="columnFecha_Inicio" msprop:Generator_ColumnPropNameInTable="Fecha_InicioColumn" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Expr1" msprop:Generator_UserColumnName="Expr1" msprop:Generator_ColumnPropNameInRow="Expr1" msprop:Generator_ColumnVarNameInTable="columnExpr1" msprop:Generator_ColumnPropNameInTable="Expr1Column" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="Conteo_Inicial" msprop:Generator_UserColumnName="Conteo_Inicial" msprop:Generator_ColumnPropNameInRow="Conteo_Inicial" msprop:Generator_ColumnVarNameInTable="columnConteo_Inicial" msprop:Generator_ColumnPropNameInTable="Conteo_InicialColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="Conteo_Final" msprop:Generator_UserColumnName="Conteo_Final" msprop:Generator_ColumnPropNameInRow="Conteo_Final" msprop:Generator_ColumnVarNameInTable="columnConteo_Final" msprop:Generator_ColumnPropNameInTable="Conteo_FinalColumn" type="xs:int" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+    <xs:unique name="Constraint1" msdata:PrimaryKey="true">
+      <xs:selector xpath=".//mstns:PEDIDO_HEADER" />
+      <xs:field xpath="mstns:IdPedido" />
+    </xs:unique>
+  </xs:element>
+</xs:schema>

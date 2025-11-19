@@ -1,0 +1,66 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="ConnInternet" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">http://www.meteochile.cl/reg07.html</Value>
+    </Setting>
+    <Setting Name="DatEmpIDM" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Vivero D&amp;D</Value>
+    </Setting>
+    <Setting Name="DatEmpLAD" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vivero D&amp;D</Value>
+    </Setting>
+    <Setting Name="DatEmpDESA" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vivero XXXXXXXXXXXXXXXXXX</Value>
+    </Setting>
+    <Setting Name="DatEMPLADFono" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Fono +569 7991 1499</Value>
+    </Setting>
+    <Setting Name="DatEmpIDMFono" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Fono +569 6864 3597</Value>
+    </Setting>
+    <Setting Name="DataEmp" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Vivero D&amp;D</Value>
+    </Setting>
+    <Setting Name="DataFono" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Fono +569 7991 1499</Value>
+    </Setting>
+    <Setting Name="DataEmpDESAFono" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Fono +569 7991 1499</Value>
+    </Setting>
+    <Setting Name="Dir_Ficha" Type="System.String" Scope="User">
+      <Value Profile="(Default)">d:\</Value>
+    </Setting>
+    <Setting Name="R_NBLocal" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Data Source=MIPC;Initial Catalog=GEST;Integrated Security=True</Value>
+    </Setting>
+    <Setting Name="ConexionVivero" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=72.60.59.142;Initial Catalog=ddvivero;User ID=vivero_user;Password=sqL_2025!###;Encrypt=False;TrustServerCertificate=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=72.60.59.142;Initial Catalog=ddvivero;User ID=vivero_user;Password=sqL_2025!###;Encrypt=False;TrustServerCertificate=True</Value>
+    </Setting>
+    <Setting Name="Sistema" Type="System.String" Scope="User">
+      <Value Profile="(Default)">VIVERO D&amp;D</Value>
+    </Setting>
+    <Setting Name="SettingPrueba" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=72.60.59.142;Initial Catalog=ddvivero;User ID=vivero_user;Password=sqL_2025!###;Encrypt=False;TrustServerCertificate=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=72.60.59.142;Initial Catalog=ddvivero;User ID=vivero_user;Password=sqL_2025!###;Encrypt=False;TrustServerCertificate=True</Value>
+    </Setting>
+    <Setting Name="DBLocal" Type="(Connection string)" Scope="Application">
+      <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
+&lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
+  &lt;ConnectionString&gt;Data Source=MIPC\SQLEXPRESS;Initial Catalog=ddvivero;Integrated Security=True;TrustServerCertificate=True&lt;/ConnectionString&gt;
+  &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
+&lt;/SerializableConnectionString&gt;</DesignTimeValue>
+      <Value Profile="(Default)">Data Source=MIPC\SQLEXPRESS;Initial Catalog=ddvivero;Integrated Security=True;TrustServerCertificate=True</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>
