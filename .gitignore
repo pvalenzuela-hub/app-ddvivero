@@ -231,8 +231,8 @@ ecf/
 rcf/
 
 # Windows Store app package directories and files
-/packages/
-/EXE/
+**/packages/
+**/EXE/
 
 
 AppPackages/
