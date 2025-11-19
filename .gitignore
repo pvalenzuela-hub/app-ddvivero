@@ -233,6 +233,9 @@ rcf/
 # Windows Store app package directories and files
 **/packages/
 **/EXE/
+EXE/
+app-ddvivero/EXE/
+
 
 
 AppPackages/
