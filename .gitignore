@@ -330,6 +330,8 @@ node_modules/
 _Pvt_Extensions
 
 # Paket dependency manager
+EXE/
+obj/
 **/.paket/paket.exe
 paket-files/
 
