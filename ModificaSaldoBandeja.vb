@@ -3,9 +3,9 @@
 
         If Val(txtLote.Text) > 0 Then
             sSsql = "[vivero].[SP_ActualizaNuevoSaldoBandejas] "
-            sSsql += txtLote.Text.ToString() + ","
+            sSsql += txtLote.Text.ToString() & ","
             sSsql += txtNuevoSaldoBandejas.Text.ToString() + ","
-            sSsql += "'" + gUSER + "'"
+            sSsql += "'" & gUSER & "'"
             open()
             command = connection.CreateCommand()
             command.CommandText = sSsql

@@ -49,29 +49,29 @@ Public Class SubirAutorizacionEntrega
                 Dim row As Integer = 2
                 While Not String.IsNullOrEmpty(worksheet.Cell(row, 1).GetValue(Of String)())
                     cellValueLote = worksheet.Cell(row, 1).GetValue(Of String)()
-                    If OP_FechaAutorizacion.Checked = True Then
+                    If OP_FechaAutorizacion.Checked Then
                         cellValueFecha = worksheet.Cell(row, 2).GetValue(Of String)()
                         Fechatxt = Format(cellValueFecha, "dd/MM/yyyy")
-                        command.CommandText = "Update PEDIDO_DETALLE set FechaAutorizacionCliente='" + Fechatxt + "' Where idpedidodet=" + cellValueLote
+                        command.CommandText = "Update PEDIDO_DETALLE set FechaAutorizacionCliente='" & Fechatxt & "' Where idpedidodet=" & cellValueLote
                     End If
 
-                    If OP_Pedido.Checked = True Then
-                        command.CommandText = "Update PEDIDO_DETALLE set EsAprobPedido = 1 Where idpedidodet=" + cellValueLote
+                    If OP_Pedido.Checked Then
+                        command.CommandText = "Update PEDIDO_DETALLE set EsAprobPedido = 1 Where idpedidodet=" & cellValueLote
                     End If
 
-                    If OP_Siembra.Checked = True Then
-                        command.CommandText = "Update PEDIDO_DETALLE set EsAprobSiembra = 1 Where idpedidodet=" + cellValueLote
+                    If OP_Siembra.Checked Then
+                        command.CommandText = "Update PEDIDO_DETALLE set EsAprobSiembra = 1 Where idpedidodet=" & cellValueLote
                     End If
 
-                    If OP_Conteo.Checked = True Then
-                        command.CommandText = "Update PEDIDO_DETALLE set EsAprobConteo = 1 Where idpedidodet=" + cellValueLote
+                    If OP_Conteo.Checked Then
+                        command.CommandText = "Update PEDIDO_DETALLE set EsAprobConteo = 1 Where idpedidodet=" & cellValueLote
                     End If
 
-                    If OP_Ajuste.Checked = True Then
-                        command.CommandText = "Update PEDIDO_DETALLE set EsAprobAjuste = 1 Where idpedidodet=" + cellValueLote
+                    If OP_Ajuste.Checked Then
+                        command.CommandText = "Update PEDIDO_DETALLE set EsAprobAjuste = 1 Where idpedidodet=" & cellValueLote
                     End If
 
-                    If OP_FechaRetiroCliente.Checked = True Then
+                    If OP_FechaRetiroCliente.Checked Then
                         cellValueFecha = worksheet.Cell(row, 2).GetValue(Of String)()
                         Fechatxt = Format(cellValueFecha, "dd/MM/yyyy")
                         cellValueTipoDespacho = worksheet.Cell(row, 3).GetValue(Of String)()
@@ -79,13 +79,13 @@ Public Class SubirAutorizacionEntrega
                         FechaProceso = Format(Now, "dd/MM/yyyy")
                         ' agregar 3ra columna: texto que indica la forma de retiro: TipoDespacho
                         ' agregar 4ta columna: texto indicaciones del retiro : ObsDespacho
-                        command.CommandText = "Update PEDIDO_DETALLE set FechaRetiroCliente='" + Fechatxt + "',TipoDespacho='" + cellValueTipoDespacho + "',ObsDespacho=ObsDespacho+'" + "(" + FechaProceso + "):" + cellValueObsDespacho + ". ' Where idpedidodet=" + cellValueLote
+                        command.CommandText = "Update PEDIDO_DETALLE set FechaRetiroCliente='" & Fechatxt & "',TipoDespacho='" & cellValueTipoDespacho & "',ObsDespacho=ObsDespacho+'" & "(" & FechaProceso & "):" & cellValueObsDespacho & ". ' Where idpedidodet=" & cellValueLote
                     End If
 
-                    If OP_RegistroUbicacion.Checked = True Then
+                    If OP_RegistroUbicacion.Checked Then
                         cellValueNave = worksheet.Cell(row, 2).GetValue(Of String)()
                         cellValueMesa = worksheet.Cell(row, 3).GetValue(Of String)()
-                        command.CommandText = "Update PEDIDO_DETALLE Set Num_Nave='" + cellValueNave + "',Ubicacion='" + cellValueMesa + "' Where IdPedidodet=" + cellValueLote
+                        command.CommandText = "Update PEDIDO_DETALLE Set Num_Nave='" & cellValueNave & "',Ubicacion='" & cellValueMesa & "' Where IdPedidodet=" & cellValueLote
                     End If
 
                     command.ExecuteNonQuery()

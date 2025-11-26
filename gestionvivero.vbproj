@@ -38,7 +38,7 @@
     </TargetFrameworkProfile>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>D:\publicar\viveroDD\ViveroDD_Version198\</PublishUrl>
+    <PublishUrl>D:\publicar\viveroDD\ViveroDD_Version199\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -54,7 +54,7 @@
     <MinimumRequiredVersion>1.0.0.7</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.html</WebPage>
-    <ApplicationRevision>199</ApplicationRevision>
+    <ApplicationRevision>200</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -357,6 +357,12 @@
       <DependentUpon>ActualizaPrecioLote.vb</DependentUpon>
     </Compile>
     <Compile Include="ActualizaPrecioLote.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgregaComentarioLote.Designer.vb">
+      <DependentUpon>AgregaComentarioLote.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AgregaComentarioLote.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="AjusteInventario.Designer.vb">
@@ -763,6 +769,12 @@
       <DependentUpon>FacturaCompra.vb</DependentUpon>
     </Compile>
     <Compile Include="FacturaCompra.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FechaAutRetirocliente.Designer.vb">
+      <DependentUpon>FechaAutRetirocliente.vb</DependentUpon>
+    </Compile>
+    <Compile Include="FechaAutRetirocliente.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Flujo_DocVentaNoDocumentado.Designer.vb">
@@ -1583,6 +1595,9 @@
     <EmbeddedResource Include="ActualizaPrecioLote.resx">
       <DependentUpon>ActualizaPrecioLote.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="AgregaComentarioLote.resx">
+      <DependentUpon>AgregaComentarioLote.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AjusteInventario.resx">
       <DependentUpon>AjusteInventario.vb</DependentUpon>
     </EmbeddedResource>
@@ -1803,6 +1818,9 @@
     <EmbeddedResource Include="FacturaCompra.resx">
       <DependentUpon>FacturaCompra.vb</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FechaAutRetirocliente.resx">
+      <DependentUpon>FechaAutRetirocliente.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Flujo_DocVentaNoDocumentado.resx">
       <DependentUpon>Flujo_DocVentaNoDocumentado.vb</DependentUpon>

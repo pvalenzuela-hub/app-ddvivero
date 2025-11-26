@@ -39,6 +39,7 @@
                 gUSER = datatbl(2)
                 gNomUsuario = datatbl(3)
                 gIdPerfil = datatbl(5)
+                gEsAutorizador = datatbl("EsAutorizador")
             End If
         Else
             MsgBox("Contraseña no coincide.", MsgBoxStyle.Exclamation)

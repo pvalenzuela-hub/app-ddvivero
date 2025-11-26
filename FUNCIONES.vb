@@ -23,6 +23,7 @@ Module FUNCIONES
     Public gUSER As String
     Public gNomUsuario As String
     Public gIdPerfil As Integer
+    Public gEsAutorizador As Boolean
     Public gIdVendedor As Integer
 
 

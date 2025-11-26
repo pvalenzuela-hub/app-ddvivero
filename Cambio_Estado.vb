@@ -253,8 +253,9 @@ Public Class Cambio_Estado
             txtFechaRetiroCliente.Text = datatbl("FechaRetiroCliente")
             txtRetiro.Text = datatbl("Retiro")
             txtComentarioRetiro.Text = datatbl("ComentarioRetiro")
+            txtComentarioRetiro.ScrollBars = ScrollBars.Both
             txtEsPreventa.Text = datatbl("Preventa")
-            If GEstado_Actual <= 2 And gIdPerfil = 1 Then
+            If GEstado_Actual <= 2 AndAlso gIdPerfil = 1 Then
                 TSM_Modificar.Enabled = True
                 TSM_Actualizadatos.Enabled = True
             Else
@@ -262,26 +263,30 @@ Public Class Cambio_Estado
                 TSM_Modificar.Enabled = False
             End If
 
-            If GEstado_Actual < 4 And gIdPerfil = 1 Then
+            If GEstado_Actual < 4 AndAlso gIdPerfil = 1 Then
                 TSM_ModificaPrecioLote.Enabled = True
             Else
                 TSM_ModificaPrecioLote.Enabled = False
             End If
 
-            If GEstado_Actual = 0 And gIdPerfil = 1 Then
+            If GEstado_Actual = 0 AndAlso gIdPerfil = 1 Then
                 TSM_ModificaFechaSiembra.Enabled = True
             Else
                 TSM_ModificaFechaSiembra.Enabled = False
             End If
 
-            If GEstado_Actual < 8 And gIdPerfil = 1 Then
+            If GEstado_Actual < 8 AndAlso gIdPerfil = 1 Then
                 TSM_ModificaEstadoLote.Enabled = True
                 TSM_ModificaSaldoPlantas.Enabled = True
                 TSM_ModificaSaldoBandejas.Enabled = True
+                TSM_AgregaComentario.Enabled = True
+                TSM_FechaautretiroCliente.Enabled = True
             Else
                 TSM_ModificaEstadoLote.Enabled = False
                 TSM_ModificaSaldoPlantas.Enabled = False
                 TSM_ModificaSaldoBandejas.Enabled = False
+                TSM_AgregaComentario.Enabled = False
+                TSM_FechaautretiroCliente.Enabled = False
             End If
             txtPreventa1.Text = datatbl("MotivoEnablePreventa")
             txtPreventa2.Text = datatbl("MotivoDisablePreventa")
@@ -421,6 +426,8 @@ Public Class Cambio_Estado
                 cmbTipoBandeja.Visible = True
                 cmbTipoBandeja.SelectedIndex = -1
                 txtComentariosLote.ReadOnly = False
+
+
             Else
                 MsgBox("Estado del Lote no Permite Realizar Cambios. No se permite Modificar lotes con entrega de plantas. Los estados Permitidos son: Lotes Creados, Conteo de Siembra y Conteo de Plantas.")
             End If
@@ -437,17 +444,17 @@ Public Class Cambio_Estado
     Private Sub ActualizaDatoslote()
         sSsql = "SP_ACTUALIZAEDatosLote "
         sSsql += txt_NumLote.Text + ","
-        sSsql += "'" + txt_Semilla.Text + "',"
-        sSsql += "'" + txt_Variedad.Text + "',"
+        sSsql += "'" & txt_Semilla.Text & "',"
+        sSsql += "'" & txt_Variedad.Text & "',"
 
         sSsql += "NULL,"
 
-        sSsql += Val(txt_Num_Nave.Text).ToString + ","
-        sSsql += "'" + txt_LoteSemilla.Text + "',"
-        sSsql += "'" + txt_Batch.Text + "',"
-        sSsql += "'" + txt_FechaEnvasado.Text + "',"
-        sSsql += "'" + txt_ubicacion.Text + "',"
-        sSsql += "'" + txtComentariosLote.Text + "'"
+        sSsql += Val(txt_Num_Nave.Text).ToString & ","
+        sSsql += "'" & txt_LoteSemilla.Text & "',"
+        sSsql += "'" & txt_Batch.Text & "',"
+        sSsql += "'" & txt_FechaEnvasado.Text & "',"
+        sSsql += "'" & txt_ubicacion.Text & "',"
+        sSsql += "'" & txtComentariosLote.Text & "'"
         open()
         command = connection.CreateCommand()
         command.CommandText = sSsql
@@ -588,5 +595,21 @@ Public Class Cambio_Estado
         PreventaHistoria.txtMotivoEnablePreventa.Text = txtPreventa1.Text
         PreventaHistoria.txtMotivoDisablePreventa.Text = txtPreventa2.Text
         PreventaHistoria.Show()
+    End Sub
+
+    Private Sub ToolStripMenuItem2_Click_3(sender As Object, e As EventArgs) Handles TSM_AgregaComentario.Click
+        If GEstado_Actual < 8 Then
+            AgregaComentarioLote.txtLote.Text = txt_NumLote.Text
+            AgregaComentarioLote.Show()
+        End If
+    End Sub
+
+    Private Sub ToolStripMenuItem2_Click_4(sender As Object, e As EventArgs) Handles TSM_FechaautretiroCliente.Click
+        If GEstado_Actual < 8 Then
+            FechaAutRetirocliente.txtLote.Text = txt_NumLote.Text
+            FechaAutRetirocliente.txtFechaAutorizacionCliente.Text = txtFechaAutorizacionCliente.Text
+            FechaAutRetirocliente.txtFechaRetiroCliente.Text = txtFechaRetiroCliente.Text
+            FechaAutRetirocliente.Show()
+        End If
     End Sub
 End Class

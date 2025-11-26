@@ -37,9 +37,12 @@ Partial Class Cambio_Estado
         Me.TSM_ModificaEstadoLote = New System.Windows.Forms.ToolStripMenuItem()
         Me.TSM_ModificaSaldoPlantas = New System.Windows.Forms.ToolStripMenuItem()
         Me.TSM_ModificaSaldoBandejas = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TSM_AgregaComentario = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TSM_FechaautretiroCliente = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
         Me.SalirToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.txtEsPreventa = New System.Windows.Forms.MaskedTextBox()
         Me.Label54 = New System.Windows.Forms.Label()
         Me.txtFechaRetiroCliente = New System.Windows.Forms.MaskedTextBox()
@@ -174,7 +177,6 @@ Partial Class Cambio_Estado
         Me.txt_NumLote = New System.Windows.Forms.MaskedTextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.TBL_TIPO_BANDEJATableAdapter = New GestionVivero.GESTDataSetTableAdapters.TBL_TIPO_BANDEJATableAdapter()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
         Me.txtPreventa1 = New System.Windows.Forms.TextBox()
         Me.txtPreventa2 = New System.Windows.Forms.TextBox()
@@ -209,7 +211,7 @@ Partial Class Cambio_Estado
         '
         'ArchivoToolStripMenuItem
         '
-        Me.ArchivoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator1, Me.TSM_Modificar, Me.TSM_ModificaPrecioLote, Me.TSM_ModificaFechaSiembra, Me.TSM_ModificaEstadoLote, Me.TSM_ModificaSaldoPlantas, Me.TSM_ModificaSaldoBandejas, Me.ToolStripSeparator2, Me.SalirToolStripMenuItem1})
+        Me.ArchivoToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripSeparator1, Me.TSM_Modificar, Me.TSM_ModificaPrecioLote, Me.TSM_ModificaFechaSiembra, Me.TSM_ModificaEstadoLote, Me.TSM_ModificaSaldoPlantas, Me.TSM_ModificaSaldoBandejas, Me.TSM_AgregaComentario, Me.TSM_FechaautretiroCliente, Me.ToolStripSeparator2, Me.SalirToolStripMenuItem1})
         Me.ArchivoToolStripMenuItem.Name = "ArchivoToolStripMenuItem"
         Me.ArchivoToolStripMenuItem.Size = New System.Drawing.Size(45, 20)
         Me.ArchivoToolStripMenuItem.Text = "LOTE"
@@ -217,14 +219,14 @@ Partial Class Cambio_Estado
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(242, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(246, 6)
         '
         'TSM_Modificar
         '
         Me.TSM_Modificar.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TSM_Actualizadatos})
         Me.TSM_Modificar.Enabled = False
         Me.TSM_Modificar.Name = "TSM_Modificar"
-        Me.TSM_Modificar.Size = New System.Drawing.Size(245, 22)
+        Me.TSM_Modificar.Size = New System.Drawing.Size(249, 22)
         Me.TSM_Modificar.Text = "Modificar Variedad, Nave y otros"
         '
         'TSM_Actualizadatos
@@ -238,46 +240,59 @@ Partial Class Cambio_Estado
         '
         Me.TSM_ModificaPrecioLote.Enabled = False
         Me.TSM_ModificaPrecioLote.Name = "TSM_ModificaPrecioLote"
-        Me.TSM_ModificaPrecioLote.Size = New System.Drawing.Size(245, 22)
+        Me.TSM_ModificaPrecioLote.Size = New System.Drawing.Size(249, 22)
         Me.TSM_ModificaPrecioLote.Text = "Modifica Precio Lote"
         '
         'TSM_ModificaFechaSiembra
         '
         Me.TSM_ModificaFechaSiembra.Enabled = False
         Me.TSM_ModificaFechaSiembra.Name = "TSM_ModificaFechaSiembra"
-        Me.TSM_ModificaFechaSiembra.Size = New System.Drawing.Size(245, 22)
+        Me.TSM_ModificaFechaSiembra.Size = New System.Drawing.Size(249, 22)
         Me.TSM_ModificaFechaSiembra.Text = "Modifica Fecha Siembra"
         '
         'TSM_ModificaEstadoLote
         '
         Me.TSM_ModificaEstadoLote.Enabled = False
         Me.TSM_ModificaEstadoLote.Name = "TSM_ModificaEstadoLote"
-        Me.TSM_ModificaEstadoLote.Size = New System.Drawing.Size(245, 22)
+        Me.TSM_ModificaEstadoLote.Size = New System.Drawing.Size(249, 22)
         Me.TSM_ModificaEstadoLote.Text = "Modifica Estado del Lote"
         '
         'TSM_ModificaSaldoPlantas
         '
         Me.TSM_ModificaSaldoPlantas.Enabled = False
         Me.TSM_ModificaSaldoPlantas.Name = "TSM_ModificaSaldoPlantas"
-        Me.TSM_ModificaSaldoPlantas.Size = New System.Drawing.Size(245, 22)
+        Me.TSM_ModificaSaldoPlantas.Size = New System.Drawing.Size(249, 22)
         Me.TSM_ModificaSaldoPlantas.Text = "Modifica Saldo Plantas"
         '
         'TSM_ModificaSaldoBandejas
         '
         Me.TSM_ModificaSaldoBandejas.Enabled = False
         Me.TSM_ModificaSaldoBandejas.Name = "TSM_ModificaSaldoBandejas"
-        Me.TSM_ModificaSaldoBandejas.Size = New System.Drawing.Size(245, 22)
+        Me.TSM_ModificaSaldoBandejas.Size = New System.Drawing.Size(249, 22)
         Me.TSM_ModificaSaldoBandejas.Text = "Modifica Saldo Bandejas"
+        '
+        'TSM_AgregaComentario
+        '
+        Me.TSM_AgregaComentario.Enabled = False
+        Me.TSM_AgregaComentario.Name = "TSM_AgregaComentario"
+        Me.TSM_AgregaComentario.Size = New System.Drawing.Size(249, 22)
+        Me.TSM_AgregaComentario.Text = "Agrega Comentario Retiro"
+        '
+        'TSM_FechaautretiroCliente
+        '
+        Me.TSM_FechaautretiroCliente.Name = "TSM_FechaautretiroCliente"
+        Me.TSM_FechaautretiroCliente.Size = New System.Drawing.Size(249, 22)
+        Me.TSM_FechaautretiroCliente.Text = "Fecha Aut.Cliente / Retiro Cliente"
         '
         'ToolStripSeparator2
         '
         Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(242, 6)
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(246, 6)
         '
         'SalirToolStripMenuItem1
         '
         Me.SalirToolStripMenuItem1.Name = "SalirToolStripMenuItem1"
-        Me.SalirToolStripMenuItem1.Size = New System.Drawing.Size(245, 22)
+        Me.SalirToolStripMenuItem1.Size = New System.Drawing.Size(249, 22)
         Me.SalirToolStripMenuItem1.Text = "Salir"
         '
         'GroupBox2
@@ -356,6 +371,16 @@ Partial Class Cambio_Estado
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Información del Lote"
         '
+        'Button2
+        '
+        Me.Button2.Image = Global.GestionVivero.My.Resources.Resources.Apply
+        Me.Button2.Location = New System.Drawing.Point(1278, 305)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(32, 31)
+        Me.Button2.TabIndex = 186
+        Me.ToolTip1.SetToolTip(Me.Button2, "Historial Preventa")
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'txtEsPreventa
         '
         Me.txtEsPreventa.BackColor = System.Drawing.Color.Blue
@@ -391,12 +416,12 @@ Partial Class Cambio_Estado
         '
         'txtComentarioRetiro
         '
-        Me.txtComentarioRetiro.Location = New System.Drawing.Point(707, 354)
+        Me.txtComentarioRetiro.Location = New System.Drawing.Point(707, 338)
         Me.txtComentarioRetiro.Multiline = True
         Me.txtComentarioRetiro.Name = "txtComentarioRetiro"
         Me.txtComentarioRetiro.ReadOnly = True
         Me.txtComentarioRetiro.ScrollBars = System.Windows.Forms.ScrollBars.Both
-        Me.txtComentarioRetiro.Size = New System.Drawing.Size(493, 47)
+        Me.txtComentarioRetiro.Size = New System.Drawing.Size(493, 63)
         Me.txtComentarioRetiro.TabIndex = 182
         '
         'Label55
@@ -1856,16 +1881,6 @@ Partial Class Cambio_Estado
         '
         Me.TBL_TIPO_BANDEJATableAdapter.ClearBeforeFill = True
         '
-        'Button2
-        '
-        Me.Button2.Image = Global.GestionVivero.My.Resources.Resources.Apply
-        Me.Button2.Location = New System.Drawing.Point(1278, 305)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(32, 31)
-        Me.Button2.TabIndex = 186
-        Me.ToolTip1.SetToolTip(Me.Button2, "Historial Preventa")
-        Me.Button2.UseVisualStyleBackColor = True
-        '
         'txtPreventa1
         '
         Me.txtPreventa1.Location = New System.Drawing.Point(927, 35)
@@ -2074,4 +2089,6 @@ Partial Class Cambio_Estado
     Friend WithEvents ToolTip1 As ToolTip
     Friend WithEvents txtPreventa1 As TextBox
     Friend WithEvents txtPreventa2 As TextBox
+    Friend WithEvents TSM_AgregaComentario As ToolStripMenuItem
+    Friend WithEvents TSM_FechaautretiroCliente As ToolStripMenuItem
 End Class

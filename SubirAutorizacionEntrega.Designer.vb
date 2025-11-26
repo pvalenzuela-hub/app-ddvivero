@@ -117,7 +117,7 @@ Partial Class SubirAutorizacionEntrega
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Calibri", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(249, 13)
+        Me.Label3.Location = New System.Drawing.Point(294, 9)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(178, 19)
         Me.Label3.TabIndex = 15
