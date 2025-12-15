@@ -5,9 +5,10 @@ Public Class AutorizacionPedidos
         Me.Close()
     End Sub
     Private Sub CargaGrillaPedidos(iNumPedido As Integer, iOpcion As Integer)
-        sSsql = "[dbo].[NEWSP_CONSULTAPedidosPendientes] "
+        sSsql = "[dbo].[P001_CONSULTAPedidosPendientes] "
         sSsql += iNumPedido.ToString & ","
-        sSsql += iOpcion.ToString
+        sSsql += iOpcion.ToString & ",1"
+
         open()
         command = connection.CreateCommand()
         command.CommandText = sSsql

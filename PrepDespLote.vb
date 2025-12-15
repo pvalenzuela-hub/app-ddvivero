@@ -1,85 +1,5 @@
 ﻿Public Class PrepDespLote
 
-    Private Sub DataGridView5_CellBeginEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellCancelEventArgs) Handles GrillaDespacho.CellBeginEdit
-        REM Valida Inicio de Edicion
-        Dim iCol As Integer = e.ColumnIndex
-        If iCol = 0 Or iCol = 7 Or iCol = 8 Then
-            If GrillaDespacho.Rows(e.RowIndex).Cells(1).Value = Nothing Then
-                MsgBox("Debe Ingresar Nº de Lote")
-                e.Cancel = True
-            End If
-            If GrillaDespacho.Rows(e.RowIndex).Cells(6).Value = 0 Then
-                MsgBox("Lote debe contener Saldo de Bandejas para preparar despacho!!!")
-                e.Cancel = True
-            End If
-
-        End If
-
-    End Sub
-
-    Private Sub DataGridView5_CellEndEdit(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GrillaDespacho.CellEndEdit
-        REM **************************************************************************************************************************************************
-        REM                                                              ENTRADA DE DATOS
-        REM **************************************************************************************************************************************************
-
-        Dim iCol As Integer = e.ColumnIndex
-        Dim ctodate As Date
-
-        REM Valida Check Confirmación
-        If iCol = 0 Then
-
-            GrillaDespacho.Rows(e.RowIndex).Cells(7).Value = Format(Now.Date, "dd/MM/yyyy")
-
-            If GrillaDespacho.Rows(e.RowIndex).Cells(7).Value = #1/1/1900# Or Not IsDate(GrillaDespacho.Rows(e.RowIndex).Cells(7).Value) = True Then
-                'MsgBox("Fecha de Despacho No Válida!!!")
-                GrillaDespacho.Rows(e.RowIndex).Cells(0).Value = False
-            End If
-
-
-
-        End If
-
-
-        Try
-            REM Valida Ingreso de Nº De Lote
-            If iCol = 1 Then
-                If GrillaDespacho.Rows(e.RowIndex).Cells(1).Value <> Nothing Then
-                    If ValidaNumLote(GrillaDespacho.Rows(e.RowIndex).Cells(1).Value, e.RowIndex) Then
-                    Else
-                        'DataGridView5.ClearSelection()
-                        GrillaDespacho.Rows.RemoveAt(e.RowIndex)
-                    End If
-                End If
-            End If
-            REM Valida Ingreso Fecha Valida
-            If iCol = 7 Then
-                If Not IsDate(GrillaDespacho.Rows(e.RowIndex).Cells(iCol).Value) Then
-                    MsgBox("Fecha No Válida. Vuelva a ingresar Fecha de Despacho")
-                    GrillaDespacho.Rows(e.RowIndex).Cells(iCol).Value = Nothing
-                    If GrillaDespacho.Rows(e.RowIndex).Cells(1).Value = Nothing Then
-                        MsgBox("No ha ingresado Nº de Lote. Debe ingresar este dato primero")
-                        If e.RowIndex > 0 Then
-                            GrillaDespacho.Rows.RemoveAt(e.RowIndex)
-                        End If
-                    End If
-                Else
-                    ctodate = GrillaDespacho.Rows(e.RowIndex).Cells(iCol).Value
-                    GrillaDespacho.Rows(e.RowIndex).Cells(iCol).Value = ctodate.ToString("d/MM/yyyy")
-                End If
-                ' termino de registrar la fecha
-                'verificar si se marcó el ticket
-
-
-            End If
-
-        Catch ex As Exception
-
-        End Try
-
-
-
-
-    End Sub
 
     Function ValidaNumLote(ByVal iNumLote As Integer, ByVal iFila As Integer) As Boolean
         Dim i As Integer
@@ -149,7 +69,7 @@
                     Exit For
                 End If
             Next
-            If bRetorno = False Then
+            If Not bRetorno Then
                 Exit For
             End If
         Next
@@ -162,45 +82,6 @@
         Me.Close()
     End Sub
 
-    Private Sub DataGridView5_CellEnter(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellEventArgs) Handles GrillaDespacho.CellEnter
-        REM valida tecla ENTER
-        'If DataGridView5.Rows(e.RowIndex).Cells(1).Value = Nothing Then
-        '    '        DataGridView5.Rows.RemoveAt(e.RowIndex)
-        '    MsgBox("Sin Numero de Lote en la fila" & e.RowIndex.ToString)
-        'End If
-        'End If
-
-    End Sub
-
-    Private Sub DataGridView5_CellValidating(ByVal sender As Object, ByVal e As System.Windows.Forms.DataGridViewCellValidatingEventArgs) Handles GrillaDespacho.CellValidating
-        REM valida num lote
-        'Dim iCol As Integer = e.ColumnIndex
-        'If iCol = 1 Then
-        '    REM Validar Numero de Lote Ingresado
-        '    If ValidaNumLote(DataGridView5.Rows(e.RowIndex).Cells(1).Value, e.RowIndex) Then
-        '    Else
-
-        '        DataGridView5.ClearSelection()
-
-
-        '    End If
-
-        'End If
-    End Sub
-
-    Private Sub ToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem1.Click
-        REM Elimina Fila Actual
-        Dim ifila As Integer = GrillaDespacho.CurrentRow.Index
-        GrillaDespacho.Rows.RemoveAt(ifila)
-    End Sub
-
-    Private Sub PrepDespLote_FormClosing(ByVal sender As Object, ByVal e As System.Windows.Forms.FormClosingEventArgs) Handles Me.FormClosing
-        'Dim sResp = MsgBox("Desea Guardar los Datos antes de Salir?", MsgBoxStyle.YesNo, "Preparación Despachos")
-        'If sResp = MsgBoxResult.Yes Then
-        '    GuardarDatos()
-        'End If
-
-    End Sub
 
     Private Sub PrepDespLote_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         REM ***********************************************
@@ -263,10 +144,10 @@
                         End If
 
                         sSsql = "SP_ActualizaCtlDesp "
-                        sSsql += iEstCtl.ToString + ","
-                        sSsql += GrillaDespacho.Rows(i).Cells(1).Value.ToString + ","
-                        sSsql += "'" + GrillaDespacho.Rows(i).Cells(7).Value + "',"
-                        sSsql += "'" + GrillaDespacho.Rows(i).Cells(8).Value + "',"
+                        sSsql += iEstCtl.ToString & ","
+                        sSsql += GrillaDespacho.Rows(i).Cells(1).Value.ToString & ","
+                        sSsql += "'" & GrillaDespacho.Rows(i).Cells(7).Value & "',"
+                        sSsql += "'" & GrillaDespacho.Rows(i).Cells(8).Value & "',"
                         sSsql += GrillaDespacho.Rows(i).Cells(6).Value.ToString
 
                         command.CommandText = sSsql
@@ -330,29 +211,6 @@
         Dim TotalBand As Integer = 0
         Dim bFound As Boolean = False
 
-        'sSsql = "SP_ConsultaLoteConfZona"
-        'open()
-        'command = connection.CreateCommand()
-        'command.CommandText = sSsql
-        'datatbl = command.ExecuteReader()
-        'If datatbl.HasRows Then
-        '    GrillaSector.Rows.Clear()
-        '    While datatbl.Read
-        '        GrillaSector.Rows.Add()
-        '        GrillaSector.Rows(i).Cells(0).Value = datatbl(0)
-        '        GrillaSector.Rows(i).Cells(1).Value = datatbl(1)
-        '        GrillaSector.Rows(i).Cells(2).Value = datatbl(2)
-        '        dTotBand += datatbl(2)
-        '        i += 1
-        '    End While
-        '    GrillaSector.Rows.Add()
-        '    GrillaSector.Rows(i).Cells(1).Value = "TOTAL:"
-        '    GrillaSector.Rows(i).Cells(2).Value = dTotBand
-        'End If
-        'close_conexion()
-
-
-
         Indice = 0
         For i = 0 To GrillaDespacho.Rows.Count - 1
             If GrillaDespacho.Rows(i).Cells(0).Value = True Then
@@ -400,9 +258,6 @@
 
         End If
 
-
-
-
     End Sub
     Private Sub ResumenLoteConfFechaDesp()
 
@@ -415,37 +270,12 @@
         Dim TotalBand As Integer = 0
         Dim bFound As Boolean = False
 
-        'sSsql = "SP_ConsultaLoteConfDesp"
-        'open()
-        'command = connection.CreateCommand()
-        'command.CommandText = sSsql
-        'datatbl = command.ExecuteReader()
-        'If datatbl.HasRows Then
-        '    GrillaFecha.Rows.Clear()
-        '    While datatbl.Read
-        '        GrillaFecha.Rows.Add()
-        '        GrillaFecha.Rows(i).Cells(0).Value = datatbl(0)
-        '        GrillaFecha.Rows(i).Cells(1).Value = datatbl(1)
-        '        dTotBand += datatbl(1)
-        '        i += 1
-        '    End While
-        '    GrillaFecha.Rows.Add()
-        '    GrillaFecha.Rows(i).Cells(0).Value = "TOTAL:"
-        '    GrillaFecha.Rows(i).Cells(1).Value = dTotBand
-        'End If
-        'close_conexion()
-
 
         Indice = 0
         For i = 0 To GrillaDespacho.Rows.Count - 1
             If GrillaDespacho.Rows(i).Cells(0).Value = True Then
                 'sumar por fecha de despacho
-
-
                 bFound = False
-
-
-
                 For j = 0 To UBound(AFecha)
                     If GrillaDespacho.Rows(i).Cells(7).Value = AFecha(j) Then
                         ABandejas(j) += GrillaDespacho.Rows(i).Cells(6).Value
@@ -463,9 +293,7 @@
                         ABandejas(Indice) = GrillaDespacho.Rows(i).Cells(6).Value
                         Indice += 1
                     End If
-
                     '                TotalBand += GrillaDespacho.Rows(i).Cells(6).Value
-
                 End If
             End If
 
@@ -493,6 +321,67 @@
     End Sub
 
     Private Sub LotesConfirmadosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LotesConfirmadosToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub LotesPreparadosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LotesPreparadosToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub ReporteLotesPreparadosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ReporteLotesPreparadosToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub IrAToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles IrAToolStripMenuItem.Click
+
+    End Sub
+
+
+    Private Sub ConsultaLoteToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ConsultaLoteToolStripMenuItem.Click
+
+    End Sub
+
+    Private Sub btnBuscaLote_Click(sender As Object, e As EventArgs) Handles btnBuscaLote.Click
+        If Val(txtNumLote.Text) > 0 Then
+            Dim bEncontro As Boolean = False
+            Dim NumFilas As Integer = GrillaDespacho.RowCount
+            Dim i As Integer
+            For i = 0 To GrillaDespacho.Rows.Count - 1
+                If txtNumLote.Text = GrillaDespacho.Rows(i).Cells(1).Value Then
+                    'this.dataGridView1.CurrentCell = this.dataGridView1[1,0];
+                    GrillaDespacho.CurrentCell = GrillaDespacho(0, i)
+                    bEncontro = True
+                End If
+            Next
+            If bEncontro = False Then
+                'DataGridView5.Rows.Add()
+                GrillaDespacho.CurrentCell = GrillaDespacho(1, NumFilas - 1)
+                GrillaDespacho.Rows(NumFilas - 1).Cells(1).Value = txtNumLote.Text
+            End If
+        End If
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs)
+        Me.Close()
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        GuardarDatos()
+    End Sub
+
+
+    Private Sub Button3_Click(sender As Object, e As EventArgs)
+        ResumenLoteConfFechaDesp()
+        ResumenLoteConfSector()
+    End Sub
+
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+        REM Elimina Fila Actual
+        Dim ifila As Integer = GrillaDespacho.CurrentRow.Index
+        GrillaDespacho.Rows.RemoveAt(ifila)
+    End Sub
+
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
         REM Carga Lotes Confirmados
         Dim i As Integer = 0
         sSsql = "SP_ConsultaCtlDesp "
@@ -524,8 +413,25 @@
         close_conexion()
     End Sub
 
-    Private Sub LotesPreparadosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles LotesPreparadosToolStripMenuItem.Click
-        REM Carga Lotes Confirmados
+    Private Sub Button6_Click(sender As Object, e As EventArgs) Handles Button6.Click
+        REM Reporte Lotes Confirmados para Colocación de Banderas
+        If GrillaDespacho.Rows.Count > 0 And GrillaDespacho.Rows(0).Cells(1).Value <> Nothing Then
+            Dim ifila As Integer = GrillaDespacho.CurrentRow.Index
+            If GrillaDespacho.Rows(ifila).Cells(0).Value Then
+                dtpFecRepLotesConf.Value = GrillaDespacho.Rows(ifila).Cells(7).Value
+                RepLotConf.Visible = True
+            Else
+                MsgBox("Lote no ha sido confirmado!!!", MsgBoxStyle.Critical, "Preparación de Lote")
+            End If
+
+        Else
+            MsgBox("No existen Lotes registrados!!!. Ingrese los Lotes que desea despachar", MsgBoxStyle.Critical, "Preparación de Despacho")
+        End If
+
+    End Sub
+
+    Private Sub Button7_Click(sender As Object, e As EventArgs) Handles Button7.Click
+        REM Carga Lotes Preparados
         Dim i As Integer = 0
         sSsql = "SP_ConsultaCtlDesp "
         sSsql += "0"
@@ -552,71 +458,113 @@
                 GrillaDespacho.Rows(i).Cells(12).Value = datatbl(12)
                 i += 1
             End While
+        Else
+            MsgBox("No existen Lotes Preparados!!!", MsgBoxStyle.Information, "Preparación de Lotes")
         End If
         close_conexion()
     End Sub
 
-    Private Sub ReporteLotesPreparadosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ReporteLotesPreparadosToolStripMenuItem.Click
-        REM Reporte Lotes Confirmados para Colocación de Banderas
-        Dim ifila As Integer = GrillaDespacho.CurrentRow.Index
-        dtpFecRepLotesConf.Value = GrillaDespacho.Rows(ifila).Cells(7).Value
-        RepLotConf.Visible = True
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        If GrillaDespacho.Rows.Count > 0 Then
+            Dim iCurrent As Integer
+            If GrillaDespacho.Rows(0).Cells(1).Value = Nothing AndAlso GrillaDespacho.Rows.Count = 1 Then
+                MsgBox("No existen Lotes ingresados para realizar la consulta de lote!!!", MsgBoxStyle.Critical, "Preparación de Despacho")
+            Else
+                iCurrent = GrillaDespacho.CurrentRow.Index
+                Cambio_Estado.txt_NumLote.Text = GrillaDespacho.Rows(iCurrent).Cells(1).Value
+                gQuienLlama = 2
+                Cambio_Estado.Show()
+            End If
+
+        End If
     End Sub
 
-
-
-    Private Sub IrAToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles IrAToolStripMenuItem.Click
+    Private Sub Button8_Click(sender As Object, e As EventArgs) Handles Button8.Click
         Me.Close()
         CtlDesp.Show()
     End Sub
 
 
 
-    Private Sub ConsultaLoteToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles ConsultaLoteToolStripMenuItem.Click
+    Private Sub GrillaDespacho_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles GrillaDespacho.CellEndEdit
+        REM **************************************************************************************************************************************************
+        REM                                                              ENTRADA DE DATOS
+        REM **************************************************************************************************************************************************
+
         If GrillaDespacho.Rows.Count > 0 Then
-            Dim iCurrent As Integer
-            iCurrent = GrillaDespacho.CurrentRow.Index
-            Cambio_Estado.txt_NumLote.Text = GrillaDespacho.Rows(iCurrent).Cells(1).Value
-            gQuienLlama = 2
-            Cambio_Estado.Show()
+            Dim iCol As Integer = e.ColumnIndex
+            Dim ctodate As Date
+
+            REM Valida Check Confirmación
+            If iCol = 0 Then
+                GrillaDespacho.Rows(e.RowIndex).Cells(7).Value = Format(Now.Date, "dd/MM/yyyy")
+                If GrillaDespacho.Rows(e.RowIndex).Cells(7).Value = #1/1/1900# Or Not IsDate(GrillaDespacho.Rows(e.RowIndex).Cells(7).Value) Then
+                    'MsgBox("Fecha de Despacho No Válida!!!")
+                    GrillaDespacho.Rows(e.RowIndex).Cells(0).Value = False
+                End If
+            End If
+
+            Try
+                REM Valida Ingreso de Nº De Lote
+                If iCol = 1 Then
+                    If GrillaDespacho.Rows(e.RowIndex).Cells(1).Value <> Nothing AndAlso Not ValidaNumLote(GrillaDespacho.Rows(e.RowIndex).Cells(1).Value, e.RowIndex) Then
+                        GrillaDespacho.Rows.RemoveAt(e.RowIndex)
+                    End If
+                End If
+                REM Valida Ingreso Fecha Valida
+                If iCol = 7 Then
+                    If Not IsDate(GrillaDespacho.Rows(e.RowIndex).Cells(iCol).Value) Then
+                        MsgBox("Fecha No Válida. Vuelva a ingresar Fecha de Despacho")
+                        GrillaDespacho.Rows(e.RowIndex).Cells(iCol).Value = Nothing
+                        If GrillaDespacho.Rows(e.RowIndex).Cells(1).Value = Nothing Then
+                            MsgBox("No ha ingresado Nº de Lote. Debe ingresar este dato primero")
+                            If e.RowIndex > 0 Then
+                                GrillaDespacho.Rows.RemoveAt(e.RowIndex)
+                            End If
+                        End If
+                    Else
+                        ctodate = GrillaDespacho.Rows(e.RowIndex).Cells(iCol).Value
+                        GrillaDespacho.Rows(e.RowIndex).Cells(iCol).Value = ctodate.ToString("d/MM/yyyy")
+                    End If
+                    ' termino de registrar la fecha
+                    'verificar si se marcó el ticket
+
+                End If
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            End Try
+
         End If
     End Sub
 
-    Private Sub btnBuscaLote_Click(sender As Object, e As EventArgs) Handles btnBuscaLote.Click
-        If Val(txtNumLote.Text) > 0 Then
-            Dim bEncontro As Boolean = False
-            Dim NumFilas As Integer = GrillaDespacho.RowCount
-            Dim i As Integer
-            For i = 0 To GrillaDespacho.Rows.Count - 1
-                If txtNumLote.Text = GrillaDespacho.Rows(i).Cells(1).Value Then
-                    'this.dataGridView1.CurrentCell = this.dataGridView1[1,0];
-                    GrillaDespacho.CurrentCell = GrillaDespacho(0, i)
-                    bEncontro = True
+    Private Sub GrillaDespacho_CellBeginEdit(sender As Object, e As DataGridViewCellCancelEventArgs) Handles GrillaDespacho.CellBeginEdit
+        REM Valida Inicio de Edicion
+        If GrillaDespacho.Rows.Count > 1 Then
+            Dim iCol As Integer = e.ColumnIndex
+            If iCol = 0 OrElse iCol = 7 OrElse iCol = 8 Then
+                If GrillaDespacho.Rows(e.RowIndex).Cells(1).Value = Nothing Then
+                    MsgBox("Debe Ingresar Nº de Lote")
+                    e.Cancel = True
                 End If
-            Next
-            If bEncontro = False Then
-                'DataGridView5.Rows.Add()
-                GrillaDespacho.CurrentCell = GrillaDespacho(1, NumFilas - 1)
-                GrillaDespacho.Rows(NumFilas - 1).Cells(1).Value = txtNumLote.Text
+                If GrillaDespacho.Rows(e.RowIndex).Cells(6).Value = 0 Then
+                    MsgBox("Lote debe contener Saldo de Bandejas para preparar despacho!!!")
+                    e.Cancel = True
+                End If
             End If
         End If
     End Sub
 
-    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
-        Me.Close()
-    End Sub
+    Private Sub Button2_Click_1(sender As Object, e As EventArgs) Handles Button2.Click
+        If GrillaDespacho.Rows.Count > 1 Then
+            Dim resp As MsgBoxResult
+            resp = MsgBox("Revise si se guadaron los cambios antes de cerrar. Confirma que desea salir?", MsgBoxStyle.YesNo, "Preparación de Lotes")
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        GuardarDatos()
-    End Sub
-
-
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
-        ResumenLoteConfFechaDesp()
-        ResumenLoteConfSector()
-    End Sub
-
-    Private Sub GrillaDespacho_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles GrillaDespacho.CellContentClick
+            If resp = MsgBoxResult.Yes Then
+                Me.Close()
+            End If
+        Else
+            Me.Close()
+        End If
 
     End Sub
 End Class

@@ -1477,11 +1477,11 @@
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>GESTDataSet</rd:DataSetName>
-        <rd:SchemaPath>D:\REPOVIVERO\app-ddvivero\GESTDataSet.xsd</rd:SchemaPath>
-        <rd:TableName>NEWSP_CONSULTA_LOTES</rd:TableName>
+        <rd:SchemaPath>D:\REPOS\repo_DDvivero\app-ddvivero\GESTDataSet.xsd</rd:SchemaPath>
+        <rd:TableName>L001_SP_ReporteLotes</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
-        <rd:TableAdapterName>NEWSP_CONSULTA_LOTESTableAdapter</rd:TableAdapterName>
+        <rd:TableAdapterName>L001_SP_ReporteLotesTableAdapter</rd:TableAdapterName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>

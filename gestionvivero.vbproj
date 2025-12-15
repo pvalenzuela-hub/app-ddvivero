@@ -38,7 +38,7 @@
     </TargetFrameworkProfile>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>D:\publicar\viveroDD\ViveroDD_Version199\</PublishUrl>
+    <PublishUrl>D:\publicar\viveroDD\ViveroDD_Version200\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -54,7 +54,7 @@
     <MinimumRequiredVersion>1.0.0.7</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.html</WebPage>
-    <ApplicationRevision>200</ApplicationRevision>
+    <ApplicationRevision>201</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -541,12 +541,6 @@
       <DependentUpon>Consulta_GuiasLote.vb</DependentUpon>
     </Compile>
     <Compile Include="Consulta_GuiasLote.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Consulta_Lotes.Designer.vb">
-      <DependentUpon>Consulta_Lotes.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Consulta_Lotes.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Consulta_Pedido_Especie_Cliente.Designer.vb">
@@ -1708,9 +1702,6 @@
     <EmbeddedResource Include="Consulta_GuiasLote.resx">
       <DependentUpon>Consulta_GuiasLote.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Consulta_Lotes.resx">
-      <DependentUpon>Consulta_Lotes.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Consulta_Pedido_Especie_Cliente.resx">
       <DependentUpon>Consulta_Pedido_Especie_Cliente.vb</DependentUpon>
       <SubType>Designer</SubType>
@@ -2728,6 +2719,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="invoice.ico" />
+    <None Include="Resources\icon_40x40.png" />
     <None Include="Resources\Guias.png" />
     <None Include="Resources\nuevo 40x40.png" />
     <None Include="Resources\imprimir 40x40.png" />

@@ -8,9 +8,9 @@ Public Class ListaPedidos
 
     Private Sub CargaPedidos(iNumPedido As String, iOpcion As Integer, sTitulo As String)
         'GrillaPedidos.Rows.Clear()
-        sSsql = "[dbo].[NEWSP_CONSULTAPedidosPendientes] "
+        sSsql = "[dbo].[P001_CONSULTAPedidosPendientes] "
         sSsql += iNumPedido.ToString & ","
-        sSsql += iOpcion.ToString
+        sSsql += iOpcion.ToString & ",0"
         lblTitulo.Text = sTitulo
         open()
         command = connection.CreateCommand()

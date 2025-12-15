@@ -24,20 +24,6 @@ Partial Class ConsultaLotesPantalla
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.GrillaLotes = New System.Windows.Forms.DataGridView()
-        Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.cmbVariedad = New System.Windows.Forms.ComboBox()
-        Me.SPCONSULTAFULLVARIEDADIdFamiliaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.GESTDataSet = New GestionVivero.GESTDataSet()
-        Me.cmbSemilla = New System.Windows.Forms.ComboBox()
-        Me.SPCONSULTAFULLFAMILIAPRODUCTOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.Label2 = New System.Windows.Forms.Label()
-        Me.Label1 = New System.Windows.Forms.Label()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.SP_CONSULTA_FULL_FAMILIA_PRODUCTOTableAdapter = New GestionVivero.GESTDataSetTableAdapters.SP_CONSULTA_FULL_FAMILIA_PRODUCTOTableAdapter()
-        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.SP_CONSULTA_FULL_VARIEDAD_IdFamiliaTableAdapter = New GestionVivero.GESTDataSetTableAdapters.SP_CONSULTA_FULL_VARIEDAD_IdFamiliaTableAdapter()
         Me.nlote = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.semilla = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -55,6 +41,21 @@ Partial Class ConsultaLotesPantalla
         Me.numnave = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.diasvivero = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.FechaAutorizacionCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.chkTodo = New System.Windows.Forms.CheckBox()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.cmbVariedad = New System.Windows.Forms.ComboBox()
+        Me.SPCONSULTAFULLVARIEDADIdFamiliaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GESTDataSet = New GestionVivero.GESTDataSet()
+        Me.cmbSemilla = New System.Windows.Forms.ComboBox()
+        Me.SPCONSULTAFULLFAMILIAPRODUCTOBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.btnReporteExcel = New System.Windows.Forms.Button()
+        Me.SP_CONSULTA_FULL_FAMILIA_PRODUCTOTableAdapter = New GestionVivero.GESTDataSetTableAdapters.SP_CONSULTA_FULL_FAMILIA_PRODUCTOTableAdapter()
+        Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
+        Me.SP_CONSULTA_FULL_VARIEDAD_IdFamiliaTableAdapter = New GestionVivero.GESTDataSetTableAdapters.SP_CONSULTA_FULL_VARIEDAD_IdFamiliaTableAdapter()
         CType(Me.GrillaLotes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -80,129 +81,6 @@ Partial Class ConsultaLotesPantalla
         Me.GrillaLotes.RowHeadersVisible = False
         Me.GrillaLotes.Size = New System.Drawing.Size(1234, 632)
         Me.GrillaLotes.TabIndex = 0
-        '
-        'SplitContainer1
-        '
-        Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.SplitContainer1.Location = New System.Drawing.Point(0, 0)
-        Me.SplitContainer1.Name = "SplitContainer1"
-        Me.SplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal
-        '
-        'SplitContainer1.Panel1
-        '
-        Me.SplitContainer1.Panel1.Controls.Add(Me.Button3)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.Button2)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.cmbVariedad)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.cmbSemilla)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.Label2)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.Label1)
-        Me.SplitContainer1.Panel1.Controls.Add(Me.Button1)
-        '
-        'SplitContainer1.Panel2
-        '
-        Me.SplitContainer1.Panel2.Controls.Add(Me.GrillaLotes)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1234, 679)
-        Me.SplitContainer1.SplitterDistance = 43
-        Me.SplitContainer1.TabIndex = 1
-        '
-        'Button3
-        '
-        Me.Button3.BackColor = System.Drawing.Color.White
-        Me.Button3.Image = Global.GestionVivero.My.Resources.Resources.eliminar_40x40
-        Me.Button3.Location = New System.Drawing.Point(1191, 3)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(39, 39)
-        Me.Button3.TabIndex = 6
-        Me.ToolTip1.SetToolTip(Me.Button3, "Limpiar Filtros")
-        Me.Button3.UseVisualStyleBackColor = False
-        '
-        'Button2
-        '
-        Me.Button2.BackColor = System.Drawing.Color.White
-        Me.Button2.Image = Global.GestionVivero.My.Resources.Resources.Apply
-        Me.Button2.Location = New System.Drawing.Point(1150, 2)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(39, 39)
-        Me.Button2.TabIndex = 5
-        Me.ToolTip1.SetToolTip(Me.Button2, "Aplicar Filtros")
-        Me.Button2.UseVisualStyleBackColor = False
-        '
-        'cmbVariedad
-        '
-        Me.cmbVariedad.DataSource = Me.SPCONSULTAFULLVARIEDADIdFamiliaBindingSource
-        Me.cmbVariedad.DisplayMember = "Descripcion"
-        Me.cmbVariedad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbVariedad.FormattingEnabled = True
-        Me.cmbVariedad.Location = New System.Drawing.Point(732, 12)
-        Me.cmbVariedad.Name = "cmbVariedad"
-        Me.cmbVariedad.Size = New System.Drawing.Size(374, 21)
-        Me.cmbVariedad.TabIndex = 4
-        Me.cmbVariedad.ValueMember = "IdVariedad"
-        '
-        'SPCONSULTAFULLVARIEDADIdFamiliaBindingSource
-        '
-        Me.SPCONSULTAFULLVARIEDADIdFamiliaBindingSource.DataMember = "SP_CONSULTA_FULL_VARIEDAD_IdFamilia"
-        Me.SPCONSULTAFULLVARIEDADIdFamiliaBindingSource.DataSource = Me.GESTDataSet
-        '
-        'GESTDataSet
-        '
-        Me.GESTDataSet.DataSetName = "GESTDataSet"
-        Me.GESTDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'cmbSemilla
-        '
-        Me.cmbSemilla.DataSource = Me.SPCONSULTAFULLFAMILIAPRODUCTOBindingSource
-        Me.cmbSemilla.DisplayMember = "DESCRIP"
-        Me.cmbSemilla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbSemilla.FormattingEnabled = True
-        Me.cmbSemilla.Location = New System.Drawing.Point(281, 12)
-        Me.cmbSemilla.Name = "cmbSemilla"
-        Me.cmbSemilla.Size = New System.Drawing.Size(377, 21)
-        Me.cmbSemilla.TabIndex = 3
-        Me.cmbSemilla.ValueMember = "idFamilia"
-        '
-        'SPCONSULTAFULLFAMILIAPRODUCTOBindingSource
-        '
-        Me.SPCONSULTAFULLFAMILIAPRODUCTOBindingSource.DataMember = "SP_CONSULTA_FULL_FAMILIA_PRODUCTO"
-        Me.SPCONSULTAFULLFAMILIAPRODUCTOBindingSource.DataSource = Me.GESTDataSet
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(682, 16)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(49, 13)
-        Me.Label2.TabIndex = 2
-        Me.Label2.Text = "Variedad"
-        '
-        'Label1
-        '
-        Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(237, 16)
-        Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(40, 13)
-        Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Semilla"
-        '
-        'Button1
-        '
-        Me.Button1.BackColor = System.Drawing.Color.LimeGreen
-        Me.Button1.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.White
-        Me.Button1.Location = New System.Drawing.Point(9, 7)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(198, 28)
-        Me.Button1.TabIndex = 0
-        Me.Button1.Text = "Reporte Excel"
-        Me.Button1.UseVisualStyleBackColor = False
-        '
-        'SP_CONSULTA_FULL_FAMILIA_PRODUCTOTableAdapter
-        '
-        Me.SP_CONSULTA_FULL_FAMILIA_PRODUCTOTableAdapter.ClearBeforeFill = True
-        '
-        'SP_CONSULTA_FULL_VARIEDAD_IdFamiliaTableAdapter
-        '
-        Me.SP_CONSULTA_FULL_VARIEDAD_IdFamiliaTableAdapter.ClearBeforeFill = True
         '
         'nlote
         '
@@ -330,6 +208,140 @@ Partial Class ConsultaLotesPantalla
         Me.FechaAutorizacionCliente.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable
         Me.FechaAutorizacionCliente.Width = 114
         '
+        'SplitContainer1
+        '
+        Me.SplitContainer1.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.SplitContainer1.Location = New System.Drawing.Point(0, 0)
+        Me.SplitContainer1.Name = "SplitContainer1"
+        Me.SplitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal
+        '
+        'SplitContainer1.Panel1
+        '
+        Me.SplitContainer1.Panel1.Controls.Add(Me.chkTodo)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.Button3)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.Button2)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.cmbVariedad)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.cmbSemilla)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.Label2)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.Label1)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.btnReporteExcel)
+        '
+        'SplitContainer1.Panel2
+        '
+        Me.SplitContainer1.Panel2.Controls.Add(Me.GrillaLotes)
+        Me.SplitContainer1.Size = New System.Drawing.Size(1234, 679)
+        Me.SplitContainer1.SplitterDistance = 43
+        Me.SplitContainer1.TabIndex = 1
+        '
+        'chkTodo
+        '
+        Me.chkTodo.AutoSize = True
+        Me.chkTodo.Location = New System.Drawing.Point(1074, 14)
+        Me.chkTodo.Name = "chkTodo"
+        Me.chkTodo.Size = New System.Drawing.Size(51, 17)
+        Me.chkTodo.TabIndex = 7
+        Me.chkTodo.Text = "Todo"
+        Me.chkTodo.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.BackColor = System.Drawing.Color.White
+        Me.Button3.Image = Global.GestionVivero.My.Resources.Resources.eliminar_40x40
+        Me.Button3.Location = New System.Drawing.Point(1191, 3)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(39, 39)
+        Me.Button3.TabIndex = 6
+        Me.ToolTip1.SetToolTip(Me.Button3, "Limpiar Filtros")
+        Me.Button3.UseVisualStyleBackColor = False
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.White
+        Me.Button2.Image = Global.GestionVivero.My.Resources.Resources.Apply
+        Me.Button2.Location = New System.Drawing.Point(1150, 2)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(39, 39)
+        Me.Button2.TabIndex = 5
+        Me.ToolTip1.SetToolTip(Me.Button2, "Aplicar Filtros")
+        Me.Button2.UseVisualStyleBackColor = False
+        '
+        'cmbVariedad
+        '
+        Me.cmbVariedad.DataSource = Me.SPCONSULTAFULLVARIEDADIdFamiliaBindingSource
+        Me.cmbVariedad.DisplayMember = "Descripcion"
+        Me.cmbVariedad.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbVariedad.FormattingEnabled = True
+        Me.cmbVariedad.Location = New System.Drawing.Point(694, 12)
+        Me.cmbVariedad.Name = "cmbVariedad"
+        Me.cmbVariedad.Size = New System.Drawing.Size(374, 21)
+        Me.cmbVariedad.TabIndex = 4
+        Me.cmbVariedad.ValueMember = "IdVariedad"
+        '
+        'SPCONSULTAFULLVARIEDADIdFamiliaBindingSource
+        '
+        Me.SPCONSULTAFULLVARIEDADIdFamiliaBindingSource.DataMember = "SP_CONSULTA_FULL_VARIEDAD_IdFamilia"
+        Me.SPCONSULTAFULLVARIEDADIdFamiliaBindingSource.DataSource = Me.GESTDataSet
+        '
+        'GESTDataSet
+        '
+        Me.GESTDataSet.DataSetName = "GESTDataSet"
+        Me.GESTDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'cmbSemilla
+        '
+        Me.cmbSemilla.DataSource = Me.SPCONSULTAFULLFAMILIAPRODUCTOBindingSource
+        Me.cmbSemilla.DisplayMember = "DESCRIP"
+        Me.cmbSemilla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbSemilla.FormattingEnabled = True
+        Me.cmbSemilla.Location = New System.Drawing.Point(259, 12)
+        Me.cmbSemilla.Name = "cmbSemilla"
+        Me.cmbSemilla.Size = New System.Drawing.Size(377, 21)
+        Me.cmbSemilla.TabIndex = 3
+        Me.cmbSemilla.ValueMember = "idFamilia"
+        '
+        'SPCONSULTAFULLFAMILIAPRODUCTOBindingSource
+        '
+        Me.SPCONSULTAFULLFAMILIAPRODUCTOBindingSource.DataMember = "SP_CONSULTA_FULL_FAMILIA_PRODUCTO"
+        Me.SPCONSULTAFULLFAMILIAPRODUCTOBindingSource.DataSource = Me.GESTDataSet
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(644, 16)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(49, 13)
+        Me.Label2.TabIndex = 2
+        Me.Label2.Text = "Variedad"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(215, 16)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(40, 13)
+        Me.Label1.TabIndex = 1
+        Me.Label1.Text = "Semilla"
+        '
+        'btnReporteExcel
+        '
+        Me.btnReporteExcel.BackColor = System.Drawing.Color.LimeGreen
+        Me.btnReporteExcel.Font = New System.Drawing.Font("Arial Narrow", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnReporteExcel.ForeColor = System.Drawing.Color.White
+        Me.btnReporteExcel.Location = New System.Drawing.Point(9, 7)
+        Me.btnReporteExcel.Name = "btnReporteExcel"
+        Me.btnReporteExcel.Size = New System.Drawing.Size(198, 28)
+        Me.btnReporteExcel.TabIndex = 0
+        Me.btnReporteExcel.Text = "Reporte Excel"
+        Me.btnReporteExcel.UseVisualStyleBackColor = False
+        '
+        'SP_CONSULTA_FULL_FAMILIA_PRODUCTOTableAdapter
+        '
+        Me.SP_CONSULTA_FULL_FAMILIA_PRODUCTOTableAdapter.ClearBeforeFill = True
+        '
+        'SP_CONSULTA_FULL_VARIEDAD_IdFamiliaTableAdapter
+        '
+        Me.SP_CONSULTA_FULL_VARIEDAD_IdFamiliaTableAdapter.ClearBeforeFill = True
+        '
         'ConsultaLotesPantalla
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -354,7 +366,7 @@ Partial Class ConsultaLotesPantalla
 
     Friend WithEvents GrillaLotes As DataGridView
     Friend WithEvents SplitContainer1 As SplitContainer
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnReporteExcel As Button
     Friend WithEvents Label2 As Label
     Friend WithEvents Label1 As Label
     Friend WithEvents cmbSemilla As ComboBox
@@ -384,4 +396,5 @@ Partial Class ConsultaLotesPantalla
     Friend WithEvents numnave As DataGridViewTextBoxColumn
     Friend WithEvents diasvivero As DataGridViewTextBoxColumn
     Friend WithEvents FechaAutorizacionCliente As DataGridViewTextBoxColumn
+    Friend WithEvents chkTodo As CheckBox
 End Class

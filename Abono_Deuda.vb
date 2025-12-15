@@ -133,6 +133,7 @@ Public Class Abono_Deuda
                 GrillaPagos.Rows(i).Cells("PagoNoEditado").Value = datatbl(6)
                 GrillaPagos.Rows(i).Cells("ValorDAI").Value = Format(datatbl("ValorDAI"), "###,###,###")
                 GrillaPagos.Rows(i).Cells("rebajaDAI").Value = datatbl("RebajaDAI")
+                GrillaPagos.Rows(i).Cells("usuario").Value = datatbl("Usuario")
                 dAbonoTotal += datatbl(6)
                 i += 1
             End While
@@ -485,6 +486,7 @@ Public Class Abono_Deuda
             GrillaPagos.Rows(j).Cells("PagoNoEditado").Value = Val(txt_MontoDoc.Text)
             GrillaPagos.Rows(j).Cells("ValorDAI").Value = 0
             GrillaPagos.Rows(j).Cells("rebajaDAI").Value = "N"
+            GrillaPagos.Rows(j).Cells("usuario").Value = gUSER
             gSaldoxAsignar = 0
             gTotalPagar = 0
         End If
@@ -517,6 +519,7 @@ Public Class Abono_Deuda
             GrillaPagos.Rows(j).Cells("PagoNoEditado").Value = Val(txt_MontoDoc.Text)
             GrillaPagos.Rows(j).Cells("ValorDAI").Value = Format(ValorDAI, "#########")
             GrillaPagos.Rows(j).Cells("rebajaDAI").Value = "N"
+            GrillaPagos.Rows(j).Cells("usuario").Value = gUSER
         End If
 
         If chkRebajaDAI.Checked Then
@@ -538,6 +541,7 @@ Public Class Abono_Deuda
             GrillaPagos.Rows(j).Cells("PagoNoEditado").Value = Val(txt_MontoDoc.Text)
             GrillaPagos.Rows(j).Cells("ValorDAI").Value = 0
             GrillaPagos.Rows(j).Cells("rebajaDAI").Value = "S"
+            GrillaPagos.Rows(j).Cells("usuario").Value = gUSER
         End If
         GrillaPagos.Sort(id_pago, System.ComponentModel.ListSortDirection.Ascending)
     End Sub

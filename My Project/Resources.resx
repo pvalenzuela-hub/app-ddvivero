@@ -118,8 +118,11 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="Carga99x72" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Carga99x72.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="donaciones 40x40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\donaciones 40x40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="eliminar 40x40 - pedido" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\eliminar 40x40 - pedido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="salir 40x401" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\salir 40x401.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -166,9 +169,6 @@
   <data name="iconoestadodecuentas" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\iconoestadodecuentas.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Search" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Search.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="Delete1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Delete.gif;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
@@ -193,8 +193,8 @@
   <data name="34138065-papel-de-la-factura-con-la-informacion-financiera-icono-plana-moderno-estilo-de-diseno-de-ilustracio" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\34138065-papel-de-la-factura-con-la-informacion-financiera-icono-plana-moderno-estilo-de-diseno-de-ilustracio.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="donaciones 40x40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\donaciones 40x40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Carga99x72" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Carga99x72.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="truck_99233" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\truck_99233.jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -205,11 +205,14 @@
   <data name="W95MBX01" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\W95MBX01.ICO;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="salir 40x40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\salir 40x40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="R_images003" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\R_images003.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="salir 40x40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\salir 40x40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Search.bmp;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Despacho99x72" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Despacho99x72.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -238,7 +241,7 @@
   <data name="truck_99233 (1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\truck_99233 (1).jpg;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="eliminar 40x40 - pedido" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\eliminar 40x40 - pedido.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="icon_40x40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\icon_40x40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

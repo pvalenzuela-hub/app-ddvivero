@@ -113,9 +113,9 @@
 
             sSsql = "SP_ActualizaDespH "
             sSsql += "0,"
-            sSsql += "'" + DateTimePicker1.Value + "',"
-            sSsql += "'" + txtNomChofer.Text + "',"
-            sSsql += "'" + txtPatente.Text + "',"
+            sSsql += "'" & DateTimePicker1.Value & "',"
+            sSsql += "'" & txtNomChofer.Text & "',"
+            sSsql += "'" & txtPatente.Text & "',"
             sSsql += cmbEstado.SelectedIndex.ToString
 
             command = connection.CreateCommand()
