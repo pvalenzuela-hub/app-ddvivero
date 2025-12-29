@@ -94,6 +94,8 @@ Public Class Consulta_Cliente
         btnGuias.Enabled = False
         btnUpdate.Enabled = False
         txtLineaCredito.ReadOnly = True
+        btnagregaenlace.Enabled = False
+        btneliminaenlace.Enabled = False
     End Sub
     Private Sub LimpiaCampos()
         gIDCliente = 0
@@ -643,7 +645,8 @@ Public Class Consulta_Cliente
             txt_APELLIDOS.Focus()
             btnEdit.Enabled = False
             btnDelete.Enabled = False
-
+            btnagregaenlace.Enabled = True
+            btneliminaenlace.Enabled = True
         End If
     End Sub
 
@@ -707,5 +710,68 @@ Public Class Consulta_Cliente
             ImprimeLotesCliente.txtIdCliente.Text = txtIdcliente.Text
             ImprimeLotesCliente.Show()
         End If
+    End Sub
+
+    Private Sub btnagregaenlace_Click(sender As Object, e As EventArgs) Handles btnagregaenlace.Click
+        'Agrega enlaces
+        If Val(txtIdcliente.Text) > 0 Then
+            Dim sEnlace As String = ""
+            Dim id As Integer = Val(txtIdcliente.Text)
+            sEnlace = InputBox("Enlace:", "Agrega Enlace Cliente")
+            If sEnlace <> Nothing Then
+                open()
+                Dim sql As String = "INSERT INTO Cliente_enlaces (cliente_id, Direcciones) " &
+                                "VALUES ( @idcliente, @direccion) "
+
+                Dim command As SqlCommand = connection.CreateCommand()
+                command.CommandText = sql
+                command.Parameters.AddWithValue("@idcliente", Str(id))
+                command.Parameters.AddWithValue("@direccion", sEnlace)
+                command.ExecuteNonQuery()
+                close_conexion()
+                CargaEnlaces(id)
+            End If
+        Else
+            MsgBox("No Existe Cliente en la base de datos. Primero debe llamar a un cliente existente!!!", MsgBoxStyle.Critical, "Clientes")
+        End If
+    End Sub
+
+    Private Sub btneliminaenlace_Click(sender As Object, e As EventArgs) Handles btneliminaenlace.Click
+        If GrillaEnlaces.Rows.Count > 0 Then
+            Dim i As Integer = GrillaEnlaces.CurrentRow.Index
+            Dim idcliente As Integer = Val(txtIdcliente.Text)
+            If i >= 0 Then
+                Dim id As Integer = GrillaEnlaces.Rows(i).Cells(1).Value
+                open()
+                Dim sql As String = "DELETE FROM Cliente_enlaces WHERE id=@id"
+
+                Dim command As SqlCommand = connection.CreateCommand()
+                command.CommandText = sql
+                command.Parameters.AddWithValue("@id", Str(id))
+                command.ExecuteNonQuery()
+                close_conexion()
+                CargaEnlaces(idcliente)
+            End If
+        End If
+    End Sub
+    Private Sub CargaEnlaces(id As Integer)
+        Dim i As Integer = 0
+        GrillaEnlaces.Rows.Clear()
+        open()
+        Dim command As SqlCommand = connection.CreateCommand()
+        sSsql = "SELECT id,Direcciones FROM Cliente_enlaces WHERE cliente_id=@idcliente"
+
+        command.CommandText = sSsql
+        command.Parameters.AddWithValue("@idcliente", Str(id))
+        datatbl = command.ExecuteReader()
+        If datatbl.HasRows Then
+            While datatbl.Read
+                GrillaEnlaces.Rows.Add()
+                GrillaEnlaces.Rows(i).Cells(0).Value = datatbl("Direcciones")
+                GrillaEnlaces.Rows(i).Cells(1).Value = datatbl("id")
+                i += 1
+            End While
+        End If
+        close_conexion()
     End Sub
 End Class

@@ -23,21 +23,44 @@ Partial Class Consulta_Cliente
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Consulta_Cliente))
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.txt_clientebuscar = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.txt_NombreCliente = New System.Windows.Forms.MaskedTextBox()
         Me.DataCartola = New System.Windows.Forms.DataGridView()
+        Me.guia = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.EsPreventa = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.IdPedidodet = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Nro_Lote_Original = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdPedido = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Fecha_Emi = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DESCRIP = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Fecha_Ent = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TipoBandeja = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Fecha_Conteo1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Saldo_Plantas = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Saldo_Bandeja = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TOTAL_LOTE = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Diasvivero = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Vendedor = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Nro_Guias = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Facturas = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Fechaautorizacioncliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Ubicacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Num_Nave = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label13 = New System.Windows.Forms.Label()
         Me.txt_Deuda = New System.Windows.Forms.TextBox()
         Me.Label12 = New System.Windows.Forms.Label()
@@ -107,29 +130,11 @@ Partial Class Consulta_Cliente
         Me.SP_CONSULTA_FULL_VENDEDORTableAdapter = New GestionVivero.GESTDataSet34TableAdapters.SP_CONSULTA_FULL_VENDEDORTableAdapter()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.guia = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.EsPreventa = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.IdPedidodet = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Nro_Lote_Original = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IdPedido = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Fecha_Emi = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DESCRIP = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Descripcion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Fecha_Ent = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Cantidad = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TipoBandeja = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Fecha_Conteo1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Saldo_Plantas = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Saldo_Bandeja = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.TOTAL_LOTE = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Diasvivero = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Vendedor = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Nro_Guias = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Facturas = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Fechaautorizacioncliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Ubicacion = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Num_Nave = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnagregaenlace = New System.Windows.Forms.Button()
+        Me.btneliminaenlace = New System.Windows.Forms.Button()
+        Me.GrillaEnlaces = New System.Windows.Forms.DataGridView()
+        Me.enlace = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataCartola, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -138,6 +143,7 @@ Partial Class Consulta_Cliente
         Me.Panel1.SuspendLayout()
         CType(Me.SPCONSULTAFULLVENDEDORBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GESTDataSet34, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GrillaEnlaces, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txt_clientebuscar
@@ -177,19 +183,200 @@ Partial Class Consulta_Cliente
         Me.DataCartola.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
         Me.DataCartola.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.DataCartola.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.guia, Me.EsPreventa, Me.IdPedidodet, Me.Nro_Lote_Original, Me.IdPedido, Me.Fecha_Emi, Me.DESCRIP, Me.Descripcion, Me.Fecha_Ent, Me.Cantidad, Me.TipoBandeja, Me.Fecha_Conteo1, Me.Saldo_Plantas, Me.Saldo_Bandeja, Me.Estado, Me.TOTAL_LOTE, Me.Diasvivero, Me.Vendedor, Me.Nro_Guias, Me.Facturas, Me.Fechaautorizacioncliente, Me.Ubicacion, Me.Num_Nave})
-        Me.DataCartola.Location = New System.Drawing.Point(5, 6)
+        Me.DataCartola.Location = New System.Drawing.Point(6, 8)
         Me.DataCartola.Name = "DataCartola"
         Me.DataCartola.RowHeadersVisible = False
         Me.DataCartola.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
-        DataGridViewCellStyle10.BackColor = System.Drawing.Color.Azure
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.DarkGreen
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.DarkGreen
-        Me.DataCartola.RowsDefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle30.BackColor = System.Drawing.Color.Azure
+        DataGridViewCellStyle30.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle30.ForeColor = System.Drawing.Color.DarkGreen
+        DataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.DarkGreen
+        Me.DataCartola.RowsDefaultCellStyle = DataGridViewCellStyle30
         Me.DataCartola.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.DataCartola.Size = New System.Drawing.Size(1323, 226)
+        Me.DataCartola.Size = New System.Drawing.Size(1323, 198)
         Me.DataCartola.TabIndex = 0
+        '
+        'guia
+        '
+        Me.guia.HeaderText = "Guías"
+        Me.guia.Name = "guia"
+        Me.guia.Width = 46
+        '
+        'EsPreventa
+        '
+        Me.EsPreventa.HeaderText = "Preventa"
+        Me.EsPreventa.Name = "EsPreventa"
+        Me.EsPreventa.Width = 61
+        '
+        'IdPedidodet
+        '
+        Me.IdPedidodet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.IdPedidodet.DefaultCellStyle = DataGridViewCellStyle21
+        Me.IdPedidodet.HeaderText = "N° Lote"
+        Me.IdPedidodet.Name = "IdPedidodet"
+        Me.IdPedidodet.ReadOnly = True
+        Me.IdPedidodet.Width = 68
+        '
+        'Nro_Lote_Original
+        '
+        Me.Nro_Lote_Original.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Nro_Lote_Original.DefaultCellStyle = DataGridViewCellStyle22
+        Me.Nro_Lote_Original.HeaderText = "N° Original"
+        Me.Nro_Lote_Original.Name = "Nro_Lote_Original"
+        Me.Nro_Lote_Original.ReadOnly = True
+        Me.Nro_Lote_Original.Width = 85
+        '
+        'IdPedido
+        '
+        Me.IdPedido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.IdPedido.DefaultCellStyle = DataGridViewCellStyle23
+        Me.IdPedido.HeaderText = "N° Pedido"
+        Me.IdPedido.Name = "IdPedido"
+        Me.IdPedido.ReadOnly = True
+        Me.IdPedido.Width = 81
+        '
+        'Fecha_Emi
+        '
+        Me.Fecha_Emi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Fecha_Emi.HeaderText = "Fecha Pedido"
+        Me.Fecha_Emi.Name = "Fecha_Emi"
+        Me.Fecha_Emi.ReadOnly = True
+        Me.Fecha_Emi.Width = 99
+        '
+        'DESCRIP
+        '
+        Me.DESCRIP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.DESCRIP.HeaderText = "Semilla"
+        Me.DESCRIP.Name = "DESCRIP"
+        Me.DESCRIP.ReadOnly = True
+        Me.DESCRIP.Width = 74
+        '
+        'Descripcion
+        '
+        Me.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Descripcion.HeaderText = "Variedad"
+        Me.Descripcion.Name = "Descripcion"
+        Me.Descripcion.ReadOnly = True
+        Me.Descripcion.Width = 80
+        '
+        'Fecha_Ent
+        '
+        Me.Fecha_Ent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Fecha_Ent.HeaderText = "Fecha Entrega"
+        Me.Fecha_Ent.Name = "Fecha_Ent"
+        Me.Fecha_Ent.ReadOnly = True
+        Me.Fecha_Ent.Width = 103
+        '
+        'Cantidad
+        '
+        Me.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle24
+        Me.Cantidad.HeaderText = "Cant.Plantas"
+        Me.Cantidad.Name = "Cantidad"
+        Me.Cantidad.ReadOnly = True
+        Me.Cantidad.Width = 103
+        '
+        'TipoBandeja
+        '
+        Me.TipoBandeja.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.TipoBandeja.HeaderText = "Tipo Bandeja"
+        Me.TipoBandeja.Name = "TipoBandeja"
+        Me.TipoBandeja.ReadOnly = True
+        Me.TipoBandeja.Width = 97
+        '
+        'Fecha_Conteo1
+        '
+        Me.Fecha_Conteo1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        Me.Fecha_Conteo1.HeaderText = "Fecha conteo Siembra"
+        Me.Fecha_Conteo1.Name = "Fecha_Conteo1"
+        Me.Fecha_Conteo1.ReadOnly = True
+        Me.Fecha_Conteo1.Width = 142
+        '
+        'Saldo_Plantas
+        '
+        Me.Saldo_Plantas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Saldo_Plantas.DefaultCellStyle = DataGridViewCellStyle25
+        Me.Saldo_Plantas.HeaderText = "Saldo Plantas"
+        Me.Saldo_Plantas.Name = "Saldo_Plantas"
+        Me.Saldo_Plantas.ReadOnly = True
+        '
+        'Saldo_Bandeja
+        '
+        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Saldo_Bandeja.DefaultCellStyle = DataGridViewCellStyle26
+        Me.Saldo_Bandeja.HeaderText = "Saldo Bandeja"
+        Me.Saldo_Bandeja.Name = "Saldo_Bandeja"
+        Me.Saldo_Bandeja.Width = 104
+        '
+        'Estado
+        '
+        Me.Estado.HeaderText = "Estado"
+        Me.Estado.Name = "Estado"
+        Me.Estado.Width = 71
+        '
+        'TOTAL_LOTE
+        '
+        Me.TOTAL_LOTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.TOTAL_LOTE.DefaultCellStyle = DataGridViewCellStyle27
+        Me.TOTAL_LOTE.HeaderText = "Total Lote"
+        Me.TOTAL_LOTE.Name = "TOTAL_LOTE"
+        Me.TOTAL_LOTE.ReadOnly = True
+        Me.TOTAL_LOTE.Width = 79
+        '
+        'Diasvivero
+        '
+        Me.Diasvivero.HeaderText = "Días en Vivero"
+        Me.Diasvivero.Name = "Diasvivero"
+        Me.Diasvivero.Width = 102
+        '
+        'Vendedor
+        '
+        Me.Vendedor.HeaderText = "Usuario"
+        Me.Vendedor.Name = "Vendedor"
+        Me.Vendedor.Width = 76
+        '
+        'Nro_Guias
+        '
+        Me.Nro_Guias.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
+        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Nro_Guias.DefaultCellStyle = DataGridViewCellStyle28
+        Me.Nro_Guias.HeaderText = "Guías Entregadas"
+        Me.Nro_Guias.Name = "Nro_Guias"
+        Me.Nro_Guias.ReadOnly = True
+        Me.Nro_Guias.Width = 121
+        '
+        'Facturas
+        '
+        DataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Facturas.DefaultCellStyle = DataGridViewCellStyle29
+        Me.Facturas.HeaderText = "Factura emitida"
+        Me.Facturas.Name = "Facturas"
+        Me.Facturas.Width = 107
+        '
+        'Fechaautorizacioncliente
+        '
+        Me.Fechaautorizacioncliente.HeaderText = "Fecha Aut."
+        Me.Fechaautorizacioncliente.Name = "Fechaautorizacioncliente"
+        Me.Fechaautorizacioncliente.Width = 81
+        '
+        'Ubicacion
+        '
+        Me.Ubicacion.HeaderText = "Ubicación"
+        Me.Ubicacion.Name = "Ubicacion"
+        Me.Ubicacion.Width = 87
+        '
+        'Num_Nave
+        '
+        Me.Num_Nave.HeaderText = "Nª Nave"
+        Me.Num_Nave.Name = "Num_Nave"
+        Me.Num_Nave.Width = 70
         '
         'Label13
         '
@@ -227,7 +414,7 @@ Partial Class Consulta_Cliente
         Me.txt_SaldoAbonos.Location = New System.Drawing.Point(158, 232)
         Me.txt_SaldoAbonos.Name = "txt_SaldoAbonos"
         Me.txt_SaldoAbonos.ReadOnly = True
-        Me.txt_SaldoAbonos.Size = New System.Drawing.Size(347, 22)
+        Me.txt_SaldoAbonos.Size = New System.Drawing.Size(382, 22)
         Me.txt_SaldoAbonos.TabIndex = 44
         Me.txt_SaldoAbonos.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -248,7 +435,7 @@ Partial Class Consulta_Cliente
         Me.cmb_Sector.FormattingEnabled = True
         Me.cmb_Sector.Location = New System.Drawing.Point(158, 97)
         Me.cmb_Sector.Name = "cmb_Sector"
-        Me.cmb_Sector.Size = New System.Drawing.Size(347, 22)
+        Me.cmb_Sector.Size = New System.Drawing.Size(382, 22)
         Me.cmb_Sector.TabIndex = 8
         '
         'Label8
@@ -267,7 +454,7 @@ Partial Class Consulta_Cliente
         Me.TXT_Giro.Location = New System.Drawing.Point(158, 205)
         Me.TXT_Giro.Name = "TXT_Giro"
         Me.TXT_Giro.ReadOnly = True
-        Me.TXT_Giro.Size = New System.Drawing.Size(347, 22)
+        Me.TXT_Giro.Size = New System.Drawing.Size(382, 22)
         Me.TXT_Giro.TabIndex = 41
         '
         'Label22
@@ -359,7 +546,7 @@ Partial Class Consulta_Cliente
         Me.txt_email.Location = New System.Drawing.Point(158, 178)
         Me.txt_email.Name = "txt_email"
         Me.txt_email.ReadOnly = True
-        Me.txt_email.Size = New System.Drawing.Size(347, 22)
+        Me.txt_email.Size = New System.Drawing.Size(382, 22)
         Me.txt_email.TabIndex = 24
         '
         'txt_telefonos
@@ -377,7 +564,7 @@ Partial Class Consulta_Cliente
         Me.txt_ciudad.Location = New System.Drawing.Point(158, 151)
         Me.txt_ciudad.Name = "txt_ciudad"
         Me.txt_ciudad.ReadOnly = True
-        Me.txt_ciudad.Size = New System.Drawing.Size(347, 22)
+        Me.txt_ciudad.Size = New System.Drawing.Size(382, 22)
         Me.txt_ciudad.TabIndex = 19
         '
         'txt_comuna
@@ -395,7 +582,7 @@ Partial Class Consulta_Cliente
         Me.txt_dircli.Location = New System.Drawing.Point(158, 124)
         Me.txt_dircli.Name = "txt_dircli"
         Me.txt_dircli.ReadOnly = True
-        Me.txt_dircli.Size = New System.Drawing.Size(347, 22)
+        Me.txt_dircli.Size = New System.Drawing.Size(382, 22)
         Me.txt_dircli.TabIndex = 17
         '
         'txt_APELLIDOS
@@ -489,9 +676,9 @@ Partial Class Consulta_Cliente
         '
         'ProgressBar1
         '
-        Me.ProgressBar1.Location = New System.Drawing.Point(40, 238)
+        Me.ProgressBar1.Location = New System.Drawing.Point(12, 219)
         Me.ProgressBar1.Name = "ProgressBar1"
-        Me.ProgressBar1.Size = New System.Drawing.Size(1282, 19)
+        Me.ProgressBar1.Size = New System.Drawing.Size(1310, 19)
         Me.ProgressBar1.TabIndex = 5
         '
         'SplitContainer1
@@ -516,8 +703,8 @@ Partial Class Consulta_Cliente
         Me.SplitContainer1.Panel2.Controls.Add(Me.DataCartola)
         Me.SplitContainer1.Panel2.Controls.Add(Me.Label15)
         Me.SplitContainer1.Panel2.Controls.Add(Me.txtSerieLotes)
-        Me.SplitContainer1.Size = New System.Drawing.Size(1332, 712)
-        Me.SplitContainer1.SplitterDistance = 448
+        Me.SplitContainer1.Size = New System.Drawing.Size(1332, 763)
+        Me.SplitContainer1.SplitterDistance = 480
         Me.SplitContainer1.TabIndex = 6
         '
         'btnNew
@@ -567,6 +754,9 @@ Partial Class Consulta_Cliente
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.Controls.Add(Me.GrillaEnlaces)
+        Me.Panel1.Controls.Add(Me.btneliminaenlace)
+        Me.Panel1.Controls.Add(Me.btnagregaenlace)
         Me.Panel1.Controls.Add(Me.Button2)
         Me.Panel1.Controls.Add(Me.txtAbonoPendiente)
         Me.Panel1.Controls.Add(Me.Label24)
@@ -627,7 +817,7 @@ Partial Class Consulta_Cliente
         Me.Panel1.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Panel1.Location = New System.Drawing.Point(0, 0)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(1330, 445)
+        Me.Panel1.Size = New System.Drawing.Size(1330, 477)
         Me.Panel1.TabIndex = 7
         '
         'Button2
@@ -647,7 +837,7 @@ Partial Class Consulta_Cliente
         Me.txtAbonoPendiente.Location = New System.Drawing.Point(158, 315)
         Me.txtAbonoPendiente.Name = "txtAbonoPendiente"
         Me.txtAbonoPendiente.ReadOnly = True
-        Me.txtAbonoPendiente.Size = New System.Drawing.Size(347, 22)
+        Me.txtAbonoPendiente.Size = New System.Drawing.Size(382, 22)
         Me.txtAbonoPendiente.TabIndex = 128
         Me.txtAbonoPendiente.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -667,7 +857,7 @@ Partial Class Consulta_Cliente
         Me.txtTotalLoteActivo.Location = New System.Drawing.Point(158, 287)
         Me.txtTotalLoteActivo.Name = "txtTotalLoteActivo"
         Me.txtTotalLoteActivo.ReadOnly = True
-        Me.txtTotalLoteActivo.Size = New System.Drawing.Size(347, 22)
+        Me.txtTotalLoteActivo.Size = New System.Drawing.Size(382, 22)
         Me.txtTotalLoteActivo.TabIndex = 126
         Me.txtTotalLoteActivo.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -698,7 +888,7 @@ Partial Class Consulta_Cliente
         Me.btnActivarCliente.ForeColor = System.Drawing.Color.Blue
         Me.btnActivarCliente.Image = Global.GestionVivero.My.Resources.Resources.Apply
         Me.btnActivarCliente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnActivarCliente.Location = New System.Drawing.Point(1102, 397)
+        Me.btnActivarCliente.Location = New System.Drawing.Point(1191, 429)
         Me.btnActivarCliente.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnActivarCliente.Name = "btnActivarCliente"
         Me.btnActivarCliente.Size = New System.Drawing.Size(139, 43)
@@ -710,7 +900,7 @@ Partial Class Consulta_Cliente
         'txtEstadoCliente
         '
         Me.txtEstadoCliente.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtEstadoCliente.Location = New System.Drawing.Point(707, 409)
+        Me.txtEstadoCliente.Location = New System.Drawing.Point(707, 383)
         Me.txtEstadoCliente.Name = "txtEstadoCliente"
         Me.txtEstadoCliente.ReadOnly = True
         Me.txtEstadoCliente.Size = New System.Drawing.Size(370, 22)
@@ -721,7 +911,7 @@ Partial Class Consulta_Cliente
         '
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.Location = New System.Drawing.Point(562, 413)
+        Me.Label21.Location = New System.Drawing.Point(562, 387)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(86, 14)
         Me.Label21.TabIndex = 121
@@ -786,9 +976,9 @@ Partial Class Consulta_Cliente
         Me.Button1.BackColor = System.Drawing.Color.White
         Me.Button1.Image = Global.GestionVivero.My.Resources.Resources.Apply
         Me.Button1.ImageAlign = System.Drawing.ContentAlignment.TopCenter
-        Me.Button1.Location = New System.Drawing.Point(158, 382)
+        Me.Button1.Location = New System.Drawing.Point(158, 427)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(91, 50)
+        Me.Button1.Size = New System.Drawing.Size(91, 46)
         Me.Button1.TabIndex = 112
         Me.Button1.Text = "Preventa"
         Me.Button1.TextAlign = System.Drawing.ContentAlignment.BottomCenter
@@ -806,7 +996,7 @@ Partial Class Consulta_Cliente
         '
         Me.chkHistoriaLote.AutoSize = True
         Me.chkHistoriaLote.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.chkHistoriaLote.Location = New System.Drawing.Point(12, 413)
+        Me.chkHistoriaLote.Location = New System.Drawing.Point(12, 444)
         Me.chkHistoriaLote.Name = "chkHistoriaLote"
         Me.chkHistoriaLote.Size = New System.Drawing.Size(107, 18)
         Me.chkHistoriaLote.TabIndex = 110
@@ -862,7 +1052,7 @@ Partial Class Consulta_Cliente
         Me.txtPorcDescuento.Name = "txtPorcDescuento"
         Me.txtPorcDescuento.ReadOnly = True
         Me.txtPorcDescuento.RightToLeft = System.Windows.Forms.RightToLeft.Yes
-        Me.txtPorcDescuento.Size = New System.Drawing.Size(347, 22)
+        Me.txtPorcDescuento.Size = New System.Drawing.Size(382, 22)
         Me.txtPorcDescuento.TabIndex = 52
         Me.txtPorcDescuento.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
@@ -891,7 +1081,7 @@ Partial Class Consulta_Cliente
         'txtUsuario
         '
         Me.txtUsuario.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtUsuario.Location = New System.Drawing.Point(65, 264)
+        Me.txtUsuario.Location = New System.Drawing.Point(65, 250)
         Me.txtUsuario.Name = "txtUsuario"
         Me.txtUsuario.ReadOnly = True
         Me.txtUsuario.Size = New System.Drawing.Size(347, 21)
@@ -901,7 +1091,7 @@ Partial Class Consulta_Cliente
         '
         Me.Label15.AutoSize = True
         Me.Label15.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label15.Location = New System.Drawing.Point(12, 267)
+        Me.Label15.Location = New System.Drawing.Point(12, 253)
         Me.Label15.Name = "Label15"
         Me.Label15.Size = New System.Drawing.Size(47, 14)
         Me.Label15.TabIndex = 56
@@ -909,7 +1099,7 @@ Partial Class Consulta_Cliente
         '
         'txtSerieLotes
         '
-        Me.txtSerieLotes.Location = New System.Drawing.Point(516, 267)
+        Me.txtSerieLotes.Location = New System.Drawing.Point(516, 250)
         Me.txtSerieLotes.Name = "txtSerieLotes"
         Me.txtSerieLotes.Size = New System.Drawing.Size(100, 21)
         Me.txtSerieLotes.TabIndex = 54
@@ -933,192 +1123,63 @@ Partial Class Consulta_Cliente
         '
         Me.PrintDialog1.UseEXDialog = True
         '
-        'guia
+        'btnagregaenlace
         '
-        Me.guia.HeaderText = "Guías"
-        Me.guia.Name = "guia"
-        Me.guia.Width = 46
+        Me.btnagregaenlace.BackgroundImage = Global.GestionVivero.My.Resources.Resources.Add
+        Me.btnagregaenlace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnagregaenlace.Enabled = False
+        Me.btnagregaenlace.Location = New System.Drawing.Point(124, 339)
+        Me.btnagregaenlace.Name = "btnagregaenlace"
+        Me.btnagregaenlace.Size = New System.Drawing.Size(30, 30)
+        Me.btnagregaenlace.TabIndex = 133
+        Me.ToolTip1.SetToolTip(Me.btnagregaenlace, "Agrega Enlaces")
+        Me.btnagregaenlace.UseVisualStyleBackColor = True
         '
-        'EsPreventa
+        'btneliminaenlace
         '
-        Me.EsPreventa.HeaderText = "Preventa"
-        Me.EsPreventa.Name = "EsPreventa"
-        Me.EsPreventa.Width = 61
+        Me.btneliminaenlace.BackgroundImage = Global.GestionVivero.My.Resources.Resources.Delete
+        Me.btneliminaenlace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btneliminaenlace.Enabled = False
+        Me.btneliminaenlace.Location = New System.Drawing.Point(124, 369)
+        Me.btneliminaenlace.Name = "btneliminaenlace"
+        Me.btneliminaenlace.Size = New System.Drawing.Size(30, 30)
+        Me.btneliminaenlace.TabIndex = 134
+        Me.ToolTip1.SetToolTip(Me.btneliminaenlace, "Elimina Enlaces")
+        Me.btneliminaenlace.UseVisualStyleBackColor = True
         '
-        'IdPedidodet
+        'GrillaEnlaces
         '
-        Me.IdPedidodet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.IdPedidodet.DefaultCellStyle = DataGridViewCellStyle1
-        Me.IdPedidodet.HeaderText = "N° Lote"
-        Me.IdPedidodet.Name = "IdPedidodet"
-        Me.IdPedidodet.ReadOnly = True
-        Me.IdPedidodet.Width = 73
+        Me.GrillaEnlaces.AllowUserToAddRows = False
+        Me.GrillaEnlaces.AllowUserToDeleteRows = False
+        Me.GrillaEnlaces.BackgroundColor = System.Drawing.Color.White
+        Me.GrillaEnlaces.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.GrillaEnlaces.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.enlace, Me.id})
+        Me.GrillaEnlaces.Location = New System.Drawing.Point(158, 340)
+        Me.GrillaEnlaces.Name = "GrillaEnlaces"
+        Me.GrillaEnlaces.ReadOnly = True
+        Me.GrillaEnlaces.RowHeadersVisible = False
+        Me.GrillaEnlaces.Size = New System.Drawing.Size(382, 81)
+        Me.GrillaEnlaces.TabIndex = 135
         '
-        'Nro_Lote_Original
+        'enlace
         '
-        Me.Nro_Lote_Original.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Nro_Lote_Original.DefaultCellStyle = DataGridViewCellStyle2
-        Me.Nro_Lote_Original.HeaderText = "N° Original"
-        Me.Nro_Lote_Original.Name = "Nro_Lote_Original"
-        Me.Nro_Lote_Original.ReadOnly = True
-        Me.Nro_Lote_Original.Width = 92
+        Me.enlace.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.enlace.HeaderText = "Enlaces"
+        Me.enlace.Name = "enlace"
+        Me.enlace.ReadOnly = True
         '
-        'IdPedido
+        'id
         '
-        Me.IdPedido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.IdPedido.DefaultCellStyle = DataGridViewCellStyle3
-        Me.IdPedido.HeaderText = "N° Pedido"
-        Me.IdPedido.Name = "IdPedido"
-        Me.IdPedido.ReadOnly = True
-        Me.IdPedido.Width = 88
-        '
-        'Fecha_Emi
-        '
-        Me.Fecha_Emi.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Fecha_Emi.HeaderText = "Fecha Pedido"
-        Me.Fecha_Emi.Name = "Fecha_Emi"
-        Me.Fecha_Emi.ReadOnly = True
-        Me.Fecha_Emi.Width = 108
-        '
-        'DESCRIP
-        '
-        Me.DESCRIP.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.DESCRIP.HeaderText = "Semilla"
-        Me.DESCRIP.Name = "DESCRIP"
-        Me.DESCRIP.ReadOnly = True
-        Me.DESCRIP.Width = 74
-        '
-        'Descripcion
-        '
-        Me.Descripcion.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Descripcion.HeaderText = "Variedad"
-        Me.Descripcion.Name = "Descripcion"
-        Me.Descripcion.ReadOnly = True
-        Me.Descripcion.Width = 80
-        '
-        'Fecha_Ent
-        '
-        Me.Fecha_Ent.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Fecha_Ent.HeaderText = "Fecha Entrega"
-        Me.Fecha_Ent.Name = "Fecha_Ent"
-        Me.Fecha_Ent.ReadOnly = True
-        Me.Fecha_Ent.Width = 112
-        '
-        'Cantidad
-        '
-        Me.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle4
-        Me.Cantidad.HeaderText = "Cant.Plantas"
-        Me.Cantidad.Name = "Cantidad"
-        Me.Cantidad.ReadOnly = True
-        Me.Cantidad.Width = 103
-        '
-        'TipoBandeja
-        '
-        Me.TipoBandeja.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.TipoBandeja.HeaderText = "Tipo Bandeja"
-        Me.TipoBandeja.Name = "TipoBandeja"
-        Me.TipoBandeja.ReadOnly = True
-        Me.TipoBandeja.Width = 105
-        '
-        'Fecha_Conteo1
-        '
-        Me.Fecha_Conteo1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        Me.Fecha_Conteo1.HeaderText = "Fecha conteo Siembra"
-        Me.Fecha_Conteo1.Name = "Fecha_Conteo1"
-        Me.Fecha_Conteo1.ReadOnly = True
-        Me.Fecha_Conteo1.Width = 142
-        '
-        'Saldo_Plantas
-        '
-        Me.Saldo_Plantas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Saldo_Plantas.DefaultCellStyle = DataGridViewCellStyle5
-        Me.Saldo_Plantas.HeaderText = "Saldo Plantas"
-        Me.Saldo_Plantas.Name = "Saldo_Plantas"
-        Me.Saldo_Plantas.ReadOnly = True
-        '
-        'Saldo_Bandeja
-        '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Saldo_Bandeja.DefaultCellStyle = DataGridViewCellStyle6
-        Me.Saldo_Bandeja.HeaderText = "Saldo Bandeja"
-        Me.Saldo_Bandeja.Name = "Saldo_Bandeja"
-        Me.Saldo_Bandeja.Width = 104
-        '
-        'Estado
-        '
-        Me.Estado.HeaderText = "Estado"
-        Me.Estado.Name = "Estado"
-        Me.Estado.Width = 71
-        '
-        'TOTAL_LOTE
-        '
-        Me.TOTAL_LOTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.TOTAL_LOTE.DefaultCellStyle = DataGridViewCellStyle7
-        Me.TOTAL_LOTE.HeaderText = "Total Lote"
-        Me.TOTAL_LOTE.Name = "TOTAL_LOTE"
-        Me.TOTAL_LOTE.ReadOnly = True
-        Me.TOTAL_LOTE.Width = 79
-        '
-        'Diasvivero
-        '
-        Me.Diasvivero.HeaderText = "Días en Vivero"
-        Me.Diasvivero.Name = "Diasvivero"
-        Me.Diasvivero.Width = 102
-        '
-        'Vendedor
-        '
-        Me.Vendedor.HeaderText = "Usuario"
-        Me.Vendedor.Name = "Vendedor"
-        Me.Vendedor.Width = 76
-        '
-        'Nro_Guias
-        '
-        Me.Nro_Guias.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Nro_Guias.DefaultCellStyle = DataGridViewCellStyle8
-        Me.Nro_Guias.HeaderText = "Guías Entregadas"
-        Me.Nro_Guias.Name = "Nro_Guias"
-        Me.Nro_Guias.ReadOnly = True
-        Me.Nro_Guias.Width = 121
-        '
-        'Facturas
-        '
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Facturas.DefaultCellStyle = DataGridViewCellStyle9
-        Me.Facturas.HeaderText = "Factura emitida"
-        Me.Facturas.Name = "Facturas"
-        Me.Facturas.Width = 107
-        '
-        'Fechaautorizacioncliente
-        '
-        Me.Fechaautorizacioncliente.HeaderText = "Fecha Aut."
-        Me.Fechaautorizacioncliente.Name = "Fechaautorizacioncliente"
-        Me.Fechaautorizacioncliente.Width = 81
-        '
-        'Ubicacion
-        '
-        Me.Ubicacion.HeaderText = "Ubicación"
-        Me.Ubicacion.Name = "Ubicacion"
-        Me.Ubicacion.Width = 87
-        '
-        'Num_Nave
-        '
-        Me.Num_Nave.HeaderText = "Nª Nave"
-        Me.Num_Nave.Name = "Num_Nave"
-        Me.Num_Nave.Width = 70
+        Me.id.HeaderText = "id"
+        Me.id.Name = "id"
+        Me.id.ReadOnly = True
+        Me.id.Visible = False
         '
         'Consulta_Cliente
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1332, 712)
+        Me.ClientSize = New System.Drawing.Size(1332, 763)
         Me.ControlBox = False
         Me.Controls.Add(Me.SplitContainer1)
         Me.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -1136,6 +1197,7 @@ Partial Class Consulta_Cliente
         Me.Panel1.PerformLayout()
         CType(Me.SPCONSULTAFULLVENDEDORBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GESTDataSet34, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GrillaEnlaces, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1235,4 +1297,9 @@ Partial Class Consulta_Cliente
     Friend WithEvents Fechaautorizacioncliente As DataGridViewTextBoxColumn
     Friend WithEvents Ubicacion As DataGridViewTextBoxColumn
     Friend WithEvents Num_Nave As DataGridViewTextBoxColumn
+    Friend WithEvents btnagregaenlace As Button
+    Friend WithEvents btneliminaenlace As Button
+    Friend WithEvents GrillaEnlaces As DataGridView
+    Friend WithEvents enlace As DataGridViewTextBoxColumn
+    Friend WithEvents id As DataGridViewTextBoxColumn
 End Class
