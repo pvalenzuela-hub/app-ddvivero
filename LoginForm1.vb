@@ -1,12 +1,5 @@
-﻿Public Class LoginForm1
-
-    ' TODO: inserte el código para realizar autenticación personalizada usando el nombre de usuario y la contraseña proporcionada 
-    ' (Consulte http://go.microsoft.com/fwlink/?LinkId=35339).  
-    ' El objeto principal personalizado se puede adjuntar al objeto principal del subproceso actual como se indica a continuación: 
-    '     My.User.CurrentPrincipal = CustomPrincipal
-    ' donde CustomPrincipal es la implementación de IPrincipal utilizada para realizar la autenticación. 
-    ' Posteriormente, My.User devolverá la información de identidad encapsulada en el objeto CustomPrincipal
-    ' como el nombre de usuario, nombre para mostrar, etc.
+﻿Imports System.Deployment.Application
+Public Class LoginForm1
 
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
         If ValidaAcceso() Then
@@ -45,14 +38,32 @@
             MsgBox("Contraseña no coincide.", MsgBoxStyle.Exclamation)
             bRetorno = False
         End If
-
         close_conexion()
-
         Return bRetorno
     End Function
 
     Private Sub LoginForm1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         LecturaINI()
+        Dim ver As String
+
+        If ApplicationDeployment.IsNetworkDeployed Then
+            ver = ApplicationDeployment.CurrentDeployment.CurrentVersion.ToString()
+        Else
+            ' Cuando ejecutas desde Visual Studio (F5) o exe suelto
+            ver = My.Application.Info.Version.ToString()
+        End If
+
+        lblversion.Text = "Versión: " & ver
+        ' lblversion.Text = "Versión: " & ObtenerVersionClickOnce()
+
     End Sub
 
+    Public Function ObtenerVersionClickOnce() As String
+        If ApplicationDeployment.IsNetworkDeployed Then
+            Dim v = ApplicationDeployment.CurrentDeployment.CurrentVersion
+            Return $"{v.Major}.{v.Minor}.{v.Build}.{v.Revision}"
+        Else
+            Return Application.ProductVersion
+        End If
+    End Function
 End Class

@@ -39,6 +39,7 @@ Partial Class LoginForm1
         Me.Cancel = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.LogoPictureBox = New System.Windows.Forms.PictureBox()
+        Me.lblversion = New System.Windows.Forms.Label()
         CType(Me.LogoPictureBox, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -126,6 +127,17 @@ Partial Class LoginForm1
         Me.LogoPictureBox.TabIndex = 0
         Me.LogoPictureBox.TabStop = False
         '
+        'lblversion
+        '
+        Me.lblversion.AutoSize = True
+        Me.lblversion.Font = New System.Drawing.Font("Calibri", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.lblversion.ForeColor = System.Drawing.Color.ForestGreen
+        Me.lblversion.Location = New System.Drawing.Point(335, 36)
+        Me.lblversion.Name = "lblversion"
+        Me.lblversion.Size = New System.Drawing.Size(38, 13)
+        Me.lblversion.TabIndex = 7
+        Me.lblversion.Text = "Label2"
+        '
         'LoginForm1
         '
         Me.AcceptButton = Me.OK
@@ -133,6 +145,7 @@ Partial Class LoginForm1
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel
         Me.ClientSize = New System.Drawing.Size(490, 251)
+        Me.Controls.Add(Me.lblversion)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Cancel)
         Me.Controls.Add(Me.OK)
@@ -154,5 +167,5 @@ Partial Class LoginForm1
 
     End Sub
     Friend WithEvents Label1 As System.Windows.Forms.Label
-
+    Friend WithEvents lblversion As Label
 End Class

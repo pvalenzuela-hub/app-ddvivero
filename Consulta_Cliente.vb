@@ -123,6 +123,7 @@ Public Class Consulta_Cliente
         txtLineaCredito.Clear()
         txtEstadoCliente.Clear()
         'cmbVendedor.SelectedIndex = -1
+        GrillaEnlaces.Rows.Clear()
     End Sub
     Private Sub Consulta_Cliente_Leave(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Leave
         close_conexion()
@@ -214,7 +215,6 @@ Public Class Consulta_Cliente
     End Sub
     Function RecuperaDatosCliente(ByVal Id As Integer, ByVal bshow As Boolean) As Boolean
         Dim sRutCliente As String = ""
-
         sSsql = "SP_LECTURA_CLIENTE " & Str(Id)
         open()
         command = connection.CreateCommand()
@@ -247,7 +247,6 @@ Public Class Consulta_Cliente
                 txtEstadoCliente.Text = datatbl("EstadoCliente")
                 txtTotalLoteActivo.Text = Format(datatbl("TotalLoteActivo"), "$ ###,###,##0")
                 txtAbonoPendiente.Text = Format(datatbl("TotalAbonoPendiente"), "$ ###,###,##0")
-
                 If Trim(datatbl("EstadoCliente")) = "BLOQUEADO" Then
                     btnActivarCliente.Visible = True
                 Else
@@ -262,6 +261,7 @@ Public Class Consulta_Cliente
         datatbl.Close()
         'RecuperaDatosCliente = bOK
         close_conexion()
+        CargaEnlaces(Id)
         Return bOK
     End Function
 
