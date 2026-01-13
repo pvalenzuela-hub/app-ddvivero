@@ -238,10 +238,6 @@ Public Class DocumentosPendientes
         ConsultaDocumentosPendientes()
     End Sub
 
-    Private Sub cmbfiltros_SelectedIndexChanged(sender As Object, e As EventArgs) Handles cmbfiltros.SelectedIndexChanged
-
-    End Sub
-
     Private Sub txtFiltroValor_TextChanged(sender As Object, e As EventArgs) Handles txtFiltroValor.TextChanged
         Try
 
@@ -267,6 +263,10 @@ Public Class DocumentosPendientes
     End Sub
 
     Private Sub DocumentosPendientes_ImeModeChanged(sender As Object, e As EventArgs) Handles Me.ImeModeChanged
+
+    End Sub
+
+    Private Sub Label2_Click(sender As Object, e As EventArgs) Handles Label2.Click
 
     End Sub
 End Class

@@ -373,7 +373,6 @@ Partial Class Principal
         '
         'opcionAutorizaPedido
         '
-        Me.opcionAutorizaPedido.Enabled = False
         Me.opcionAutorizaPedido.Name = "opcionAutorizaPedido"
         Me.opcionAutorizaPedido.Size = New System.Drawing.Size(180, 22)
         Me.opcionAutorizaPedido.Text = "Autorizar Pedidos"
@@ -650,19 +649,19 @@ Partial Class Principal
         'ProductosToolStripMenuItem1
         '
         Me.ProductosToolStripMenuItem1.Name = "ProductosToolStripMenuItem1"
-        Me.ProductosToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.ProductosToolStripMenuItem1.Size = New System.Drawing.Size(166, 22)
         Me.ProductosToolStripMenuItem1.Text = "Productos"
         '
         'EntradasSalidasToolStripMenuItem
         '
         Me.EntradasSalidasToolStripMenuItem.Name = "EntradasSalidasToolStripMenuItem"
-        Me.EntradasSalidasToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.EntradasSalidasToolStripMenuItem.Size = New System.Drawing.Size(166, 22)
         Me.EntradasSalidasToolStripMenuItem.Text = "Entradas / Salidas"
         '
         'ConsultaStockToolStripMenuItem1
         '
         Me.ConsultaStockToolStripMenuItem1.Name = "ConsultaStockToolStripMenuItem1"
-        Me.ConsultaStockToolStripMenuItem1.Size = New System.Drawing.Size(180, 22)
+        Me.ConsultaStockToolStripMenuItem1.Size = New System.Drawing.Size(166, 22)
         Me.ConsultaStockToolStripMenuItem1.Text = "Consulta Stock"
         '
         'ProveedorToolStripMenuItem
@@ -959,7 +958,7 @@ Partial Class Principal
         Me.SaldosDiariosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AperturaToolStripMenuItem, Me.CierreToolStripMenuItem})
         Me.SaldosDiariosToolStripMenuItem.Name = "SaldosDiariosToolStripMenuItem"
         Me.SaldosDiariosToolStripMenuItem.Size = New System.Drawing.Size(313, 22)
-        Me.SaldosDiariosToolStripMenuItem.Text = "Saldos Diarios"
+        Me.SaldosDiariosToolStripMenuItem.Text = "Cierre de Caja"
         '
         'AperturaToolStripMenuItem
         '

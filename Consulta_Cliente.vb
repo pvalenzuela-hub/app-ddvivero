@@ -247,6 +247,7 @@ Public Class Consulta_Cliente
                 txtEstadoCliente.Text = datatbl("EstadoCliente")
                 txtTotalLoteActivo.Text = Format(datatbl("TotalLoteActivo"), "$ ###,###,##0")
                 txtAbonoPendiente.Text = Format(datatbl("TotalAbonoPendiente"), "$ ###,###,##0")
+                txtFechaRegistro.Text = datatbl("fecharegistro")
                 If Trim(datatbl("EstadoCliente")) = "BLOQUEADO" Then
                     btnActivarCliente.Visible = True
                 Else

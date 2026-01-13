@@ -17,6 +17,14 @@
         If datatbl.HasRows Then
             i = 0
             While datatbl.Read
+
+                If Not gEsAutorizador Then
+                    Dim vendedorFila As String = Convert.ToString(datatbl("IdUsuario")).Trim()
+                    If Not String.Equals(vendedorFila, gUSER.Trim(), StringComparison.OrdinalIgnoreCase) Then
+                        Continue While
+                    End If
+                End If
+
                 DataGrilla.Rows.Add()
                 DataGrilla.Rows(i).Cells("num_doc").Value = datatbl("num_doc")
                 DataGrilla.Rows(i).Cells("documento").Value = datatbl("documento")
@@ -26,6 +34,7 @@
                 DataGrilla.Rows(i).Cells("Fecha").Value = datatbl("FechaRegistro")
                 DataGrilla.Rows(i).Cells("idFpago").Value = datatbl("idFpago")
                 DataGrilla.Rows(i).Cells("IdCliente").Value = datatbl("IdCliente")
+                DataGrilla.Rows(i).Cells("vendedor").Value = datatbl("IdUsuario")
 
                 If datatbl("SaldoVencido") > 0 Then
                     With DataGrilla.Rows(i).Cells("Saldo").Style

@@ -23,16 +23,16 @@ Partial Class Consulta_Cliente
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Consulta_Cliente))
         Me.txt_clientebuscar = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -98,6 +98,11 @@ Partial Class Consulta_Cliente
         Me.btnGuias = New System.Windows.Forms.Button()
         Me.btnUpdate = New System.Windows.Forms.Button()
         Me.Panel1 = New System.Windows.Forms.Panel()
+        Me.GrillaEnlaces = New System.Windows.Forms.DataGridView()
+        Me.enlace = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btneliminaenlace = New System.Windows.Forms.Button()
+        Me.btnagregaenlace = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.txtAbonoPendiente = New System.Windows.Forms.TextBox()
         Me.Label24 = New System.Windows.Forms.Label()
@@ -130,20 +135,17 @@ Partial Class Consulta_Cliente
         Me.SP_CONSULTA_FULL_VENDEDORTableAdapter = New GestionVivero.GESTDataSet34TableAdapters.SP_CONSULTA_FULL_VENDEDORTableAdapter()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
         Me.ToolTip1 = New System.Windows.Forms.ToolTip(Me.components)
-        Me.btnagregaenlace = New System.Windows.Forms.Button()
-        Me.btneliminaenlace = New System.Windows.Forms.Button()
-        Me.GrillaEnlaces = New System.Windows.Forms.DataGridView()
-        Me.enlace = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.id = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.txtFechaRegistro = New System.Windows.Forms.TextBox()
         CType(Me.DataCartola, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
         Me.SplitContainer1.SuspendLayout()
         Me.Panel1.SuspendLayout()
+        CType(Me.GrillaEnlaces, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SPCONSULTAFULLVENDEDORBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GESTDataSet34, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GrillaEnlaces, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'txt_clientebuscar
@@ -187,12 +189,12 @@ Partial Class Consulta_Cliente
         Me.DataCartola.Name = "DataCartola"
         Me.DataCartola.RowHeadersVisible = False
         Me.DataCartola.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
-        DataGridViewCellStyle30.BackColor = System.Drawing.Color.Azure
-        DataGridViewCellStyle30.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle30.ForeColor = System.Drawing.Color.DarkGreen
-        DataGridViewCellStyle30.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle30.SelectionForeColor = System.Drawing.Color.DarkGreen
-        Me.DataCartola.RowsDefaultCellStyle = DataGridViewCellStyle30
+        DataGridViewCellStyle10.BackColor = System.Drawing.Color.Azure
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.Color.DarkGreen
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.DarkGreen
+        Me.DataCartola.RowsDefaultCellStyle = DataGridViewCellStyle10
         Me.DataCartola.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.DataCartola.Size = New System.Drawing.Size(1323, 198)
         Me.DataCartola.TabIndex = 0
@@ -212,8 +214,8 @@ Partial Class Consulta_Cliente
         'IdPedidodet
         '
         Me.IdPedidodet.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.IdPedidodet.DefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.IdPedidodet.DefaultCellStyle = DataGridViewCellStyle1
         Me.IdPedidodet.HeaderText = "N° Lote"
         Me.IdPedidodet.Name = "IdPedidodet"
         Me.IdPedidodet.ReadOnly = True
@@ -222,8 +224,8 @@ Partial Class Consulta_Cliente
         'Nro_Lote_Original
         '
         Me.Nro_Lote_Original.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Nro_Lote_Original.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Nro_Lote_Original.DefaultCellStyle = DataGridViewCellStyle2
         Me.Nro_Lote_Original.HeaderText = "N° Original"
         Me.Nro_Lote_Original.Name = "Nro_Lote_Original"
         Me.Nro_Lote_Original.ReadOnly = True
@@ -232,8 +234,8 @@ Partial Class Consulta_Cliente
         'IdPedido
         '
         Me.IdPedido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.IdPedido.DefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.IdPedido.DefaultCellStyle = DataGridViewCellStyle3
         Me.IdPedido.HeaderText = "N° Pedido"
         Me.IdPedido.Name = "IdPedido"
         Me.IdPedido.ReadOnly = True
@@ -274,8 +276,8 @@ Partial Class Consulta_Cliente
         'Cantidad
         '
         Me.Cantidad.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Cantidad.DefaultCellStyle = DataGridViewCellStyle4
         Me.Cantidad.HeaderText = "Cant.Plantas"
         Me.Cantidad.Name = "Cantidad"
         Me.Cantidad.ReadOnly = True
@@ -300,16 +302,16 @@ Partial Class Consulta_Cliente
         'Saldo_Plantas
         '
         Me.Saldo_Plantas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Saldo_Plantas.DefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Saldo_Plantas.DefaultCellStyle = DataGridViewCellStyle5
         Me.Saldo_Plantas.HeaderText = "Saldo Plantas"
         Me.Saldo_Plantas.Name = "Saldo_Plantas"
         Me.Saldo_Plantas.ReadOnly = True
         '
         'Saldo_Bandeja
         '
-        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Saldo_Bandeja.DefaultCellStyle = DataGridViewCellStyle26
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Saldo_Bandeja.DefaultCellStyle = DataGridViewCellStyle6
         Me.Saldo_Bandeja.HeaderText = "Saldo Bandeja"
         Me.Saldo_Bandeja.Name = "Saldo_Bandeja"
         Me.Saldo_Bandeja.Width = 104
@@ -323,8 +325,8 @@ Partial Class Consulta_Cliente
         'TOTAL_LOTE
         '
         Me.TOTAL_LOTE.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.TOTAL_LOTE.DefaultCellStyle = DataGridViewCellStyle27
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.TOTAL_LOTE.DefaultCellStyle = DataGridViewCellStyle7
         Me.TOTAL_LOTE.HeaderText = "Total Lote"
         Me.TOTAL_LOTE.Name = "TOTAL_LOTE"
         Me.TOTAL_LOTE.ReadOnly = True
@@ -345,8 +347,8 @@ Partial Class Consulta_Cliente
         'Nro_Guias
         '
         Me.Nro_Guias.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Nro_Guias.DefaultCellStyle = DataGridViewCellStyle28
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Nro_Guias.DefaultCellStyle = DataGridViewCellStyle8
         Me.Nro_Guias.HeaderText = "Guías Entregadas"
         Me.Nro_Guias.Name = "Nro_Guias"
         Me.Nro_Guias.ReadOnly = True
@@ -354,8 +356,8 @@ Partial Class Consulta_Cliente
         '
         'Facturas
         '
-        DataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.Facturas.DefaultCellStyle = DataGridViewCellStyle29
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.Facturas.DefaultCellStyle = DataGridViewCellStyle9
         Me.Facturas.HeaderText = "Factura emitida"
         Me.Facturas.Name = "Facturas"
         Me.Facturas.Width = 107
@@ -754,6 +756,8 @@ Partial Class Consulta_Cliente
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.White
+        Me.Panel1.Controls.Add(Me.txtFechaRegistro)
+        Me.Panel1.Controls.Add(Me.Label25)
         Me.Panel1.Controls.Add(Me.GrillaEnlaces)
         Me.Panel1.Controls.Add(Me.btneliminaenlace)
         Me.Panel1.Controls.Add(Me.btnagregaenlace)
@@ -819,6 +823,58 @@ Partial Class Consulta_Cliente
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(1330, 477)
         Me.Panel1.TabIndex = 7
+        '
+        'GrillaEnlaces
+        '
+        Me.GrillaEnlaces.AllowUserToAddRows = False
+        Me.GrillaEnlaces.AllowUserToDeleteRows = False
+        Me.GrillaEnlaces.BackgroundColor = System.Drawing.Color.White
+        Me.GrillaEnlaces.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.GrillaEnlaces.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.enlace, Me.id})
+        Me.GrillaEnlaces.Location = New System.Drawing.Point(158, 340)
+        Me.GrillaEnlaces.Name = "GrillaEnlaces"
+        Me.GrillaEnlaces.ReadOnly = True
+        Me.GrillaEnlaces.RowHeadersVisible = False
+        Me.GrillaEnlaces.Size = New System.Drawing.Size(382, 81)
+        Me.GrillaEnlaces.TabIndex = 135
+        '
+        'enlace
+        '
+        Me.enlace.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.enlace.HeaderText = "Enlaces"
+        Me.enlace.Name = "enlace"
+        Me.enlace.ReadOnly = True
+        '
+        'id
+        '
+        Me.id.HeaderText = "id"
+        Me.id.Name = "id"
+        Me.id.ReadOnly = True
+        Me.id.Visible = False
+        '
+        'btneliminaenlace
+        '
+        Me.btneliminaenlace.BackgroundImage = Global.GestionVivero.My.Resources.Resources.Delete
+        Me.btneliminaenlace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btneliminaenlace.Enabled = False
+        Me.btneliminaenlace.Location = New System.Drawing.Point(124, 369)
+        Me.btneliminaenlace.Name = "btneliminaenlace"
+        Me.btneliminaenlace.Size = New System.Drawing.Size(30, 30)
+        Me.btneliminaenlace.TabIndex = 134
+        Me.ToolTip1.SetToolTip(Me.btneliminaenlace, "Elimina Enlaces")
+        Me.btneliminaenlace.UseVisualStyleBackColor = True
+        '
+        'btnagregaenlace
+        '
+        Me.btnagregaenlace.BackgroundImage = Global.GestionVivero.My.Resources.Resources.Add
+        Me.btnagregaenlace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.btnagregaenlace.Enabled = False
+        Me.btnagregaenlace.Location = New System.Drawing.Point(124, 339)
+        Me.btnagregaenlace.Name = "btnagregaenlace"
+        Me.btnagregaenlace.Size = New System.Drawing.Size(30, 30)
+        Me.btnagregaenlace.TabIndex = 133
+        Me.ToolTip1.SetToolTip(Me.btnagregaenlace, "Agrega Enlaces")
+        Me.btnagregaenlace.UseVisualStyleBackColor = True
         '
         'Button2
         '
@@ -911,7 +967,7 @@ Partial Class Consulta_Cliente
         '
         Me.Label21.AutoSize = True
         Me.Label21.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label21.Location = New System.Drawing.Point(562, 387)
+        Me.Label21.Location = New System.Drawing.Point(562, 391)
         Me.Label21.Name = "Label21"
         Me.Label21.Size = New System.Drawing.Size(86, 14)
         Me.Label21.TabIndex = 121
@@ -1123,57 +1179,25 @@ Partial Class Consulta_Cliente
         '
         Me.PrintDialog1.UseEXDialog = True
         '
-        'btnagregaenlace
+        'Label25
         '
-        Me.btnagregaenlace.BackgroundImage = Global.GestionVivero.My.Resources.Resources.Add
-        Me.btnagregaenlace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btnagregaenlace.Enabled = False
-        Me.btnagregaenlace.Location = New System.Drawing.Point(124, 339)
-        Me.btnagregaenlace.Name = "btnagregaenlace"
-        Me.btnagregaenlace.Size = New System.Drawing.Size(30, 30)
-        Me.btnagregaenlace.TabIndex = 133
-        Me.ToolTip1.SetToolTip(Me.btnagregaenlace, "Agrega Enlaces")
-        Me.btnagregaenlace.UseVisualStyleBackColor = True
+        Me.Label25.AutoSize = True
+        Me.Label25.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label25.Location = New System.Drawing.Point(563, 412)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(87, 14)
+        Me.Label25.TabIndex = 136
+        Me.Label25.Text = "Fecha Registro"
         '
-        'btneliminaenlace
+        'txtFechaRegistro
         '
-        Me.btneliminaenlace.BackgroundImage = Global.GestionVivero.My.Resources.Resources.Delete
-        Me.btneliminaenlace.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.btneliminaenlace.Enabled = False
-        Me.btneliminaenlace.Location = New System.Drawing.Point(124, 369)
-        Me.btneliminaenlace.Name = "btneliminaenlace"
-        Me.btneliminaenlace.Size = New System.Drawing.Size(30, 30)
-        Me.btneliminaenlace.TabIndex = 134
-        Me.ToolTip1.SetToolTip(Me.btneliminaenlace, "Elimina Enlaces")
-        Me.btneliminaenlace.UseVisualStyleBackColor = True
-        '
-        'GrillaEnlaces
-        '
-        Me.GrillaEnlaces.AllowUserToAddRows = False
-        Me.GrillaEnlaces.AllowUserToDeleteRows = False
-        Me.GrillaEnlaces.BackgroundColor = System.Drawing.Color.White
-        Me.GrillaEnlaces.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GrillaEnlaces.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.enlace, Me.id})
-        Me.GrillaEnlaces.Location = New System.Drawing.Point(158, 340)
-        Me.GrillaEnlaces.Name = "GrillaEnlaces"
-        Me.GrillaEnlaces.ReadOnly = True
-        Me.GrillaEnlaces.RowHeadersVisible = False
-        Me.GrillaEnlaces.Size = New System.Drawing.Size(382, 81)
-        Me.GrillaEnlaces.TabIndex = 135
-        '
-        'enlace
-        '
-        Me.enlace.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        Me.enlace.HeaderText = "Enlaces"
-        Me.enlace.Name = "enlace"
-        Me.enlace.ReadOnly = True
-        '
-        'id
-        '
-        Me.id.HeaderText = "id"
-        Me.id.Name = "id"
-        Me.id.ReadOnly = True
-        Me.id.Visible = False
+        Me.txtFechaRegistro.Font = New System.Drawing.Font("Calibri", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtFechaRegistro.Location = New System.Drawing.Point(707, 408)
+        Me.txtFechaRegistro.Name = "txtFechaRegistro"
+        Me.txtFechaRegistro.ReadOnly = True
+        Me.txtFechaRegistro.Size = New System.Drawing.Size(370, 22)
+        Me.txtFechaRegistro.TabIndex = 137
+        Me.txtFechaRegistro.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Consulta_Cliente
         '
@@ -1195,9 +1219,9 @@ Partial Class Consulta_Cliente
         Me.SplitContainer1.ResumeLayout(False)
         Me.Panel1.ResumeLayout(False)
         Me.Panel1.PerformLayout()
+        CType(Me.GrillaEnlaces, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SPCONSULTAFULLVENDEDORBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GESTDataSet34, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GrillaEnlaces, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -1302,4 +1326,6 @@ Partial Class Consulta_Cliente
     Friend WithEvents GrillaEnlaces As DataGridView
     Friend WithEvents enlace As DataGridViewTextBoxColumn
     Friend WithEvents id As DataGridViewTextBoxColumn
+    Friend WithEvents txtFechaRegistro As TextBox
+    Friend WithEvents Label25 As Label
 End Class

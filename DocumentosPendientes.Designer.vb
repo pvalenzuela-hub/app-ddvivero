@@ -26,16 +26,16 @@ Partial Class DocumentosPendientes
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(DocumentosPendientes))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.txtFiltroValor = New System.Windows.Forms.TextBox()
+        Me.cmbfiltros = New System.Windows.Forms.ComboBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.chkSobrepago = New System.Windows.Forms.CheckBox()
         Me.DataGrilla = New System.Windows.Forms.DataGridView()
         Me.btnBloquear = New System.Windows.Forms.Button()
         Me.btnActivar = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.cmbfiltros = New System.Windows.Forms.ComboBox()
-        Me.txtFiltroValor = New System.Windows.Forms.TextBox()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGrilla, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -57,6 +57,42 @@ Partial Class DocumentosPendientes
         Me.GroupBox1.Size = New System.Drawing.Size(971, 605)
         Me.GroupBox1.TabIndex = 5
         Me.GroupBox1.TabStop = False
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(242, 35)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(39, 14)
+        Me.Label2.TabIndex = 7
+        Me.Label2.Text = "Filtro:"
+        '
+        'Button1
+        '
+        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button1.Image = Global.GestionVivero.My.Resources.Resources.Close
+        Me.Button1.Location = New System.Drawing.Point(623, 26)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(32, 32)
+        Me.Button1.TabIndex = 6
+        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'txtFiltroValor
+        '
+        Me.txtFiltroValor.Location = New System.Drawing.Point(460, 31)
+        Me.txtFiltroValor.Name = "txtFiltroValor"
+        Me.txtFiltroValor.Size = New System.Drawing.Size(158, 22)
+        Me.txtFiltroValor.TabIndex = 5
+        '
+        'cmbfiltros
+        '
+        Me.cmbfiltros.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbfiltros.FormattingEnabled = True
+        Me.cmbfiltros.Location = New System.Drawing.Point(287, 31)
+        Me.cmbfiltros.Name = "cmbfiltros"
+        Me.cmbfiltros.Size = New System.Drawing.Size(167, 22)
+        Me.cmbfiltros.TabIndex = 4
         '
         'Label1
         '
@@ -171,42 +207,6 @@ Partial Class DocumentosPendientes
         Me.Button2.Text = "Salir"
         Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button2.UseVisualStyleBackColor = False
-        '
-        'cmbfiltros
-        '
-        Me.cmbfiltros.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbfiltros.FormattingEnabled = True
-        Me.cmbfiltros.Location = New System.Drawing.Point(287, 31)
-        Me.cmbfiltros.Name = "cmbfiltros"
-        Me.cmbfiltros.Size = New System.Drawing.Size(167, 22)
-        Me.cmbfiltros.TabIndex = 4
-        '
-        'txtFiltroValor
-        '
-        Me.txtFiltroValor.Location = New System.Drawing.Point(460, 31)
-        Me.txtFiltroValor.Name = "txtFiltroValor"
-        Me.txtFiltroValor.Size = New System.Drawing.Size(158, 22)
-        Me.txtFiltroValor.TabIndex = 5
-        '
-        'Button1
-        '
-        Me.Button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
-        Me.Button1.Image = Global.GestionVivero.My.Resources.Resources.Close
-        Me.Button1.Location = New System.Drawing.Point(623, 26)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(32, 32)
-        Me.Button1.TabIndex = 6
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(242, 35)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(39, 14)
-        Me.Label2.TabIndex = 7
-        Me.Label2.Text = "Filtro:"
         '
         'DocumentosPendientes
         '

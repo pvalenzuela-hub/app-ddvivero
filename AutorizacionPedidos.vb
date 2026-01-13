@@ -5,6 +5,7 @@ Public Class AutorizacionPedidos
         Me.Close()
     End Sub
     Private Sub CargaGrillaPedidos(iNumPedido As Integer, iOpcion As Integer)
+        Dim hayFiltros As Boolean = False
         sSsql = "[dbo].[P001_CONSULTAPedidosPendientes] "
         sSsql += iNumPedido.ToString & ","
         sSsql += iOpcion.ToString & ",1"
@@ -17,11 +18,30 @@ Public Class AutorizacionPedidos
         If reader.HasRows Then
             Dim dt As New DataTable()
             dt.Load(reader)
-            GrillaPedidos.DataSource = dt
+            Dim dv As New DataView(dt)
+            GrillaPedidos.DataSource = dv
+            cmbfiltros.Items.Clear()
+
             If GrillaPedidos.Columns.Contains("estadopedidoid") Then
                 GrillaPedidos.Columns("estadopedidoid").Visible = False
             End If
+
+            If Not gEsAutorizador Then
+                Dim datav As DataView = CType(GrillaPedidos.DataSource, DataView)
+                Dim campo As String = "Vendedor"
+                Dim filtro As String = gUSER
+                datav.RowFilter = $"[{campo}] LIKE '%{filtro}%'"
+            End If
+
             For Each col As DataGridViewColumn In GrillaPedidos.Columns
+                If gEsAutorizador AndAlso col.Visible Then
+                    Select Case col.HeaderText.Trim().ToLower()
+                        Case "vendedor", "cliente", "estado pedido"
+                            cmbfiltros.Items.Add(col.HeaderText)
+                            hayFiltros = True
+                    End Select
+                End If
+
                 Select Case col.HeaderText.Trim().ToLower()
                     Case "n° pedido"
                         col.Width = 50
@@ -48,6 +68,10 @@ Public Class AutorizacionPedidos
                     col.ReadOnly = True
                 End If
             Next
+            If hayFiltros Then
+                cmbfiltros.SelectedIndex = 0
+            End If
+
         Else
             MsgBox("No Existen Pedidos con filtro aplicado.", MsgBoxStyle.Information, "Autoriza Pedidos")
         End If
@@ -63,13 +87,30 @@ Public Class AutorizacionPedidos
             colCheck.TrueValue = True
             colCheck.FalseValue = False
             colCheck.ThreeState = False
-            colCheck.ReadOnly = False
+            If gEsAutorizador Then
+                colCheck.ReadOnly = False
+            Else
+                colCheck.ReadOnly = True
+            End If
             colCheck.Frozen = True ' opcional: mantiene visible al hacer scroll
             GrillaPedidos.Columns.Insert(0, colCheck) ' Insertar en la primera columna
         End If
         ' Habilitar edición general si fuera necesario
         GrillaPedidos.ReadOnly = False
         GrillaPedidos.EditMode = DataGridViewEditMode.EditOnEnter
+
+        If Not gEsAutorizador Then
+            cmbfiltros.Visible = False
+            Label2.Visible = False
+            txtFiltroValor.Visible = False
+            Button6.Visible = False
+            btnAprobar.Visible = False
+            btnCerrarPedido.Visible = False
+            btnPendiente.Visible = False
+            btnRechazar.Visible = False
+            ChkSeleccion.Visible = False
+        End If
+
         RecuperaPedidos()
 
     End Sub
@@ -120,7 +161,7 @@ Public Class AutorizacionPedidos
         End If
 
     End Sub
-    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnAprobar.Click
         'Botón Autoriza Pedido
         Dim bControlAutoriza As Boolean = True
 
@@ -175,7 +216,7 @@ Public Class AutorizacionPedidos
 
     End Sub
 
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnCerrarPedido.Click
         'Botón Cerrar Pedido
         Dim bControlRechazo As Boolean = True
         Dim ListaPedidos As New List(Of String)
@@ -254,7 +295,7 @@ Public Class AutorizacionPedidos
         End If
     End Sub
 
-    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
+    Private Sub Button4_Click(sender As Object, e As EventArgs) Handles btnRechazar.Click
         'Botón Rechazar Pedido
         Dim bControlAutoriza As Boolean = True
 
@@ -308,7 +349,7 @@ Public Class AutorizacionPedidos
         End If
     End Sub
 
-    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
+    Private Sub Button5_Click(sender As Object, e As EventArgs) Handles btnPendiente.Click
         'Botón Pendiente Pedido
         Dim bControlAutoriza As Boolean = True
 
@@ -370,4 +411,23 @@ Public Class AutorizacionPedidos
 
         End If
     End Sub
+
+    Private Sub txtFiltroValor_TextChanged(sender As Object, e As EventArgs) Handles txtFiltroValor.TextChanged
+        Try
+
+            Dim dv As DataView = CType(GrillaPedidos.DataSource, DataView)
+            Dim campo As String = cmbfiltros.SelectedItem.ToString()
+
+            If txtFiltroValor.Text = "" Then
+                dv.RowFilter = ""
+            Else
+                dv.RowFilter = $"[{campo}] LIKE '%{txtFiltroValor.Text}%'"
+            End If
+
+        Catch ex As Exception
+            MsgBox("Error al filtrar: " & ex.Message)
+        End Try
+    End Sub
+
+
 End Class

@@ -22,18 +22,18 @@ Partial Class Registro_Apertura
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle
-        Me.Label1 = New System.Windows.Forms.Label
-        Me.Button2 = New System.Windows.Forms.Button
-        Me.Label6 = New System.Windows.Forms.Label
-        Me.Button4 = New System.Windows.Forms.Button
-        Me.dtp_FechaApertura = New System.Windows.Forms.DateTimePicker
-        Me.GrillaCaja = New System.Windows.Forms.DataGridView
-        Me.NumMov = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Entrada = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.vcto = New System.Windows.Forms.DataGridViewTextBoxColumn
-        Me.Button1 = New System.Windows.Forms.Button
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.Button4 = New System.Windows.Forms.Button()
+        Me.dtp_FechaApertura = New System.Windows.Forms.DateTimePicker()
+        Me.GrillaCaja = New System.Windows.Forms.DataGridView()
+        Me.NumMov = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Entrada = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.vcto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Button1 = New System.Windows.Forms.Button()
         CType(Me.GrillaCaja, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -48,7 +48,7 @@ Partial Class Registro_Apertura
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(388, 322)
+        Me.Button2.Location = New System.Drawing.Point(386, 420)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(150, 40)
         Me.Button2.TabIndex = 87
@@ -67,7 +67,7 @@ Partial Class Registro_Apertura
         '
         'Button4
         '
-        Me.Button4.Location = New System.Drawing.Point(90, 322)
+        Me.Button4.Location = New System.Drawing.Point(81, 420)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(132, 40)
         Me.Button4.TabIndex = 146
@@ -86,12 +86,13 @@ Partial Class Registro_Apertura
         '
         Me.GrillaCaja.AllowUserToAddRows = False
         Me.GrillaCaja.AllowUserToDeleteRows = False
+        Me.GrillaCaja.BackgroundColor = System.Drawing.Color.White
         Me.GrillaCaja.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GrillaCaja.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NumMov, Me.Fecha, Me.Entrada, Me.vcto})
         Me.GrillaCaja.Location = New System.Drawing.Point(66, 133)
         Me.GrillaCaja.Name = "GrillaCaja"
         Me.GrillaCaja.ReadOnly = True
-        Me.GrillaCaja.Size = New System.Drawing.Size(496, 150)
+        Me.GrillaCaja.Size = New System.Drawing.Size(496, 256)
         Me.GrillaCaja.TabIndex = 151
         '
         'NumMov
@@ -115,8 +116,8 @@ Partial Class Registro_Apertura
         'Entrada
         '
         Me.Entrada.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Entrada.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Entrada.DefaultCellStyle = DataGridViewCellStyle1
         Me.Entrada.HeaderText = "Saldo diario"
         Me.Entrada.Name = "Entrada"
         Me.Entrada.ReadOnly = True
@@ -144,6 +145,7 @@ Partial Class Registro_Apertura
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(628, 472)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GrillaCaja)

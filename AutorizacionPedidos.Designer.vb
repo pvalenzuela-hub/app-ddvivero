@@ -23,10 +23,10 @@ Partial Class AutorizacionPedidos
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.GrillaPedidos = New System.Windows.Forms.DataGridView()
-        Me.Button3 = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
+        Me.btnAprobar = New System.Windows.Forms.Button()
+        Me.btnCerrarPedido = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button4 = New System.Windows.Forms.Button()
+        Me.btnRechazar = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.rbPendientes = New System.Windows.Forms.RadioButton()
         Me.btnBusca = New System.Windows.Forms.Button()
@@ -34,8 +34,12 @@ Partial Class AutorizacionPedidos
         Me.Label1 = New System.Windows.Forms.Label()
         Me.rbTodos = New System.Windows.Forms.RadioButton()
         Me.rbUltimos = New System.Windows.Forms.RadioButton()
-        Me.Button5 = New System.Windows.Forms.Button()
+        Me.btnPendiente = New System.Windows.Forms.Button()
         Me.ChkSeleccion = New System.Windows.Forms.CheckBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.Button6 = New System.Windows.Forms.Button()
+        Me.txtFiltroValor = New System.Windows.Forms.TextBox()
+        Me.cmbfiltros = New System.Windows.Forms.ComboBox()
         CType(Me.GrillaPedidos, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
@@ -51,46 +55,46 @@ Partial Class AutorizacionPedidos
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.GrillaPedidos.BackgroundColor = System.Drawing.Color.White
         Me.GrillaPedidos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GrillaPedidos.Location = New System.Drawing.Point(2, 84)
+        Me.GrillaPedidos.Location = New System.Drawing.Point(2, 117)
         Me.GrillaPedidos.Name = "GrillaPedidos"
         Me.GrillaPedidos.ReadOnly = True
         Me.GrillaPedidos.RowHeadersVisible = False
-        Me.GrillaPedidos.Size = New System.Drawing.Size(1060, 579)
+        Me.GrillaPedidos.Size = New System.Drawing.Size(1060, 546)
         Me.GrillaPedidos.TabIndex = 1
         '
-        'Button3
+        'btnAprobar
         '
-        Me.Button3.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button3.BackColor = System.Drawing.Color.White
-        Me.Button3.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button3.ForeColor = System.Drawing.Color.Blue
-        Me.Button3.Image = Global.GestionVivero.My.Resources.Resources.Apply
-        Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button3.Location = New System.Drawing.Point(12, 670)
-        Me.Button3.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(139, 43)
-        Me.Button3.TabIndex = 107
-        Me.Button3.Text = "Aprobar Pedido"
-        Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button3.UseVisualStyleBackColor = False
+        Me.btnAprobar.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.btnAprobar.BackColor = System.Drawing.Color.White
+        Me.btnAprobar.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnAprobar.ForeColor = System.Drawing.Color.Blue
+        Me.btnAprobar.Image = Global.GestionVivero.My.Resources.Resources.Apply
+        Me.btnAprobar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnAprobar.Location = New System.Drawing.Point(12, 670)
+        Me.btnAprobar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnAprobar.Name = "btnAprobar"
+        Me.btnAprobar.Size = New System.Drawing.Size(139, 43)
+        Me.btnAprobar.TabIndex = 107
+        Me.btnAprobar.Text = "Aprobar Pedido"
+        Me.btnAprobar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnAprobar.UseVisualStyleBackColor = False
         '
-        'Button1
+        'btnCerrarPedido
         '
-        Me.Button1.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button1.BackColor = System.Drawing.Color.White
-        Me.Button1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button1.ForeColor = System.Drawing.Color.Blue
-        Me.Button1.Image = Global.GestionVivero.My.Resources.Resources.Close
-        Me.Button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button1.Location = New System.Drawing.Point(693, 670)
-        Me.Button1.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(139, 43)
-        Me.Button1.TabIndex = 108
-        Me.Button1.Text = "Cerrar Pedido"
-        Me.Button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button1.UseVisualStyleBackColor = False
+        Me.btnCerrarPedido.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.btnCerrarPedido.BackColor = System.Drawing.Color.White
+        Me.btnCerrarPedido.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnCerrarPedido.ForeColor = System.Drawing.Color.Blue
+        Me.btnCerrarPedido.Image = Global.GestionVivero.My.Resources.Resources.Close
+        Me.btnCerrarPedido.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnCerrarPedido.Location = New System.Drawing.Point(693, 670)
+        Me.btnCerrarPedido.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnCerrarPedido.Name = "btnCerrarPedido"
+        Me.btnCerrarPedido.Size = New System.Drawing.Size(139, 43)
+        Me.btnCerrarPedido.TabIndex = 108
+        Me.btnCerrarPedido.Text = "Cerrar Pedido"
+        Me.btnCerrarPedido.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnCerrarPedido.UseVisualStyleBackColor = False
         '
         'Button2
         '
@@ -109,25 +113,30 @@ Partial Class AutorizacionPedidos
         Me.Button2.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button2.UseVisualStyleBackColor = False
         '
-        'Button4
+        'btnRechazar
         '
-        Me.Button4.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button4.BackColor = System.Drawing.Color.White
-        Me.Button4.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button4.ForeColor = System.Drawing.Color.Blue
-        Me.Button4.Image = Global.GestionVivero.My.Resources.Resources.Delete
-        Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button4.Location = New System.Drawing.Point(239, 670)
-        Me.Button4.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(139, 43)
-        Me.Button4.TabIndex = 111
-        Me.Button4.Text = "Rechazar Pedido"
-        Me.Button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button4.UseVisualStyleBackColor = False
+        Me.btnRechazar.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.btnRechazar.BackColor = System.Drawing.Color.White
+        Me.btnRechazar.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnRechazar.ForeColor = System.Drawing.Color.Blue
+        Me.btnRechazar.Image = Global.GestionVivero.My.Resources.Resources.Delete
+        Me.btnRechazar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnRechazar.Location = New System.Drawing.Point(239, 670)
+        Me.btnRechazar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnRechazar.Name = "btnRechazar"
+        Me.btnRechazar.Size = New System.Drawing.Size(139, 43)
+        Me.btnRechazar.TabIndex = 111
+        Me.btnRechazar.Text = "Rechazar Pedido"
+        Me.btnRechazar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnRechazar.UseVisualStyleBackColor = False
         '
         'GroupBox1
         '
+        Me.GroupBox1.BackColor = System.Drawing.Color.White
+        Me.GroupBox1.Controls.Add(Me.Label2)
+        Me.GroupBox1.Controls.Add(Me.Button6)
+        Me.GroupBox1.Controls.Add(Me.txtFiltroValor)
+        Me.GroupBox1.Controls.Add(Me.cmbfiltros)
         Me.GroupBox1.Controls.Add(Me.rbPendientes)
         Me.GroupBox1.Controls.Add(Me.btnBusca)
         Me.GroupBox1.Controls.Add(Me.txtNumPedido)
@@ -136,7 +145,7 @@ Partial Class AutorizacionPedidos
         Me.GroupBox1.Controls.Add(Me.rbUltimos)
         Me.GroupBox1.Location = New System.Drawing.Point(2, 2)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(1060, 60)
+        Me.GroupBox1.Size = New System.Drawing.Size(1060, 86)
         Me.GroupBox1.TabIndex = 112
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Filtros"
@@ -201,46 +210,83 @@ Partial Class AutorizacionPedidos
         Me.rbUltimos.Text = "Ingresados los últimos  6 meses"
         Me.rbUltimos.UseVisualStyleBackColor = True
         '
-        'Button5
+        'btnPendiente
         '
-        Me.Button5.Anchor = System.Windows.Forms.AnchorStyles.Left
-        Me.Button5.BackColor = System.Drawing.Color.White
-        Me.Button5.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Button5.ForeColor = System.Drawing.Color.Blue
-        Me.Button5.Image = Global.GestionVivero.My.Resources.Resources.Add
-        Me.Button5.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button5.Location = New System.Drawing.Point(466, 670)
-        Me.Button5.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.Button5.Name = "Button5"
-        Me.Button5.Size = New System.Drawing.Size(139, 43)
-        Me.Button5.TabIndex = 113
-        Me.Button5.Text = "Dejar Pendiente"
-        Me.Button5.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        Me.Button5.UseVisualStyleBackColor = False
+        Me.btnPendiente.Anchor = System.Windows.Forms.AnchorStyles.Left
+        Me.btnPendiente.BackColor = System.Drawing.Color.White
+        Me.btnPendiente.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btnPendiente.ForeColor = System.Drawing.Color.Blue
+        Me.btnPendiente.Image = Global.GestionVivero.My.Resources.Resources.Add
+        Me.btnPendiente.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.btnPendiente.Location = New System.Drawing.Point(466, 670)
+        Me.btnPendiente.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btnPendiente.Name = "btnPendiente"
+        Me.btnPendiente.Size = New System.Drawing.Size(139, 43)
+        Me.btnPendiente.TabIndex = 113
+        Me.btnPendiente.Text = "Dejar Pendiente"
+        Me.btnPendiente.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.btnPendiente.UseVisualStyleBackColor = False
         '
         'ChkSeleccion
         '
         Me.ChkSeleccion.AutoSize = True
-        Me.ChkSeleccion.Location = New System.Drawing.Point(6, 64)
+        Me.ChkSeleccion.Location = New System.Drawing.Point(12, 94)
         Me.ChkSeleccion.Name = "ChkSeleccion"
         Me.ChkSeleccion.Size = New System.Drawing.Size(112, 17)
         Me.ChkSeleccion.TabIndex = 114
         Me.ChkSeleccion.Text = "Selecciona Todos"
         Me.ChkSeleccion.UseVisualStyleBackColor = True
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(299, 57)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(32, 13)
+        Me.Label2.TabIndex = 116
+        Me.Label2.Text = "Filtro:"
+        '
+        'Button6
+        '
+        Me.Button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center
+        Me.Button6.Image = Global.GestionVivero.My.Resources.Resources.Close
+        Me.Button6.Location = New System.Drawing.Point(680, 48)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(32, 32)
+        Me.Button6.TabIndex = 115
+        Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Button6.UseVisualStyleBackColor = True
+        '
+        'txtFiltroValor
+        '
+        Me.txtFiltroValor.Location = New System.Drawing.Point(517, 53)
+        Me.txtFiltroValor.Name = "txtFiltroValor"
+        Me.txtFiltroValor.Size = New System.Drawing.Size(158, 20)
+        Me.txtFiltroValor.TabIndex = 114
+        '
+        'cmbfiltros
+        '
+        Me.cmbfiltros.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbfiltros.FormattingEnabled = True
+        Me.cmbfiltros.Location = New System.Drawing.Point(344, 53)
+        Me.cmbfiltros.Name = "cmbfiltros"
+        Me.cmbfiltros.Size = New System.Drawing.Size(167, 21)
+        Me.cmbfiltros.TabIndex = 113
+        '
         'AutorizacionPedidos
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
         Me.ClientSize = New System.Drawing.Size(1066, 716)
         Me.ControlBox = False
         Me.Controls.Add(Me.ChkSeleccion)
-        Me.Controls.Add(Me.Button5)
+        Me.Controls.Add(Me.btnPendiente)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.Button4)
+        Me.Controls.Add(Me.btnRechazar)
         Me.Controls.Add(Me.Button2)
-        Me.Controls.Add(Me.Button1)
-        Me.Controls.Add(Me.Button3)
+        Me.Controls.Add(Me.btnCerrarPedido)
+        Me.Controls.Add(Me.btnAprobar)
         Me.Controls.Add(Me.GrillaPedidos)
         Me.Name = "AutorizacionPedidos"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
@@ -253,17 +299,21 @@ Partial Class AutorizacionPedidos
 
     End Sub
     Friend WithEvents GrillaPedidos As DataGridView
-    Friend WithEvents Button3 As Button
-    Friend WithEvents Button1 As Button
+    Friend WithEvents btnAprobar As Button
+    Friend WithEvents btnCerrarPedido As Button
     Friend WithEvents Button2 As Button
-    Friend WithEvents Button4 As Button
+    Friend WithEvents btnRechazar As Button
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents txtNumPedido As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents rbTodos As RadioButton
     Friend WithEvents rbUltimos As RadioButton
     Friend WithEvents btnBusca As Button
-    Friend WithEvents Button5 As Button
+    Friend WithEvents btnPendiente As Button
     Friend WithEvents ChkSeleccion As CheckBox
     Friend WithEvents rbPendientes As RadioButton
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Button6 As Button
+    Friend WithEvents txtFiltroValor As TextBox
+    Friend WithEvents cmbfiltros As ComboBox
 End Class

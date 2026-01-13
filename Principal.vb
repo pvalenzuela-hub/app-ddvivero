@@ -20,16 +20,16 @@
         'carga variables en pantalla principal
         Me.txt_User.Text = gNomUsuario
         Label4.Text = "Sistema de Gestión Vivero - V. 2024"
-        opcionAutorizaPedido.Enabled = False
-        Select Case gIdPerfil
-            Case 1 'Administrador
-                opcionAutorizaPedido.Enabled = True
-                opcionParametros.Enabled = True
-            Case 2
+        'opcionAutorizaPedido.Enabled = False
+        'Select Case gIdPerfil
+        '    Case 1 'Administrador
+        '        opcionAutorizaPedido.Enabled = True
+        '        opcionParametros.Enabled = True
+        '    Case 2
 
-            Case Else
+        '    Case Else
 
-        End Select
+        'End Select
     End Sub
 
     Private Sub SalirToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)

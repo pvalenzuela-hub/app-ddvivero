@@ -22,9 +22,9 @@ Partial Class Consulta_cheques_Pendientes
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.DataGrilla = New System.Windows.Forms.DataGridView()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -47,6 +47,7 @@ Partial Class Consulta_cheques_Pendientes
         Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.idFpago = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IdCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.vendedor = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGrilla, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -68,15 +69,15 @@ Partial Class Consulta_cheques_Pendientes
         Me.DataGrilla.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.DataGrilla.BackgroundColor = System.Drawing.Color.White
         Me.DataGrilla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DataGrilla.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.num_doc, Me.documento, Me.fvcto, Me.Saldo, Me.Cliente, Me.Fecha, Me.idFpago, Me.IdCliente})
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.Navy
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Navy
-        DataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGrilla.DefaultCellStyle = DataGridViewCellStyle8
+        Me.DataGrilla.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.num_doc, Me.documento, Me.fvcto, Me.Saldo, Me.Cliente, Me.Fecha, Me.idFpago, Me.IdCliente, Me.vendedor})
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle2.ForeColor = System.Drawing.Color.Navy
+        DataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Navy
+        DataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.DataGrilla.DefaultCellStyle = DataGridViewCellStyle2
         Me.DataGrilla.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataGrilla.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
         Me.DataGrilla.Location = New System.Drawing.Point(3, 16)
@@ -85,11 +86,11 @@ Partial Class Consulta_cheques_Pendientes
         Me.DataGrilla.ReadOnly = True
         Me.DataGrilla.RowHeadersVisible = False
         Me.DataGrilla.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
-        DataGridViewCellStyle9.BackColor = System.Drawing.Color.Azure
-        DataGridViewCellStyle9.ForeColor = System.Drawing.Color.DarkGreen
-        DataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.DarkGreen
-        Me.DataGrilla.RowsDefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.BackColor = System.Drawing.Color.Azure
+        DataGridViewCellStyle3.ForeColor = System.Drawing.Color.DarkGreen
+        DataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.DarkGreen
+        Me.DataGrilla.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.DataGrilla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.DataGrilla.Size = New System.Drawing.Size(881, 323)
         Me.DataGrilla.TabIndex = 1
@@ -233,8 +234,8 @@ Partial Class Consulta_cheques_Pendientes
         'Saldo
         '
         Me.Saldo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Saldo.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Saldo.DefaultCellStyle = DataGridViewCellStyle1
         Me.Saldo.HeaderText = "Saldo"
         Me.Saldo.Name = "Saldo"
         Me.Saldo.ReadOnly = True
@@ -274,6 +275,13 @@ Partial Class Consulta_cheques_Pendientes
         Me.IdCliente.ToolTipText = "Total Abonos realizados por el cliente"
         Me.IdCliente.Visible = False
         Me.IdCliente.Width = 73
+        '
+        'vendedor
+        '
+        Me.vendedor.HeaderText = "Vendedor"
+        Me.vendedor.Name = "vendedor"
+        Me.vendedor.ReadOnly = True
+        Me.vendedor.Width = 78
         '
         'Consulta_cheques_Pendientes
         '
@@ -326,4 +334,5 @@ Partial Class Consulta_cheques_Pendientes
     Friend WithEvents Fecha As DataGridViewTextBoxColumn
     Friend WithEvents idFpago As DataGridViewTextBoxColumn
     Friend WithEvents IdCliente As DataGridViewTextBoxColumn
+    Friend WithEvents vendedor As DataGridViewTextBoxColumn
 End Class
