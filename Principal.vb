@@ -760,4 +760,8 @@
     Private Sub ToolStripMenuItem34_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem34.Click
         DocumentosPendientes.Show()
     End Sub
+
+    Private Sub AjusteDAIToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AjusteDAIToolStripMenuItem.Click
+        Ajuste_DAI.Show()
+    End Sub
 End Class

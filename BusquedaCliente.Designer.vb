@@ -24,6 +24,11 @@ Partial Class BusquedaCliente
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(BusquedaCliente))
         Me.DataClientes = New System.Windows.Forms.DataGridView()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.chkIncluyePrimerNombre = New System.Windows.Forms.CheckBox()
+        Me.txt_clientebuscar = New System.Windows.Forms.TextBox()
+        Me.Button6 = New System.Windows.Forms.Button()
         Me.rut = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Nombre = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.direccion = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -34,11 +39,7 @@ Partial Class BusquedaCliente
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.EstadoclienteId = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.chkIncluyePrimerNombre = New System.Windows.Forms.CheckBox()
-        Me.txt_clientebuscar = New System.Windows.Forms.TextBox()
-        Me.Button6 = New System.Windows.Forms.Button()
+        Me.valorajuste = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataClientes, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -50,12 +51,64 @@ Partial Class BusquedaCliente
         Me.DataClientes.AllowUserToResizeRows = False
         Me.DataClientes.BackgroundColor = System.Drawing.Color.White
         Me.DataClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataClientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.rut, Me.Nombre, Me.direccion, Me.telefono, Me.rutnoedit, Me.idcliente, Me.idSector, Me.Column1, Me.Column2, Me.EstadoclienteId})
+        Me.DataClientes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.rut, Me.Nombre, Me.direccion, Me.telefono, Me.rutnoedit, Me.idcliente, Me.idSector, Me.Column1, Me.Column2, Me.EstadoclienteId, Me.valorajuste})
         Me.DataClientes.Location = New System.Drawing.Point(3, 58)
         Me.DataClientes.Name = "DataClientes"
         Me.DataClientes.RowHeadersVisible = False
         Me.DataClientes.Size = New System.Drawing.Size(828, 461)
         Me.DataClientes.TabIndex = 0
+        '
+        'Button1
+        '
+        Me.Button1.BackColor = System.Drawing.Color.White
+        Me.Button1.Image = Global.GestionVivero.My.Resources.Resources.Apply
+        Me.Button1.Location = New System.Drawing.Point(838, 82)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(83, 53)
+        Me.Button1.TabIndex = 1
+        Me.Button1.UseVisualStyleBackColor = False
+        '
+        'Button2
+        '
+        Me.Button2.BackColor = System.Drawing.Color.White
+        Me.Button2.Image = Global.GestionVivero.My.Resources.Resources.Delete1
+        Me.Button2.Location = New System.Drawing.Point(838, 23)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(83, 53)
+        Me.Button2.TabIndex = 2
+        Me.Button2.UseVisualStyleBackColor = False
+        '
+        'chkIncluyePrimerNombre
+        '
+        Me.chkIncluyePrimerNombre.AutoSize = True
+        Me.chkIncluyePrimerNombre.Location = New System.Drawing.Point(12, 24)
+        Me.chkIncluyePrimerNombre.Name = "chkIncluyePrimerNombre"
+        Me.chkIncluyePrimerNombre.Size = New System.Drawing.Size(220, 17)
+        Me.chkIncluyePrimerNombre.TabIndex = 3
+        Me.chkIncluyePrimerNombre.Text = "incluye primer nombre (solo para Clientes)"
+        Me.chkIncluyePrimerNombre.UseVisualStyleBackColor = True
+        '
+        'txt_clientebuscar
+        '
+        Me.txt_clientebuscar.BackColor = System.Drawing.SystemColors.Window
+        Me.txt_clientebuscar.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txt_clientebuscar.ForeColor = System.Drawing.Color.Navy
+        Me.txt_clientebuscar.Location = New System.Drawing.Point(238, 22)
+        Me.txt_clientebuscar.Name = "txt_clientebuscar"
+        Me.txt_clientebuscar.Size = New System.Drawing.Size(186, 21)
+        Me.txt_clientebuscar.TabIndex = 4
+        '
+        'Button6
+        '
+        Me.Button6.Image = CType(resources.GetObject("Button6.Image"), System.Drawing.Image)
+        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.Button6.Location = New System.Drawing.Point(430, 21)
+        Me.Button6.Name = "Button6"
+        Me.Button6.Size = New System.Drawing.Size(66, 23)
+        Me.Button6.TabIndex = 23
+        Me.Button6.Text = "Buscar"
+        Me.Button6.TextAlign = System.Drawing.ContentAlignment.TopRight
+        Me.Button6.UseVisualStyleBackColor = True
         '
         'rut
         '
@@ -116,57 +169,11 @@ Partial Class BusquedaCliente
         Me.EstadoclienteId.Name = "EstadoclienteId"
         Me.EstadoclienteId.Visible = False
         '
-        'Button1
+        'valorajuste
         '
-        Me.Button1.BackColor = System.Drawing.Color.White
-        Me.Button1.Image = Global.GestionVivero.My.Resources.Resources.Apply
-        Me.Button1.Location = New System.Drawing.Point(838, 82)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(83, 53)
-        Me.Button1.TabIndex = 1
-        Me.Button1.UseVisualStyleBackColor = False
-        '
-        'Button2
-        '
-        Me.Button2.BackColor = System.Drawing.Color.White
-        Me.Button2.Image = Global.GestionVivero.My.Resources.Resources.Delete1
-        Me.Button2.Location = New System.Drawing.Point(838, 23)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(83, 53)
-        Me.Button2.TabIndex = 2
-        Me.Button2.UseVisualStyleBackColor = False
-        '
-        'chkIncluyePrimerNombre
-        '
-        Me.chkIncluyePrimerNombre.AutoSize = True
-        Me.chkIncluyePrimerNombre.Location = New System.Drawing.Point(12, 24)
-        Me.chkIncluyePrimerNombre.Name = "chkIncluyePrimerNombre"
-        Me.chkIncluyePrimerNombre.Size = New System.Drawing.Size(220, 17)
-        Me.chkIncluyePrimerNombre.TabIndex = 3
-        Me.chkIncluyePrimerNombre.Text = "incluye primer nombre (solo para Clientes)"
-        Me.chkIncluyePrimerNombre.UseVisualStyleBackColor = True
-        '
-        'txt_clientebuscar
-        '
-        Me.txt_clientebuscar.BackColor = System.Drawing.SystemColors.Window
-        Me.txt_clientebuscar.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_clientebuscar.ForeColor = System.Drawing.Color.Navy
-        Me.txt_clientebuscar.Location = New System.Drawing.Point(238, 22)
-        Me.txt_clientebuscar.Name = "txt_clientebuscar"
-        Me.txt_clientebuscar.Size = New System.Drawing.Size(186, 21)
-        Me.txt_clientebuscar.TabIndex = 4
-        '
-        'Button6
-        '
-        Me.Button6.Image = CType(resources.GetObject("Button6.Image"), System.Drawing.Image)
-        Me.Button6.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.Button6.Location = New System.Drawing.Point(430, 21)
-        Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(66, 23)
-        Me.Button6.TabIndex = 23
-        Me.Button6.Text = "Buscar"
-        Me.Button6.TextAlign = System.Drawing.ContentAlignment.TopRight
-        Me.Button6.UseVisualStyleBackColor = True
+        Me.valorajuste.HeaderText = "ValorAjuste"
+        Me.valorajuste.Name = "valorajuste"
+        Me.valorajuste.Visible = False
         '
         'BusquedaCliente
         '
@@ -206,4 +213,5 @@ Partial Class BusquedaCliente
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents EstadoclienteId As DataGridViewTextBoxColumn
+    Friend WithEvents valorajuste As DataGridViewTextBoxColumn
 End Class

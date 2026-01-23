@@ -208,7 +208,7 @@
     Private Sub chkGuias_CheckedChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles chkGuias.CheckedChanged
         If chkGuias.Checked Then
             For i As Integer = 0 To GrillaDespacho.Rows.Count - 1
-                If IsDBNull(GrillaDespacho.Rows(i).Cells(10).Value) = True Then
+                If IsDBNull(GrillaDespacho.Rows(i).Cells(10).Value) > 0 Then
                     GrillaDespacho.Rows(i).Cells(0).Value = True
                 Else
                     If Val(GrillaDespacho.Rows(i).Cells(10).Value) = 0 Then
@@ -299,10 +299,6 @@
             LimpiaCampos()
             LecturaDespacho()
         End If
-    End Sub
-
-    Private Sub DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles GrillaDespacho.CellContentClick
-
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click

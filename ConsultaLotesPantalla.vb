@@ -7,11 +7,11 @@ Public Class ConsultaLotesPantalla
         cmbVariedad.SelectedIndex = -1
         cmbSemilla.SelectedIndex = -1
         CargaGrillaLotes()
-        If gEsAutorizador Then
-            chkTodo.Visible = True
-        Else
-            chkTodo.Visible = False
-        End If
+        'If gEsAutorizador Then
+        '    chkTodo.Visible = True
+        'Else
+        '    chkTodo.Visible = False
+        'End If
 
     End Sub
 

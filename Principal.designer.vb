@@ -187,6 +187,7 @@ Partial Class Principal
         Me.Label4 = New System.Windows.Forms.Label()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.AjusteDAIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -356,32 +357,32 @@ Partial Class Principal
         '
         Me.TrabajoConLotesToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem7, Me.ToolStripMenuItem11, Me.opcionAutorizaPedido})
         Me.TrabajoConLotesToolStripMenuItem.Name = "TrabajoConLotesToolStripMenuItem"
-        Me.TrabajoConLotesToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.TrabajoConLotesToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.TrabajoConLotesToolStripMenuItem.Text = "Pedidos"
         '
         'ToolStripMenuItem7
         '
         Me.ToolStripMenuItem7.Name = "ToolStripMenuItem7"
-        Me.ToolStripMenuItem7.Size = New System.Drawing.Size(180, 22)
+        Me.ToolStripMenuItem7.Size = New System.Drawing.Size(170, 22)
         Me.ToolStripMenuItem7.Text = "Ingreso Pedidos"
         '
         'ToolStripMenuItem11
         '
         Me.ToolStripMenuItem11.Name = "ToolStripMenuItem11"
-        Me.ToolStripMenuItem11.Size = New System.Drawing.Size(180, 22)
+        Me.ToolStripMenuItem11.Size = New System.Drawing.Size(170, 22)
         Me.ToolStripMenuItem11.Text = "Cotizaciones"
         '
         'opcionAutorizaPedido
         '
         Me.opcionAutorizaPedido.Name = "opcionAutorizaPedido"
-        Me.opcionAutorizaPedido.Size = New System.Drawing.Size(180, 22)
+        Me.opcionAutorizaPedido.Size = New System.Drawing.Size(170, 22)
         Me.opcionAutorizaPedido.Text = "Autorizar Pedidos"
         '
         'BitácoraDeEventosToolStripMenuItem
         '
         Me.BitácoraDeEventosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.PreparaciònDeDespachoToolStripMenuItem, Me.TrabajoConLotesToolStripMenuItem1, Me.ConsultaLoteToolStripMenuItem1, Me.ConsultaBitácoraToolStripMenuItem, Me.LotesPorSembrarToolStripMenuItem1, Me.ReporteDeLotesToolStripMenuItem1, Me.CToolStripMenuItem, Me.SubirInformaciónToolStripMenuItem})
         Me.BitácoraDeEventosToolStripMenuItem.Name = "BitácoraDeEventosToolStripMenuItem"
-        Me.BitácoraDeEventosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BitácoraDeEventosToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.BitácoraDeEventosToolStripMenuItem.Text = "Lotes"
         '
         'PreparaciònDeDespachoToolStripMenuItem
@@ -498,7 +499,7 @@ Partial Class Principal
         '
         Me.BandejasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.DevolucionesToolStripMenuItem, Me.ReporteBandejasToolStripMenuItem})
         Me.BandejasToolStripMenuItem.Name = "BandejasToolStripMenuItem"
-        Me.BandejasToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.BandejasToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.BandejasToolStripMenuItem.Text = "Bandejas"
         '
         'DevolucionesToolStripMenuItem
@@ -517,7 +518,7 @@ Partial Class Principal
         '
         Me.ConteosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.RegistrosToolStripMenuItem, Me.ToolStripMenuItem32, Me.ConsultaConteosToolStripMenuItem2})
         Me.ConteosToolStripMenuItem.Name = "ConteosToolStripMenuItem"
-        Me.ConteosToolStripMenuItem.Size = New System.Drawing.Size(180, 22)
+        Me.ConteosToolStripMenuItem.Size = New System.Drawing.Size(127, 22)
         Me.ConteosToolStripMenuItem.Text = "Conteos"
         '
         'RegistrosToolStripMenuItem
@@ -704,7 +705,7 @@ Partial Class Principal
         '
         'ClienteToolStripMenuItem
         '
-        Me.ClienteToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConsultarToolStripMenuItem1, Me.ToolStripMenuItem1, Me.ConsultaCumpleañosToolStripMenuItem, Me.CartolaClientesToolStripMenuItem, Me.ListadoDeDeudoresToolStripMenuItem, Me.ToolStripSeparator6, Me.AbonosToolStripMenuItem, Me.DepósitoDeDocumentosToolStripMenuItem, Me.ToolStripMenuItem33, Me.ToolStripMenuItem34, Me.ListadoDeudoresToolStripMenuItem})
+        Me.ClienteToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ConsultarToolStripMenuItem1, Me.ToolStripMenuItem1, Me.ConsultaCumpleañosToolStripMenuItem, Me.CartolaClientesToolStripMenuItem, Me.ListadoDeDeudoresToolStripMenuItem, Me.ToolStripSeparator6, Me.AbonosToolStripMenuItem, Me.DepósitoDeDocumentosToolStripMenuItem, Me.ToolStripMenuItem33, Me.ToolStripMenuItem34, Me.ListadoDeudoresToolStripMenuItem, Me.AjusteDAIToolStripMenuItem})
         Me.ClienteToolStripMenuItem.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ClienteToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.ClienteToolStripMenuItem.Name = "ClienteToolStripMenuItem"
@@ -1267,6 +1268,12 @@ Partial Class Principal
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
+        'AjusteDAIToolStripMenuItem
+        '
+        Me.AjusteDAIToolStripMenuItem.Name = "AjusteDAIToolStripMenuItem"
+        Me.AjusteDAIToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
+        Me.AjusteDAIToolStripMenuItem.Text = "Ajuste DAI"
+        '
         'Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(5.0!, 15.0!)
@@ -1459,4 +1466,5 @@ Partial Class Principal
     Friend WithEvents opcionAutorizaPedido As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem32 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem34 As ToolStripMenuItem
+    Friend WithEvents AjusteDAIToolStripMenuItem As ToolStripMenuItem
 End Class

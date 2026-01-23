@@ -75,6 +75,7 @@ Public Class BusquedaCliente
                         DataClientes.Rows(i).Cells(6).Value = datatbl(7)
                         DataClientes.Rows(i).Cells(7).Value = datatbl(8)
                         DataClientes.Rows(i).Cells(8).Value = datatbl(12)
+                        DataClientes.Rows(i).Cells("valorajuste").Value = datatbl("ValorAjuste")
                         DataClientes.Rows(i).Cells("EstadoclienteId").Value = datatbl("EstadoclienteId")
                         i += 1
                     End While
@@ -106,6 +107,8 @@ Public Class BusquedaCliente
         '15 = Devolución de Plantas
         '16 = Modifica Venta
         '17 = Crear Lote Hijo
+        '18 = Reporte de Lotes
+        '19 = Ajuste Valor DAI
         Dim iFilaActual As Integer
 
         If DataClientes.Rows.Count > 0 Then
@@ -241,6 +244,14 @@ Public Class BusquedaCliente
                 Case 18
                     ReporteLotes.txt_Cliente.Text = DataClientes.Rows(iFilaActual).Cells(1).Value
                     gIDCliente = DataClientes.Rows(iFilaActual).Cells(5).Value
+                Case 19
+                    gRutCli = DataClientes.Rows(iFilaActual).Cells(4).Value
+                    Ajuste_DAI.txtRutCli.Text = gRutCli
+                    Ajuste_DAI.txt_RUT_CLI.Text = FormatoRut(gRutCli)
+                    Ajuste_DAI.txt_IdCliente.Text = DataClientes.Rows(iFilaActual).Cells(5).Value
+                    Ajuste_DAI.txt_NombreCliente.Text = DataClientes.Rows(iFilaActual).Cells(1).Value
+                    Ajuste_DAI.txtTelefonos.Text = DataClientes.Rows(iFilaActual).Cells("telefono").Value
+                    Ajuste_DAI.txtValorAjuste.Text = Format(DataClientes.Rows(iFilaActual).Cells("valorajuste").Value, "###,###,###")
             End Select
         End If
 

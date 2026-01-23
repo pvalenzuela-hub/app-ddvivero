@@ -135,6 +135,11 @@ Public Class Abono_Deuda
                 GrillaPagos.Rows(i).Cells("rebajaDAI").Value = datatbl("RebajaDAI")
                 GrillaPagos.Rows(i).Cells("usuario").Value = datatbl("Usuario")
                 dAbonoTotal += datatbl(6)
+                If datatbl(6) < 0 Then
+                    GrillaPagos.Rows(i).DefaultCellStyle.BackColor = Color.Red
+                    GrillaPagos.Rows(i).DefaultCellStyle.ForeColor = Color.White
+                End If
+
                 i += 1
             End While
             'GrillaPagos.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
@@ -732,6 +737,14 @@ Public Class Abono_Deuda
     End Sub
 
     Private Sub txt_MontoDoc_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles txt_MontoDoc.MaskInputRejected
+
+    End Sub
+
+    Private Sub txt_IdCliente_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles txt_IdCliente.MaskInputRejected
+
+    End Sub
+
+    Private Sub txt_NombreCliente_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles txt_NombreCliente.MaskInputRejected
 
     End Sub
 End Class

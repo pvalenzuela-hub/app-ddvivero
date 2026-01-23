@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class Abono_Deuda
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,18 +20,18 @@ Partial Class Abono_Deuda
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.txtTelefonos = New System.Windows.Forms.MaskedTextBox()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -82,6 +82,24 @@ Partial Class Abono_Deuda
         Me.txt_SaldoFacturas = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.GrillaPagos = New System.Windows.Forms.DataGridView()
+        Me.id_pago = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fechaconta = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.docpago = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.num = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.monto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.tipodoc = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.numdoc = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdPedido = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ValorPagado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ValorDAI = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.fec_venc = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Glosa = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AbonoPedido = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PagoNoEditado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.rebajaDAI = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.usuario = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.txt_TotalAbonos = New System.Windows.Forms.TextBox()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
@@ -110,24 +128,6 @@ Partial Class Abono_Deuda
         Me.Label16 = New System.Windows.Forms.Label()
         Me.txtLineaCredito = New System.Windows.Forms.TextBox()
         Me.Label15 = New System.Windows.Forms.Label()
-        Me.id_pago = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.FechaPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.fechaconta = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.docpago = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.num = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.monto = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.tipodoc = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.numdoc = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IdPedido = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ValorPagado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ValorDAI = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.fec_venc = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Glosa = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.estado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.AbonoPedido = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PagoNoEditado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.rebajaDAI = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.usuario = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox8.SuspendLayout()
         Me.GroupBox6.SuspendLayout()
         CType(Me.GrillaVentas, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -281,9 +281,9 @@ Partial Class Abono_Deuda
         '
         'txtRutCli
         '
-        Me.txtRutCli.Location = New System.Drawing.Point(205, 684)
+        Me.txtRutCli.Location = New System.Drawing.Point(949, 48)
         Me.txtRutCli.Name = "txtRutCli"
-        Me.txtRutCli.Size = New System.Drawing.Size(38, 20)
+        Me.txtRutCli.Size = New System.Drawing.Size(38, 23)
         Me.txtRutCli.TabIndex = 111
         Me.txtRutCli.Visible = False
         '
@@ -295,6 +295,7 @@ Partial Class Abono_Deuda
         Me.GroupBox6.Controls.Add(Me.rbAbonoPedido)
         Me.GroupBox6.Controls.Add(Me.Label11)
         Me.GroupBox6.Controls.Add(Me.cmbPedido)
+        Me.GroupBox6.Controls.Add(Me.txtRutCli)
         Me.GroupBox6.Controls.Add(Me.dtp_Fecha_Contable)
         Me.GroupBox6.Controls.Add(Me.Label9)
         Me.GroupBox6.Controls.Add(Me.dtp_FechaVenc)
@@ -514,11 +515,11 @@ Partial Class Abono_Deuda
         Me.GrillaVentas.ReadOnly = True
         Me.GrillaVentas.RowHeadersVisible = False
         Me.GrillaVentas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
-        DataGridViewCellStyle5.BackColor = System.Drawing.Color.Azure
-        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.DarkGreen
-        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.DarkGreen
-        Me.GrillaVentas.RowsDefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle25.BackColor = System.Drawing.Color.Azure
+        DataGridViewCellStyle25.ForeColor = System.Drawing.Color.DarkGreen
+        DataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.DarkGreen
+        Me.GrillaVentas.RowsDefaultCellStyle = DataGridViewCellStyle25
         Me.GrillaVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.GrillaVentas.Size = New System.Drawing.Size(929, 87)
         Me.GrillaVentas.TabIndex = 0
@@ -567,8 +568,8 @@ Partial Class Abono_Deuda
         'ValorDocumento
         '
         Me.ValorDocumento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ValorDocumento.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ValorDocumento.DefaultCellStyle = DataGridViewCellStyle21
         Me.ValorDocumento.FillWeight = 30.0!
         Me.ValorDocumento.HeaderText = "Valor Documento"
         Me.ValorDocumento.Name = "ValorDocumento"
@@ -578,8 +579,8 @@ Partial Class Abono_Deuda
         'saldodoc
         '
         Me.saldodoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.saldodoc.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.saldodoc.DefaultCellStyle = DataGridViewCellStyle22
         Me.saldodoc.HeaderText = "Saldo Doc."
         Me.saldodoc.Name = "saldodoc"
         Me.saldodoc.ReadOnly = True
@@ -588,8 +589,8 @@ Partial Class Abono_Deuda
         'totalpago
         '
         Me.totalpago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.totalpago.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.totalpago.DefaultCellStyle = DataGridViewCellStyle23
         Me.totalpago.HeaderText = "Pagos"
         Me.totalpago.Name = "totalpago"
         Me.totalpago.ReadOnly = True
@@ -598,8 +599,8 @@ Partial Class Abono_Deuda
         'saldo
         '
         Me.saldo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.saldo.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.saldo.DefaultCellStyle = DataGridViewCellStyle24
         Me.saldo.HeaderText = "Nuevo Saldo"
         Me.saldo.Name = "saldo"
         Me.saldo.ReadOnly = True
@@ -672,30 +673,172 @@ Partial Class Abono_Deuda
         Me.GrillaPagos.AllowUserToAddRows = False
         Me.GrillaPagos.AllowUserToDeleteRows = False
         Me.GrillaPagos.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GrillaPagos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle26.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GrillaPagos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle26
         Me.GrillaPagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GrillaPagos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_pago, Me.FechaPago, Me.fechaconta, Me.docpago, Me.num, Me.monto, Me.tipodoc, Me.numdoc, Me.IdPedido, Me.ValorPagado, Me.ValorDAI, Me.fec_venc, Me.Glosa, Me.estado, Me.AbonoPedido, Me.PagoNoEditado, Me.rebajaDAI, Me.usuario})
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle10.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.GrillaPagos.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle30.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.GrillaPagos.DefaultCellStyle = DataGridViewCellStyle30
         Me.GrillaPagos.Location = New System.Drawing.Point(9, 389)
         Me.GrillaPagos.Name = "GrillaPagos"
         Me.GrillaPagos.ReadOnly = True
         Me.GrillaPagos.RowHeadersVisible = False
         Me.GrillaPagos.Size = New System.Drawing.Size(1318, 274)
         Me.GrillaPagos.TabIndex = 81
+        '
+        'id_pago
+        '
+        Me.id_pago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.id_pago.HeaderText = "Clave"
+        Me.id_pago.Name = "id_pago"
+        Me.id_pago.ReadOnly = True
+        Me.id_pago.Width = 68
+        '
+        'FechaPago
+        '
+        Me.FechaPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.FechaPago.FillWeight = 50.0!
+        Me.FechaPago.HeaderText = "Fecha Pago"
+        Me.FechaPago.Name = "FechaPago"
+        Me.FechaPago.ReadOnly = True
+        '
+        'fechaconta
+        '
+        Me.fechaconta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.fechaconta.HeaderText = "Fecha Contable"
+        Me.fechaconta.Name = "fechaconta"
+        Me.fechaconta.ReadOnly = True
+        Me.fechaconta.Width = 121
+        '
+        'docpago
+        '
+        Me.docpago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.docpago.HeaderText = "Forma Pago"
+        Me.docpago.Name = "docpago"
+        Me.docpago.ReadOnly = True
+        Me.docpago.Width = 101
+        '
+        'num
+        '
+        Me.num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.num.HeaderText = "N°"
+        Me.num.Name = "num"
+        Me.num.ReadOnly = True
+        Me.num.Width = 49
+        '
+        'monto
+        '
+        Me.monto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.monto.DefaultCellStyle = DataGridViewCellStyle27
+        Me.monto.HeaderText = "Valor"
+        Me.monto.Name = "monto"
+        Me.monto.ReadOnly = True
+        Me.monto.Width = 66
+        '
+        'tipodoc
+        '
+        Me.tipodoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.tipodoc.HeaderText = "Tipo Doc"
+        Me.tipodoc.Name = "tipodoc"
+        Me.tipodoc.ReadOnly = True
+        Me.tipodoc.Width = 61
+        '
+        'numdoc
+        '
+        Me.numdoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.numdoc.HeaderText = "N° Doc."
+        Me.numdoc.Name = "numdoc"
+        Me.numdoc.ReadOnly = True
+        Me.numdoc.Width = 76
+        '
+        'IdPedido
+        '
+        Me.IdPedido.HeaderText = "Nº Pedido"
+        Me.IdPedido.Name = "IdPedido"
+        Me.IdPedido.ReadOnly = True
+        '
+        'ValorPagado
+        '
+        Me.ValorPagado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ValorPagado.DefaultCellStyle = DataGridViewCellStyle28
+        Me.ValorPagado.FillWeight = 50.0!
+        Me.ValorPagado.HeaderText = "Valor Pagado"
+        Me.ValorPagado.Name = "ValorPagado"
+        Me.ValorPagado.ReadOnly = True
+        Me.ValorPagado.Width = 109
+        '
+        'ValorDAI
+        '
+        DataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ValorDAI.DefaultCellStyle = DataGridViewCellStyle29
+        Me.ValorDAI.HeaderText = "Diferencia DAI"
+        Me.ValorDAI.Name = "ValorDAI"
+        Me.ValorDAI.ReadOnly = True
+        '
+        'fec_venc
+        '
+        Me.fec_venc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.fec_venc.HeaderText = "Fecha Venc"
+        Me.fec_venc.Name = "fec_venc"
+        Me.fec_venc.ReadOnly = True
+        Me.fec_venc.Width = 99
+        '
+        'Glosa
+        '
+        Me.Glosa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.Glosa.HeaderText = "Glosa"
+        Me.Glosa.Name = "Glosa"
+        Me.Glosa.ReadOnly = True
+        Me.Glosa.Width = 70
+        '
+        'estado
+        '
+        Me.estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.estado.HeaderText = "Estado"
+        Me.estado.Name = "estado"
+        Me.estado.ReadOnly = True
+        Me.estado.Width = 77
+        '
+        'AbonoPedido
+        '
+        Me.AbonoPedido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.AbonoPedido.HeaderText = "Abono Pedido"
+        Me.AbonoPedido.Name = "AbonoPedido"
+        Me.AbonoPedido.ReadOnly = True
+        Me.AbonoPedido.Width = 112
+        '
+        'PagoNoEditado
+        '
+        Me.PagoNoEditado.HeaderText = "PagoNoEditado"
+        Me.PagoNoEditado.Name = "PagoNoEditado"
+        Me.PagoNoEditado.ReadOnly = True
+        Me.PagoNoEditado.Visible = False
+        '
+        'rebajaDAI
+        '
+        Me.rebajaDAI.HeaderText = "Rebaja DAI"
+        Me.rebajaDAI.Name = "rebajaDAI"
+        Me.rebajaDAI.ReadOnly = True
+        '
+        'usuario
+        '
+        Me.usuario.HeaderText = "Usuario"
+        Me.usuario.Name = "usuario"
+        Me.usuario.ReadOnly = True
         '
         'Label2
         '
@@ -805,9 +948,9 @@ Partial Class Abono_Deuda
         Me.Button4.ForeColor = System.Drawing.Color.SeaGreen
         Me.Button4.Image = Global.GestionVivero.My.Resources.Resources.Update
         Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button4.Location = New System.Drawing.Point(246, 667)
+        Me.Button4.Location = New System.Drawing.Point(233, 669)
         Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(177, 48)
+        Me.Button4.Size = New System.Drawing.Size(166, 48)
         Me.Button4.TabIndex = 107
         Me.Button4.Text = "Actualiza Abono Inicial"
         Me.Button4.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -820,10 +963,10 @@ Partial Class Abono_Deuda
         Me.Button3.ForeColor = System.Drawing.Color.Blue
         Me.Button3.Image = Global.GestionVivero.My.Resources.Resources.guardar_40x40
         Me.Button3.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button3.Location = New System.Drawing.Point(13, 667)
+        Me.Button3.Location = New System.Drawing.Point(13, 669)
         Me.Button3.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(177, 48)
+        Me.Button3.Size = New System.Drawing.Size(166, 48)
         Me.Button3.TabIndex = 106
         Me.Button3.Text = "Guardar Abonos"
         Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -836,10 +979,10 @@ Partial Class Abono_Deuda
         Me.btnEliminar.ForeColor = System.Drawing.Color.Red
         Me.btnEliminar.Image = Global.GestionVivero.My.Resources.Resources.eliminar_40x40
         Me.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnEliminar.Location = New System.Drawing.Point(945, 667)
+        Me.btnEliminar.Location = New System.Drawing.Point(1083, 669)
         Me.btnEliminar.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.btnEliminar.Name = "btnEliminar"
-        Me.btnEliminar.Size = New System.Drawing.Size(163, 48)
+        Me.btnEliminar.Size = New System.Drawing.Size(119, 48)
         Me.btnEliminar.TabIndex = 103
         Me.btnEliminar.Text = "Eliminar"
         Me.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -850,9 +993,9 @@ Partial Class Abono_Deuda
         Me.Button6.BackColor = System.Drawing.Color.White
         Me.Button6.Image = Global.GestionVivero.My.Resources.Resources.New_document
         Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button6.Location = New System.Drawing.Point(479, 667)
+        Me.Button6.Location = New System.Drawing.Point(453, 669)
         Me.Button6.Name = "Button6"
-        Me.Button6.Size = New System.Drawing.Size(177, 48)
+        Me.Button6.Size = New System.Drawing.Size(166, 48)
         Me.Button6.TabIndex = 112
         Me.Button6.Text = "Imprime Recibo de Pago"
         Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -925,9 +1068,9 @@ Partial Class Abono_Deuda
         Me.btnDevolucion.ForeColor = System.Drawing.Color.SeaGreen
         Me.btnDevolucion.Image = Global.GestionVivero.My.Resources.Resources.donaciones_40x40
         Me.btnDevolucion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDevolucion.Location = New System.Drawing.Point(712, 667)
+        Me.btnDevolucion.Location = New System.Drawing.Point(673, 669)
         Me.btnDevolucion.Name = "btnDevolucion"
-        Me.btnDevolucion.Size = New System.Drawing.Size(177, 48)
+        Me.btnDevolucion.Size = New System.Drawing.Size(166, 48)
         Me.btnDevolucion.TabIndex = 116
         Me.btnDevolucion.Text = "Devolución Abono"
         Me.btnDevolucion.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -940,10 +1083,10 @@ Partial Class Abono_Deuda
         Me.Button7.ForeColor = System.Drawing.Color.Red
         Me.Button7.Image = Global.GestionVivero.My.Resources.Resources.salir_40x40
         Me.Button7.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button7.Location = New System.Drawing.Point(1164, 669)
+        Me.Button7.Location = New System.Drawing.Point(1208, 669)
         Me.Button7.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.Button7.Name = "Button7"
-        Me.Button7.Size = New System.Drawing.Size(163, 48)
+        Me.Button7.Size = New System.Drawing.Size(119, 48)
         Me.Button7.TabIndex = 117
         Me.Button7.Text = "Salir"
         Me.Button7.TextAlign = System.Drawing.ContentAlignment.MiddleRight
@@ -1061,149 +1204,6 @@ Partial Class Abono_Deuda
         Me.Label15.TabIndex = 101
         Me.Label15.Text = "Línea de Crédito"
         '
-        'id_pago
-        '
-        Me.id_pago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.id_pago.HeaderText = "Clave"
-        Me.id_pago.Name = "id_pago"
-        Me.id_pago.ReadOnly = True
-        Me.id_pago.Width = 68
-        '
-        'FechaPago
-        '
-        Me.FechaPago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.FechaPago.FillWeight = 50.0!
-        Me.FechaPago.HeaderText = "Fecha Pago"
-        Me.FechaPago.Name = "FechaPago"
-        Me.FechaPago.ReadOnly = True
-        Me.FechaPago.Width = 109
-        '
-        'fechaconta
-        '
-        Me.fechaconta.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.fechaconta.HeaderText = "Fecha Contable"
-        Me.fechaconta.Name = "fechaconta"
-        Me.fechaconta.ReadOnly = True
-        Me.fechaconta.Width = 121
-        '
-        'docpago
-        '
-        Me.docpago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.docpago.HeaderText = "Forma Pago"
-        Me.docpago.Name = "docpago"
-        Me.docpago.ReadOnly = True
-        Me.docpago.Width = 101
-        '
-        'num
-        '
-        Me.num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.num.HeaderText = "N°"
-        Me.num.Name = "num"
-        Me.num.ReadOnly = True
-        Me.num.Width = 49
-        '
-        'monto
-        '
-        Me.monto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.monto.DefaultCellStyle = DataGridViewCellStyle7
-        Me.monto.HeaderText = "Valor"
-        Me.monto.Name = "monto"
-        Me.monto.ReadOnly = True
-        Me.monto.Width = 66
-        '
-        'tipodoc
-        '
-        Me.tipodoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.tipodoc.HeaderText = "Tipo Doc"
-        Me.tipodoc.Name = "tipodoc"
-        Me.tipodoc.ReadOnly = True
-        Me.tipodoc.Width = 61
-        '
-        'numdoc
-        '
-        Me.numdoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.numdoc.HeaderText = "N° Doc."
-        Me.numdoc.Name = "numdoc"
-        Me.numdoc.ReadOnly = True
-        Me.numdoc.Width = 76
-        '
-        'IdPedido
-        '
-        Me.IdPedido.HeaderText = "Nº Pedido"
-        Me.IdPedido.Name = "IdPedido"
-        Me.IdPedido.ReadOnly = True
-        '
-        'ValorPagado
-        '
-        Me.ValorPagado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ValorPagado.DefaultCellStyle = DataGridViewCellStyle8
-        Me.ValorPagado.FillWeight = 50.0!
-        Me.ValorPagado.HeaderText = "Valor Pagado"
-        Me.ValorPagado.Name = "ValorPagado"
-        Me.ValorPagado.ReadOnly = True
-        Me.ValorPagado.Width = 109
-        '
-        'ValorDAI
-        '
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ValorDAI.DefaultCellStyle = DataGridViewCellStyle9
-        Me.ValorDAI.HeaderText = "Diferencia DAI"
-        Me.ValorDAI.Name = "ValorDAI"
-        Me.ValorDAI.ReadOnly = True
-        '
-        'fec_venc
-        '
-        Me.fec_venc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.fec_venc.HeaderText = "Fecha Venc"
-        Me.fec_venc.Name = "fec_venc"
-        Me.fec_venc.ReadOnly = True
-        Me.fec_venc.Width = 99
-        '
-        'Glosa
-        '
-        Me.Glosa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.Glosa.HeaderText = "Glosa"
-        Me.Glosa.Name = "Glosa"
-        Me.Glosa.ReadOnly = True
-        Me.Glosa.Width = 70
-        '
-        'estado
-        '
-        Me.estado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.estado.HeaderText = "Estado"
-        Me.estado.Name = "estado"
-        Me.estado.ReadOnly = True
-        Me.estado.Width = 77
-        '
-        'AbonoPedido
-        '
-        Me.AbonoPedido.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        Me.AbonoPedido.HeaderText = "Abono Pedido"
-        Me.AbonoPedido.Name = "AbonoPedido"
-        Me.AbonoPedido.ReadOnly = True
-        Me.AbonoPedido.Width = 112
-        '
-        'PagoNoEditado
-        '
-        Me.PagoNoEditado.HeaderText = "PagoNoEditado"
-        Me.PagoNoEditado.Name = "PagoNoEditado"
-        Me.PagoNoEditado.ReadOnly = True
-        Me.PagoNoEditado.Visible = False
-        '
-        'rebajaDAI
-        '
-        Me.rebajaDAI.HeaderText = "Rebaja DAI"
-        Me.rebajaDAI.Name = "rebajaDAI"
-        Me.rebajaDAI.ReadOnly = True
-        '
-        'usuario
-        '
-        Me.usuario.HeaderText = "Usuario"
-        Me.usuario.Name = "usuario"
-        Me.usuario.ReadOnly = True
-        '
         'Abono_Deuda
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1217,7 +1217,6 @@ Partial Class Abono_Deuda
         Me.Controls.Add(Me.btnDevolucion)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button4)
-        Me.Controls.Add(Me.txtRutCli)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.GrillaPagos)
@@ -1240,7 +1239,6 @@ Partial Class Abono_Deuda
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
     Friend WithEvents GroupBox8 As System.Windows.Forms.GroupBox
