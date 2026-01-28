@@ -39,6 +39,13 @@ Partial Class Consulta_cheques_Pendientes
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtSaldoVencido = New System.Windows.Forms.TextBox()
+        Me.grpComentario = New System.Windows.Forms.GroupBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.txtComentarios = New System.Windows.Forms.TextBox()
+        Me.txtnum_doc_pago = New System.Windows.Forms.TextBox()
+        Me.txtidcliente = New System.Windows.Forms.TextBox()
+        Me.txtidfpago = New System.Windows.Forms.TextBox()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.num_doc = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.documento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.fvcto = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -46,10 +53,13 @@ Partial Class Consulta_cheques_Pendientes
         Me.Cliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.idFpago = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.glosapago = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.comentario = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.IdCliente = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.vendedor = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataGrilla, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpComentario.SuspendLayout()
         Me.SuspendLayout()
         '
         'GroupBox1
@@ -57,7 +67,7 @@ Partial Class Consulta_cheques_Pendientes
         Me.GroupBox1.Controls.Add(Me.DataGrilla)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 50)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(887, 342)
+        Me.GroupBox1.Size = New System.Drawing.Size(1220, 317)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Cheques y Letras"
@@ -69,7 +79,7 @@ Partial Class Consulta_cheques_Pendientes
         Me.DataGrilla.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells
         Me.DataGrilla.BackgroundColor = System.Drawing.Color.White
         Me.DataGrilla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DataGrilla.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.num_doc, Me.documento, Me.fvcto, Me.Saldo, Me.Cliente, Me.Fecha, Me.idFpago, Me.IdCliente, Me.vendedor})
+        Me.DataGrilla.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.num_doc, Me.documento, Me.fvcto, Me.Saldo, Me.Cliente, Me.Fecha, Me.idFpago, Me.glosapago, Me.comentario, Me.IdCliente, Me.vendedor})
         DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window
         DataGridViewCellStyle2.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
@@ -92,14 +102,14 @@ Partial Class Consulta_cheques_Pendientes
         DataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.DarkGreen
         Me.DataGrilla.RowsDefaultCellStyle = DataGridViewCellStyle3
         Me.DataGrilla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.DataGrilla.Size = New System.Drawing.Size(881, 323)
+        Me.DataGrilla.Size = New System.Drawing.Size(1214, 298)
         Me.DataGrilla.TabIndex = 1
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(674, 424)
+        Me.Label3.Location = New System.Drawing.Point(398, 409)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(112, 15)
         Me.Label3.TabIndex = 19
@@ -108,7 +118,7 @@ Partial Class Consulta_cheques_Pendientes
         'txt_DeudaTotal
         '
         Me.txt_DeudaTotal.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_DeudaTotal.Location = New System.Drawing.Point(793, 421)
+        Me.txt_DeudaTotal.Location = New System.Drawing.Point(517, 406)
         Me.txt_DeudaTotal.Name = "txt_DeudaTotal"
         Me.txt_DeudaTotal.ReadOnly = True
         Me.txt_DeudaTotal.Size = New System.Drawing.Size(100, 21)
@@ -117,7 +127,7 @@ Partial Class Consulta_cheques_Pendientes
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(18, 416)
+        Me.Button3.Location = New System.Drawing.Point(18, 396)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(117, 31)
         Me.Button3.TabIndex = 21
@@ -128,7 +138,7 @@ Partial Class Consulta_cheques_Pendientes
         '
         Me.dtp_fecha_Prorroga.Enabled = False
         Me.dtp_fecha_Prorroga.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtp_fecha_Prorroga.Location = New System.Drawing.Point(141, 419)
+        Me.dtp_fecha_Prorroga.Location = New System.Drawing.Point(141, 399)
         Me.dtp_fecha_Prorroga.Name = "dtp_fecha_Prorroga"
         Me.dtp_fecha_Prorroga.Size = New System.Drawing.Size(88, 20)
         Me.dtp_fecha_Prorroga.TabIndex = 22
@@ -136,7 +146,7 @@ Partial Class Consulta_cheques_Pendientes
         'btnprorroga
         '
         Me.btnprorroga.Enabled = False
-        Me.btnprorroga.Location = New System.Drawing.Point(265, 416)
+        Me.btnprorroga.Location = New System.Drawing.Point(235, 394)
         Me.btnprorroga.Name = "btnprorroga"
         Me.btnprorroga.Size = New System.Drawing.Size(117, 31)
         Me.btnprorroga.TabIndex = 23
@@ -181,7 +191,7 @@ Partial Class Consulta_cheques_Pendientes
         'Button5
         '
         Me.Button5.Image = Global.GestionVivero.My.Resources.Resources.salir_40x40
-        Me.Button5.Location = New System.Drawing.Point(860, 0)
+        Me.Button5.Location = New System.Drawing.Point(1180, 3)
         Me.Button5.Name = "Button5"
         Me.Button5.Size = New System.Drawing.Size(49, 49)
         Me.Button5.TabIndex = 29
@@ -191,7 +201,7 @@ Partial Class Consulta_cheques_Pendientes
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(666, 461)
+        Me.Label1.Location = New System.Drawing.Point(398, 461)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(120, 15)
         Me.Label1.TabIndex = 30
@@ -200,12 +210,76 @@ Partial Class Consulta_cheques_Pendientes
         'txtSaldoVencido
         '
         Me.txtSaldoVencido.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtSaldoVencido.Location = New System.Drawing.Point(793, 458)
+        Me.txtSaldoVencido.Location = New System.Drawing.Point(517, 458)
         Me.txtSaldoVencido.Name = "txtSaldoVencido"
         Me.txtSaldoVencido.ReadOnly = True
         Me.txtSaldoVencido.Size = New System.Drawing.Size(100, 21)
         Me.txtSaldoVencido.TabIndex = 31
         Me.txtSaldoVencido.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'grpComentario
+        '
+        Me.grpComentario.Controls.Add(Me.Button2)
+        Me.grpComentario.Controls.Add(Me.Button1)
+        Me.grpComentario.Controls.Add(Me.txtComentarios)
+        Me.grpComentario.Location = New System.Drawing.Point(649, 373)
+        Me.grpComentario.Name = "grpComentario"
+        Me.grpComentario.Size = New System.Drawing.Size(580, 127)
+        Me.grpComentario.TabIndex = 32
+        Me.grpComentario.TabStop = False
+        Me.grpComentario.Text = "Comentarios Documento"
+        Me.grpComentario.Visible = False
+        '
+        'Button1
+        '
+        Me.Button1.Image = Global.GestionVivero.My.Resources.Resources.guardar_40x40
+        Me.Button1.Location = New System.Drawing.Point(525, 21)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(49, 49)
+        Me.Button1.TabIndex = 33
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'txtComentarios
+        '
+        Me.txtComentarios.Location = New System.Drawing.Point(18, 21)
+        Me.txtComentarios.Multiline = True
+        Me.txtComentarios.Name = "txtComentarios"
+        Me.txtComentarios.ScrollBars = System.Windows.Forms.ScrollBars.Vertical
+        Me.txtComentarios.Size = New System.Drawing.Size(501, 100)
+        Me.txtComentarios.TabIndex = 1
+        '
+        'txtnum_doc_pago
+        '
+        Me.txtnum_doc_pago.Location = New System.Drawing.Point(278, 483)
+        Me.txtnum_doc_pago.Name = "txtnum_doc_pago"
+        Me.txtnum_doc_pago.Size = New System.Drawing.Size(37, 20)
+        Me.txtnum_doc_pago.TabIndex = 33
+        Me.txtnum_doc_pago.Visible = False
+        '
+        'txtidcliente
+        '
+        Me.txtidcliente.Location = New System.Drawing.Point(321, 483)
+        Me.txtidcliente.Name = "txtidcliente"
+        Me.txtidcliente.Size = New System.Drawing.Size(37, 20)
+        Me.txtidcliente.TabIndex = 34
+        Me.txtidcliente.Visible = False
+        '
+        'txtidfpago
+        '
+        Me.txtidfpago.Location = New System.Drawing.Point(364, 483)
+        Me.txtidfpago.Name = "txtidfpago"
+        Me.txtidfpago.Size = New System.Drawing.Size(37, 20)
+        Me.txtidfpago.TabIndex = 35
+        Me.txtidfpago.Visible = False
+        '
+        'Button2
+        '
+        Me.Button2.Image = Global.GestionVivero.My.Resources.Resources.eliminar_40x40
+        Me.Button2.Location = New System.Drawing.Point(525, 71)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(49, 49)
+        Me.Button2.TabIndex = 34
+        Me.Button2.UseVisualStyleBackColor = True
         '
         'num_doc
         '
@@ -266,6 +340,22 @@ Partial Class Consulta_cheques_Pendientes
         Me.idFpago.Visible = False
         Me.idFpago.Width = 72
         '
+        'glosapago
+        '
+        Me.glosapago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.glosapago.HeaderText = "Glosa"
+        Me.glosapago.Name = "glosapago"
+        Me.glosapago.ReadOnly = True
+        Me.glosapago.Width = 59
+        '
+        'comentario
+        '
+        Me.comentario.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader
+        Me.comentario.HeaderText = "Comentarios"
+        Me.comentario.Name = "comentario"
+        Me.comentario.ReadOnly = True
+        Me.comentario.Width = 90
+        '
         'IdCliente
         '
         Me.IdCliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
@@ -288,8 +378,12 @@ Partial Class Consulta_cheques_Pendientes
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(911, 515)
+        Me.ClientSize = New System.Drawing.Size(1234, 515)
         Me.ControlBox = False
+        Me.Controls.Add(Me.txtidfpago)
+        Me.Controls.Add(Me.txtidcliente)
+        Me.Controls.Add(Me.txtnum_doc_pago)
+        Me.Controls.Add(Me.grpComentario)
         Me.Controls.Add(Me.txtSaldoVencido)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Button5)
@@ -308,6 +402,8 @@ Partial Class Consulta_cheques_Pendientes
         Me.Text = "Cheques / Letras con Saldo Pendiente"
         Me.GroupBox1.ResumeLayout(False)
         CType(Me.DataGrilla, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpComentario.ResumeLayout(False)
+        Me.grpComentario.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -326,6 +422,13 @@ Partial Class Consulta_cheques_Pendientes
     Friend WithEvents Button5 As Button
     Friend WithEvents Label1 As Label
     Friend WithEvents txtSaldoVencido As TextBox
+    Friend WithEvents grpComentario As GroupBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents txtComentarios As TextBox
+    Friend WithEvents txtnum_doc_pago As TextBox
+    Friend WithEvents txtidcliente As TextBox
+    Friend WithEvents txtidfpago As TextBox
+    Friend WithEvents Button2 As Button
     Friend WithEvents num_doc As DataGridViewTextBoxColumn
     Friend WithEvents documento As DataGridViewTextBoxColumn
     Friend WithEvents fvcto As DataGridViewTextBoxColumn
@@ -333,6 +436,8 @@ Partial Class Consulta_cheques_Pendientes
     Friend WithEvents Cliente As DataGridViewTextBoxColumn
     Friend WithEvents Fecha As DataGridViewTextBoxColumn
     Friend WithEvents idFpago As DataGridViewTextBoxColumn
+    Friend WithEvents glosapago As DataGridViewTextBoxColumn
+    Friend WithEvents comentario As DataGridViewTextBoxColumn
     Friend WithEvents IdCliente As DataGridViewTextBoxColumn
     Friend WithEvents vendedor As DataGridViewTextBoxColumn
 End Class

@@ -1,5 +1,6 @@
-﻿Public Class Consulta_cheques_Pendientes
+﻿Imports System.Data.SqlClient
 
+Public Class Consulta_cheques_Pendientes
 
     Private Sub Genera_Consulta()
         Dim i As Integer
@@ -35,6 +36,8 @@
                 DataGrilla.Rows(i).Cells("idFpago").Value = datatbl("idFpago")
                 DataGrilla.Rows(i).Cells("IdCliente").Value = datatbl("IdCliente")
                 DataGrilla.Rows(i).Cells("vendedor").Value = datatbl("IdUsuario")
+                DataGrilla.Rows(i).Cells("glosapago").Value = datatbl("GlosaPago")
+                DataGrilla.Rows(i).Cells("comentario").Value = datatbl("Comentarios")
 
                 If datatbl("SaldoVencido") > 0 Then
                     With DataGrilla.Rows(i).Cells("Saldo").Style
@@ -113,6 +116,97 @@
     Private Sub txt_Password_TextChanged(sender As Object, e As EventArgs) Handles txt_Password.TextChanged
         If Len(txt_Password.Text) > 0 Then
             btnprorroga.Enabled = True
+        End If
+    End Sub
+
+    Private Sub DataGrilla_CellDoubleClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGrilla.CellDoubleClick
+        'Doble Click para Agregar Comentarios
+        If DataGrilla.Rows.Count > 0 Then
+            If e.ColumnIndex = 8 Then
+                txtComentarios.Text = DataGrilla.Rows(e.RowIndex).Cells("comentario").Value
+                grpComentario.Visible = True
+                txtnum_doc_pago.Text = DataGrilla.Rows(e.RowIndex).Cells("num_doc").Value
+                txtidcliente.Text = DataGrilla.Rows(e.RowIndex).Cells("IdCliente").Value
+                txtidfpago.Text = DataGrilla.Rows(e.RowIndex).Cells("idFpago").Value
+            End If
+        End If
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        If txtComentarios.Text <> Nothing Then
+            open()
+            Try
+                ' 1) UPDATE a CarteraDocumentos
+                Dim sql As String =
+                "UPDATE CarteraDocumentos SET " &
+                "    Comentarios = @comentarios, " &
+                "    FechaUltimoComentario = GETDATE() " &
+                "WHERE Num_Doc_Pago = @Num_Doc_Pago AND IdCliente = @IdCliente AND IdFpago = @IdFpago"
+
+                Dim command As SqlCommand = connection.CreateCommand()
+                command.CommandText = sql
+
+                ' Mejor pasar los valores numéricos como tal, no con Str()
+                command.Parameters.AddWithValue("@comentarios", txtComentarios.Text)
+                command.Parameters.AddWithValue("@Num_Doc_Pago", CInt(Val(txtnum_doc_pago.Text)))
+                command.Parameters.AddWithValue("@IdCliente", CInt(Val(txtidcliente.Text)))
+                command.Parameters.AddWithValue("@IdFpago", CInt(Val(txtidfpago.Text)))
+
+                command.ExecuteNonQuery()
+
+
+            Catch ex As Exception
+                MessageBox.Show("Error al actualizar Comentarios: " & ex.Message,
+                            "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Finally
+                close_conexion()
+                MessageBox.Show("Se han actualizado los comentarios.", "Documentos con Saldo Pendiente",
+                                MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                Genera_Consulta()
+
+
+            End Try
+
+            LimpiaCampos()
+
+        End If
+    End Sub
+    Private Sub LimpiaCampos()
+        txtComentarios.Clear()
+        txtnum_doc_pago.Clear()
+        txtidcliente.Clear()
+        txtidfpago.Clear()
+        grpComentario.Visible = False
+    End Sub
+
+
+    Private Sub DataGrilla_CellClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataGrilla.CellClick
+        LimpiaCampos()
+    End Sub
+
+    Private Sub Button2_Click(sender As Object, e As EventArgs) Handles Button2.Click
+
+        Dim sResp = MsgBox("¿Desea eliminar todos los comentarios registrados en el documento?. Confirme Eliminación.", MsgBoxStyle.YesNo, "Documentos Pendientes")
+
+        If sResp = MsgBoxResult.Yes Then
+            txtComentarios.Clear()
+            Dim sql As String =
+            "UPDATE CarteraDocumentos SET " &
+            "    Comentarios = NULL, " &
+            "    FechaUltimoComentario = NULL " &
+            "WHERE Num_Doc_Pago = @Num_Doc_Pago AND IdCliente = @IdCliente AND IdFpago = @IdFpago"
+            open()
+            Dim command As SqlCommand = connection.CreateCommand()
+            command.CommandText = sql
+            ' Mejor pasar los valores numéricos como tal, no con Str()
+            command.Parameters.AddWithValue("@Num_Doc_Pago", CInt(Val(txtnum_doc_pago.Text)))
+            command.Parameters.AddWithValue("@IdCliente", CInt(Val(txtidcliente.Text)))
+            command.Parameters.AddWithValue("@IdFpago", CInt(Val(txtidfpago.Text)))
+            command.ExecuteNonQuery()
+            close_conexion()
+            LimpiaCampos()
+            Genera_Consulta()
         End If
     End Sub
 End Class

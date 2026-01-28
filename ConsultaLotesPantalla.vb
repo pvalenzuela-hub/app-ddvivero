@@ -61,6 +61,8 @@ Public Class ConsultaLotesPantalla
                 GrillaLotes.Rows(i).Cells("ubicacion").Value = datatbl("Ubicacion")
                 GrillaLotes.Rows(i).Cells("numnave").Value = datatbl("Nave")
                 GrillaLotes.Rows(i).Cells("diasvivero").Value = datatbl("DiasVivero")
+                GrillaLotes.Rows(i).Cells("Periodo").Value = datatbl("Periodo")
+                GrillaLotes.Rows(i).Cells("Ciclo").Value = datatbl("Ciclo")
                 If Not IsDBNull(datatbl("FechaAutorizacionCliente")) Then
                     GrillaLotes.Rows(i).Cells("FechaAutorizacionCliente").Value = Format(datatbl("FechaAutorizacionCliente"), "dd/MM/yyyy")
                 End If
@@ -75,20 +77,6 @@ Public Class ConsultaLotesPantalla
         close_conexion()
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnReporteExcel.Click
-        'If cmbSemilla.SelectedIndex > -1 Then
-        '    Consulta_Lotes.txtIdSemilla.Text = cmbSemilla.SelectedValue
-        'Else
-        '    Consulta_Lotes.txtIdSemilla.Text = 0
-        'End If
-        'If cmbVariedad.SelectedIndex > -1 Then
-        '    Consulta_Lotes.txtIdVariedad.Text = cmbVariedad.SelectedValue
-        'Else
-        '    Consulta_Lotes.txtIdVariedad.Text = 0
-        'End If
-        'Consulta_Lotes.ChkTodo.Checked = chkTodo.Checked
-        'Consulta_Lotes.Show()
-
-
         Try
             If GrillaLotes.Rows.Count = 0 Then
                 MessageBox.Show("No hay datos para exportar.", "Reporte Excel", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -100,8 +88,6 @@ Public Class ConsultaLotesPantalla
         Catch ex As Exception
             MessageBox.Show("Error exportando a Excel: " & ex.Message, "Reporte Excel", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-
-
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
@@ -251,5 +237,16 @@ Public Class ConsultaLotesPantalla
         OrElse n.Contains("fechaautorizacion")
     End Function
 
+    Private Sub GrillaLotes_CellEndEdit(sender As Object, e As DataGridViewCellEventArgs) Handles GrillaLotes.CellEndEdit
 
+        If e.ColumnIndex = 19 Then
+            If Trim(GrillaLotes.Rows(e.RowIndex).Cells(e.ColumnIndex).Value) <> "" Then
+                Dim nDias As Integer = CInt(GrillaLotes.Rows(e.RowIndex).Cells(e.ColumnIndex).Value)
+                Dim dFechaSiembra As Date = GrillaLotes.Rows(e.RowIndex).Cells("fechaconteos").Value
+                Dim NuevaFecha As Date = DateAdd(DateInterval.Day, nDias, dFechaSiembra)
+                GrillaLotes.Rows(e.RowIndex).Cells("nuevafecha").Value = Format(NuevaFecha, "dd/MM/yyyy")
+            End If
+
+        End If
+    End Sub
 End Class

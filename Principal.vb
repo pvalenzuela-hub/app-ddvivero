@@ -442,7 +442,7 @@
     End Sub
 
     Private Sub ToolStripMenuItem23_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem23.Click
-        ConsultaCuentaGestion.Show()
+        InformeCCosto.Show()
     End Sub
 
     Private Sub ReporteLotesSinGuíasToolStripMenuItem_Click(sender As Object, e As EventArgs)

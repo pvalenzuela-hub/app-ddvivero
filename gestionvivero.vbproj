@@ -38,7 +38,7 @@
     </TargetFrameworkProfile>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>D:\publicar\viveroDD\ViveroDD_Version205\</PublishUrl>
+    <PublishUrl>D:\publicar\viveroDD\ViveroDD_Version207\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -54,7 +54,7 @@
     <MinimumRequiredVersion>1.0.0.7</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.html</WebPage>
-    <ApplicationRevision>206</ApplicationRevision>
+    <ApplicationRevision>208</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -488,12 +488,6 @@
       <DependentUpon>ConsultaControlSiembra.vb</DependentUpon>
     </Compile>
     <Compile Include="ConsultaControlSiembra.vb">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ConsultaCuentaGestion.Designer.vb">
-      <DependentUpon>ConsultaCuentaGestion.vb</DependentUpon>
-    </Compile>
-    <Compile Include="ConsultaCuentaGestion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ConsultaLotesPantalla.Designer.vb">
@@ -1001,6 +995,12 @@
       <DependentUpon>Imprime_Cartola_Cliente.vb</DependentUpon>
     </Compile>
     <Compile Include="Imprime_Cartola_Cliente.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InformeCCosto.Designer.vb">
+      <DependentUpon>InformeCCosto.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InformeCCosto.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Insumos.Designer.vb">
@@ -1675,9 +1675,6 @@
     <EmbeddedResource Include="ConsultaControlSiembra.resx">
       <DependentUpon>ConsultaControlSiembra.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ConsultaCuentaGestion.resx">
-      <DependentUpon>ConsultaCuentaGestion.vb</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ConsultaLotesPantalla.resx">
       <DependentUpon>ConsultaLotesPantalla.vb</DependentUpon>
     </EmbeddedResource>
@@ -1863,6 +1860,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Imprime_Cartola_Cliente.resx">
       <DependentUpon>Imprime_Cartola_Cliente.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InformeCCosto.rdlc" />
+    <EmbeddedResource Include="InformeCCosto.resx">
+      <DependentUpon>InformeCCosto.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Insumos.resx">
       <DependentUpon>Insumos.vb</DependentUpon>
@@ -2054,7 +2055,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Report10.rdlc" />
     <EmbeddedResource Include="Report11.rdlc" />
-    <EmbeddedResource Include="Report14.rdlc" />
     <EmbeddedResource Include="Report15.rdlc" />
     <EmbeddedResource Include="Report17.rdlc" />
     <EmbeddedResource Include="Report18.rdlc" />
