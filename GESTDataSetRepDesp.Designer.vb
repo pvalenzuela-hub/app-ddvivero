@@ -616,6 +616,8 @@ Partial Public Class GESTDataSetRepDesp
         
         Private columnOrden As Global.System.Data.DataColumn
         
+        Private columnCANTIDAD As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub New()
@@ -772,6 +774,14 @@ Partial Public Class GESTDataSetRepDesp
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public ReadOnly Property CANTIDADColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnCANTIDAD
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -808,9 +818,25 @@ Partial Public Class GESTDataSetRepDesp
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
-        Public Overloads Function AddSP_RepDespachoIdDespRow(ByVal Column1 As Integer, ByVal FechaDesp As String, ByVal NomChof As String, ByVal Patente As String, ByVal NumLote As Integer, ByVal Sector As String, ByVal Zona As String, ByVal Especie As String, ByVal Variedad As String, ByVal Band As Integer, ByVal AcdoCom As String, ByVal Cliente As String, ByVal Fono As String, ByVal ubicacion As String, ByVal Orden As Integer) As SP_RepDespachoIdDespRow
+        Public Overloads Function AddSP_RepDespachoIdDespRow( _
+                    ByVal Column1 As Integer,  _
+                    ByVal FechaDesp As String,  _
+                    ByVal NomChof As String,  _
+                    ByVal Patente As String,  _
+                    ByVal NumLote As Integer,  _
+                    ByVal Sector As String,  _
+                    ByVal Zona As String,  _
+                    ByVal Especie As String,  _
+                    ByVal Variedad As String,  _
+                    ByVal Band As Integer,  _
+                    ByVal AcdoCom As String,  _
+                    ByVal Cliente As String,  _
+                    ByVal Fono As String,  _
+                    ByVal ubicacion As String,  _
+                    ByVal Orden As Integer,  _
+                    ByVal CANTIDAD As Integer) As SP_RepDespachoIdDespRow
             Dim rowSP_RepDespachoIdDespRow As SP_RepDespachoIdDespRow = CType(Me.NewRow,SP_RepDespachoIdDespRow)
-            Dim columnValuesArray() As Object = New Object() {Column1, FechaDesp, NomChof, Patente, NumLote, Sector, Zona, Especie, Variedad, Band, AcdoCom, Cliente, Fono, ubicacion, Orden}
+            Dim columnValuesArray() As Object = New Object() {Column1, FechaDesp, NomChof, Patente, NumLote, Sector, Zona, Especie, Variedad, Band, AcdoCom, Cliente, Fono, ubicacion, Orden, CANTIDAD}
             rowSP_RepDespachoIdDespRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowSP_RepDespachoIdDespRow)
             Return rowSP_RepDespachoIdDespRow
@@ -848,6 +874,7 @@ Partial Public Class GESTDataSetRepDesp
             Me.columnFono = MyBase.Columns("Fono")
             Me.columnubicacion = MyBase.Columns("ubicacion")
             Me.columnOrden = MyBase.Columns("Orden")
+            Me.columnCANTIDAD = MyBase.Columns("CANTIDAD")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -883,6 +910,8 @@ Partial Public Class GESTDataSetRepDesp
             MyBase.Columns.Add(Me.columnubicacion)
             Me.columnOrden = New Global.System.Data.DataColumn("Orden", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnOrden)
+            Me.columnCANTIDAD = New Global.System.Data.DataColumn("CANTIDAD", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnCANTIDAD)
             Me.columnColumn1.ReadOnly = true
             Me.columnFechaDesp.ReadOnly = true
             Me.columnFechaDesp.MaxLength = 30
@@ -1337,6 +1366,21 @@ Partial Public Class GESTDataSetRepDesp
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Property CANTIDAD() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableSP_RepDespachoIdDesp.CANTIDADColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("El valor de la columna 'CANTIDAD' de la tabla 'SP_RepDespachoIdDesp' es DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableSP_RepDespachoIdDesp.CANTIDADColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Function IsColumn1Null() As Boolean
             Return Me.IsNull(Me.tableSP_RepDespachoIdDesp.Column1Column)
         End Function
@@ -1501,6 +1545,18 @@ Partial Public Class GESTDataSetRepDesp
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Public Sub SetOrdenNull()
             Me(Me.tableSP_RepDespachoIdDesp.OrdenColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Function IsCANTIDADNull() As Boolean
+            Return Me.IsNull(Me.tableSP_RepDespachoIdDesp.CANTIDADColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
+        Public Sub SetCANTIDADNull()
+            Me(Me.tableSP_RepDespachoIdDesp.CANTIDADColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -1918,6 +1974,7 @@ Namespace GESTDataSetRepDespTableAdapters
             tableMapping.ColumnMappings.Add("Fono", "Fono")
             tableMapping.ColumnMappings.Add("ubicacion", "ubicacion")
             tableMapping.ColumnMappings.Add("Orden", "Orden")
+            tableMapping.ColumnMappings.Add("CANTIDAD", "CANTIDAD")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         

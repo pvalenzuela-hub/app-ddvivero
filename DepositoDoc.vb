@@ -93,72 +93,70 @@ Public Class DepositoDoc
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
-        If Val(txtNumDocPago.Text) <= 0 Then
-            MsgBox("Debe Seleccionar Documento para el Depósito", MsgBoxStyle.Critical)
-            Exit Sub
-        End If
-        If Val(txt_ValorDeposito.Text) = 0 Then
-            MsgBox("Debe Ingresar Valor a Depositar", MsgBoxStyle.Critical)
-            Exit Sub
-        End If
-        If cmb_Banco.SelectedIndex = -1 Then
-            MsgBox("Debe Seleccionar Cuenta Bancaria", MsgBoxStyle.Critical)
-            Exit Sub
-        End If
-        If txt_Glosa.Text = Nothing Or Trim(txt_Glosa.Text) = "" Then
-            MsgBox("Debe ingresar glosa.", MsgBoxStyle.Critical)
-            Exit Sub
-        End If
-        If Val(txtIdClienteDocumento.Text) = 0 Then
-            MsgBox("Debe Seleccionar documento a Depositar!!!", MsgBoxStyle.Critical)
-            Exit Sub
-        End If
-        If txt_FPago.Text = Nothing OrElse txt_FPago.Text = "" Then
-            MsgBox("Debe Seleccionar documento a Depositar!!!", MsgBoxStyle.Critical)
-            Exit Sub
-        End If
 
-        '@Num_Doc_Pago varchar(50),
-        '@IdCliente int,
-        '@Fecha_Deposito datetime,
-        '@Valor_Depositado float,
-        '@Banco varchar(50),
-        '@DESCRIPCION varchar(50),
-        '@Glosa varchar(100)
+        If GrillaPagos.CurrentRow.Index >= 0 Then
 
-
-        sSsql = "SP_Actualiza_Documentos_X_Cobrar_Nuevo "
-        sSsql += Val(txtNumDocPago.Text).ToString() & ","
-        sSsql += txtIdClienteDocumento.Text.ToString() & ","
-        sSsql += "'" & Format(dtp_FechaDeposito.Value, "dd/MM/yyyy") & "',"
-        sSsql += Val(txt_ValorDeposito.Text).ToString & ","
-        sSsql += "'" & cmb_Banco.Text & "',"
-        sSsql += "'" & txt_FPago.Text & "',"
-        sSsql += "'" & txt_Glosa.Text & "'"
-        open()
-        command = connection.CreateCommand()
-        command.CommandText = sSsql
-        command.ExecuteNonQuery()
-        close_conexion()
-
-        ' Imprime Comprobante de pago
-        If Val(txt_ValorDeposito.Text) > 0 AndAlso Val(txtIdCliente.Text) > 0 Then
-            Dim sResp = MsgBox("Imprime Comprobante de Pago?", MsgBoxStyle.YesNo)
-            If sResp = MsgBoxResult.Yes Then
-                gIdCliente = Val(txtIdCliente.Text)
-                Emision_Comprobante(Val(txt_ValorDeposito.Text), Now.Date)
+            If Val(txtNumDocPago.Text) <= 0 Then
+                MsgBox("Debe Seleccionar Documento para el Depósito", MsgBoxStyle.Critical)
+                Exit Sub
             End If
+
+            If Val(txt_ValorDeposito.Text) = 0 Then
+                MsgBox("Debe Ingresar Valor a Depositar", MsgBoxStyle.Critical)
+                Exit Sub
+            End If
+            If cmb_Banco.SelectedIndex = -1 Then
+                MsgBox("Debe Seleccionar Cuenta Bancaria", MsgBoxStyle.Critical)
+                Exit Sub
+            End If
+            If txt_Glosa.Text = Nothing OrElse Trim(txt_Glosa.Text) = "" Then
+                MsgBox("Debe ingresar glosa.", MsgBoxStyle.Critical)
+                Exit Sub
+            End If
+            If Val(txtIdClienteDocumento.Text) = 0 Then
+                MsgBox("Debe Seleccionar documento a Depositar!!!", MsgBoxStyle.Critical)
+                Exit Sub
+            End If
+            If txt_FPago.Text = Nothing OrElse txt_FPago.Text = "" Then
+                MsgBox("Debe Seleccionar documento a Depositar!!!", MsgBoxStyle.Critical)
+                Exit Sub
+            End If
+
+            sSsql = "SP_Actualiza_Documentos_X_Cobrar_Nuevo "
+            sSsql += Val(txtNumDocPago.Text).ToString() & ","
+            sSsql += txtIdClienteDocumento.Text.ToString() & ","
+            sSsql += "'" & Format(dtp_FechaDeposito.Value, "dd/MM/yyyy") & "',"
+            sSsql += Val(txt_ValorDeposito.Text).ToString & ","
+            sSsql += "'" & cmb_Banco.Text & "',"
+            sSsql += "'" & txt_FPago.Text & "',"
+            sSsql += "'" & txt_Glosa.Text & "'"
+            open()
+            command = connection.CreateCommand()
+            command.CommandText = sSsql
+            command.ExecuteNonQuery()
+            close_conexion()
+
+            ' Imprime Comprobante de pago
+            If Val(txt_ValorDeposito.Text) > 0 AndAlso Val(txtIdCliente.Text) > 0 Then
+                Dim sResp = MsgBox("Imprime Comprobante de Pago?", MsgBoxStyle.YesNo)
+                If sResp = MsgBoxResult.Yes Then
+                    gIdCliente = Val(txtIdCliente.Text)
+                    Emision_Comprobante(Val(txt_ValorDeposito.Text), Now.Date)
+                End If
+            End If
+
+
+            MsgBox("Depósito Actualizado.", MsgBoxStyle.Information)
+            txt_Glosa.Clear()
+            txtNumDocPago.Clear()
+            txt_ValorDeposito.Clear()
+            cmb_Banco.SelectedIndex = -1
+            dLastValue = 0
+
+            Consulta_Documentos()
         End If
 
 
-        MsgBox("Depósito Actualizado.", MsgBoxStyle.Information)
-        txt_Glosa.Clear()
-        txtNumDocPago.Clear()
-        txt_ValorDeposito.Clear()
-        cmb_Banco.SelectedIndex = -1
-        dLastValue = 0
-
-        Consulta_Documentos()
     End Sub
 
 

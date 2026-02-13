@@ -19,8 +19,8 @@
     <OptionStrict>Off</OptionStrict>
     <OptionInfer>On</OptionInfer>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <ManifestCertificateThumbprint>D6209049F405874B21361BC96AE5DC129FD1019F</ManifestCertificateThumbprint>
-    <ManifestKeyFile>gestionvivero_5_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestCertificateThumbprint>7A27A32CE6BAC44B70CF9784ECBA98E6AB75511D</ManifestCertificateThumbprint>
+    <ManifestKeyFile>gestionvivero_6_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
     <TargetZone>LocalIntranet</TargetZone>
@@ -38,7 +38,7 @@
     </TargetFrameworkProfile>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>D:\publicar\viveroDD\ViveroDD_Version207\</PublishUrl>
+    <PublishUrl>D:\publicar\viveroDD\ViveroDD_Version208\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -54,7 +54,7 @@
     <MinimumRequiredVersion>1.0.0.7</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.html</WebPage>
-    <ApplicationRevision>208</ApplicationRevision>
+    <ApplicationRevision>209</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -2628,6 +2628,7 @@
     <None Include="gestionvivero_3_TemporaryKey.pfx" />
     <None Include="gestionvivero_4_TemporaryKey.pfx" />
     <None Include="gestionvivero_5_TemporaryKey.pfx" />
+    <None Include="gestionvivero_6_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
