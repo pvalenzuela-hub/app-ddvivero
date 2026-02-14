@@ -38,7 +38,7 @@
     </TargetFrameworkProfile>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>D:\publicar\viveroDD\ViveroDD_Version209\</PublishUrl>
+    <PublishUrl>D:\publicar\viveroDD\ViveroDD_Version210\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -54,7 +54,7 @@
     <MinimumRequiredVersion>1.0.0.7</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.html</WebPage>
-    <ApplicationRevision>210</ApplicationRevision>
+    <ApplicationRevision>211</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -677,6 +677,9 @@
     <Compile Include="DataVentas.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
+      <DependentUpon>DataVentas.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataVentas.vb">
       <DependentUpon>DataVentas.xsd</DependentUpon>
     </Compile>
     <Compile Include="DepositoDoc.Designer.vb">

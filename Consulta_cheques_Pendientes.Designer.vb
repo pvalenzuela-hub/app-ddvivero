@@ -40,12 +40,12 @@ Partial Class Consulta_cheques_Pendientes
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txtSaldoVencido = New System.Windows.Forms.TextBox()
         Me.grpComentario = New System.Windows.Forms.GroupBox()
+        Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.txtComentarios = New System.Windows.Forms.TextBox()
         Me.txtnum_doc_pago = New System.Windows.Forms.TextBox()
         Me.txtidcliente = New System.Windows.Forms.TextBox()
         Me.txtidfpago = New System.Windows.Forms.TextBox()
-        Me.Button2 = New System.Windows.Forms.Button()
         Me.num_doc = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.documento = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.fvcto = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -230,6 +230,15 @@ Partial Class Consulta_cheques_Pendientes
         Me.grpComentario.Text = "Comentarios Documento"
         Me.grpComentario.Visible = False
         '
+        'Button2
+        '
+        Me.Button2.Image = Global.GestionVivero.My.Resources.Resources.eliminar_40x40
+        Me.Button2.Location = New System.Drawing.Point(525, 71)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(49, 49)
+        Me.Button2.TabIndex = 34
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'Button1
         '
         Me.Button1.Image = Global.GestionVivero.My.Resources.Resources.guardar_40x40
@@ -272,15 +281,6 @@ Partial Class Consulta_cheques_Pendientes
         Me.txtidfpago.TabIndex = 35
         Me.txtidfpago.Visible = False
         '
-        'Button2
-        '
-        Me.Button2.Image = Global.GestionVivero.My.Resources.Resources.eliminar_40x40
-        Me.Button2.Location = New System.Drawing.Point(525, 71)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(49, 49)
-        Me.Button2.TabIndex = 34
-        Me.Button2.UseVisualStyleBackColor = True
-        '
         'num_doc
         '
         Me.num_doc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
@@ -318,10 +318,11 @@ Partial Class Consulta_cheques_Pendientes
         '
         'Cliente
         '
-        Me.Cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.Cliente.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
         Me.Cliente.HeaderText = "Cliente"
         Me.Cliente.Name = "Cliente"
         Me.Cliente.ReadOnly = True
+        Me.Cliente.Width = 64
         '
         'Fecha
         '
@@ -342,11 +343,10 @@ Partial Class Consulta_cheques_Pendientes
         '
         'glosapago
         '
-        Me.glosapago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
+        Me.glosapago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
         Me.glosapago.HeaderText = "Glosa"
         Me.glosapago.Name = "glosapago"
         Me.glosapago.ReadOnly = True
-        Me.glosapago.Width = 59
         '
         'comentario
         '

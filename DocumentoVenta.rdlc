@@ -357,13 +357,16 @@
               <Width>7.5637cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.90703cm</Width>
+              <Width>1.6785cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>2.90703cm</Width>
+              <Width>2.21778cm</Width>
             </TablixColumn>
             <TablixColumn>
-              <Width>3.19807cm</Width>
+              <Width>2.62057cm</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>2.57232cm</Width>
             </TablixColumn>
           </TablixColumns>
           <TablixRows>
@@ -392,6 +395,42 @@
                         </Paragraph>
                       </Paragraphs>
                       <rd:DefaultName>Textbox10</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <BackgroundColor>LightGrey</BackgroundColor>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox6">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>Bandejas</Value>
+                              <Style>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontWeight>Bold</FontWeight>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Center</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox6</rd:DefaultName>
                       <Style>
                         <Border>
                           <Color>LightGrey</Color>
@@ -554,6 +593,42 @@
                 </TablixCell>
                 <TablixCell>
                   <CellContents>
+                    <Textbox Name="Bandejas">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>=Fields!Bandejas.Value</Value>
+                              <Style>
+                                <FontFamily>Calibri</FontFamily>
+                                <FontSize>9pt</FontSize>
+                                <Format>#,0;(#,0)</Format>
+                              </Style>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Bandejas</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>Solid</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
                     <Textbox Name="Cantidad">
                       <CanGrow>true</CanGrow>
                       <KeepTogether>true</KeepTogether>
@@ -670,6 +745,7 @@
             <TablixMember />
             <TablixMember />
             <TablixMember />
+            <TablixMember />
           </TablixMembers>
         </TablixColumnHierarchy>
         <TablixRowHierarchy>
@@ -686,7 +762,7 @@
         <Top>3.57399cm</Top>
         <Left>0.39604cm</Left>
         <Height>1.2cm</Height>
-        <Width>16.57583cm</Width>
+        <Width>16.65287cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>
@@ -1059,7 +1135,7 @@
       </Border>
     </Style>
   </Body>
-  <Width>6.82675in</Width>
+  <Width>7.66609in</Width>
   <Page>
     <PageHeader>
       <Height>4.22898cm</Height>
@@ -1546,16 +1622,20 @@
         </Field>
         <Field Name="Precio">
           <DataField>Precio</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
+          <rd:TypeName>System.Double</rd:TypeName>
         </Field>
         <Field Name="Total">
           <DataField>Total</DataField>
           <rd:TypeName>System.Double</rd:TypeName>
         </Field>
+        <Field Name="Bandejas">
+          <DataField>Bandejas</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>DataVentas</rd:DataSetName>
-        <rd:SchemaPath>D:\REPOS\app-viveroelmontediaz\DataVentas.xsd</rd:SchemaPath>
+        <rd:SchemaPath>D:\REPOS\repo_DDvivero\app-ddvivero\DataVentas.xsd</rd:SchemaPath>
         <rd:TableName>SP_Lectura_Det_Factura</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>
