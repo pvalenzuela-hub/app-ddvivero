@@ -17,7 +17,7 @@
 
         DataCartola.Rows.Clear()
         sSsql = "SP_Cartola_Proveedor "
-        sSsql += "'" + txt_RutProveedor.Text + "'"
+        sSsql += "'" & txt_RutProveedor.Text & "'"
         open()
         command = connection.CreateCommand()
         command.CommandText = sSsql

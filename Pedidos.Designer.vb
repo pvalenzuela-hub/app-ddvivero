@@ -128,6 +128,8 @@ Partial Class Pedidos
         Me.Label42 = New System.Windows.Forms.Label()
         Me.txt_Comentarios = New System.Windows.Forms.TextBox()
         Me.GroupBox5 = New System.Windows.Forms.GroupBox()
+        Me.txtAbonoSugerido = New System.Windows.Forms.TextBox()
+        Me.Label5 = New System.Windows.Forms.Label()
         Me.Label9 = New System.Windows.Forms.Label()
         Me.txt_totalneto = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -163,8 +165,6 @@ Partial Class Pedidos
         Me.txtIdPedido = New System.Windows.Forms.TextBox()
         Me.txtAbonoInicial = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.txtAbonoSugerido = New System.Windows.Forms.TextBox()
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox4.SuspendLayout()
@@ -1304,6 +1304,29 @@ Partial Class Pedidos
         Me.GroupBox5.TabStop = False
         Me.GroupBox5.Text = "Total Pedido"
         '
+        'txtAbonoSugerido
+        '
+        Me.txtAbonoSugerido.BackColor = System.Drawing.Color.MidnightBlue
+        Me.txtAbonoSugerido.CausesValidation = False
+        Me.txtAbonoSugerido.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.txtAbonoSugerido.ForeColor = System.Drawing.Color.Yellow
+        Me.txtAbonoSugerido.Location = New System.Drawing.Point(100, 89)
+        Me.txtAbonoSugerido.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.txtAbonoSugerido.Name = "txtAbonoSugerido"
+        Me.txtAbonoSugerido.ReadOnly = True
+        Me.txtAbonoSugerido.Size = New System.Drawing.Size(86, 22)
+        Me.txtAbonoSugerido.TabIndex = 34
+        Me.txtAbonoSugerido.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(17, 94)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(77, 13)
+        Me.Label5.TabIndex = 33
+        Me.Label5.Text = "Valor a Abonar"
+        '
         'Label9
         '
         Me.Label9.AutoSize = True
@@ -1660,29 +1683,6 @@ Partial Class Pedidos
         Me.Label20.Size = New System.Drawing.Size(76, 13)
         Me.Label20.TabIndex = 117
         Me.Label20.Text = "Abono inicial $"
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(17, 94)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(77, 13)
-        Me.Label5.TabIndex = 33
-        Me.Label5.Text = "Valor a Abonar"
-        '
-        'txtAbonoSugerido
-        '
-        Me.txtAbonoSugerido.BackColor = System.Drawing.Color.MidnightBlue
-        Me.txtAbonoSugerido.CausesValidation = False
-        Me.txtAbonoSugerido.Font = New System.Drawing.Font("Arial", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txtAbonoSugerido.ForeColor = System.Drawing.Color.Yellow
-        Me.txtAbonoSugerido.Location = New System.Drawing.Point(100, 89)
-        Me.txtAbonoSugerido.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
-        Me.txtAbonoSugerido.Name = "txtAbonoSugerido"
-        Me.txtAbonoSugerido.ReadOnly = True
-        Me.txtAbonoSugerido.Size = New System.Drawing.Size(86, 22)
-        Me.txtAbonoSugerido.TabIndex = 34
-        Me.txtAbonoSugerido.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'Pedidos
         '
