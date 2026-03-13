@@ -196,6 +196,7 @@ Public Class Consulta_Cliente
                 DataCartola.Rows(i).Cells("Facturas").Value = datatbl("Facturas")
                 DataCartola.Rows(i).Cells("Ubicacion").Value = datatbl("Ubicacion")
                 DataCartola.Rows(i).Cells("Num_Nave").Value = datatbl("Num_Nave")
+                DataCartola.Rows(i).Cells("precio").Value = datatbl("Precio_Neto")
 
                 If datatbl("numDiasAutorizacionCliente") <= 0 AndAlso datatbl("numDiasAutorizacionCliente") > -10000 Then
                     DataCartola.Rows(i).DefaultCellStyle.BackColor = Color.Green
@@ -294,10 +295,6 @@ Public Class Consulta_Cliente
             bOK = False
             sMensaje = "Debe seleccionar sector"
         End If
-        'If cmb_Vendedor.SelectedIndex = -1 Then
-        '    bOK = False
-        '    sMensaje = "Debe Seleecionar Vendedor"
-        'End If
 
         If Not bOK Then
             MessageBox.Show(sMensaje)
@@ -319,7 +316,7 @@ Public Class Consulta_Cliente
     Private Sub Button6_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button6.Click
         gNOMBRE = txt_clientebuscar.Text
         gQuienLlama = 7
-        If chkCliente.Checked = True Then
+        If chkCliente.Checked Then
             BusquedaCliente.chkIncluyePrimerNombre.Checked = True
         Else
             BusquedaCliente.chkIncluyePrimerNombre.Checked = False
@@ -388,74 +385,7 @@ Public Class Consulta_Cliente
             End If
         End If
     End Sub
-    Private Sub Crear_Guia()
-        REM ************
-        REM EMISION GUIA
-        REM ************
-        Dim idCliente As Integer
-        Dim idVendedor As Integer
-        Dim dFechaGuia As Date = Now
-        Dim dPlantasRetiro As Double
-        Dim dSaldoBandeja As Double
-        Dim dPrecioNeto As Double
-        Dim dValorNetoGuia As Double
-        Dim dTotalAbonos As Double
-        Dim dValorTotalGuiaIVA As Double
 
-        REM Consulta datos del Lote
-        open()
-        sSsql = "SP_CONSULTA_DETALLE_LOTE "
-        sSsql += iNumLote.ToString
-
-        command = connection.CreateCommand()
-        command.CommandText = sSsql
-        datatbl = command.ExecuteReader()
-        If datatbl.HasRows Then
-            datatbl.Read()
-            idCliente = datatbl(30)
-            idVendedor = gIdVendedor
-            dPlantasRetiro = datatbl(31)
-            dSaldoBandeja = datatbl(76)
-            dPrecioNeto = datatbl(11)
-            dValorNetoGuia = Math.Round(dPlantasRetiro * dPrecioNeto, 0, MidpointRounding.AwayFromZero)
-            dTotalAbonos = datatbl(68)
-            dValorTotalGuiaIVA = Math.Round(dValorNetoGuia + (dValorNetoGuia * GIVA / 100), 0, MidpointRounding.AwayFromZero)
-            sNumNave = datatbl(40)
-            sUbicacion = datatbl(52)
-        Else
-
-            MsgBox("No Existe Lote N°:" & iNumLote.ToString)
-            close_conexion()
-            Exit Sub
-        End If
-
-        close_conexion()
-
-        sSsql = "SP_INSERTA_GUIA "
-        sSsql += iNumLote.ToString & ","
-        sSsql += idCliente.ToString & ","
-        sSsql += idVendedor.ToString & ","
-        sSsql += "'" + dFechaGuia.Date & "',"
-        sSsql += dPlantasRetiro.ToString & ","
-        sSsql += dSaldoBandeja.ToString & ","
-        sSsql += "0" & ","
-        sSsql += "'',"
-        sSsql += Reemplaza_Comas(dPrecioNeto.ToString) & ","
-        sSsql += "'" & "N" & "',"
-        sSsql += dValorNetoGuia.ToString & ","
-        sSsql += "0,"
-        sSsql += dValorTotalGuiaIVA.ToString & ","
-        sSsql += "0"
-        open()
-        command = connection.CreateCommand()
-        command.CommandText = sSsql
-        datatbl = command.ExecuteReader()
-        datatbl.Read()
-        iNumGuia = datatbl(0)
-        close_conexion()
-        Print_Guia_Individual.NumGuia.Text = iNumGuia
-        Print_Guia_Individual.Show()
-    End Sub
     Private Sub Recupera_Guia()
         open()
         sSsql = "SP_CONSULTA_GUIA "
@@ -560,33 +490,33 @@ Public Class Consulta_Cliente
     End Sub
 
     Private Sub Button3_Click(sender As Object, e As EventArgs) Handles btnGuias.Click
-        Dim i As Integer
-        sNumLotes = ""
-        For i = 0 To DataCartola.Rows.Count - 1
-            If DataCartola.Rows(i).Cells(0).Value = True And DataCartola.Rows(i).Cells("Nro_Guias").Value = Nothing Then
-                If sNumLotes <> "" Then
-                    sNumLotes += "," & DataCartola.Rows(i).Cells("IdPedidodet").Value.ToString
-                Else
-                    sNumLotes += DataCartola.Rows(i).Cells("IdPedidodet").Value.ToString
-                End If
-            End If
-        Next
-        txtSerieLotes.Text = sNumLotes
-        If txtSerieLotes.Text = "" Then
-            MsgBox("No existen Lotes seleccionados para Emisión de Guías.")
-        Else
-            Dim sResp = MsgBox("Confirmar Emisión de Guías", MsgBoxStyle.YesNo, "Confirma Emisión de Guías")
-            If sResp = MsgBoxResult.Yes Then
-                Me.DialogResult = System.Windows.Forms.DialogResult.OK
-                For i = 0 To DataCartola.Rows.Count - 1
-                    If DataCartola.Rows(i).Cells(0).Value = True Then
-                        iNumLote = DataCartola.Rows(i).Cells("IdPedidodet").Value
-                        Crear_Guia()
-                    End If
-                Next
-                CargaCartola(gIDCliente, 1)
-            End If
-        End If
+        'Dim i As Integer
+        'sNumLotes = ""
+        'For i = 0 To DataCartola.Rows.Count - 1
+        '    If DataCartola.Rows(i).Cells(0).Value = True And DataCartola.Rows(i).Cells("Nro_Guias").Value = Nothing Then
+        '        If sNumLotes <> "" Then
+        '            sNumLotes += "," & DataCartola.Rows(i).Cells("IdPedidodet").Value.ToString
+        '        Else
+        '            sNumLotes += DataCartola.Rows(i).Cells("IdPedidodet").Value.ToString
+        '        End If
+        '    End If
+        'Next
+        'txtSerieLotes.Text = sNumLotes
+        'If txtSerieLotes.Text = "" Then
+        '    MsgBox("No existen Lotes seleccionados para Emisión de Guías.")
+        'Else
+        '    Dim sResp = MsgBox("Confirmar Emisión de Guías", MsgBoxStyle.YesNo, "Confirma Emisión de Guías")
+        '    If sResp = MsgBoxResult.Yes Then
+        '        Me.DialogResult = System.Windows.Forms.DialogResult.OK
+        '        For i = 0 To DataCartola.Rows.Count - 1
+        '            If DataCartola.Rows(i).Cells(0).Value = True Then
+        '                iNumLote = DataCartola.Rows(i).Cells("IdPedidodet").Value
+        '                Crear_Guia()
+        '            End If
+        '        Next
+        '        CargaCartola(gIDCliente, 1)
+        '    End If
+        'End If
     End Sub
 
     Private Sub Button4_Click(sender As Object, e As EventArgs) Handles Button4.Click
@@ -775,4 +705,38 @@ Public Class Consulta_Cliente
         End If
         close_conexion()
     End Sub
+
+    Private Sub Button3_Click_1(sender As Object, e As EventArgs) Handles Button3.Click
+        CarritoCliente.CarritoLotes.Rows.Clear()
+        CarritoCliente.txtIdCliente.Text = txtIdcliente.Text
+        CarritoCliente.txtCliente.Text = txt_NOMBRES.Text & " " & txt_APELLIDOS.Text
+        Dim TotalBandeja As Integer
+        Dim TotalPlantas As Integer
+        Dim TotalFinal As Integer
+        For i = 0 To DataCartola.Rows.Count - 1
+            If DataCartola.Rows(i).Cells(0).Value = True And DataCartola.Rows(i).Cells("Nro_Guias").Value = Nothing Then
+                CarritoCliente.CarritoLotes.Rows.Add()
+                CarritoCliente.CarritoLotes.Rows(CarritoCliente.CarritoLotes.Rows.Count - 1).Cells("lote").Value = DataCartola.Rows(i).Cells("IdPedidodet").Value
+                CarritoCliente.CarritoLotes.Rows(CarritoCliente.CarritoLotes.Rows.Count - 1).Cells("semilla").Value = DataCartola.Rows(i).Cells("DESCRIP").Value
+                CarritoCliente.CarritoLotes.Rows(CarritoCliente.CarritoLotes.Rows.Count - 1).Cells("variedad").Value = DataCartola.Rows(i).Cells("Descripcion").Value
+                CarritoCliente.CarritoLotes.Rows(CarritoCliente.CarritoLotes.Rows.Count - 1).Cells("nave").Value = DataCartola.Rows(i).Cells("Num_Nave").Value
+                CarritoCliente.CarritoLotes.Rows(CarritoCliente.CarritoLotes.Rows.Count - 1).Cells("ubicacion").Value = DataCartola.Rows(i).Cells("ubicacion").Value
+                CarritoCliente.CarritoLotes.Rows(CarritoCliente.CarritoLotes.Rows.Count - 1).Cells("saldobandeja").Value = DataCartola.Rows(i).Cells("Saldo_Bandeja").Value
+                CarritoCliente.CarritoLotes.Rows(CarritoCliente.CarritoLotes.Rows.Count - 1).Cells("saldoplantas").Value = DataCartola.Rows(i).Cells("Saldo_Plantas").Value
+                CarritoCliente.CarritoLotes.Rows(CarritoCliente.CarritoLotes.Rows.Count - 1).Cells("tipobandeja").Value = DataCartola.Rows(i).Cells("TipoBandeja").Value
+                CarritoCliente.CarritoLotes.Rows(CarritoCliente.CarritoLotes.Rows.Count - 1).Cells("precio").Value = DataCartola.Rows(i).Cells("precio").Value
+                TotalBandeja += DataCartola.Rows(i).Cells("Saldo_Bandeja").Value
+                TotalPlantas += DataCartola.Rows(i).Cells("Saldo_Plantas").Value
+                TotalFinal += DataCartola.Rows(i).Cells("Saldo_Plantas").Value * DataCartola.Rows(i).Cells("precio").Value
+            End If
+        Next
+        TotalFinal = Math.Round(TotalFinal * 1.19, 0, MidpointRounding.AwayFromZero)
+        CarritoCliente.txtTotalBandeja.Text = Format(TotalBandeja, "###,###,##0")
+        CarritoCliente.txtTotalPlantas.Text = Format(TotalPlantas, "###,###,##0")
+        CarritoCliente.txtTotalFinal.Text = Format(TotalFinal, "$ ###,###,##0")
+
+        CarritoCliente.Show()
+    End Sub
+
+
 End Class

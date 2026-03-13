@@ -206,6 +206,7 @@ Public Class Abono_Deuda
         Dim SaldoDoc As Integer = 0
         Dim stitle As String = "Abono Deuda"
 
+
         For i As Integer = 0 To GrillaPagos.Rows.Count - 1
             If GrillaPagos.Rows(i).Cells("id_pago").Value = 0 Then
                 bAgregarPago = False
@@ -214,6 +215,12 @@ Public Class Abono_Deuda
         If Not bAgregarPago Then
             MsgBox("Existen Abonos Pendientes sin grabar. Debe Guardar Abonos antes de continuar.", MsgBoxStyle.Critical, stitle)
             bAgregarPago = False
+        End If
+
+        If (cmb_TIPO_PAGO.Text = "Letras por Cobrar" OrElse cmb_TIPO_PAGO.Text = "Cheques por Cobrar" OrElse cmb_TIPO_PAGO.Text = "Cheque por Cobrar al Día") AndAlso Val(txt_NumDocPago.Text) <= 0 Then
+            MsgBox("Debe ingresar N° Cheque o Letra según corresponda!!!", MsgBoxStyle.Critical, stitle)
+            bAgregarPago = False
+
         End If
 
         If cmb_TIPO_PAGO.SelectedIndex = -1 Then

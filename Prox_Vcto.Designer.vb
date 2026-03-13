@@ -234,8 +234,7 @@ Partial Class Prox_Vcto
         Me.AutoScaleDimensions = New System.Drawing.SizeF(7.0!, 15.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(1066, 512)
-        Me.ControlBox = False
+        Me.ClientSize = New System.Drawing.Size(1062, 508)
         Me.Controls.Add(Me.txt_SaldoVencido)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Label3)
@@ -244,7 +243,6 @@ Partial Class Prox_Vcto
         Me.Controls.Add(Me.GroupBox2)
         Me.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D
-        Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "Prox_Vcto"
         Me.ShowIcon = False
