@@ -112,10 +112,11 @@ Public Class ResumenDespacho
 
     Private Sub ResumenDespacho_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         'TODO: esta línea de código carga datos en la tabla 'GESTDataSet34.SP_CONSULTA_FULL_VENDEDOR' Puede moverla o quitarla según sea necesario.
-        Me.SP_CONSULTA_FULL_VENDEDORTableAdapter.Connection.ConnectionString = gSOURCE
+        'Me.SP_CONSULTA_FULL_VENDEDORTableAdapter.Connection.ConnectionString = gSOURCE
 
-        Me.SP_CONSULTA_FULL_VENDEDORTableAdapter.Fill(Me.GESTDataSet34.SP_CONSULTA_FULL_VENDEDOR)
+        'Me.SP_CONSULTA_FULL_VENDEDORTableAdapter.Fill(Me.GESTDataSet34.SP_CONSULTA_FULL_VENDEDOR)
         MostrarResumen(Despacho.txtSerieLotes.Text)
+
         open()
         command = connection.CreateCommand()
         sSsql = "Select IdVendedor From Vendedor Where IdUsuario='" & gUSER & "'"
@@ -124,7 +125,7 @@ Public Class ResumenDespacho
         datatbl.Read()
         gIdVendedor = datatbl(0)
         close_conexion()
-        cmbVendedor.SelectedValue = gIdVendedor
+        txtVendedor.Text = gIdVendedor
 
     End Sub
 
@@ -552,7 +553,5 @@ Public Class ResumenDespacho
         ePrint.Graphics.Dispose()
     End Sub
 
-    Private Sub GrillaResumen_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles GrillaResumen.CellContentClick
 
-    End Sub
 End Class

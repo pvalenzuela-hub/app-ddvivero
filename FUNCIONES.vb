@@ -129,6 +129,8 @@ Module FUNCIONES
     Public gTempoVER_Fin1 As String
     Public gTempoVER_Ini2 As String
     Public gTempoVER_Fin2 As String
+
+    Public gCuentaCaja As String
     Public Sub open()
 
         Dim connectionString As String = gSOURCE

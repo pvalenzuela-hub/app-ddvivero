@@ -115,6 +115,7 @@ Partial Class Principal
         Me.ToolStripMenuItem33 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem34 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ListadoDeudoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AjusteDAIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ComrpasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.IngresarToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.EliminarToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
@@ -131,7 +132,6 @@ Partial Class Principal
         Me.ConsultaGuíasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsultaLotesSinGuíasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ToolStripMenuItem16 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem17 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem23 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem26 = New System.Windows.Forms.ToolStripMenuItem()
@@ -186,8 +186,9 @@ Partial Class Principal
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.ToolStripMenuItem16 = New System.Windows.Forms.ToolStripMenuItem()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.AjusteDAIToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -777,6 +778,12 @@ Partial Class Principal
         Me.ListadoDeudoresToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
         Me.ListadoDeudoresToolStripMenuItem.Text = "Listado Deudores"
         '
+        'AjusteDAIToolStripMenuItem
+        '
+        Me.AjusteDAIToolStripMenuItem.Name = "AjusteDAIToolStripMenuItem"
+        Me.AjusteDAIToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
+        Me.AjusteDAIToolStripMenuItem.Text = "Ajuste DAI"
+        '
         'ComrpasToolStripMenuItem
         '
         Me.ComrpasToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.IngresarToolStripMenuItem1, Me.EliminarToolStripMenuItem2, Me.LibroDeComprasToolStripMenuItem, Me.ConsultaVencimientosToolStripMenuItem})
@@ -874,18 +881,12 @@ Partial Class Principal
         '
         'ToolStripMenuItem6
         '
-        Me.ToolStripMenuItem6.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem16, Me.ToolStripMenuItem17, Me.ToolStripMenuItem23, Me.ToolStripMenuItem26, Me.ToolStripMenuItem27, Me.ToolStripMenuItem29, Me.ToolStripSeparator5, Me.EntradasToolStripMenuItem, Me.ToolStripSeparator7, Me.ActualizaPagosClienteProveedorToolStripMenuItem, Me.SaldosDiariosToolStripMenuItem, Me.CierrePeríodoAnualToolStripMenuItem})
+        Me.ToolStripMenuItem6.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem16, Me.ToolStripMenuItem17, Me.ToolStripMenuItem23, Me.ToolStripMenuItem26, Me.ToolStripMenuItem27, Me.ToolStripMenuItem29, Me.ToolStripSeparator5, Me.EntradasToolStripMenuItem, Me.ToolStripSeparator7, Me.ActualizaPagosClienteProveedorToolStripMenuItem, Me.SaldosDiariosToolStripMenuItem, Me.CierrePeríodoAnualToolStripMenuItem, Me.CajaToolStripMenuItem})
         Me.ToolStripMenuItem6.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripMenuItem6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
         Me.ToolStripMenuItem6.Size = New System.Drawing.Size(89, 20)
         Me.ToolStripMenuItem6.Text = "Contabilidad"
-        '
-        'ToolStripMenuItem16
-        '
-        Me.ToolStripMenuItem16.Name = "ToolStripMenuItem16"
-        Me.ToolStripMenuItem16.Size = New System.Drawing.Size(313, 22)
-        Me.ToolStripMenuItem16.Text = "Ingreso Comprobante"
         '
         'ToolStripMenuItem17
         '
@@ -915,6 +916,7 @@ Partial Class Principal
         '
         'ToolStripMenuItem29
         '
+        Me.ToolStripMenuItem29.Enabled = False
         Me.ToolStripMenuItem29.Name = "ToolStripMenuItem29"
         Me.ToolStripMenuItem29.Size = New System.Drawing.Size(313, 22)
         Me.ToolStripMenuItem29.Text = "Mantención Plan Cuentas"
@@ -1259,6 +1261,12 @@ Partial Class Principal
         Me.SplitContainer1.SplitterDistance = 589
         Me.SplitContainer1.TabIndex = 11
         '
+        'ToolStripMenuItem16
+        '
+        Me.ToolStripMenuItem16.Name = "ToolStripMenuItem16"
+        Me.ToolStripMenuItem16.Size = New System.Drawing.Size(313, 22)
+        Me.ToolStripMenuItem16.Text = "Ingreso Comprobante"
+        '
         'PictureBox1
         '
         Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
@@ -1268,11 +1276,11 @@ Partial Class Principal
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
-        'AjusteDAIToolStripMenuItem
+        'CajaToolStripMenuItem
         '
-        Me.AjusteDAIToolStripMenuItem.Name = "AjusteDAIToolStripMenuItem"
-        Me.AjusteDAIToolStripMenuItem.Size = New System.Drawing.Size(262, 22)
-        Me.AjusteDAIToolStripMenuItem.Text = "Ajuste DAI"
+        Me.CajaToolStripMenuItem.Name = "CajaToolStripMenuItem"
+        Me.CajaToolStripMenuItem.Size = New System.Drawing.Size(313, 22)
+        Me.CajaToolStripMenuItem.Text = "Caja"
         '
         'Principal
         '
@@ -1361,7 +1369,6 @@ Partial Class Principal
     Friend WithEvents ToolStripMenuItem7 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem11 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ConsultaBitácoraToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents ToolStripMenuItem16 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem17 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripSeparator5 As System.Windows.Forms.ToolStripSeparator
     Friend WithEvents ToolStripSeparator6 As System.Windows.Forms.ToolStripSeparator
@@ -1455,7 +1462,6 @@ Partial Class Principal
     Friend WithEvents ConsultaPresupuestoToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents BalanceTributarioToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents LotesPorSembrarToolStripMenuItem1 As ToolStripMenuItem
-    Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents ReporteDeLotesToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents CToolStripMenuItem As ToolStripSeparator
     Friend WithEvents SubirInformaciónToolStripMenuItem As ToolStripMenuItem
@@ -1467,4 +1473,7 @@ Partial Class Principal
     Friend WithEvents ToolStripMenuItem32 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem34 As ToolStripMenuItem
     Friend WithEvents AjusteDAIToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripMenuItem16 As ToolStripMenuItem
+    Friend WithEvents CajaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents PictureBox1 As PictureBox
 End Class

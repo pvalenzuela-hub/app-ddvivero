@@ -22,7 +22,6 @@ Partial Class ResumenDespacho
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.components = New System.ComponentModel.Container()
         Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -34,16 +33,11 @@ Partial Class ResumenDespacho
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.cmbVendedor = New System.Windows.Forms.ComboBox()
-        Me.SPCONSULTAFULLVENDEDORBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.GESTDataSet34 = New GestionVivero.GESTDataSet34()
         Me.Label1 = New System.Windows.Forms.Label()
-        Me.SP_CONSULTA_FULL_VENDEDORTableAdapter = New GestionVivero.GESTDataSet34TableAdapters.SP_CONSULTA_FULL_VENDEDORTableAdapter()
         Me.PrintDialog1 = New System.Windows.Forms.PrintDialog()
+        Me.txtVendedor = New System.Windows.Forms.TextBox()
         Me.Panel1.SuspendLayout()
         CType(Me.GrillaResumen, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SPCONSULTAFULLVENDEDORBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GESTDataSet34, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Cancel_Button
@@ -133,29 +127,6 @@ Partial Class ResumenDespacho
         Me.Column4.ReadOnly = True
         Me.Column4.Width = 77
         '
-        'cmbVendedor
-        '
-        Me.cmbVendedor.DataSource = Me.SPCONSULTAFULLVENDEDORBindingSource
-        Me.cmbVendedor.DisplayMember = "NOMBRE"
-        Me.cmbVendedor.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
-        Me.cmbVendedor.Enabled = False
-        Me.cmbVendedor.FormattingEnabled = True
-        Me.cmbVendedor.Location = New System.Drawing.Point(67, 434)
-        Me.cmbVendedor.Name = "cmbVendedor"
-        Me.cmbVendedor.Size = New System.Drawing.Size(143, 21)
-        Me.cmbVendedor.TabIndex = 2
-        Me.cmbVendedor.ValueMember = "IdVendedor"
-        '
-        'SPCONSULTAFULLVENDEDORBindingSource
-        '
-        Me.SPCONSULTAFULLVENDEDORBindingSource.DataMember = "SP_CONSULTA_FULL_VENDEDOR"
-        Me.SPCONSULTAFULLVENDEDORBindingSource.DataSource = Me.GESTDataSet34
-        '
-        'GESTDataSet34
-        '
-        Me.GESTDataSet34.DataSetName = "GESTDataSet34"
-        Me.GESTDataSet34.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -165,13 +136,17 @@ Partial Class ResumenDespacho
         Me.Label1.TabIndex = 3
         Me.Label1.Text = "Vendedor"
         '
-        'SP_CONSULTA_FULL_VENDEDORTableAdapter
-        '
-        Me.SP_CONSULTA_FULL_VENDEDORTableAdapter.ClearBeforeFill = True
-        '
         'PrintDialog1
         '
         Me.PrintDialog1.UseEXDialog = True
+        '
+        'txtVendedor
+        '
+        Me.txtVendedor.Location = New System.Drawing.Point(68, 435)
+        Me.txtVendedor.Name = "txtVendedor"
+        Me.txtVendedor.ReadOnly = True
+        Me.txtVendedor.Size = New System.Drawing.Size(164, 20)
+        Me.txtVendedor.TabIndex = 4
         '
         'ResumenDespacho
         '
@@ -180,10 +155,10 @@ Partial Class ResumenDespacho
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.CancelButton = Me.Cancel_Button
         Me.ClientSize = New System.Drawing.Size(858, 475)
+        Me.Controls.Add(Me.txtVendedor)
         Me.Controls.Add(Me.Cancel_Button)
         Me.Controls.Add(Me.OK_Button)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.cmbVendedor)
         Me.Controls.Add(Me.Panel1)
         Me.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog
         Me.MaximizeBox = False
@@ -195,8 +170,6 @@ Partial Class ResumenDespacho
         Me.TopMost = True
         Me.Panel1.ResumeLayout(False)
         CType(Me.GrillaResumen, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SPCONSULTAFULLVENDEDORBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GESTDataSet34, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -209,11 +182,7 @@ Partial Class ResumenDespacho
     Friend WithEvents Column2 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column3 As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents Column4 As System.Windows.Forms.DataGridViewTextBoxColumn
-    Friend WithEvents cmbVendedor As System.Windows.Forms.ComboBox
     Friend WithEvents Label1 As System.Windows.Forms.Label
-    Friend WithEvents GESTDataSet34 As GestionVivero.GESTDataSet34
-    Friend WithEvents SPCONSULTAFULLVENDEDORBindingSource As System.Windows.Forms.BindingSource
-    Friend WithEvents SP_CONSULTA_FULL_VENDEDORTableAdapter As GestionVivero.GESTDataSet34TableAdapters.SP_CONSULTA_FULL_VENDEDORTableAdapter
     Friend WithEvents PrintDialog1 As System.Windows.Forms.PrintDialog
-
+    Friend WithEvents txtVendedor As TextBox
 End Class

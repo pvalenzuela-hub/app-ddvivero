@@ -764,4 +764,8 @@
     Private Sub AjusteDAIToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AjusteDAIToolStripMenuItem.Click
         Ajuste_DAI.Show()
     End Sub
+
+    Private Sub CajaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CajaToolStripMenuItem.Click
+        Caja.Show()
+    End Sub
 End Class

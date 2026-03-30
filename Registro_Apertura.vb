@@ -70,7 +70,7 @@ Public Class Registro_Apertura
     Private Sub Lectura_Saldo_Apertura()
         Dim i As Integer = 0
         sSsql = "SP_CONSULTA_CONTA_SaldosdiariosApertura "
-        sSsql += "'" + Format(dtp_FechaApertura.Value, "d") + "'"
+        sSsql += "'" & Format(dtp_FechaApertura.Value, "d") & "'"
         open()
         command = connection.CreateCommand()
         command.CommandText = sSsql

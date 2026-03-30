@@ -22,16 +22,16 @@ Partial Class Abono_Deuda
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle21 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox8 = New System.Windows.Forms.GroupBox()
         Me.txtTelefonos = New System.Windows.Forms.MaskedTextBox()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -515,11 +515,11 @@ Partial Class Abono_Deuda
         Me.GrillaVentas.ReadOnly = True
         Me.GrillaVentas.RowHeadersVisible = False
         Me.GrillaVentas.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
-        DataGridViewCellStyle25.BackColor = System.Drawing.Color.Azure
-        DataGridViewCellStyle25.ForeColor = System.Drawing.Color.DarkGreen
-        DataGridViewCellStyle25.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle25.SelectionForeColor = System.Drawing.Color.DarkGreen
-        Me.GrillaVentas.RowsDefaultCellStyle = DataGridViewCellStyle25
+        DataGridViewCellStyle5.BackColor = System.Drawing.Color.Azure
+        DataGridViewCellStyle5.ForeColor = System.Drawing.Color.DarkGreen
+        DataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.DarkGreen
+        Me.GrillaVentas.RowsDefaultCellStyle = DataGridViewCellStyle5
         Me.GrillaVentas.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
         Me.GrillaVentas.Size = New System.Drawing.Size(929, 87)
         Me.GrillaVentas.TabIndex = 0
@@ -568,8 +568,8 @@ Partial Class Abono_Deuda
         'ValorDocumento
         '
         Me.ValorDocumento.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ValorDocumento.DefaultCellStyle = DataGridViewCellStyle21
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ValorDocumento.DefaultCellStyle = DataGridViewCellStyle1
         Me.ValorDocumento.FillWeight = 30.0!
         Me.ValorDocumento.HeaderText = "Valor Documento"
         Me.ValorDocumento.Name = "ValorDocumento"
@@ -579,8 +579,8 @@ Partial Class Abono_Deuda
         'saldodoc
         '
         Me.saldodoc.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.saldodoc.DefaultCellStyle = DataGridViewCellStyle22
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.saldodoc.DefaultCellStyle = DataGridViewCellStyle2
         Me.saldodoc.HeaderText = "Saldo Doc."
         Me.saldodoc.Name = "saldodoc"
         Me.saldodoc.ReadOnly = True
@@ -589,8 +589,8 @@ Partial Class Abono_Deuda
         'totalpago
         '
         Me.totalpago.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.totalpago.DefaultCellStyle = DataGridViewCellStyle23
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.totalpago.DefaultCellStyle = DataGridViewCellStyle3
         Me.totalpago.HeaderText = "Pagos"
         Me.totalpago.Name = "totalpago"
         Me.totalpago.ReadOnly = True
@@ -599,8 +599,8 @@ Partial Class Abono_Deuda
         'saldo
         '
         Me.saldo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.saldo.DefaultCellStyle = DataGridViewCellStyle24
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.saldo.DefaultCellStyle = DataGridViewCellStyle4
         Me.saldo.HeaderText = "Nuevo Saldo"
         Me.saldo.Name = "saldo"
         Me.saldo.ReadOnly = True
@@ -673,24 +673,24 @@ Partial Class Abono_Deuda
         Me.GrillaPagos.AllowUserToAddRows = False
         Me.GrillaPagos.AllowUserToDeleteRows = False
         Me.GrillaPagos.BackgroundColor = System.Drawing.Color.White
-        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle26.BackColor = System.Drawing.SystemColors.Control
-        DataGridViewCellStyle26.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle26.ForeColor = System.Drawing.SystemColors.WindowText
-        DataGridViewCellStyle26.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle26.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle26.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.GrillaPagos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle26
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control
+        DataGridViewCellStyle6.Font = New System.Drawing.Font("Microsoft Sans Serif", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText
+        DataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.GrillaPagos.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle6
         Me.GrillaPagos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GrillaPagos.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.id_pago, Me.FechaPago, Me.fechaconta, Me.docpago, Me.num, Me.monto, Me.tipodoc, Me.numdoc, Me.IdPedido, Me.ValorPagado, Me.ValorDAI, Me.fec_venc, Me.Glosa, Me.estado, Me.AbonoPedido, Me.PagoNoEditado, Me.rebajaDAI, Me.usuario})
-        DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
-        DataGridViewCellStyle30.BackColor = System.Drawing.SystemColors.Window
-        DataGridViewCellStyle30.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle30.ForeColor = System.Drawing.SystemColors.ControlText
-        DataGridViewCellStyle30.SelectionBackColor = System.Drawing.SystemColors.Highlight
-        DataGridViewCellStyle30.SelectionForeColor = System.Drawing.SystemColors.HighlightText
-        DataGridViewCellStyle30.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.GrillaPagos.DefaultCellStyle = DataGridViewCellStyle30
+        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window
+        DataGridViewCellStyle10.Font = New System.Drawing.Font("Arial", 10.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.ControlText
+        DataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight
+        DataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText
+        DataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
+        Me.GrillaPagos.DefaultCellStyle = DataGridViewCellStyle10
         Me.GrillaPagos.Location = New System.Drawing.Point(9, 389)
         Me.GrillaPagos.Name = "GrillaPagos"
         Me.GrillaPagos.ReadOnly = True
@@ -741,8 +741,8 @@ Partial Class Abono_Deuda
         'monto
         '
         Me.monto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.monto.DefaultCellStyle = DataGridViewCellStyle27
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.monto.DefaultCellStyle = DataGridViewCellStyle7
         Me.monto.HeaderText = "Valor"
         Me.monto.Name = "monto"
         Me.monto.ReadOnly = True
@@ -773,8 +773,8 @@ Partial Class Abono_Deuda
         'ValorPagado
         '
         Me.ValorPagado.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells
-        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ValorPagado.DefaultCellStyle = DataGridViewCellStyle28
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ValorPagado.DefaultCellStyle = DataGridViewCellStyle8
         Me.ValorPagado.FillWeight = 50.0!
         Me.ValorPagado.HeaderText = "Valor Pagado"
         Me.ValorPagado.Name = "ValorPagado"
@@ -783,8 +783,8 @@ Partial Class Abono_Deuda
         '
         'ValorDAI
         '
-        DataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.ValorDAI.DefaultCellStyle = DataGridViewCellStyle29
+        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.ValorDAI.DefaultCellStyle = DataGridViewCellStyle9
         Me.ValorDAI.HeaderText = "Diferencia DAI"
         Me.ValorDAI.Name = "ValorDAI"
         Me.ValorDAI.ReadOnly = True
