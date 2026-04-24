@@ -190,9 +190,15 @@ Partial Class Principal
         Me.ToolStripMenuItem16 = New System.Windows.Forms.ToolStripMenuItem()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
 <<<<<<< HEAD
+<<<<<<< HEAD
         Me.CajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
 =======
 >>>>>>> 8cd4704 (cambios en caja)
+=======
+=======
+        Me.CajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+>>>>>>> 443404d5168b2449d88b8229e0cd640ee2e5f0e5
+>>>>>>> 4b3e025 (cambios en caja)
         Me.MenuStrip1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -1293,14 +1299,22 @@ Partial Class Principal
         Me.PictureBox1.TabStop = False
         '
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 4b3e025 (cambios en caja)
         'CajaToolStripMenuItem
         '
         Me.CajaToolStripMenuItem.Name = "CajaToolStripMenuItem"
         Me.CajaToolStripMenuItem.Size = New System.Drawing.Size(313, 22)
         Me.CajaToolStripMenuItem.Text = "Caja"
         '
+<<<<<<< HEAD
 =======
 >>>>>>> 8cd4704 (cambios en caja)
+=======
+>>>>>>> 443404d5168b2449d88b8229e0cd640ee2e5f0e5
+>>>>>>> 4b3e025 (cambios en caja)
         'Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(5.0!, 15.0!)

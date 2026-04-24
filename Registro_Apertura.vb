@@ -84,9 +84,18 @@ Public Class Registro_Apertura
 
     Private Sub Lectura_Saldo_Apertura()
         Dim i As Integer = 0
+<<<<<<< HEAD
         Dim saldoEsperado As Decimal = 0D
         Dim ctaCtble = CuentaCajaSeleccionada()
         Dim mensaje As String = String.Empty
+=======
+        sSsql = "SP_CONSULTA_CONTA_SaldosdiariosApertura "
+        sSsql += "'" & Format(dtp_FechaApertura.Value, "d") & "'"
+        open()
+        command = connection.CreateCommand()
+        command.CommandText = sSsql
+        datatbl = command.ExecuteReader()
+>>>>>>> 443404d5168b2449d88b8229e0cd640ee2e5f0e5
 
         If String.IsNullOrWhiteSpace(ctaCtble) Then
             MessageBox.Show("Debe seleccionar una caja para consultar la apertura.", "Apertura de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning)
