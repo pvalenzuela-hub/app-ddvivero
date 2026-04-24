@@ -389,6 +389,10 @@
         Cierra_Diario.Visible = True
     End Sub
 
+    Private Sub AdministracionCajaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AdministracionCajaToolStripMenuItem.Click
+        Caja_Administracion.Show()
+    End Sub
+
     Private Sub ListadoDeudoresToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListadoDeudoresToolStripMenuItem.Click
         Flujo_DocVentaNoDocumentado.Visible = True
     End Sub

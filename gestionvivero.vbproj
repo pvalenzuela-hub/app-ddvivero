@@ -19,8 +19,8 @@
     <OptionStrict>Off</OptionStrict>
     <OptionInfer>On</OptionInfer>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <ManifestCertificateThumbprint>8060A0E4B8573B282EFC955787547D25BA115EF0</ManifestCertificateThumbprint>
-    <ManifestKeyFile>gestionvivero_8_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestCertificateThumbprint>66D24DC3C2E32093CE683D5A84D963229ACB28B2</ManifestCertificateThumbprint>
+    <ManifestKeyFile>gestionvivero_9_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
     <TargetZone>LocalIntranet</TargetZone>
@@ -67,7 +67,7 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>..\..\..\EXE\viverodd\</OutputPath>
+    <OutputPath>C:\EXE\</OutputPath>
     <DocumentationFile>
     </DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
@@ -442,6 +442,12 @@
       <DependentUpon>Caja.vb</DependentUpon>
     </Compile>
     <Compile Include="Caja.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Caja_Administracion.Designer.vb">
+      <DependentUpon>Caja_Administracion.vb</DependentUpon>
+    </Compile>
+    <Compile Include="Caja_Administracion.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CambioPassword.Designer.vb">
@@ -1666,6 +1672,9 @@
     <EmbeddedResource Include="Caja.resx">
       <DependentUpon>Caja.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Caja_Administracion.resx">
+      <DependentUpon>Caja_Administracion.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CambioPassword.resx">
       <DependentUpon>CambioPassword.vb</DependentUpon>
     </EmbeddedResource>
@@ -2661,6 +2670,7 @@
     <None Include="gestionvivero_6_TemporaryKey.pfx" />
     <None Include="gestionvivero_7_TemporaryKey.pfx" />
     <None Include="gestionvivero_8_TemporaryKey.pfx" />
+    <None Include="gestionvivero_9_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -2673,9 +2683,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="connections.config.example" />
-    <None Include="connections.config" Condition="Exists('connections.config')">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="SpReporteLotesSinGuia.xsc">
       <DependentUpon>SpReporteLotesSinGuia.xsd</DependentUpon>
@@ -2688,6 +2695,12 @@
     <None Include="SpReporteLotesSinGuia.xss">
       <DependentUpon>SpReporteLotesSinGuia.xsd</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="connections.config" Condition="Exists('connections.config')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <PublishState>Include</PublishState>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

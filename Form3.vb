@@ -83,8 +83,6 @@ Public Class Form3
             Carga_CajasDiarias(_cmbCaja, gCuentaCaja)
         End If
 
-        AplicarCajaActiva()
-
         CrearCampoResumen("Saldo inicial", 20, 45, _txtSaldoInicial)
         CrearCampoResumen("Total ingresos", 190, 45, _txtTotalIngresos)
         CrearCampoResumen("Total egresos", 360, 45, _txtTotalEgresos)
@@ -111,6 +109,8 @@ Public Class Form3
         ReportViewer1.Visible = False
         SplitContainer1.Panel2.Controls.Clear()
         SplitContainer1.Panel2.Controls.Add(_grillaReporte)
+
+        AplicarCajaActiva()
     End Sub
 
     Private Sub CrearCampoResumen(ByVal titulo As String,

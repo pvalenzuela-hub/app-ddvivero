@@ -7,7 +7,7 @@
     Private Sub CargaVendedores()
         Dim i As Integer
         DataVendedor.Rows.Clear()
-        sSsql = "SP_CONSULTA_FULL_VENDEDOR"
+        sSsql = "SELECT IdVendedor, NOMBRE, PorComision, IdUsuario, ISNULL(EsCajero,0) AS EsCajero FROM VENDEDOR ORDER BY NOMBRE"
         open()
         command = connection.CreateCommand()
         command.CommandText = sSsql
@@ -16,9 +16,10 @@
             While datatbl.Read = True
                 DataVendedor.Rows.Add()
                 DataVendedor.Rows(i).Cells(0).Value = datatbl(0)
-                DataVendedor.Rows(i).Cells(1).Value = datatbl(3)
-                DataVendedor.Rows(i).Cells(2).Value = datatbl(1)
-                DataVendedor.Rows(i).Cells(3).Value = datatbl(4)
+                DataVendedor.Rows(i).Cells(1).Value = datatbl(1)
+                DataVendedor.Rows(i).Cells(2).Value = datatbl(2)
+                DataVendedor.Rows(i).Cells(3).Value = datatbl(3)
+                DataVendedor.Rows(i).Cells(4).Value = If(Convert.ToInt32(datatbl(4)) = 1, "Si", "No")
                 i += 1
             End While
         End If
@@ -33,6 +34,7 @@
         txt_Vendedor.Clear()
         txtUsuario.Clear()
         txtporcomis.Clear()
+        chkEsCajero.Checked = False
         txt_Vendedor.Focus()
     End Sub
 
@@ -42,16 +44,18 @@
     End Sub
 
     Private Sub ActualizaVendedor()
-        sSsql = "SP_ActualizaVendedor "
-        sSsql += Val(txt_Codigo.Text).ToString + ","
-        sSsql += "'" + txt_Vendedor.Text + "',"
-        sSsql += "'" + txtUsuario.Text + "',"
-        sSsql += Reemplaza_Comas(Val(txtporcomis.Text).ToString)
         open()
-        command = connection.CreateCommand()
-        command.CommandText = sSsql
-        command.ExecuteNonQuery()
-        close_conexion()
+        Try
+            command = connection.CreateCommand()
+            command.CommandText = "UPDATE VENDEDOR SET NOMBRE=@NOMBRE, PorComision=@PorComision, EsCajero=@EsCajero WHERE IdVendedor=@IdVendedor"
+            command.Parameters.AddWithValue("@IdVendedor", Val(txt_Codigo.Text))
+            command.Parameters.AddWithValue("@NOMBRE", txt_Vendedor.Text.Trim())
+            command.Parameters.AddWithValue("@PorComision", Val(txtporcomis.Text))
+            command.Parameters.AddWithValue("@EsCajero", If(chkEsCajero.Checked, 1, 0))
+            command.ExecuteNonQuery()
+        Finally
+            close_conexion()
+        End Try
         MsgBox("Vendedor ha sido Actualizado.")
         CargaVendedores()
     End Sub
@@ -103,10 +107,10 @@
         Dim FilaGrilla As Integer
         FilaGrilla = DataVendedor.CurrentRow.Index
         txt_Codigo.Text = DataVendedor.Rows(FilaGrilla).Cells(0).Value
-        txtUsuario.Text = DataVendedor.Rows(FilaGrilla).Cells(0).Value
         txt_Vendedor.Text = DataVendedor.Rows(FilaGrilla).Cells(1).Value
-        txtporcomis.Text = DataVendedor.Rows(FilaGrilla).Cells(2).Value
-        txtUsuario.Text = DataVendedor.Rows(FilaGrilla).Cells(3).Value
+        txtUsuario.Text = DataVendedor.Rows(FilaGrilla).Cells(2).Value
+        txtporcomis.Text = DataVendedor.Rows(FilaGrilla).Cells(3).Value
+        chkEsCajero.Checked = String.Equals(Convert.ToString(DataVendedor.Rows(FilaGrilla).Cells(4).Value), "Si", StringComparison.OrdinalIgnoreCase)
     End Sub
 
     Private Sub DataVendedor_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles DataVendedor.CellContentClick

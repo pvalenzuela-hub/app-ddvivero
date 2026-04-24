@@ -2,7 +2,6 @@
 Partial Class Vendedores
     Inherits System.Windows.Forms.Form
 
-    'Form reemplaza a Dispose para limpiar la lista de componentes.
     <System.Diagnostics.DebuggerNonUserCode()> _
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
@@ -14,12 +13,8 @@ Partial Class Vendedores
         End Try
     End Sub
 
-    'Requerido por el Diseñador de Windows Forms
     Private components As System.ComponentModel.IContainer
 
-    'NOTA: el Diseñador de Windows Forms necesita el siguiente procedimiento
-    'Se puede modificar usando el Diseñador de Windows Forms.  
-    'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
@@ -31,6 +26,7 @@ Partial Class Vendedores
         Me.Button5 = New System.Windows.Forms.Button()
         Me.txtUsuario = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
+        Me.chkEsCajero = New System.Windows.Forms.CheckBox()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
@@ -42,6 +38,7 @@ Partial Class Vendedores
         Me.Vendedor = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -65,6 +62,7 @@ Partial Class Vendedores
         Me.SplitContainer1.Panel1.Controls.Add(Me.Button5)
         Me.SplitContainer1.Panel1.Controls.Add(Me.txtUsuario)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Label2)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.chkEsCajero)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Button4)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Button3)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Button2)
@@ -131,6 +129,7 @@ Partial Class Vendedores
         Me.txtUsuario.Location = New System.Drawing.Point(207, 69)
         Me.txtUsuario.MaxLength = 10
         Me.txtUsuario.Name = "txtUsuario"
+        Me.txtUsuario.ReadOnly = True
         Me.txtUsuario.Size = New System.Drawing.Size(259, 20)
         Me.txtUsuario.TabIndex = 7
         '
@@ -142,6 +141,16 @@ Partial Class Vendedores
         Me.Label2.Size = New System.Drawing.Size(43, 13)
         Me.Label2.TabIndex = 6
         Me.Label2.Text = "Usuario"
+        '
+        'chkEsCajero
+        '
+        Me.chkEsCajero.AutoSize = True
+        Me.chkEsCajero.Location = New System.Drawing.Point(207, 175)
+        Me.chkEsCajero.Name = "chkEsCajero"
+        Me.chkEsCajero.Size = New System.Drawing.Size(77, 17)
+        Me.chkEsCajero.TabIndex = 13
+        Me.chkEsCajero.Text = "Es Cajero"
+        Me.chkEsCajero.UseVisualStyleBackColor = True
         '
         'Button4
         '
@@ -214,7 +223,7 @@ Partial Class Vendedores
         Me.DataVendedor.AllowUserToDeleteRows = False
         Me.DataVendedor.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
         Me.DataVendedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataVendedor.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codigo, Me.Vendedor, Me.Column1, Me.Column2})
+        Me.DataVendedor.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codigo, Me.Vendedor, Me.Column1, Me.Column2, Me.Column3})
         Me.DataVendedor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataVendedor.Location = New System.Drawing.Point(0, 0)
         Me.DataVendedor.Name = "DataVendedor"
@@ -251,6 +260,12 @@ Partial Class Vendedores
         Me.Column2.Name = "Column2"
         Me.Column2.ReadOnly = True
         '
+        'Column3
+        '
+        Me.Column3.HeaderText = "EsCajero"
+        Me.Column3.Name = "Column3"
+        Me.Column3.ReadOnly = True
+        '
         'Vendedores
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -267,8 +282,8 @@ Partial Class Vendedores
         Me.SplitContainer1.ResumeLayout(False)
         CType(Me.DataVendedor, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
-
     End Sub
+
     Friend WithEvents SplitContainer1 As System.Windows.Forms.SplitContainer
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
@@ -288,4 +303,6 @@ Partial Class Vendedores
     Friend WithEvents Vendedor As DataGridViewTextBoxColumn
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents chkEsCajero As CheckBox
 End Class

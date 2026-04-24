@@ -146,6 +146,7 @@ Partial Class Principal
         Me.SaldosDiariosToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AperturaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CierreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AdministracionCajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CierrePeríodoAnualToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem13 = New System.Windows.Forms.ToolStripMenuItem()
@@ -191,6 +192,7 @@ Partial Class Principal
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         Me.CajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
 =======
 >>>>>>> 8cd4704 (cambios en caja)
@@ -199,6 +201,11 @@ Partial Class Principal
         Me.CajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
 >>>>>>> 443404d5168b2449d88b8229e0cd640ee2e5f0e5
 >>>>>>> 4b3e025 (cambios en caja)
+=======
+
+        Me.CajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+
+>>>>>>> f73bfdb (add cashier box administration)
         Me.MenuStrip1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -1300,9 +1307,12 @@ Partial Class Principal
         '
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 =======
 >>>>>>> 4b3e025 (cambios en caja)
+=======
+>>>>>>> f73bfdb (add cashier box administration)
         'CajaToolStripMenuItem
         '
         Me.CajaToolStripMenuItem.Name = "CajaToolStripMenuItem"
@@ -1310,11 +1320,14 @@ Partial Class Principal
         Me.CajaToolStripMenuItem.Text = "Caja"
         '
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> 8cd4704 (cambios en caja)
 =======
 >>>>>>> 443404d5168b2449d88b8229e0cd640ee2e5f0e5
 >>>>>>> 4b3e025 (cambios en caja)
+=======
+>>>>>>> f73bfdb (add cashier box administration)
         'Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(5.0!, 15.0!)
@@ -1417,6 +1430,7 @@ Partial Class Principal
     Friend WithEvents SaldosDiariosToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AperturaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CierreToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents AdministracionCajaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ListadoDeudoresToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem5 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem19 As System.Windows.Forms.ToolStripMenuItem

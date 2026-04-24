@@ -299,7 +299,7 @@ Public Class Abono_Deuda
                     End If
 
                 End If
-                End If
+            End If
         End If
         If bAgregarPago Then
             Aplicar_Pago(SaldoDoc)
@@ -779,18 +779,6 @@ Public Class Abono_Deuda
         Me.Close()
     End Sub
 
-    Private Sub txt_MontoDoc_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles txt_MontoDoc.MaskInputRejected
-
-    End Sub
-
-    Private Sub txt_IdCliente_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles txt_IdCliente.MaskInputRejected
-
-    End Sub
-
-    Private Sub txt_NombreCliente_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles txt_NombreCliente.MaskInputRejected
-
-    End Sub
-
     Private Sub AseguraColumnaCajaPago()
         If GrillaPagos.Columns.Contains(ColumnaCajaPago) Then
             Return
@@ -865,6 +853,11 @@ Public Class Abono_Deuda
 
             Dim mensaje As String = String.Empty
             If Not EstableceCajaActiva(Convert.ToString(cmbCaja.SelectedValue), mensaje) Then
+                If mensaje.IndexOf("clave duplicada", StringComparison.OrdinalIgnoreCase) >= 0 OrElse
+                   mensaje.IndexOf("duplicada", StringComparison.OrdinalIgnoreCase) >= 0 OrElse
+                   mensaje.IndexOf("asignada hoy a otro usuario", StringComparison.OrdinalIgnoreCase) >= 0 Then
+                    mensaje = "La caja seleccionada ya está asignada hoy o quedó en un estado inconsistente. Intente con otra caja o libere la actual desde Administración de Caja."
+                End If
                 MessageBox.Show(mensaje, "Selección de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning)
                 Return False
             End If
@@ -894,6 +887,8 @@ Public Class Abono_Deuda
         End If
 
         If String.IsNullOrWhiteSpace(gCuentaCaja) Then
+            MessageBox.Show("La caja activa fue liberada o no está asignada. Debe seleccionar una caja antes de registrar un pago en efectivo.",
+                            "Abono Deuda", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Return SeleccionarCajaActiva(True)
         End If
 

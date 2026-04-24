@@ -395,7 +395,7 @@ Module FUNCIONES
                 cmd.CommandText = "SP_CONSULTA_CAJA_ACTIVA_USUARIO"
                 cmd.CommandType = CommandType.StoredProcedure
                 cmd.Parameters.Add("@IdUsuario", SqlDbType.VarChar, 10).Value = idUsuario.Trim()
-                cmd.Parameters.Add("@Fecha_Trabajo", SqlDbType.Date).Value = Date.Today
+                'cmd.Parameters.Add("@Fecha_Trabajo", SqlDbType.Date).Value = Date.Today
 
                 Dim resultado = cmd.ExecuteScalar()
                 If resultado Is Nothing OrElse resultado Is DBNull.Value Then
@@ -421,9 +421,9 @@ Module FUNCIONES
                 cmd.CommandText = "SP_ACTUALIZA_CAJA_ACTIVA_USUARIO"
                 cmd.CommandType = CommandType.StoredProcedure
                 cmd.Parameters.Add("@IdUsuario", SqlDbType.VarChar, 10).Value = idUsuario.Trim()
-                cmd.Parameters.Add("@Fecha_Trabajo", SqlDbType.Date).Value = Date.Today
+                ' cmd.Parameters.Add("@Fecha_Trabajo", SqlDbType.Date).Value = Date.Today
 
-                Dim pCaja = cmd.Parameters.Add("@Cta_Caja_Activa", SqlDbType.VarChar, 7)
+                Dim pCaja = cmd.Parameters.Add("@CtaCaja", SqlDbType.VarChar, 7)
                 pCaja.Value = If(String.IsNullOrWhiteSpace(ctaCtble), CType(DBNull.Value, Object), ctaCtble.Trim())
 
                 Using reader = cmd.ExecuteReader()
@@ -452,6 +452,58 @@ Module FUNCIONES
 
         gCuentaCaja = nuevaCaja
         Return True
+    End Function
+    Public Function EstableceCajaActivaUsuario(ByVal idUsuario As String, ByVal ctaCtble As String, ByRef mensaje As String) As Boolean
+        Dim nuevaCaja = If(String.IsNullOrWhiteSpace(ctaCtble), String.Empty, ctaCtble.Trim())
+
+        If Not GuardarCajaActivaUsuarioSP(idUsuario, nuevaCaja, mensaje) Then
+            Return False
+        End If
+
+        If String.Equals(idUsuario, gUSER, StringComparison.OrdinalIgnoreCase) Then
+            gCuentaCaja = nuevaCaja
+        End If
+
+        Return True
+    End Function
+    Public Function LiberaCajaActivaUsuarioSP(ByVal idUsuario As String, ByRef mensaje As String) As Boolean
+        If String.IsNullOrWhiteSpace(idUsuario) Then
+            mensaje = "Usuario no válido."
+            Return False
+        End If
+
+        open()
+
+        Try
+            Using cmd As SqlCommand = connection.CreateCommand()
+                cmd.CommandText = "SP_LIBERA_CAJA_ACTIVA_USUARIO"
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.Add("@IdUsuario", SqlDbType.VarChar, 10).Value = idUsuario.Trim()
+
+                Dim pMotivo = cmd.Parameters.Add("@Motivo", SqlDbType.VarChar, 250)
+                pMotivo.Value = CType(DBNull.Value, Object)
+
+                Using reader = cmd.ExecuteReader()
+                    If reader.Read() Then
+                        Dim resultado = Convert.ToInt32(reader("Resultado"))
+                        mensaje = Convert.ToString(reader("Mensaje"))
+                        If resultado = 1 Then
+                            If String.Equals(gUSER, idUsuario.Trim(), StringComparison.OrdinalIgnoreCase) Then
+                                gCuentaCaja = String.Empty
+                            End If
+                            Return True
+                        End If
+
+                        Return False
+                    End If
+                End Using
+
+                mensaje = "No fue posible liberar la caja activa."
+                Return False
+            End Using
+        Finally
+            close_conexion()
+        End Try
     End Function
     Public Function Reemplaza_Comas(ByRef sValor As String) As String
         Dim NewValor As String
