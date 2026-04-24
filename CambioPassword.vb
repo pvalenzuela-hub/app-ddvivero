@@ -21,6 +21,11 @@ Public Class CambioPassword
     Function ValidaNuevaPassWord() As Boolean
         Dim bRetorno As Boolean = True
 
+        If String.IsNullOrWhiteSpace(txtNuevaPassword.Text) Then
+            MsgBox("La nueva contraseña no puede estar vacía.", MsgBoxStyle.Exclamation)
+            bRetorno = False
+        End If
+
         If txtNuevaPassword.Text <> txtNuevaPassword2.Text Then
             MsgBox(" Contraseñas nuevas no coinciden!!!.", MsgBoxStyle.Exclamation)
             bRetorno = False
@@ -30,46 +35,36 @@ Public Class CambioPassword
 
     End Function
     Function ValidaPassword() As Boolean
-        Dim bRetorno As Boolean = True
+        Dim resultado = ValidaUsuarioSP(gUSER, txtpasswordActual.Text)
 
-        sSsql = "SP_ValidaUsuario "
-        sSsql += "'" + gUSER + "',"
-        sSsql += "'" + txtpasswordActual.Text + "'"
-        open()
-        command = connection.CreateCommand()
-        command.CommandText = sSsql
-        datatbl = command.ExecuteReader()
-        If datatbl.HasRows Then
-            datatbl.Read()
-            If datatbl(0) = 1 Then
+        Select Case resultado
+            Case ResultadoValidaUsuario.Correcto
+                Return True
+            Case ResultadoValidaUsuario.UsuarioNoRegistrado
                 MsgBox("Usuario no registrado.", MsgBoxStyle.Exclamation)
-                bRetorno = False
-            End If
-        Else
-            MsgBox("Contraseña Actual no coincide.", MsgBoxStyle.Exclamation)
-            bRetorno = False
-        End If
-        close_conexion()
+            Case Else
+                MsgBox("Contraseña Actual no coincide.", MsgBoxStyle.Exclamation)
+        End Select
 
-
-        ValidaPassword = bRetorno
+        Return False
     End Function
     Private Sub GrabaNuevaPassWord()
+        open()
+
         Try
-            sSsql = "SP_CambioPassword "
-            sSsql += "'" + gUSER + "',"
-            sSsql += "'" + txtNuevaPassword.Text + "'"
-            open()
             command = connection.CreateCommand()
-            command.CommandText = sSsql
+            command.CommandText = "SP_CambioPassword"
+            command.CommandType = System.Data.CommandType.StoredProcedure
+            command.Parameters.Add("@IdUsuario", System.Data.SqlDbType.VarChar, 10).Value = gUSER.Trim()
+            command.Parameters.Add("@NuevaPassWord", System.Data.SqlDbType.VarChar, 50).Value = txtNuevaPassword.Text
             command.ExecuteNonQuery()
             MsgBox("La nueva contraseña ha sido actualizada.", MsgBoxStyle.Information)
         Catch ex As Exception
             MsgBox(ex.Message)
 
+        Finally
+            close_conexion()
         End Try
-
-        close_conexion()
 
     End Sub
 

@@ -24,6 +24,8 @@ Partial Class Vendedores
     Private Sub InitializeComponent()
         Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
+        Me.txt_Codigo = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
         Me.txtporcomis = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.Button5 = New System.Windows.Forms.Button()
@@ -36,8 +38,6 @@ Partial Class Vendedores
         Me.Label1 = New System.Windows.Forms.Label()
         Me.txt_Vendedor = New System.Windows.Forms.TextBox()
         Me.DataVendedor = New System.Windows.Forms.DataGridView()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.txt_Codigo = New System.Windows.Forms.TextBox()
         Me.codigo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Vendedor = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -78,6 +78,24 @@ Partial Class Vendedores
         Me.SplitContainer1.Size = New System.Drawing.Size(681, 546)
         Me.SplitContainer1.SplitterDistance = 190
         Me.SplitContainer1.TabIndex = 0
+        '
+        'txt_Codigo
+        '
+        Me.txt_Codigo.Location = New System.Drawing.Point(207, 138)
+        Me.txt_Codigo.MaxLength = 10
+        Me.txt_Codigo.Name = "txt_Codigo"
+        Me.txt_Codigo.ReadOnly = True
+        Me.txt_Codigo.Size = New System.Drawing.Size(259, 20)
+        Me.txt_Codigo.TabIndex = 12
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(138, 141)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(40, 13)
+        Me.Label4.TabIndex = 11
+        Me.Label4.Text = "Código"
         '
         'txtporcomis
         '
@@ -204,24 +222,6 @@ Partial Class Vendedores
         Me.DataVendedor.Size = New System.Drawing.Size(681, 352)
         Me.DataVendedor.TabIndex = 0
         '
-        'Label4
-        '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(138, 141)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(40, 13)
-        Me.Label4.TabIndex = 11
-        Me.Label4.Text = "Código"
-        '
-        'txt_Codigo
-        '
-        Me.txt_Codigo.Location = New System.Drawing.Point(207, 138)
-        Me.txt_Codigo.MaxLength = 10
-        Me.txt_Codigo.Name = "txt_Codigo"
-        Me.txt_Codigo.ReadOnly = True
-        Me.txt_Codigo.Size = New System.Drawing.Size(259, 20)
-        Me.txt_Codigo.TabIndex = 12
-        '
         'codigo
         '
         Me.codigo.HeaderText = "Código"
@@ -259,7 +259,7 @@ Partial Class Vendedores
         Me.Controls.Add(Me.SplitContainer1)
         Me.Name = "Vendedores"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Vendedores"
+        Me.Text = "Usuarios"
         Me.SplitContainer1.Panel1.ResumeLayout(False)
         Me.SplitContainer1.Panel1.PerformLayout()
         Me.SplitContainer1.Panel2.ResumeLayout(False)

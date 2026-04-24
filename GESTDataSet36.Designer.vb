@@ -2246,7 +2246,7 @@ Namespace GESTDataSet36TableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")>  _
         Private Sub InitConnection()
             Me._connection = New Global.System.Data.SqlClient.SqlConnection()
-            Me._connection.ConnectionString = Global.GestionVivero.My.MySettings.Default.DBLocal
+            Me._connection.ConnectionString = Global.GestionVivero.My.MySettings.Default.ConexionVivero
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _

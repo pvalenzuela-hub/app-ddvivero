@@ -1,5 +1,8 @@
-﻿Imports System.Drawing.Printing
+﻿Imports System.Data
+Imports System.Data.SqlClient
+Imports System.Drawing.Printing
 Public Class Abono_Deuda
+    Private Const ColumnaCajaPago As String = "cta_caja_pago"
     Dim dVentaTotal As Double
     Dim dAbonoTotal As Double
     Dim dDeudaTotal As Double
@@ -12,6 +15,8 @@ Public Class Abono_Deuda
     Dim gFechaContable As Date
     Dim gSaldoAjusteDAI As Integer
     Dim gIdCliente As Integer
+    Private _btnCajaActiva As Button
+    Private _descripcionCajaActiva As String
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         'cmb_clientebuscar.Items.Clear()
         'Buscar_Cliente(Me.cmb_clientebuscar, Me.txt_clientebuscar.Text)
@@ -228,6 +233,10 @@ Public Class Abono_Deuda
             bAgregarPago = False
         End If
 
+        If bAgregarPago AndAlso EsPagoEfectivo(cmb_TIPO_PAGO.Text) AndAlso Not AseguraCajaActivaParaEfectivo() Then
+            bAgregarPago = False
+        End If
+
         If Val(txt_MontoDoc.Text) <= 0 Then
             MsgBox("Monto a Pagar debe ser superior a Cero!!!.", MsgBoxStyle.Exclamation)
             bAgregarPago = False
@@ -313,6 +322,8 @@ Public Class Abono_Deuda
 
     Private Sub Abono_Deuda_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         Carga_FormaPago(Me.cmb_TIPO_PAGO, 2)
+        AseguraColumnaCajaPago()
+        InicializaCajaActivaUI()
     End Sub
     Private Sub Elimina_Pago_Actual(iFila As Integer)
         If GrillaPagos.Rows.Count > 0 Then
@@ -362,34 +373,56 @@ Public Class Abono_Deuda
             MsgBox("Id. Cliente no puede ser 0", MsgBoxStyle.Critical)
         Else
             open()
-            command = connection.CreateCommand()
-            dNuevoAbono = 0
-            For i = 0 To GrillaPagos.Rows.Count - 1
-                If GrillaPagos.Rows(i).Cells("id_pago").Value = 0 Then
-                    sSsql = "SP_INSERTA_PAGOS_PARCIALES "
-                    sSsql += Val(txt_IdCliente.Text).ToString & ","
-                    sSsql += "'" & GrillaPagos.Rows(i).Cells("FechaPago").Value & "',"
-                    sSsql += "'" & GrillaPagos.Rows(i).Cells("docpago").Value & "',"
-                    sSsql += "'" & GrillaPagos.Rows(i).Cells("num").Value & "',"
-                    sSsql += GrillaPagos.Rows(i).Cells("monto").Value.ToString & ","
-                    sSsql += "'" & GrillaPagos.Rows(i).Cells("tipodoc").Value & "',"
-                    sSsql += "'" & GrillaPagos.Rows(i).Cells("numdoc").Value.ToString & "',"
-                    sSsql += GrillaPagos.Rows(i).Cells("ValorPagado").Value.ToString & ","
-                    sSsql += "'" & GrillaPagos.Rows(i).Cells("fec_venc").Value & "',"
-                    sSsql += "'" & GrillaPagos.Rows(i).Cells("Glosa").Value & "',"
-                    sSsql += "'N',"
-                    sSsql += "'" & GrillaPagos.Rows(i).Cells("fechaconta").Value & "',"
-                    sSsql += GrillaPagos.Rows(i).Cells("IdPedido").Value.ToString & ","
-                    sSsql += "'" & gUSER & "',"
-                    sSsql += Val(GrillaPagos.Rows(i).Cells("ValorDAI").Value).ToString() & ","
-                    sSsql += "0,"
-                    sSsql += "'" & GrillaPagos.Rows(i).Cells("rebajaDAI").Value & "'"
-                    command.CommandText = sSsql
-                    command.ExecuteNonQuery()
-                    dNuevoAbono += GrillaPagos.Rows(i).Cells("ValorPagado").Value
+            Try
+                dNuevoAbono = 0
+                For i = 0 To GrillaPagos.Rows.Count - 1
+                    If GrillaPagos.Rows(i).Cells("id_pago").Value = 0 Then
+                        Dim formaPago = Convert.ToString(GrillaPagos.Rows(i).Cells("docpago").Value)
+                        Dim ctaCajaPago = Convert.ToString(GrillaPagos.Rows(i).Cells(ColumnaCajaPago).Value)
+
+                        If EsPagoEfectivo(formaPago) AndAlso String.IsNullOrWhiteSpace(ctaCajaPago) Then
+                            MessageBox.Show("Debe seleccionar una caja activa para registrar pagos en efectivo.", "Abono Deuda", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                            Exit Sub
+                        End If
+
+                        Using cmd As SqlCommand = connection.CreateCommand()
+                            cmd.CommandText = "SP_INSERTA_PAGOS_PARCIALES"
+                            cmd.CommandType = CommandType.StoredProcedure
+                            cmd.Parameters.Add("@IdCliente", SqlDbType.Int).Value = Val(txt_IdCliente.Text)
+                            cmd.Parameters.Add("@Fecha_Pago", SqlDbType.DateTime).Value = CDate(GrillaPagos.Rows(i).Cells("FechaPago").Value)
+                            cmd.Parameters.Add("@FormaPago", SqlDbType.VarChar, 50).Value = formaPago
+                            cmd.Parameters.Add("@Num_Doc_Pago", SqlDbType.VarChar, 50).Value = Convert.ToString(GrillaPagos.Rows(i).Cells("num").Value)
+                            cmd.Parameters.Add("@Valor_Documento", SqlDbType.Float).Value = CDbl(Val(Convert.ToString(GrillaPagos.Rows(i).Cells("monto").Value)))
+                            cmd.Parameters.Add("@Tipo_Doc", SqlDbType.VarChar, 2).Value = Convert.ToString(GrillaPagos.Rows(i).Cells("tipodoc").Value)
+                            cmd.Parameters.Add("@Num_Refer", SqlDbType.Decimal).Value = Val(Convert.ToString(GrillaPagos.Rows(i).Cells("numdoc").Value))
+                            cmd.Parameters("@Num_Refer").Precision = 18
+                            cmd.Parameters("@Num_Refer").Scale = 0
+                            cmd.Parameters.Add("@Valor_Pago", SqlDbType.Float).Value = CDbl(Val(Convert.ToString(GrillaPagos.Rows(i).Cells("ValorPagado").Value)))
+                            cmd.Parameters.Add("@Fecha_Vcto", SqlDbType.DateTime).Value = CDate(GrillaPagos.Rows(i).Cells("fec_venc").Value)
+                            cmd.Parameters.Add("@Glosa_Referencia", SqlDbType.VarChar, -1).Value = Convert.ToString(GrillaPagos.Rows(i).Cells("Glosa").Value)
+                            cmd.Parameters.Add("@Abono_Pedido", SqlDbType.VarChar, 1).Value = "N"
+                            cmd.Parameters.Add("@Fecha_Contable", SqlDbType.DateTime).Value = CDate(GrillaPagos.Rows(i).Cells("fechaconta").Value)
+                            cmd.Parameters.Add("@idPedido", SqlDbType.Int).Value = Val(Convert.ToString(GrillaPagos.Rows(i).Cells("IdPedido").Value))
+                            cmd.Parameters.Add("@Usuario", SqlDbType.VarChar, 10).Value = gUSER.Trim()
+                            cmd.Parameters.Add("@ValorDAI", SqlDbType.Int).Value = Val(Convert.ToString(GrillaPagos.Rows(i).Cells("ValorDAI").Value))
+                            cmd.Parameters.Add("@IdVtaDet", SqlDbType.Int).Value = 0
+                            cmd.Parameters.Add("@RebajaDAI", SqlDbType.VarChar, 1).Value = Convert.ToString(GrillaPagos.Rows(i).Cells("rebajaDAI").Value)
+
+                            Dim pCaja = cmd.Parameters.Add("@Cta_Caja_Usuario", SqlDbType.VarChar, 7)
+                            pCaja.Value = If(String.IsNullOrWhiteSpace(ctaCajaPago), CType(DBNull.Value, Object), ctaCajaPago.Trim())
+
+                            cmd.ExecuteNonQuery()
+                        End Using
+
+                        dNuevoAbono += CDbl(Val(Convert.ToString(GrillaPagos.Rows(i).Cells("ValorPagado").Value)))
+                    End If
+                Next
+            Finally
+                If connection IsNot Nothing AndAlso connection.State <> ConnectionState.Closed Then
+                    close_conexion()
                 End If
-            Next
-            close_conexion()
+            End Try
+
             If dNuevoAbono > 0 Then
                 Dim sResp = MsgBox("Imprime Comprobante de Pago?", MsgBoxStyle.YesNo)
                 If sResp = MsgBoxResult.Yes Then
@@ -499,6 +532,7 @@ Public Class Abono_Deuda
             GrillaPagos.Rows(j).Cells("ValorDAI").Value = 0
             GrillaPagos.Rows(j).Cells("rebajaDAI").Value = "N"
             GrillaPagos.Rows(j).Cells("usuario").Value = gUSER
+            GrillaPagos.Rows(j).Cells(ColumnaCajaPago).Value = ObtenerCajaParaPagoActual()
             gSaldoxAsignar = 0
             gTotalPagar = 0
         End If
@@ -532,6 +566,7 @@ Public Class Abono_Deuda
             GrillaPagos.Rows(j).Cells("ValorDAI").Value = Format(ValorDAI, "#########")
             GrillaPagos.Rows(j).Cells("rebajaDAI").Value = "N"
             GrillaPagos.Rows(j).Cells("usuario").Value = gUSER
+            GrillaPagos.Rows(j).Cells(ColumnaCajaPago).Value = ObtenerCajaParaPagoActual()
         End If
 
         If chkRebajaDAI.Checked Then
@@ -554,6 +589,7 @@ Public Class Abono_Deuda
             GrillaPagos.Rows(j).Cells("ValorDAI").Value = 0
             GrillaPagos.Rows(j).Cells("rebajaDAI").Value = "S"
             GrillaPagos.Rows(j).Cells("usuario").Value = gUSER
+            GrillaPagos.Rows(j).Cells(ColumnaCajaPago).Value = ObtenerCajaParaPagoActual()
         End If
         GrillaPagos.Sort(id_pago, System.ComponentModel.ListSortDirection.Ascending)
     End Sub
@@ -754,4 +790,125 @@ Public Class Abono_Deuda
     Private Sub txt_NombreCliente_MaskInputRejected(sender As Object, e As MaskInputRejectedEventArgs) Handles txt_NombreCliente.MaskInputRejected
 
     End Sub
+
+    Private Sub AseguraColumnaCajaPago()
+        If GrillaPagos.Columns.Contains(ColumnaCajaPago) Then
+            Return
+        End If
+
+        Dim col As New DataGridViewTextBoxColumn() With {
+            .Name = ColumnaCajaPago,
+            .HeaderText = "Cuenta Caja",
+            .Visible = False,
+            .ReadOnly = True
+        }
+        GrillaPagos.Columns.Add(col)
+    End Sub
+
+    Private Sub InicializaCajaActivaUI()
+        If _btnCajaActiva IsNot Nothing Then
+            ActualizaTextoCajaActiva()
+            Return
+        End If
+
+        _btnCajaActiva = New Button() With {
+            .Location = New Point(845, 669),
+            .Size = New Size(232, 48),
+            .BackColor = Color.White,
+            .TextAlign = ContentAlignment.MiddleCenter,
+            .UseVisualStyleBackColor = False
+        }
+        AddHandler _btnCajaActiva.Click, AddressOf BtnCajaActiva_Click
+        Me.Controls.Add(_btnCajaActiva)
+
+        ActualizaTextoCajaActiva()
+    End Sub
+
+    Private Sub BtnCajaActiva_Click(sender As Object, e As EventArgs)
+        SeleccionarCajaActiva(False)
+    End Sub
+
+    Private Function SeleccionarCajaActiva(ByVal obligatoria As Boolean) As Boolean
+        Using frm As New Form()
+            frm.Text = "Seleccionar Caja"
+            frm.StartPosition = FormStartPosition.CenterParent
+            frm.FormBorderStyle = FormBorderStyle.FixedDialog
+            frm.MinimizeBox = False
+            frm.MaximizeBox = False
+            frm.ClientSize = New Size(360, 145)
+
+            Dim lblCaja As New Label() With {.Text = "Caja", .Location = New Point(20, 22), .AutoSize = True}
+            Dim cmbCaja As New ComboBox() With {.Location = New Point(110, 18), .Size = New Size(220, 24), .DropDownStyle = ComboBoxStyle.DropDownList}
+            Dim lblCuenta As New Label() With {.Text = "Cuenta", .Location = New Point(20, 56), .AutoSize = True}
+            Dim txtCuenta As New TextBox() With {.Location = New Point(110, 52), .Size = New Size(100, 22), .ReadOnly = True, .TextAlign = HorizontalAlignment.Center}
+            Dim btnOk As New Button() With {.Text = "Aceptar", .Location = New Point(174, 96), .Size = New Size(75, 28), .DialogResult = DialogResult.OK}
+            Dim btnCancel As New Button() With {.Text = "Cancelar", .Location = New Point(255, 96), .Size = New Size(75, 28), .DialogResult = DialogResult.Cancel}
+
+            frm.Controls.AddRange(New Control() {lblCaja, cmbCaja, lblCuenta, txtCuenta, btnOk, btnCancel})
+            frm.AcceptButton = btnOk
+            frm.CancelButton = btnCancel
+
+            Carga_CajasDiarias(cmbCaja, gCuentaCaja)
+            txtCuenta.Text = If(cmbCaja.SelectedValue Is Nothing, String.Empty, Convert.ToString(cmbCaja.SelectedValue))
+
+            AddHandler cmbCaja.SelectedValueChanged,
+                Sub()
+                    txtCuenta.Text = If(cmbCaja.SelectedValue Is Nothing, String.Empty, Convert.ToString(cmbCaja.SelectedValue))
+                End Sub
+
+            If frm.ShowDialog(Me) <> DialogResult.OK OrElse cmbCaja.SelectedValue Is Nothing Then
+                If obligatoria Then
+                    MessageBox.Show("Debe seleccionar una caja para registrar pagos en efectivo.", "Abono Deuda", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                End If
+                Return False
+            End If
+
+            Dim mensaje As String = String.Empty
+            If Not EstableceCajaActiva(Convert.ToString(cmbCaja.SelectedValue), mensaje) Then
+                MessageBox.Show(mensaje, "Selección de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+                Return False
+            End If
+            _descripcionCajaActiva = cmbCaja.Text.Trim()
+            ActualizaTextoCajaActiva()
+            Return True
+        End Using
+    End Function
+
+    Private Sub ActualizaTextoCajaActiva()
+        If _btnCajaActiva Is Nothing Then
+            Return
+        End If
+
+        If String.IsNullOrWhiteSpace(gCuentaCaja) Then
+            _btnCajaActiva.Text = "Seleccionar caja activa"
+        ElseIf String.IsNullOrWhiteSpace(_descripcionCajaActiva) Then
+            _btnCajaActiva.Text = "Caja activa" & vbCrLf & gCuentaCaja
+        Else
+            _btnCajaActiva.Text = _descripcionCajaActiva & vbCrLf & gCuentaCaja
+        End If
+    End Sub
+
+    Private Function AseguraCajaActivaParaEfectivo() As Boolean
+        If Not EsPagoEfectivo(cmb_TIPO_PAGO.Text) Then
+            Return True
+        End If
+
+        If String.IsNullOrWhiteSpace(gCuentaCaja) Then
+            Return SeleccionarCajaActiva(True)
+        End If
+
+        Return True
+    End Function
+
+    Private Function ObtenerCajaParaPagoActual() As Object
+        If EsPagoEfectivo(cmb_TIPO_PAGO.Text) Then
+            Return If(String.IsNullOrWhiteSpace(gCuentaCaja), String.Empty, gCuentaCaja.Trim())
+        End If
+
+        Return String.Empty
+    End Function
+
+    Private Function EsPagoEfectivo(ByVal formaPago As String) As Boolean
+        Return String.Equals(formaPago.Trim(), "Efectivo", StringComparison.OrdinalIgnoreCase)
+    End Function
 End Class

@@ -193,7 +193,7 @@ Partial Class Prox_Vcto
         'txt_Total
         '
         Me.txt_Total.Font = New System.Drawing.Font("Calibri", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.txt_Total.Location = New System.Drawing.Point(505, 486)
+        Me.txt_Total.Location = New System.Drawing.Point(505, 485)
         Me.txt_Total.Name = "txt_Total"
         Me.txt_Total.ReadOnly = True
         Me.txt_Total.Size = New System.Drawing.Size(129, 23)

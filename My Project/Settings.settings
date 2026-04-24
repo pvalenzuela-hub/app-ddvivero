@@ -38,10 +38,10 @@
     <Setting Name="ConexionVivero" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;ConnectionString&gt;Data Source=72.60.59.142;Initial Catalog=ddvivero;User ID=vivero_user;Password=sqL_2025!###;Encrypt=False;TrustServerCertificate=True&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;__CONFIGURE_EN_CONNECTIONS_CONFIG__&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=72.60.59.142;Initial Catalog=ddvivero;User ID=vivero_user;Password=sqL_2025!###;Encrypt=False;TrustServerCertificate=True</Value>
+      <Value Profile="(Default)">__CONFIGURE_EN_CONNECTIONS_CONFIG__</Value>
     </Setting>
     <Setting Name="Sistema" Type="System.String" Scope="User">
       <Value Profile="(Default)">VIVERO D&amp;D</Value>
@@ -49,18 +49,18 @@
     <Setting Name="SettingPrueba" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;ConnectionString&gt;Data Source=72.60.59.142;Initial Catalog=ddvivero;User ID=vivero_user;Password=sqL_2025!###;Encrypt=False;TrustServerCertificate=True&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;__CONFIGURE_EN_CONNECTIONS_CONFIG__&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=72.60.59.142;Initial Catalog=ddvivero;User ID=vivero_user;Password=sqL_2025!###;Encrypt=False;TrustServerCertificate=True</Value>
+      <Value Profile="(Default)">__CONFIGURE_EN_CONNECTIONS_CONFIG__</Value>
     </Setting>
     <Setting Name="DBLocal" Type="(Connection string)" Scope="Application">
       <DesignTimeValue Profile="(Default)">&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;SerializableConnectionString xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"&gt;
-  &lt;ConnectionString&gt;Data Source=MIPC\SQLEXPRESS;Initial Catalog=ddvivero;Integrated Security=True;TrustServerCertificate=True&lt;/ConnectionString&gt;
+  &lt;ConnectionString&gt;__CONFIGURE_EN_CONNECTIONS_CONFIG__&lt;/ConnectionString&gt;
   &lt;ProviderName&gt;System.Data.SqlClient&lt;/ProviderName&gt;
 &lt;/SerializableConnectionString&gt;</DesignTimeValue>
-      <Value Profile="(Default)">Data Source=MIPC\SQLEXPRESS;Initial Catalog=ddvivero;Integrated Security=True;TrustServerCertificate=True</Value>
+      <Value Profile="(Default)">__CONFIGURE_EN_CONNECTIONS_CONFIG__</Value>
     </Setting>
   </Settings>
 </SettingsFile>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<connectionStrings>
+  <add name="DefaultConnection" connectionString="Data Source = |SQL/CE|" />
+  <add name="GESTEntities" connectionString="metadata=res://*/ModeloDatos.csdl|res://*/ModeloDatos.ssdl|res://*/ModeloDatos.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=SERVER;initial catalog=GEST;persist security info=True;user id=USER;password=PASSWORD;MultipleActiveResultSets=True;App=EntityFramework&quot;" providerName="System.Data.EntityClient" />
+  <add name="GestionVivero.My.MySettings.ConexionVivero" connectionString="Data Source=SERVER;Initial Catalog=ddvivero;User ID=USER;Password=PASSWORD;Encrypt=True;TrustServerCertificate=False" providerName="System.Data.SqlClient" />
+  <add name="GestionVivero.My.MySettings.SettingPrueba" connectionString="Data Source=SERVER;Initial Catalog=ddvivero;User ID=USER;Password=PASSWORD;Encrypt=True;TrustServerCertificate=False" providerName="System.Data.SqlClient" />
+  <add name="GestionVivero.My.MySettings.DBLocal" connectionString="Data Source=SERVER\\SQLEXPRESS;Initial Catalog=ddvivero;Integrated Security=True;TrustServerCertificate=True" providerName="System.Data.SqlClient" />
+</connectionStrings>

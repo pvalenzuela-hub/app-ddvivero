@@ -2,10 +2,11 @@
 <xs:schema id="GESTDataSet36" targetNamespace="http://tempuri.org/GESTDataSet36.xsd" xmlns:mstns="http://tempuri.org/GESTDataSet36.xsd" xmlns="http://tempuri.org/GESTDataSet36.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
-      <DataSource DefaultConnectionIndex="1" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="2" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
           <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="SettingPrueba" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="SettingPrueba (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.GestionVivero.My.MySettings.GlobalReference.Default.SettingPrueba" Provider="System.Data.SqlClient" />
           <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="DBLocal" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="DBLocal (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.GestionVivero.My.MySettings.GlobalReference.Default.DBLocal" Provider="System.Data.SqlClient" />
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="ConexionVivero" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConexionVivero (MySettings)" ParameterPrefix="@" PropertyReference="ApplicationSettings.GestionVivero.My.MySettings.GlobalReference.Default.ConexionVivero" Provider="System.Data.SqlClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_ReporteMovDiarioTableAdapter" GeneratorDataComponentClassName="SP_ReporteMovDiarioTableAdapter" Name="SP_ReporteMovDiario" UserDataComponentName="SP_ReporteMovDiarioTableAdapter">
@@ -44,7 +45,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SP_Reporte_Resumen_DiarioTableAdapter" GeneratorDataComponentClassName="SP_Reporte_Resumen_DiarioTableAdapter" Name="SP_Reporte_Resumen_Diario" UserDataComponentName="SP_Reporte_Resumen_DiarioTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="DBLocal (MySettings)" DbObjectName="GEST.dbo.SP_Reporte_Resumen_Diario" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="ConexionVivero (MySettings)" DbObjectName="ddvivero.dbo.SP_Reporte_Resumen_Diario" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="true" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.SP_Reporte_Resumen_Diario</CommandText>
@@ -73,46 +74,46 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="GESTDataSet36" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_UserDSName="GESTDataSet36" msprop:Generator_DataSetName="GESTDataSet36">
+  <xs:element name="GESTDataSet36" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="GESTDataSet36" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="GESTDataSet36">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="SP_ReporteMovDiario" msprop:Generator_RowClassName="SP_ReporteMovDiarioRow" msprop:Generator_RowEvHandlerName="SP_ReporteMovDiarioRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_ReporteMovDiarioRowDeleted" msprop:Generator_RowDeletingName="SP_ReporteMovDiarioRowDeleting" msprop:Generator_RowEvArgName="SP_ReporteMovDiarioRowChangeEvent" msprop:Generator_TablePropName="SP_ReporteMovDiario" msprop:Generator_RowChangedName="SP_ReporteMovDiarioRowChanged" msprop:Generator_RowChangingName="SP_ReporteMovDiarioRowChanging" msprop:Generator_TableClassName="SP_ReporteMovDiarioDataTable" msprop:Generator_UserTableName="SP_ReporteMovDiario" msprop:Generator_TableVarName="tableSP_ReporteMovDiario">
+        <xs:element name="SP_ReporteMovDiario" msprop:Generator_RowEvHandlerName="SP_ReporteMovDiarioRowChangeEventHandler" msprop:Generator_RowDeletedName="SP_ReporteMovDiarioRowDeleted" msprop:Generator_RowDeletingName="SP_ReporteMovDiarioRowDeleting" msprop:Generator_RowEvArgName="SP_ReporteMovDiarioRowChangeEvent" msprop:Generator_TablePropName="SP_ReporteMovDiario" msprop:Generator_RowChangedName="SP_ReporteMovDiarioRowChanged" msprop:Generator_UserTableName="SP_ReporteMovDiario" msprop:Generator_RowChangingName="SP_ReporteMovDiarioRowChanging" msprop:Generator_RowClassName="SP_ReporteMovDiarioRow" msprop:Generator_TableClassName="SP_ReporteMovDiarioDataTable" msprop:Generator_TableVarName="tableSP_ReporteMovDiario">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="SaldoInicialCaja" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="SaldoInicialCaja" msprop:Generator_ColumnPropNameInTable="SaldoInicialCajaColumn" msprop:Generator_ColumnVarNameInTable="columnSaldoInicialCaja" msprop:Generator_UserColumnName="SaldoInicialCaja" type="xs:double" minOccurs="0" />
-              <xs:element name="Column1" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="Column1" msprop:Generator_ColumnPropNameInTable="Column1Column" msprop:Generator_ColumnVarNameInTable="columnColumn1" msprop:Generator_UserColumnName="Column1" minOccurs="0">
+              <xs:element name="SaldoInicialCaja" msdata:ReadOnly="true" msprop:Generator_UserColumnName="SaldoInicialCaja" msprop:Generator_ColumnPropNameInTable="SaldoInicialCajaColumn" msprop:Generator_ColumnPropNameInRow="SaldoInicialCaja" msprop:Generator_ColumnVarNameInTable="columnSaldoInicialCaja" type="xs:double" minOccurs="0" />
+              <xs:element name="Column1" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Column1" msprop:Generator_ColumnPropNameInTable="Column1Column" msprop:Generator_ColumnPropNameInRow="Column1" msprop:Generator_ColumnVarNameInTable="columnColumn1" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="101" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Column2" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="Column2" msprop:Generator_ColumnPropNameInTable="Column2Column" msprop:Generator_ColumnVarNameInTable="columnColumn2" msprop:Generator_UserColumnName="Column2" minOccurs="0">
+              <xs:element name="Column2" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Column2" msprop:Generator_ColumnPropNameInTable="Column2Column" msprop:Generator_ColumnPropNameInRow="Column2" msprop:Generator_ColumnVarNameInTable="columnColumn2" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="30" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="TipoDoc" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="TipoDoc" msprop:Generator_ColumnPropNameInTable="TipoDocColumn" msprop:Generator_ColumnVarNameInTable="columnTipoDoc" msprop:Generator_UserColumnName="TipoDoc" minOccurs="0">
+              <xs:element name="TipoDoc" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TipoDoc" msprop:Generator_ColumnPropNameInTable="TipoDocColumn" msprop:Generator_ColumnPropNameInRow="TipoDoc" msprop:Generator_ColumnVarNameInTable="columnTipoDoc" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="4" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="NumDoc" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="NumDoc" msprop:Generator_ColumnPropNameInTable="NumDocColumn" msprop:Generator_ColumnVarNameInTable="columnNumDoc" msprop:Generator_UserColumnName="NumDoc" type="xs:decimal" minOccurs="0" />
-              <xs:element name="PagoEF" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="PagoEF" msprop:Generator_ColumnPropNameInTable="PagoEFColumn" msprop:Generator_ColumnVarNameInTable="columnPagoEF" msprop:Generator_UserColumnName="PagoEF" type="xs:double" minOccurs="0" />
-              <xs:element name="PagoCH" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="PagoCH" msprop:Generator_ColumnPropNameInTable="PagoCHColumn" msprop:Generator_ColumnVarNameInTable="columnPagoCH" msprop:Generator_UserColumnName="PagoCH" type="xs:double" minOccurs="0" />
-              <xs:element name="PagoLE" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="PagoLE" msprop:Generator_ColumnPropNameInTable="PagoLEColumn" msprop:Generator_ColumnVarNameInTable="columnPagoLE" msprop:Generator_UserColumnName="PagoLE" type="xs:double" minOccurs="0" />
-              <xs:element name="PagoTR" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="PagoTR" msprop:Generator_ColumnPropNameInTable="PagoTRColumn" msprop:Generator_ColumnVarNameInTable="columnPagoTR" msprop:Generator_UserColumnName="PagoTR" type="xs:double" minOccurs="0" />
-              <xs:element name="Perdida" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="Perdida" msprop:Generator_ColumnPropNameInTable="PerdidaColumn" msprop:Generator_ColumnVarNameInTable="columnPerdida" msprop:Generator_UserColumnName="Perdida" type="xs:double" minOccurs="0" />
-              <xs:element name="PEEF" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="PEEF" msprop:Generator_ColumnPropNameInTable="PEEFColumn" msprop:Generator_ColumnVarNameInTable="columnPEEF" msprop:Generator_UserColumnName="PEEF" type="xs:double" minOccurs="0" />
-              <xs:element name="PECH" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="PECH" msprop:Generator_ColumnPropNameInTable="PECHColumn" msprop:Generator_ColumnVarNameInTable="columnPECH" msprop:Generator_UserColumnName="PECH" type="xs:double" minOccurs="0" />
-              <xs:element name="PELE" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="PELE" msprop:Generator_ColumnPropNameInTable="PELEColumn" msprop:Generator_ColumnVarNameInTable="columnPELE" msprop:Generator_UserColumnName="PELE" type="xs:double" minOccurs="0" />
-              <xs:element name="PETR" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="PETR" msprop:Generator_ColumnPropNameInTable="PETRColumn" msprop:Generator_ColumnVarNameInTable="columnPETR" msprop:Generator_UserColumnName="PETR" type="xs:double" minOccurs="0" />
-              <xs:element name="Guias" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="Guias" msprop:Generator_ColumnPropNameInTable="GuiasColumn" msprop:Generator_ColumnVarNameInTable="columnGuias" msprop:Generator_UserColumnName="Guias" type="xs:decimal" minOccurs="0" />
-              <xs:element name="DocVta" msdata:ReadOnly="true" msprop:Generator_ColumnPropNameInRow="DocVta" msprop:Generator_ColumnPropNameInTable="DocVtaColumn" msprop:Generator_ColumnVarNameInTable="columnDocVta" msprop:Generator_UserColumnName="DocVta" type="xs:double" minOccurs="0" />
+              <xs:element name="NumDoc" msdata:ReadOnly="true" msprop:Generator_UserColumnName="NumDoc" msprop:Generator_ColumnPropNameInTable="NumDocColumn" msprop:Generator_ColumnPropNameInRow="NumDoc" msprop:Generator_ColumnVarNameInTable="columnNumDoc" type="xs:decimal" minOccurs="0" />
+              <xs:element name="PagoEF" msdata:ReadOnly="true" msprop:Generator_UserColumnName="PagoEF" msprop:Generator_ColumnPropNameInTable="PagoEFColumn" msprop:Generator_ColumnPropNameInRow="PagoEF" msprop:Generator_ColumnVarNameInTable="columnPagoEF" type="xs:double" minOccurs="0" />
+              <xs:element name="PagoCH" msdata:ReadOnly="true" msprop:Generator_UserColumnName="PagoCH" msprop:Generator_ColumnPropNameInTable="PagoCHColumn" msprop:Generator_ColumnPropNameInRow="PagoCH" msprop:Generator_ColumnVarNameInTable="columnPagoCH" type="xs:double" minOccurs="0" />
+              <xs:element name="PagoLE" msdata:ReadOnly="true" msprop:Generator_UserColumnName="PagoLE" msprop:Generator_ColumnPropNameInTable="PagoLEColumn" msprop:Generator_ColumnPropNameInRow="PagoLE" msprop:Generator_ColumnVarNameInTable="columnPagoLE" type="xs:double" minOccurs="0" />
+              <xs:element name="PagoTR" msdata:ReadOnly="true" msprop:Generator_UserColumnName="PagoTR" msprop:Generator_ColumnPropNameInTable="PagoTRColumn" msprop:Generator_ColumnPropNameInRow="PagoTR" msprop:Generator_ColumnVarNameInTable="columnPagoTR" type="xs:double" minOccurs="0" />
+              <xs:element name="Perdida" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Perdida" msprop:Generator_ColumnPropNameInTable="PerdidaColumn" msprop:Generator_ColumnPropNameInRow="Perdida" msprop:Generator_ColumnVarNameInTable="columnPerdida" type="xs:double" minOccurs="0" />
+              <xs:element name="PEEF" msdata:ReadOnly="true" msprop:Generator_UserColumnName="PEEF" msprop:Generator_ColumnPropNameInTable="PEEFColumn" msprop:Generator_ColumnPropNameInRow="PEEF" msprop:Generator_ColumnVarNameInTable="columnPEEF" type="xs:double" minOccurs="0" />
+              <xs:element name="PECH" msdata:ReadOnly="true" msprop:Generator_UserColumnName="PECH" msprop:Generator_ColumnPropNameInTable="PECHColumn" msprop:Generator_ColumnPropNameInRow="PECH" msprop:Generator_ColumnVarNameInTable="columnPECH" type="xs:double" minOccurs="0" />
+              <xs:element name="PELE" msdata:ReadOnly="true" msprop:Generator_UserColumnName="PELE" msprop:Generator_ColumnPropNameInTable="PELEColumn" msprop:Generator_ColumnPropNameInRow="PELE" msprop:Generator_ColumnVarNameInTable="columnPELE" type="xs:double" minOccurs="0" />
+              <xs:element name="PETR" msdata:ReadOnly="true" msprop:Generator_UserColumnName="PETR" msprop:Generator_ColumnPropNameInTable="PETRColumn" msprop:Generator_ColumnPropNameInRow="PETR" msprop:Generator_ColumnVarNameInTable="columnPETR" type="xs:double" minOccurs="0" />
+              <xs:element name="Guias" msdata:ReadOnly="true" msprop:Generator_UserColumnName="Guias" msprop:Generator_ColumnPropNameInTable="GuiasColumn" msprop:Generator_ColumnPropNameInRow="Guias" msprop:Generator_ColumnVarNameInTable="columnGuias" type="xs:decimal" minOccurs="0" />
+              <xs:element name="DocVta" msdata:ReadOnly="true" msprop:Generator_UserColumnName="DocVta" msprop:Generator_ColumnPropNameInTable="DocVtaColumn" msprop:Generator_ColumnPropNameInRow="DocVta" msprop:Generator_ColumnVarNameInTable="columnDocVta" type="xs:double" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

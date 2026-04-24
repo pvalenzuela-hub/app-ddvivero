@@ -5,6 +5,12 @@ Imports SendKey = System.Windows.Forms.SendKeys
 Imports System.Drawing.Printing
 Imports System.IO
 Module FUNCIONES
+    Public Enum ResultadoValidaUsuario
+        Correcto = 0
+        UsuarioNoRegistrado = 1
+        PasswordIncorrecto = 2
+    End Enum
+
     Public Declare Function GetPrivateProfileString Lib "kernel32" Alias "GetPrivateProfileStringA" (ByVal lpApplicationName As String, ByVal lpKeyName As String, ByVal lpDefault As String, ByVal lpReturnedString As String, ByVal nSize As Integer, ByVal lpFileName As String) As Integer
     Public datatbl As SqlClient.SqlDataReader = Nothing
     Public datatbl2 As SqlClient.SqlDataReader = Nothing
@@ -116,8 +122,6 @@ Module FUNCIONES
     Public IN_DesUnidad(0 To 0) As String
     Public gIdProd As Integer
     Public gPeriodoContable As Integer
-    Public gProrroga As String
-    Public gClaveBloqueo As String
     ' Temporada
     Public gTempoPRI_Ini As String
     Public gTempoPRI_Fin As String
@@ -196,6 +200,7 @@ Module FUNCIONES
         open()
         command = connection.CreateCommand
         command.CommandText = "SP_CONSULTA_SYS_INI"
+        command.CommandType = CommandType.StoredProcedure
         datatbl = command.ExecuteReader()
         If datatbl.HasRows Then
             While datatbl.Read
@@ -208,12 +213,6 @@ Module FUNCIONES
                 End If
                 If datatbl(0) = 17 Then
                     gPeriodoContable = datatbl("Valor_Param")
-                End If
-                If datatbl(1) = "PRORROGA" Then
-                    gProrroga = datatbl(2)
-                End If
-                If datatbl(1) = "PWDBLOQUEO" Then
-                    gClaveBloqueo = datatbl(2)
                 End If
                 If datatbl(1) = "TEMPO_PRI" Then
                     gTempoPRI_Ini = datatbl(3)
@@ -301,6 +300,159 @@ Module FUNCIONES
         connection.Close()
         connection.Dispose()
     End Sub
+    Public Function ValidaUsuarioSP(ByVal idUsuario As String, ByVal password As String, Optional ByVal actualizaSesion As Boolean = False) As ResultadoValidaUsuario
+        Dim resultado As ResultadoValidaUsuario = ResultadoValidaUsuario.PasswordIncorrecto
+
+        open()
+
+        Try
+            command = connection.CreateCommand()
+            command.CommandText = "SP_ValidaUsuario"
+            command.CommandType = CommandType.StoredProcedure
+            command.Parameters.Add("@IdUsuario", SqlDbType.VarChar, 10).Value = idUsuario.Trim()
+            command.Parameters.Add("@PassWord", SqlDbType.VarChar, 50).Value = password
+
+            datatbl = command.ExecuteReader()
+
+            If datatbl.HasRows Then
+                datatbl.Read()
+
+                If datatbl.FieldCount = 1 AndAlso Convert.ToInt32(datatbl(0)) = 1 Then
+                    resultado = ResultadoValidaUsuario.UsuarioNoRegistrado
+                Else
+                    resultado = ResultadoValidaUsuario.Correcto
+
+                    If actualizaSesion Then
+                        gIdVendedor = Convert.ToInt32(datatbl(1))
+                        gUSER = Convert.ToString(datatbl(2))
+                        gNomUsuario = Convert.ToString(datatbl(3))
+                        gIdPerfil = Convert.ToInt32(datatbl(5))
+                        gEsAutorizador = Convert.ToBoolean(datatbl("EsAutorizador"))
+                    End If
+                End If
+            End If
+
+        Finally
+            If datatbl IsNot Nothing AndAlso Not datatbl.IsClosed Then
+                datatbl.Close()
+            End If
+
+            close_conexion()
+        End Try
+
+        Return resultado
+    End Function
+    Public Function ValidaClaveSistemaSP(ByVal tipoParam As String, ByVal claveIngresada As String) As Boolean
+        If String.IsNullOrWhiteSpace(claveIngresada) Then
+            Return False
+        End If
+
+        open()
+
+        Try
+            Using cmd As SqlCommand = connection.CreateCommand()
+                cmd.CommandText = "SP_ValidaClaveSistema"
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.Add("@Tipo_Param", SqlDbType.VarChar, 10).Value = tipoParam.Trim()
+                cmd.Parameters.Add("@ClaveIngresada", SqlDbType.VarChar, 50).Value = claveIngresada.Trim()
+
+                Dim resultado = cmd.ExecuteScalar()
+                Return resultado IsNot Nothing AndAlso Convert.ToInt32(resultado) = 1
+            End Using
+        Finally
+            close_conexion()
+        End Try
+    End Function
+    Public Function ObtenerConteoCaja(ByVal fecha As Date, Optional ByVal ctaCtble As String = "1101001") As DataTable
+        open()
+
+        Try
+            Using cmd As SqlCommand = connection.CreateCommand()
+                cmd.CommandText = "SP_CAJA_CONSULTA_CONTEO"
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.Add("@Fecha", SqlDbType.Date).Value = fecha.Date
+                cmd.Parameters.Add("@Cta_Ctble", SqlDbType.VarChar, 7).Value = ctaCtble.Trim()
+
+                Using adapter As New SqlDataAdapter(cmd)
+                    Dim dt As New DataTable()
+                    adapter.Fill(dt)
+                    Return dt
+                End Using
+            End Using
+        Finally
+            close_conexion()
+        End Try
+    End Function
+    Public Function ObtenerCajaActivaUsuarioSP(ByVal idUsuario As String) As String
+        If String.IsNullOrWhiteSpace(idUsuario) Then
+            Return String.Empty
+        End If
+
+        open()
+
+        Try
+            Using cmd As SqlCommand = connection.CreateCommand()
+                cmd.CommandText = "SP_CONSULTA_CAJA_ACTIVA_USUARIO"
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.Add("@IdUsuario", SqlDbType.VarChar, 10).Value = idUsuario.Trim()
+                cmd.Parameters.Add("@Fecha_Trabajo", SqlDbType.Date).Value = Date.Today
+
+                Dim resultado = cmd.ExecuteScalar()
+                If resultado Is Nothing OrElse resultado Is DBNull.Value Then
+                    Return String.Empty
+                End If
+
+                Return Convert.ToString(resultado).Trim()
+            End Using
+        Finally
+            close_conexion()
+        End Try
+    End Function
+    Public Function GuardarCajaActivaUsuarioSP(ByVal idUsuario As String, ByVal ctaCtble As String, ByRef mensaje As String) As Boolean
+        If String.IsNullOrWhiteSpace(idUsuario) Then
+            mensaje = "Usuario no válido."
+            Return False
+        End If
+
+        open()
+
+        Try
+            Using cmd As SqlCommand = connection.CreateCommand()
+                cmd.CommandText = "SP_ACTUALIZA_CAJA_ACTIVA_USUARIO"
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.Add("@IdUsuario", SqlDbType.VarChar, 10).Value = idUsuario.Trim()
+                cmd.Parameters.Add("@Fecha_Trabajo", SqlDbType.Date).Value = Date.Today
+
+                Dim pCaja = cmd.Parameters.Add("@Cta_Caja_Activa", SqlDbType.VarChar, 7)
+                pCaja.Value = If(String.IsNullOrWhiteSpace(ctaCtble), CType(DBNull.Value, Object), ctaCtble.Trim())
+
+                Using reader = cmd.ExecuteReader()
+                    If reader.Read() Then
+                        Dim resultado = Convert.ToInt32(reader("Resultado"))
+                        mensaje = Convert.ToString(reader("Mensaje"))
+                        Return resultado = 1
+                    End If
+                End Using
+
+                mensaje = "No fue posible actualizar la caja activa."
+                Return False
+            End Using
+        Finally
+            close_conexion()
+        End Try
+    End Function
+    Public Function EstableceCajaActiva(ByVal ctaCtble As String, ByRef mensaje As String) As Boolean
+        Dim nuevaCaja = If(String.IsNullOrWhiteSpace(ctaCtble), String.Empty, ctaCtble.Trim())
+
+        If Not String.IsNullOrWhiteSpace(gUSER) Then
+            If Not GuardarCajaActivaUsuarioSP(gUSER, nuevaCaja, mensaje) Then
+                Return False
+            End If
+        End If
+
+        gCuentaCaja = nuevaCaja
+        Return True
+    End Function
     Public Function Reemplaza_Comas(ByRef sValor As String) As String
         Dim NewValor As String
 
@@ -463,6 +615,39 @@ Module FUNCIONES
         End If
         close_conexion()
 
+    End Sub
+    Public Sub Carga_CajasDiarias(ByVal cmb As ComboBox, Optional ByVal ctaSeleccionada As String = Nothing)
+        open()
+
+        Try
+            Using cmd As SqlCommand = connection.CreateCommand()
+                cmd.CommandText = "SP_CONSULTA_CONTA_CtasDiarias"
+                Using reader = cmd.ExecuteReader()
+                    Dim dt As New DataTable()
+                    dt.Columns.Add("Cta_Ctble", GetType(String))
+                    dt.Columns.Add("Descrip", GetType(String))
+
+                    While reader.Read()
+                        Dim cuenta = Convert.ToString(reader(0)).Trim()
+                        If cuenta.StartsWith("110100") Then
+                            dt.Rows.Add(cuenta, Convert.ToString(reader(1)).Trim())
+                        End If
+                    End While
+
+                    cmb.DataSource = Nothing
+                    cmb.DisplayMember = "Descrip"
+                    cmb.ValueMember = "Cta_Ctble"
+                    cmb.DataSource = dt
+                    cmb.SelectedIndex = -1
+
+                    If Not String.IsNullOrWhiteSpace(ctaSeleccionada) Then
+                        cmb.SelectedValue = ctaSeleccionada.Trim()
+                    End If
+                End Using
+            End Using
+        Finally
+            close_conexion()
+        End Try
     End Sub
     Public Sub Carga_Centro_Costo(ByVal cmb As ComboBox)
         Dim i As Integer

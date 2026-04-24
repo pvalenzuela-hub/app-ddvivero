@@ -19,8 +19,8 @@
     <OptionStrict>Off</OptionStrict>
     <OptionInfer>On</OptionInfer>
     <IsWebBootstrapper>true</IsWebBootstrapper>
-    <ManifestCertificateThumbprint>7A27A32CE6BAC44B70CF9784ECBA98E6AB75511D</ManifestCertificateThumbprint>
-    <ManifestKeyFile>gestionvivero_6_TemporaryKey.pfx</ManifestKeyFile>
+    <ManifestCertificateThumbprint>8060A0E4B8573B282EFC955787547D25BA115EF0</ManifestCertificateThumbprint>
+    <ManifestKeyFile>gestionvivero_8_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
     <TargetZone>LocalIntranet</TargetZone>
@@ -67,7 +67,7 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <OutputPath>..\..\EXE\ddvivero\</OutputPath>
+    <OutputPath>..\..\..\EXE\viverodd\</OutputPath>
     <DocumentationFile>
     </DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022,42353,42354,42355</NoWarn>
@@ -2659,6 +2659,8 @@
     <None Include="gestionvivero_4_TemporaryKey.pfx" />
     <None Include="gestionvivero_5_TemporaryKey.pfx" />
     <None Include="gestionvivero_6_TemporaryKey.pfx" />
+    <None Include="gestionvivero_7_TemporaryKey.pfx" />
+    <None Include="gestionvivero_8_TemporaryKey.pfx" />
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -2669,6 +2671,10 @@
       <CustomToolNamespace>My</CustomToolNamespace>
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
       <SubType>Designer</SubType>
+    </None>
+    <None Include="connections.config.example" />
+    <None Include="connections.config" Condition="Exists('connections.config')">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="packages.config" />
     <None Include="SpReporteLotesSinGuia.xsc">

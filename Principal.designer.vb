@@ -147,6 +147,7 @@ Partial Class Principal
         Me.AperturaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CierreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CierrePeríodoAnualToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.CajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem13 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem24 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem31 = New System.Windows.Forms.ToolStripMenuItem()
@@ -188,7 +189,10 @@ Partial Class Principal
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
         Me.ToolStripMenuItem16 = New System.Windows.Forms.ToolStripMenuItem()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+<<<<<<< HEAD
         Me.CajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+=======
+>>>>>>> 8cd4704 (cambios en caja)
         Me.MenuStrip1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -336,7 +340,7 @@ Partial Class Principal
         '
         Me.VendedoresToolStripMenuItem1.Name = "VendedoresToolStripMenuItem1"
         Me.VendedoresToolStripMenuItem1.Size = New System.Drawing.Size(200, 22)
-        Me.VendedoresToolStripMenuItem1.Text = "Vendedores"
+        Me.VendedoresToolStripMenuItem1.Text = "Usuarios"
         '
         'opcionParametros
         '
@@ -958,7 +962,7 @@ Partial Class Principal
         '
         'SaldosDiariosToolStripMenuItem
         '
-        Me.SaldosDiariosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AperturaToolStripMenuItem, Me.CierreToolStripMenuItem})
+        Me.SaldosDiariosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AperturaToolStripMenuItem, Me.CierreToolStripMenuItem, Me.AdministracionCajaToolStripMenuItem})
         Me.SaldosDiariosToolStripMenuItem.Name = "SaldosDiariosToolStripMenuItem"
         Me.SaldosDiariosToolStripMenuItem.Size = New System.Drawing.Size(313, 22)
         Me.SaldosDiariosToolStripMenuItem.Text = "Cierre de Caja"
@@ -975,11 +979,23 @@ Partial Class Principal
         Me.CierreToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
         Me.CierreToolStripMenuItem.Text = "Cierre"
         '
+        'AdministracionCajaToolStripMenuItem
+        '
+        Me.AdministracionCajaToolStripMenuItem.Name = "AdministracionCajaToolStripMenuItem"
+        Me.AdministracionCajaToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
+        Me.AdministracionCajaToolStripMenuItem.Text = "Administración"
+        '
         'CierrePeríodoAnualToolStripMenuItem
         '
         Me.CierrePeríodoAnualToolStripMenuItem.Name = "CierrePeríodoAnualToolStripMenuItem"
         Me.CierrePeríodoAnualToolStripMenuItem.Size = New System.Drawing.Size(313, 22)
         Me.CierrePeríodoAnualToolStripMenuItem.Text = "Cierre Período Anual"
+        '
+        'CajaToolStripMenuItem
+        '
+        Me.CajaToolStripMenuItem.Name = "CajaToolStripMenuItem"
+        Me.CajaToolStripMenuItem.Size = New System.Drawing.Size(313, 22)
+        Me.CajaToolStripMenuItem.Text = "Caja"
         '
         'ToolStripMenuItem13
         '
@@ -1276,12 +1292,15 @@ Partial Class Principal
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
+<<<<<<< HEAD
         'CajaToolStripMenuItem
         '
         Me.CajaToolStripMenuItem.Name = "CajaToolStripMenuItem"
         Me.CajaToolStripMenuItem.Size = New System.Drawing.Size(313, 22)
         Me.CajaToolStripMenuItem.Text = "Caja"
         '
+=======
+>>>>>>> 8cd4704 (cambios en caja)
         'Principal
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(5.0!, 15.0!)
@@ -1465,6 +1484,7 @@ Partial Class Principal
     Friend WithEvents ReporteDeLotesToolStripMenuItem1 As ToolStripMenuItem
     Friend WithEvents CToolStripMenuItem As ToolStripSeparator
     Friend WithEvents SubirInformaciónToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents AdministracionCajaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents CierrePeríodoAnualToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem15 As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem33 As ToolStripMenuItem

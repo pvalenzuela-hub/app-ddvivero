@@ -76,31 +76,38 @@ Public Class Consulta_cheques_Pendientes
         '' guardar cambios de fecha
         Dim iFila As Integer
 
-        If txt_Password.Text <> gProrroga Then
+        If Not ValidaClaveSistemaSP("PRORROGA", txt_Password.Text) Then
             MsgBox("Clave Inválida", MsgBoxStyle.Critical)
             Exit Sub
         End If
 
         If DataGrilla.Rows.Count > 0 Then
             iFila = DataGrilla.CurrentRow.Index
-            sSsql = "SP_GRABA_PRORROGA_CHEQUE_New "
-            sSsql += DataGrilla.Rows(iFila).Cells("num_doc").Value.ToString & ","
-            sSsql += DataGrilla.Rows(iFila).Cells("IdCliente").Value.ToString & ","
-            sSsql += DataGrilla.Rows(iFila).Cells("idFpago").Value.ToString & ","
-            sSsql += "'" & dtp_fecha_Prorroga.Value & "',"
-            sSsql += "'" & txt_user.Text & "'"
 
             open()
-            command = connection.CreateCommand()
-            command.CommandText = sSsql
-            command.ExecuteNonQuery()
-            close_conexion()
-            dtp_fecha_Prorroga.Enabled = False
-            MsgBox("Cambio de fecha ha sido actualizado", MsgBoxStyle.Exclamation, "Consulta de Cheques")
-            btnprorroga.Enabled = False
-            txt_Password.Clear()
-            dtp_fecha_Prorroga.Value = Now
-            Genera_Consulta()
+
+            Try
+                command = connection.CreateCommand()
+                command.CommandText = "SP_GRABA_PRORROGA_CHEQUE_New"
+                command.CommandType = CommandType.StoredProcedure
+                command.Parameters.Add("@Num_Doc_Pago", SqlDbType.Int).Value = CInt(DataGrilla.Rows(iFila).Cells("num_doc").Value)
+                command.Parameters.Add("@IdCliente", SqlDbType.Int).Value = CInt(DataGrilla.Rows(iFila).Cells("IdCliente").Value)
+                command.Parameters.Add("@IdFPago", SqlDbType.Int).Value = CInt(DataGrilla.Rows(iFila).Cells("idFpago").Value)
+                command.Parameters.Add("@FechaVcto", SqlDbType.Date).Value = dtp_fecha_Prorroga.Value.Date
+                command.Parameters.Add("@UsuarioProrroga", SqlDbType.VarChar, 10).Value = txt_user.Text.Trim()
+                command.ExecuteNonQuery()
+
+                dtp_fecha_Prorroga.Enabled = False
+                MsgBox("Cambio de fecha ha sido actualizado", MsgBoxStyle.Exclamation, "Consulta de Cheques")
+                btnprorroga.Enabled = False
+                txt_Password.Clear()
+                dtp_fecha_Prorroga.Value = Now
+                Genera_Consulta()
+            Catch ex As Exception
+                MessageBox.Show("Error al guardar la prórroga: " & ex.Message, "Consulta de Cheques", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Finally
+                close_conexion()
+            End Try
         End If
     End Sub
 

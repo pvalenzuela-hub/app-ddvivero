@@ -12,34 +12,19 @@ Public Class LoginForm1
         Me.Close()
     End Sub
     Function ValidaAcceso() As Boolean
-        Dim bRetorno As Boolean = True
+        Dim resultado = ValidaUsuarioSP(txtIdusuario.Text, txtPassWord.Text, True)
 
-        sSsql = "SP_ValidaUsuario "
-        sSsql += "'" & txtIdusuario.Text & "',"
-        sSsql += "'" & txtPassWord.Text & "'"
-
-        open()
-        command = connection.CreateCommand()
-        command.CommandText = sSsql
-        datatbl = command.ExecuteReader()
-        If datatbl.HasRows Then
-            datatbl.Read()
-            If datatbl(0) = 1 Then
+        Select Case resultado
+            Case ResultadoValidaUsuario.Correcto
+                gCuentaCaja = ObtenerCajaActivaUsuarioSP(gUSER)
+                Return True
+            Case ResultadoValidaUsuario.UsuarioNoRegistrado
                 MsgBox("Usuario no registrado.", MsgBoxStyle.Exclamation)
-                bRetorno = False
-            Else
-                gIdVendedor = datatbl(1)
-                gUSER = datatbl(2)
-                gNomUsuario = datatbl(3)
-                gIdPerfil = datatbl(5)
-                gEsAutorizador = datatbl("EsAutorizador")
-            End If
-        Else
-            MsgBox("Contraseña no coincide.", MsgBoxStyle.Exclamation)
-            bRetorno = False
-        End If
-        close_conexion()
-        Return bRetorno
+            Case Else
+                MsgBox("Contraseña no coincide.", MsgBoxStyle.Exclamation)
+        End Select
+
+        Return False
     End Function
 
     Private Sub LoginForm1_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load

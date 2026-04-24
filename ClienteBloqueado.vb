@@ -1,10 +1,7 @@
 ﻿Public Class ClienteBloqueado
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        Dim bControl As Boolean = True
-        If Not txtPassword.Text = gClaveBloqueo Then
-            bControl = False
-        End If
+        Dim bControl As Boolean = ValidaClaveSistemaSP("PWDBLOQUEO", txtPassword.Text)
 
         Select Case gQuienLlama
             Case 1
