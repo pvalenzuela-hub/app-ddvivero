@@ -151,7 +151,7 @@ Public Class Form3
             Return
         End If
 
-        If String.IsNullOrWhiteSpace(gCuentaCaja) AndAlso Not EstableceCajaActiva(cuentaCaja, mensaje) Then
+        If gIdPerfil <> 1 AndAlso String.IsNullOrWhiteSpace(gCuentaCaja) AndAlso Not EstableceCajaActiva(cuentaCaja, mensaje) Then
             MessageBox.Show(mensaje, "Reporte Cuadratura Diaria", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             _cmbCaja.SelectedIndex = -1
             _txtCuentaCaja.Clear()
@@ -375,7 +375,7 @@ Public Class Form3
             Return
         End If
 
-        If String.IsNullOrWhiteSpace(gCuentaCaja) Then
+        If gIdPerfil = 1 OrElse String.IsNullOrWhiteSpace(gCuentaCaja) Then
             _cmbCaja.Enabled = True
             Return
         End If

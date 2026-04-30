@@ -89,14 +89,6 @@ Public Class Registro_Apertura
         Dim ctaCtble = CuentaCajaSeleccionada()
         Dim mensaje As String = String.Empty
 
-        sSsql = "SP_CONSULTA_CONTA_SaldosdiariosApertura "
-        sSsql += "'" & Format(dtp_FechaApertura.Value, "d") & "'"
-        open()
-        command = connection.CreateCommand()
-        command.CommandText = sSsql
-        datatbl = command.ExecuteReader()
-
-
         If String.IsNullOrWhiteSpace(ctaCtble) Then
             MessageBox.Show("Debe seleccionar una caja para consultar la apertura.", "Apertura de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Exit Sub
@@ -120,24 +112,20 @@ Public Class Registro_Apertura
             command.CommandType = CommandType.StoredProcedure
             command.Parameters.Add("@FechaApertura", SqlDbType.DateTime).Value = dtp_FechaApertura.Value.Date
             command.Parameters.Add("@Cta_Ctble", SqlDbType.VarChar, 7).Value = ctaCtble
-            datatbl = command.ExecuteReader()
-
-            If datatbl.HasRows Then
-                While datatbl.Read
-                    GrillaCaja.Rows.Add()
-                    GrillaCaja.Rows(i).Cells(0).Value = datatbl(0)
-                    GrillaCaja.Rows(i).Cells(1).Value = datatbl(1)
-                    GrillaCaja.Rows(i).Cells(2).Value = Format(datatbl(2), "###,###,###")
-                    GrillaCaja.Rows(i).Cells(3).Value = datatbl(3)
-                    saldoEsperado = Convert.ToDecimal(datatbl(2))
-                    i += 1
-                End While
-            End If
+            Using reader = command.ExecuteReader()
+                If reader.HasRows Then
+                    While reader.Read()
+                        GrillaCaja.Rows.Add()
+                        GrillaCaja.Rows(i).Cells(0).Value = reader(0)
+                        GrillaCaja.Rows(i).Cells(1).Value = reader(1)
+                        GrillaCaja.Rows(i).Cells(2).Value = Format(reader(2), "###,###,###")
+                        GrillaCaja.Rows(i).Cells(3).Value = reader(3)
+                        saldoEsperado = Convert.ToDecimal(reader(2))
+                        i += 1
+                    End While
+                End If
+            End Using
         Finally
-            If datatbl IsNot Nothing AndAlso Not datatbl.IsClosed Then
-                datatbl.Close()
-            End If
-
             close_conexion()
         End Try
 

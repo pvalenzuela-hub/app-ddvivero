@@ -389,6 +389,11 @@ Public Class Cierra_Diario
     Private Sub AplicarCajaActiva()
         txt_Cta_Ctble.Text = CuentaCajaSeleccionada()
 
+        If gIdPerfil = 1 Then
+            cmb_Cta_Ctble.Enabled = True
+            Return
+        End If
+
         If String.IsNullOrWhiteSpace(gCuentaCaja) Then
             cmb_Cta_Ctble.Enabled = True
             Return
@@ -410,6 +415,10 @@ Public Class Cierra_Diario
         If String.IsNullOrWhiteSpace(cuenta) Then
             MessageBox.Show("Debe seleccionar una caja.", "Cierre Diario", MessageBoxButtons.OK, MessageBoxIcon.Warning)
             Return False
+        End If
+
+        If gIdPerfil = 1 Then
+            Return True
         End If
 
         If String.IsNullOrWhiteSpace(gCuentaCaja) AndAlso Not EstableceCajaActiva(cuenta, mensaje) Then
