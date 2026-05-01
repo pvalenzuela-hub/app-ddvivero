@@ -171,7 +171,7 @@ Public Class Form3
         Dim filaConteo As DataRow = If(conteo.Rows.Count > 0, conteo.Rows(0), Nothing)
         Dim saldoInicial As Decimal = If(filaConteo Is Nothing, 0D, Convert.ToDecimal(filaConteo("Saldo_Inicial")))
         Dim cierreRegistrado As Boolean = filaConteo IsNot Nothing AndAlso Convert.ToBoolean(filaConteo("Cierre_Conteo_Registrado"))
-        Dim cierreContado As Decimal = If(cierreRegistrado, Convert.ToDecimal(filaConteo("Cierre_Total_Contado")), 0D)
+        Dim cierreContado As Decimal = If(cierreRegistrado, CalcularContadoDesdeFila(filaConteo, "Cierre_B"), 0D)
 
         Dim tabla As New DataTable()
         tabla.Columns.Add("Concepto", GetType(String))
@@ -258,6 +258,21 @@ Public Class Form3
         _txtCierreContado.Clear()
         _txtDiferencia.Clear()
     End Sub
+
+    Private Function CalcularContadoDesdeFila(ByVal fila As DataRow, ByVal prefijo As String) As Decimal
+        If fila Is Nothing Then
+            Return 0D
+        End If
+
+        Dim total As Decimal = 0D
+        For Each denom As Integer In New Integer() {1000, 2000, 5000, 10000, 20000, 500, 100, 50, 10}
+            Dim nombre = prefijo & denom.ToString()
+            If fila.Table.Columns.Contains(nombre) AndAlso Not IsDBNull(fila(nombre)) Then
+                total += Convert.ToDecimal(fila(nombre)) * denom
+            End If
+        Next
+        Return total
+    End Function
 
     Private Sub GrillaReporte_DataBindingComplete(sender As Object, e As DataGridViewBindingCompleteEventArgs)
         If _grillaReporte.Columns.Count = 0 Then

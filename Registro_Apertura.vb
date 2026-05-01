@@ -2,7 +2,7 @@ Imports System.Data
 Imports System.Data.SqlClient
 
 Public Class Registro_Apertura
-    Private Shared ReadOnly Denominaciones As Integer() = {1000, 2000, 5000, 10000, 20000}
+    Private Shared ReadOnly Denominaciones As Integer() = {1000, 2000, 5000, 10000, 20000, 500, 100, 50, 10}
 
     Private _cmbCaja As ComboBox
     Private _txtCuentaCaja As TextBox
@@ -61,6 +61,10 @@ Public Class Registro_Apertura
                 cmd.Parameters.Add("@Apertura_B5000", SqlDbType.Int).Value = cantidades(2)
                 cmd.Parameters.Add("@Apertura_B10000", SqlDbType.Int).Value = cantidades(3)
                 cmd.Parameters.Add("@Apertura_B20000", SqlDbType.Int).Value = cantidades(4)
+                cmd.Parameters.Add("@Apertura_B500", SqlDbType.Int).Value = cantidades(5)
+                cmd.Parameters.Add("@Apertura_B100", SqlDbType.Int).Value = cantidades(6)
+                cmd.Parameters.Add("@Apertura_B50", SqlDbType.Int).Value = cantidades(7)
+                cmd.Parameters.Add("@Apertura_B10", SqlDbType.Int).Value = cantidades(8)
                 cmd.ExecuteNonQuery()
             End Using
         Finally
@@ -123,11 +127,21 @@ Public Class Registro_Apertura
                         saldoEsperado = Convert.ToDecimal(reader(2))
                         i += 1
                     End While
+                Else
+                    saldoEsperado = 0D
                 End If
             End Using
         Finally
             close_conexion()
         End Try
+
+        If GrillaCaja.Rows.Count = 0 Then
+            GrillaCaja.Rows.Add()
+            GrillaCaja.Rows(0).Cells(0).Value = ctaCtble
+            GrillaCaja.Rows(0).Cells(1).Value = String.Empty
+            GrillaCaja.Rows(0).Cells(2).Value = "0"
+            GrillaCaja.Rows(0).Cells(3).Value = dtp_FechaApertura.Value.Date.AddDays(-1).ToString("dd/MM/yyyy")
+        End If
 
         _txtSaldoEsperado.Text = Format(saldoEsperado, "###,###,###")
         Button4.Enabled = True
@@ -304,7 +318,14 @@ Public Class Registro_Apertura
         Dim prefijo = If(esApertura, "Apertura_B", "Cierre_B")
 
         For i As Integer = 0 To Denominaciones.Length - 1
-            _grillaConteo.Rows(i).Cells("Cantidad").Value = Convert.ToInt32(fila(prefijo & Denominaciones(i).ToString()))
+            Dim nombreColumna = prefijo & Denominaciones(i).ToString()
+            Dim valor As Integer = 0
+
+            If fila.Table.Columns.Contains(nombreColumna) AndAlso Not IsDBNull(fila(nombreColumna)) Then
+                Integer.TryParse(Convert.ToString(fila(nombreColumna)), valor)
+            End If
+
+            _grillaConteo.Rows(i).Cells("Cantidad").Value = valor
         Next
     End Sub
 

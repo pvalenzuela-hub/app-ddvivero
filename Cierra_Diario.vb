@@ -2,7 +2,7 @@ Imports System.Data
 Imports System.Data.SqlClient
 
 Public Class Cierra_Diario
-    Private Shared ReadOnly Denominaciones As Integer() = {1000, 2000, 5000, 10000, 20000}
+    Private Shared ReadOnly Denominaciones As Integer() = {1000, 2000, 5000, 10000, 20000, 500, 100, 50, 10}
 
     Private dSaldoAcum As Double = 0
     Private dSaldoFinal As Double = 0
@@ -46,14 +46,14 @@ Public Class Cierra_Diario
             Using cmd As SqlCommand = connection.CreateCommand()
                 cmd.CommandText = "SP_CONSULTA_CONTA_Saldosdiarios"
                 cmd.CommandType = CommandType.StoredProcedure
-                cmd.Parameters.Add("@NombreCuenta", SqlDbType.VarChar, 100).Value = cmb_Cta_Ctble.Text.Trim()
-                cmd.Parameters.Add("@Fecha", SqlDbType.DateTime).Value = dtp_FechaApertura.Value.Date
+                cmd.Parameters.Add("@Cta_Ctble", SqlDbType.VarChar, 7).Value = CuentaCajaSeleccionada()
+                cmd.Parameters.Add("@FechaCierre", SqlDbType.DateTime).Value = dtp_FechaApertura.Value.Date
 
                 Using reader = cmd.ExecuteReader()
                     If reader.HasRows Then
                         reader.Read()
                         txt_Cta_Ctble.Text = reader(0).ToString()
-                        dSaldoInicial = Convert.ToDouble(reader(1))
+                        dSaldoInicial = Convert.ToDouble(reader(2))
                         btn_GrabaCierre.Enabled = True
                     Else
                         MsgBox("Esta Cuenta no tiene Apertura para la Fecha Seleccionada.", MsgBoxStyle.Exclamation, "Cierre Diario")
@@ -162,6 +162,10 @@ Public Class Cierra_Diario
                 cmd.Parameters.Add("@Cierre_B5000", SqlDbType.Int).Value = cantidades(2)
                 cmd.Parameters.Add("@Cierre_B10000", SqlDbType.Int).Value = cantidades(3)
                 cmd.Parameters.Add("@Cierre_B20000", SqlDbType.Int).Value = cantidades(4)
+                cmd.Parameters.Add("@Cierre_B500", SqlDbType.Int).Value = cantidades(5)
+                cmd.Parameters.Add("@Cierre_B100", SqlDbType.Int).Value = cantidades(6)
+                cmd.Parameters.Add("@Cierre_B50", SqlDbType.Int).Value = cantidades(7)
+                cmd.Parameters.Add("@Cierre_B10", SqlDbType.Int).Value = cantidades(8)
                 cmd.ExecuteNonQuery()
             End Using
         Finally
@@ -287,7 +291,14 @@ Public Class Cierra_Diario
         Dim fila = dt.Rows(0)
         If Convert.ToBoolean(fila("Cierre_Conteo_Registrado")) Then
             For i As Integer = 0 To Denominaciones.Length - 1
-                _grillaConteo.Rows(i).Cells("Cantidad").Value = Convert.ToInt32(fila("Cierre_B" & Denominaciones(i).ToString()))
+                Dim nombreColumna = "Cierre_B" & Denominaciones(i).ToString()
+                Dim valor As Integer = 0
+
+                If fila.Table.Columns.Contains(nombreColumna) AndAlso Not IsDBNull(fila(nombreColumna)) Then
+                    Integer.TryParse(Convert.ToString(fila(nombreColumna)), valor)
+                End If
+
+                _grillaConteo.Rows(i).Cells("Cantidad").Value = valor
             Next
         End If
 

@@ -59,23 +59,32 @@ Public Class Caja_Registro
     End Sub
     Private Sub Lectura_Saldo_Apertura()
         Dim i As Integer = 0
-        sSsql = "SP_CONSULTA_CONTA_SaldosdiariosApertura "
-        sSsql += "'" + Format(dtp_FechaApertura.Value, "d") + "'"
-        open()
-        command = connection.CreateCommand()
-        command.CommandText = sSsql
-        datatbl = command.ExecuteReader()
 
-        If datatbl.HasRows Then
-            While datatbl.Read
-                GrillaCaja.Rows.Add()
-                GrillaCaja.Rows(i).Cells(0).Value = datatbl(0)
-                GrillaCaja.Rows(i).Cells(1).Value = datatbl(1)
-                GrillaCaja.Rows(i).Cells(2).Value = Format(datatbl(2), "###,###,###")
-                GrillaCaja.Rows(i).Cells(3).Value = datatbl(3)
-                i += 1
-            End While
-        End If
-        close_conexion()
+        GrillaCaja.Rows.Clear()
+        open()
+
+        Try
+            Using cmd As SqlCommand = connection.CreateCommand()
+                cmd.CommandText = "SP_CONSULTA_CONTA_SaldosdiariosApertura"
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.Add("@FechaApertura", SqlDbType.DateTime).Value = dtp_FechaApertura.Value.Date
+                cmd.Parameters.Add("@Cta_Ctble", SqlDbType.VarChar, 7).Value = txt_Cta_Ctble.Text.Trim()
+
+                Using reader = cmd.ExecuteReader()
+                    If reader.HasRows Then
+                        While reader.Read()
+                            GrillaCaja.Rows.Add()
+                            GrillaCaja.Rows(i).Cells(0).Value = reader(0)
+                            GrillaCaja.Rows(i).Cells(1).Value = reader(1)
+                            GrillaCaja.Rows(i).Cells(2).Value = Format(reader(2), "###,###,###")
+                            GrillaCaja.Rows(i).Cells(3).Value = reader(3)
+                            i += 1
+                        End While
+                    End If
+                End Using
+            End Using
+        Finally
+            close_conexion()
+        End Try
     End Sub
 End Class
