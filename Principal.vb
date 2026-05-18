@@ -18,7 +18,11 @@
     Private Sub Principal_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
         LecturaINI()
         'carga variables en pantalla principal
-        Me.txt_User.Text = gNomUsuario
+        If String.IsNullOrWhiteSpace(gNomUsuario) Then
+            Me.txt_User.Text = String.Empty
+        Else
+            Me.txt_User.Text = gNomUsuario
+        End If
         Label4.Text = "Sistema de Gestión Vivero - V. 2024"
         'opcionAutorizaPedido.Enabled = False
         'Select Case gIdPerfil
@@ -391,6 +395,10 @@
 
     Private Sub AdministracionCajaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AdministracionCajaToolStripMenuItem.Click
         Caja_Administracion.Show()
+    End Sub
+
+    Private Sub DetalleDenominacionesToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles DetalleDenominacionesToolStripMenuItem.Click
+        Caja_DetalleDenominaciones.Show()
     End Sub
 
     Private Sub ListadoDeudoresToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ListadoDeudoresToolStripMenuItem.Click

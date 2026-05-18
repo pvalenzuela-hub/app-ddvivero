@@ -58,7 +58,7 @@ Partial Class Caja_Administracion
         Me.lblCaja.AutoSize = True
         Me.lblCaja.Location = New System.Drawing.Point(228, 20)
         Me.lblCaja.Name = "lblCaja"
-        Me.lblCaja.Size = New System.Drawing.Size(31, 13)
+        Me.lblCaja.Size = New System.Drawing.Size(28, 13)
         Me.lblCaja.TabIndex = 3
         Me.lblCaja.Text = "Caja"
         '
@@ -70,6 +70,7 @@ Partial Class Caja_Administracion
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.grdCajeros.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.grdCajeros.BackgroundColor = System.Drawing.Color.White
         Me.grdCajeros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.grdCajeros.Location = New System.Drawing.Point(12, 54)
         Me.grdCajeros.MultiSelect = False
@@ -106,6 +107,7 @@ Partial Class Caja_Administracion
         CType(Me.grdCajeros, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
+
     End Sub
 
     Friend WithEvents btnLiberar As Button

@@ -139,6 +139,10 @@ Module FUNCIONES
 
         Dim connectionString As String = gSOURCE
 
+        If String.IsNullOrWhiteSpace(connectionString) Then
+            Throw New InvalidOperationException("La cadena de conexión no está configurada.")
+        End If
+
         connection = New SqlConnection(connectionString)
 
         connection.Open()

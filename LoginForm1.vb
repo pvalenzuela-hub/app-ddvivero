@@ -3,8 +3,16 @@ Public Class LoginForm1
 
     Private Sub OK_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles OK.Click
         If ValidaAcceso() Then
-            Principal.Visible = True
-            Me.Visible = False
+            Try
+                Principal.Visible = True
+                Me.Visible = False
+            Catch ex As Exception
+                Dim detalle As String = ex.ToString()
+                If ex.InnerException IsNot Nothing Then
+                    detalle &= Environment.NewLine & Environment.NewLine & "INNER: " & ex.InnerException.ToString()
+                End If
+                MsgBox(detalle, MsgBoxStyle.Critical, "Error al abrir Principal")
+            End Try
         End If
     End Sub
 

@@ -30,7 +30,6 @@ Partial Class LoginForm1
     'No lo modifique con el editor de código.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(LoginForm1))
         Me.UsernameLabel = New System.Windows.Forms.Label()
         Me.PasswordLabel = New System.Windows.Forms.Label()
         Me.txtIdusuario = New System.Windows.Forms.TextBox()
@@ -46,7 +45,7 @@ Partial Class LoginForm1
         'UsernameLabel
         '
         Me.UsernameLabel.BackColor = System.Drawing.Color.White
-        Me.UsernameLabel.Location = New System.Drawing.Point(258, 80)
+        Me.UsernameLabel.Location = New System.Drawing.Point(260, 80)
         Me.UsernameLabel.Name = "UsernameLabel"
         Me.UsernameLabel.Size = New System.Drawing.Size(220, 20)
         Me.UsernameLabel.TabIndex = 0
@@ -56,7 +55,7 @@ Partial Class LoginForm1
         'PasswordLabel
         '
         Me.PasswordLabel.BackColor = System.Drawing.Color.White
-        Me.PasswordLabel.Location = New System.Drawing.Point(258, 153)
+        Me.PasswordLabel.Location = New System.Drawing.Point(260, 153)
         Me.PasswordLabel.Name = "PasswordLabel"
         Me.PasswordLabel.Size = New System.Drawing.Size(220, 20)
         Me.PasswordLabel.TabIndex = 2
@@ -65,7 +64,7 @@ Partial Class LoginForm1
         '
         'txtIdusuario
         '
-        Me.txtIdusuario.Location = New System.Drawing.Point(258, 59)
+        Me.txtIdusuario.Location = New System.Drawing.Point(260, 59)
         Me.txtIdusuario.Name = "txtIdusuario"
         Me.txtIdusuario.Size = New System.Drawing.Size(220, 20)
         Me.txtIdusuario.TabIndex = 1
@@ -73,7 +72,7 @@ Partial Class LoginForm1
         '
         'txtPassWord
         '
-        Me.txtPassWord.Location = New System.Drawing.Point(258, 132)
+        Me.txtPassWord.Location = New System.Drawing.Point(260, 132)
         Me.txtPassWord.Name = "txtPassWord"
         Me.txtPassWord.PasswordChar = Global.Microsoft.VisualBasic.ChrW(42)
         Me.txtPassWord.Size = New System.Drawing.Size(220, 20)
@@ -85,7 +84,7 @@ Partial Class LoginForm1
         Me.OK.BackColor = System.Drawing.Color.OliveDrab
         Me.OK.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.OK.ForeColor = System.Drawing.Color.White
-        Me.OK.Location = New System.Drawing.Point(258, 204)
+        Me.OK.Location = New System.Drawing.Point(260, 204)
         Me.OK.Name = "OK"
         Me.OK.Size = New System.Drawing.Size(94, 35)
         Me.OK.TabIndex = 4
@@ -98,7 +97,7 @@ Partial Class LoginForm1
         Me.Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel
         Me.Cancel.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.75!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Cancel.ForeColor = System.Drawing.Color.White
-        Me.Cancel.Location = New System.Drawing.Point(384, 204)
+        Me.Cancel.Location = New System.Drawing.Point(386, 204)
         Me.Cancel.Name = "Cancel"
         Me.Cancel.Size = New System.Drawing.Size(94, 35)
         Me.Cancel.TabIndex = 5
@@ -110,7 +109,7 @@ Partial Class LoginForm1
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Century", 14.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.Label1.ForeColor = System.Drawing.Color.DarkGreen
-        Me.Label1.Location = New System.Drawing.Point(259, 9)
+        Me.Label1.Location = New System.Drawing.Point(260, 9)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(219, 23)
         Me.Label1.TabIndex = 6
@@ -118,12 +117,12 @@ Partial Class LoginForm1
         '
         'LogoPictureBox
         '
-        Me.LogoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
-        Me.LogoPictureBox.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.LogoPictureBox.Image = CType(resources.GetObject("LogoPictureBox.Image"), System.Drawing.Image)
+        Me.LogoPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
+        Me.LogoPictureBox.Image = Global.GestionVivero.My.Resources.Resources.logo3
         Me.LogoPictureBox.Location = New System.Drawing.Point(0, 0)
         Me.LogoPictureBox.Name = "LogoPictureBox"
-        Me.LogoPictureBox.Size = New System.Drawing.Size(490, 251)
+        Me.LogoPictureBox.Size = New System.Drawing.Size(245, 254)
+        Me.LogoPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.LogoPictureBox.TabIndex = 0
         Me.LogoPictureBox.TabStop = False
         '
@@ -132,7 +131,7 @@ Partial Class LoginForm1
         Me.lblversion.AutoSize = True
         Me.lblversion.Font = New System.Drawing.Font("Calibri", 8.25!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.lblversion.ForeColor = System.Drawing.Color.ForestGreen
-        Me.lblversion.Location = New System.Drawing.Point(335, 36)
+        Me.lblversion.Location = New System.Drawing.Point(340, 36)
         Me.lblversion.Name = "lblversion"
         Me.lblversion.Size = New System.Drawing.Size(38, 13)
         Me.lblversion.TabIndex = 7
@@ -143,8 +142,10 @@ Partial Class LoginForm1
         Me.AcceptButton = Me.OK
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
+        Me.BackColor = System.Drawing.Color.White
+        Me.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None
         Me.CancelButton = Me.Cancel
-        Me.ClientSize = New System.Drawing.Size(490, 251)
+        Me.ClientSize = New System.Drawing.Size(495, 254)
         Me.Controls.Add(Me.lblversion)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.Cancel)

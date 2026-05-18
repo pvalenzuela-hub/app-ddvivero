@@ -147,6 +147,7 @@ Partial Class Principal
         Me.AperturaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CierreToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.AdministracionCajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.DetalleDenominacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CierrePeríodoAnualToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem13 = New System.Windows.Forms.ToolStripMenuItem()
@@ -959,7 +960,7 @@ Partial Class Principal
         '
         'SaldosDiariosToolStripMenuItem
         '
-        Me.SaldosDiariosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AperturaToolStripMenuItem, Me.CierreToolStripMenuItem, Me.AdministracionCajaToolStripMenuItem})
+        Me.SaldosDiariosToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.AperturaToolStripMenuItem, Me.CierreToolStripMenuItem, Me.AdministracionCajaToolStripMenuItem, Me.DetalleDenominacionesToolStripMenuItem})
         Me.SaldosDiariosToolStripMenuItem.Name = "SaldosDiariosToolStripMenuItem"
         Me.SaldosDiariosToolStripMenuItem.Size = New System.Drawing.Size(313, 22)
         Me.SaldosDiariosToolStripMenuItem.Text = "Cierre de Caja"
@@ -981,6 +982,12 @@ Partial Class Principal
         Me.AdministracionCajaToolStripMenuItem.Name = "AdministracionCajaToolStripMenuItem"
         Me.AdministracionCajaToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
         Me.AdministracionCajaToolStripMenuItem.Text = "Administración"
+        '
+        'DetalleDenominacionesToolStripMenuItem
+        '
+        Me.DetalleDenominacionesToolStripMenuItem.Name = "DetalleDenominacionesToolStripMenuItem"
+        Me.DetalleDenominacionesToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
+        Me.DetalleDenominacionesToolStripMenuItem.Text = "Detalle Denominaciones"
         '
         'CierrePeríodoAnualToolStripMenuItem
         '
@@ -1282,10 +1289,11 @@ Partial Class Principal
         '
         'PictureBox1
         '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
+        Me.PictureBox1.Image = Global.GestionVivero.My.Resources.Resources.logo3
         Me.PictureBox1.Location = New System.Drawing.Point(325, 16)
         Me.PictureBox1.Name = "PictureBox1"
         Me.PictureBox1.Size = New System.Drawing.Size(552, 561)
+        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom
         Me.PictureBox1.TabIndex = 0
         Me.PictureBox1.TabStop = False
         '
@@ -1392,6 +1400,7 @@ Partial Class Principal
     Friend WithEvents AperturaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents CierreToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents AdministracionCajaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
+    Friend WithEvents DetalleDenominacionesToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ListadoDeudoresToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem5 As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem19 As System.Windows.Forms.ToolStripMenuItem

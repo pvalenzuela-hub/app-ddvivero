@@ -14,6 +14,7 @@
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <GenerateResourceUsePreserializedResources>false</GenerateResourceUsePreserializedResources>
     <OptionExplicit>On</OptionExplicit>
     <OptionCompare>Binary</OptionCompare>
     <OptionStrict>Off</OptionStrict>
@@ -23,6 +24,7 @@
     <ManifestKeyFile>gestionvivero_9_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
     <SignManifests>true</SignManifests>
+    <GenerateTrustInfo>false</GenerateTrustInfo>
     <TargetZone>LocalIntranet</TargetZone>
     <ApplicationManifest>My Project\app.manifest</ApplicationManifest>
     <SignAssembly>false</SignAssembly>
@@ -99,6 +101,10 @@
     </Reference>
     <Reference Include="DocumentFormat.OpenXml.Framework, Version=3.0.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
       <HintPath>packages\DocumentFormat.OpenXml.Framework.3.0.1\lib\net46\DocumentFormat.OpenXml.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Resources.Extensions">
+      <HintPath>C:\Program Files\dotnet\shared\Microsoft.WindowsDesktop.App\8.0.27\System.Resources.Extensions.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="EO.Base, Version=24.1.93.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
       <HintPath>packages\EO.WebBrowser.24.1.93\lib\EO.Base.dll</HintPath>
@@ -448,6 +454,9 @@
       <DependentUpon>Caja_Administracion.vb</DependentUpon>
     </Compile>
     <Compile Include="Caja_Administracion.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Caja_DetalleDenominaciones.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="CambioPassword.Designer.vb">
@@ -1084,9 +1093,7 @@
     <Compile Include="LoginForm1.Designer.vb">
       <DependentUpon>LoginForm1.vb</DependentUpon>
     </Compile>
-    <Compile Include="LoginForm1.vb">
-      <SubType>Form</SubType>
-    </Compile>
+    <Compile Include="LoginForm1.vb" />
     <Compile Include="LotesParaConteo.Designer.vb">
       <DependentUpon>LotesParaConteo.vb</DependentUpon>
     </Compile>
