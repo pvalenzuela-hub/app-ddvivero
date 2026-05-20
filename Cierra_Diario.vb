@@ -181,25 +181,25 @@ Public Class Cierra_Diario
             Return
         End If
 
-        Me.ClientSize = New Size(693, 860)
-        btn_GrabaCierre.Location = New Point(100, 804)
-        Button2.Location = New Point(423, 804)
+        Me.ClientSize = New Size(950, 650)
+        btn_GrabaCierre.Location = New Point(100, 560)
+        Button2.Location = New Point(423, 560)
 
         _grpConteo = New GroupBox() With {
             .Text = "Conteo de billetes cierre",
-            .Location = New Point(12, 560),
-            .Size = New Size(674, 224),
+            .Location = New Point(670, 159),
+            .Size = New Size(268, 230),
             .Visible = False
         }
 
         Dim lblTotalConteo As New Label() With {
             .Text = "Total contado:",
-            .Location = New Point(389, 29),
+            .Location = New Point(12, 25),
             .AutoSize = True
         }
 
         _txtTotalConteo = New TextBox() With {
-            .Location = New Point(482, 25),
+            .Location = New Point(110, 21),
             .Size = New Size(150, 20),
             .ReadOnly = True,
             .TextAlign = HorizontalAlignment.Right
@@ -207,20 +207,20 @@ Public Class Cierra_Diario
 
         Dim lblDiferencia As New Label() With {
             .Text = "Diferencia cierre:",
-            .Location = New Point(367, 57),
+            .Location = New Point(12, 52),
             .AutoSize = True
         }
 
         _txtDiferencia = New TextBox() With {
-            .Location = New Point(482, 53),
+            .Location = New Point(110, 48),
             .Size = New Size(150, 20),
             .ReadOnly = True,
             .TextAlign = HorizontalAlignment.Right
         }
 
         _grillaConteo = New DataGridView() With {
-            .Location = New Point(16, 25),
-            .Size = New Size(330, 176),
+            .Location = New Point(10, 78),
+            .Size = New Size(248, 140),
             .AllowUserToAddRows = False,
             .AllowUserToDeleteRows = False,
             .RowHeadersVisible = False,

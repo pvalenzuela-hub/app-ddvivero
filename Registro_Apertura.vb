@@ -118,15 +118,20 @@ Public Class Registro_Apertura
             command.Parameters.Add("@Cta_Ctble", SqlDbType.VarChar, 7).Value = ctaCtble
             Using reader = command.ExecuteReader()
                 If reader.HasRows Then
-                    While reader.Read()
-                        GrillaCaja.Rows.Add()
-                        GrillaCaja.Rows(i).Cells(0).Value = reader(0)
-                        GrillaCaja.Rows(i).Cells(1).Value = reader(1)
-                        GrillaCaja.Rows(i).Cells(2).Value = Format(reader(2), "###,###,###")
-                        GrillaCaja.Rows(i).Cells(3).Value = reader(3)
-                        saldoEsperado = Convert.ToDecimal(reader(2))
-                        i += 1
-                    End While
+                        While reader.Read()
+                            Dim saldoFila As Decimal = 0D
+                            If Not IsDBNull(reader(2)) Then
+                                Decimal.TryParse(Convert.ToString(reader(2)), saldoFila)
+                            End If
+
+                            GrillaCaja.Rows.Add()
+                            GrillaCaja.Rows(i).Cells(0).Value = reader(0)
+                            GrillaCaja.Rows(i).Cells(1).Value = reader(1)
+                            GrillaCaja.Rows(i).Cells(2).Value = Format(saldoFila, "###,###,###")
+                            GrillaCaja.Rows(i).Cells(3).Value = reader(3)
+                            saldoEsperado = saldoFila
+                            i += 1
+                        End While
                 Else
                     saldoEsperado = 0D
                 End If
@@ -300,7 +305,14 @@ Public Class Registro_Apertura
             Return
         End If
 
-        Dim dt = ObtenerConteoCaja(dtp_FechaApertura.Value.Date, ctaCtble)
+        Dim dt As DataTable
+        Try
+            dt = ObtenerConteoCaja(dtp_FechaApertura.Value.Date, ctaCtble)
+        Catch ex As Exception
+            RecalcularConteo()
+            MessageBox.Show("No existe cierre del día anterior para esta caja. La apertura continuará con saldo inicial cero.", "Apertura de Caja", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Return
+        End Try
         If dt.Rows.Count = 0 Then
             RecalcularConteo()
             Return

@@ -72,7 +72,7 @@ Partial Class Cierra_Diario
         Me.GrillaCaja.Location = New System.Drawing.Point(2, 159)
         Me.GrillaCaja.Name = "GrillaCaja"
         Me.GrillaCaja.ReadOnly = True
-        Me.GrillaCaja.Size = New System.Drawing.Size(691, 270)
+        Me.GrillaCaja.Size = New System.Drawing.Size(650, 230)
         Me.GrillaCaja.TabIndex = 158
         '
         'NumMov
@@ -125,7 +125,7 @@ Partial Class Cierra_Diario
         '
         'btn_GrabaCierre
         '
-        Me.btn_GrabaCierre.Location = New System.Drawing.Point(100, 610)
+        Me.btn_GrabaCierre.Location = New System.Drawing.Point(100, 560)
         Me.btn_GrabaCierre.Name = "btn_GrabaCierre"
         Me.btn_GrabaCierre.Size = New System.Drawing.Size(132, 40)
         Me.btn_GrabaCierre.TabIndex = 156
@@ -144,7 +144,7 @@ Partial Class Cierra_Diario
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(423, 610)
+        Me.Button2.Location = New System.Drawing.Point(423, 560)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(150, 40)
         Me.Button2.TabIndex = 154
@@ -200,7 +200,7 @@ Partial Class Cierra_Diario
         '
         'txt_SaldoFinalDiario
         '
-        Me.txt_SaldoFinalDiario.Location = New System.Drawing.Point(579, 529)
+        Me.txt_SaldoFinalDiario.Location = New System.Drawing.Point(828, 529)
         Me.txt_SaldoFinalDiario.Name = "txt_SaldoFinalDiario"
         Me.txt_SaldoFinalDiario.ReadOnly = True
         Me.txt_SaldoFinalDiario.Size = New System.Drawing.Size(107, 20)
@@ -211,7 +211,7 @@ Partial Class Cierra_Diario
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(470, 441)
+        Me.Label4.Location = New System.Drawing.Point(719, 441)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(78, 15)
         Me.Label4.TabIndex = 165
@@ -259,7 +259,7 @@ Partial Class Cierra_Diario
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(470, 532)
+        Me.Label8.Location = New System.Drawing.Point(719, 532)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(103, 15)
         Me.Label8.TabIndex = 170
@@ -267,7 +267,7 @@ Partial Class Cierra_Diario
         '
         'txt_Saldo_Diario
         '
-        Me.txt_Saldo_Diario.Location = New System.Drawing.Point(579, 438)
+        Me.txt_Saldo_Diario.Location = New System.Drawing.Point(828, 438)
         Me.txt_Saldo_Diario.Name = "txt_Saldo_Diario"
         Me.txt_Saldo_Diario.ReadOnly = True
         Me.txt_Saldo_Diario.Size = New System.Drawing.Size(107, 20)
@@ -278,7 +278,7 @@ Partial Class Cierra_Diario
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(470, 484)
+        Me.Label9.Location = New System.Drawing.Point(719, 484)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(77, 15)
         Me.Label9.TabIndex = 172
@@ -286,7 +286,7 @@ Partial Class Cierra_Diario
         '
         'txt_Saldo_Inicial
         '
-        Me.txt_Saldo_Inicial.Location = New System.Drawing.Point(579, 481)
+        Me.txt_Saldo_Inicial.Location = New System.Drawing.Point(828, 481)
         Me.txt_Saldo_Inicial.Name = "txt_Saldo_Inicial"
         Me.txt_Saldo_Inicial.ReadOnly = True
         Me.txt_Saldo_Inicial.Size = New System.Drawing.Size(107, 20)
@@ -298,7 +298,7 @@ Partial Class Cierra_Diario
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(693, 662)
+        Me.ClientSize = New System.Drawing.Size(950, 472)
         Me.Controls.Add(Me.txt_Saldo_Inicial)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.txt_Saldo_Diario)
