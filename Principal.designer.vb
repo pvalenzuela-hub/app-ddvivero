@@ -22,7 +22,6 @@ Partial Class Principal
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Principal))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ToolStripMenuItem14 = New System.Windows.Forms.ToolStripMenuItem()
         Me.CalculadoraToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -132,6 +131,7 @@ Partial Class Principal
         Me.ConsultaGuíasToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ConsultaLotesSinGuíasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem6 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripMenuItem16 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem17 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem23 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem26 = New System.Windows.Forms.ToolStripMenuItem()
@@ -163,6 +163,7 @@ Partial Class Principal
         Me.LotesPorSembrarToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ControlDeLotesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ControlEstadoDeLotesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProgramaDeSiembraPorTipoBandejaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem21 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem22 = New System.Windows.Forms.ToolStripMenuItem()
         Me.EvoluciónVentasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -179,7 +180,6 @@ Partial Class Principal
         Me.IndicadoresToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.SiembraVsEntregasToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.PedidosVsStockToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.IndicadoresDeSiembraToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.IndicadoresDeSiembraAnualToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.GestiónToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ClientesSinMovimientoToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -189,7 +189,6 @@ Partial Class Principal
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.SplitContainer1 = New System.Windows.Forms.SplitContainer()
-        Me.ToolStripMenuItem16 = New System.Windows.Forms.ToolStripMenuItem()
         Me.PictureBox1 = New System.Windows.Forms.PictureBox()
         Me.MenuStrip1.SuspendLayout()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -890,6 +889,12 @@ Partial Class Principal
         Me.ToolStripMenuItem6.Size = New System.Drawing.Size(89, 20)
         Me.ToolStripMenuItem6.Text = "Contabilidad"
         '
+        'ToolStripMenuItem16
+        '
+        Me.ToolStripMenuItem16.Name = "ToolStripMenuItem16"
+        Me.ToolStripMenuItem16.Size = New System.Drawing.Size(313, 22)
+        Me.ToolStripMenuItem16.Text = "Ingreso Comprobante"
+        '
         'ToolStripMenuItem17
         '
         Me.ToolStripMenuItem17.Name = "ToolStripMenuItem17"
@@ -968,25 +973,25 @@ Partial Class Principal
         'AperturaToolStripMenuItem
         '
         Me.AperturaToolStripMenuItem.Name = "AperturaToolStripMenuItem"
-        Me.AperturaToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
+        Me.AperturaToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
         Me.AperturaToolStripMenuItem.Text = "Apertura"
         '
         'CierreToolStripMenuItem
         '
         Me.CierreToolStripMenuItem.Name = "CierreToolStripMenuItem"
-        Me.CierreToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
+        Me.CierreToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
         Me.CierreToolStripMenuItem.Text = "Cierre"
         '
         'AdministracionCajaToolStripMenuItem
         '
         Me.AdministracionCajaToolStripMenuItem.Name = "AdministracionCajaToolStripMenuItem"
-        Me.AdministracionCajaToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
+        Me.AdministracionCajaToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
         Me.AdministracionCajaToolStripMenuItem.Text = "Administración"
         '
         'DetalleDenominacionesToolStripMenuItem
         '
         Me.DetalleDenominacionesToolStripMenuItem.Name = "DetalleDenominacionesToolStripMenuItem"
-        Me.DetalleDenominacionesToolStripMenuItem.Size = New System.Drawing.Size(120, 22)
+        Me.DetalleDenominacionesToolStripMenuItem.Size = New System.Drawing.Size(211, 22)
         Me.DetalleDenominacionesToolStripMenuItem.Text = "Detalle Denominaciones"
         '
         'CierrePeríodoAnualToolStripMenuItem
@@ -1049,7 +1054,7 @@ Partial Class Principal
         '
         'ToolStripMenuItem20
         '
-        Me.ToolStripMenuItem20.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReporteDeLotesToolStripMenuItem, Me.ReporteLotesSinGuíasEmitidasToolStripMenuItem, Me.LotesPorSembrarToolStripMenuItem, Me.ControlDeLotesToolStripMenuItem, Me.ControlEstadoDeLotesToolStripMenuItem})
+        Me.ToolStripMenuItem20.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ReporteDeLotesToolStripMenuItem, Me.ReporteLotesSinGuíasEmitidasToolStripMenuItem, Me.LotesPorSembrarToolStripMenuItem, Me.ControlDeLotesToolStripMenuItem, Me.ControlEstadoDeLotesToolStripMenuItem, Me.ProgramaDeSiembraPorTipoBandejaToolStripMenuItem})
         Me.ToolStripMenuItem20.Name = "ToolStripMenuItem20"
         Me.ToolStripMenuItem20.Size = New System.Drawing.Size(193, 22)
         Me.ToolStripMenuItem20.Text = "Lotes"
@@ -1083,6 +1088,12 @@ Partial Class Principal
         Me.ControlEstadoDeLotesToolStripMenuItem.Name = "ControlEstadoDeLotesToolStripMenuItem"
         Me.ControlEstadoDeLotesToolStripMenuItem.Size = New System.Drawing.Size(293, 22)
         Me.ControlEstadoDeLotesToolStripMenuItem.Text = "Lotes Inventario por Control de Revisión"
+        '
+        'ProgramaDeSiembraPorTipoBandejaToolStripMenuItem
+        '
+        Me.ProgramaDeSiembraPorTipoBandejaToolStripMenuItem.Name = "ProgramaDeSiembraPorTipoBandejaToolStripMenuItem"
+        Me.ProgramaDeSiembraPorTipoBandejaToolStripMenuItem.Size = New System.Drawing.Size(293, 22)
+        Me.ProgramaDeSiembraPorTipoBandejaToolStripMenuItem.Text = "Siembras Próximos 60 días"
         '
         'ToolStripMenuItem21
         '
@@ -1167,7 +1178,7 @@ Partial Class Principal
         '
         'IndicadoresToolStripMenuItem
         '
-        Me.IndicadoresToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SiembraVsEntregasToolStripMenuItem, Me.PedidosVsStockToolStripMenuItem, Me.IndicadoresDeSiembraToolStripMenuItem, Me.IndicadoresDeSiembraAnualToolStripMenuItem})
+        Me.IndicadoresToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SiembraVsEntregasToolStripMenuItem, Me.PedidosVsStockToolStripMenuItem, Me.IndicadoresDeSiembraAnualToolStripMenuItem})
         Me.IndicadoresToolStripMenuItem.Name = "IndicadoresToolStripMenuItem"
         Me.IndicadoresToolStripMenuItem.Size = New System.Drawing.Size(193, 22)
         Me.IndicadoresToolStripMenuItem.Text = "Indicadores"
@@ -1183,12 +1194,6 @@ Partial Class Principal
         Me.PedidosVsStockToolStripMenuItem.Name = "PedidosVsStockToolStripMenuItem"
         Me.PedidosVsStockToolStripMenuItem.Size = New System.Drawing.Size(239, 22)
         Me.PedidosVsStockToolStripMenuItem.Text = "Pedidos v/s Stock"
-        '
-        'IndicadoresDeSiembraToolStripMenuItem
-        '
-        Me.IndicadoresDeSiembraToolStripMenuItem.Name = "IndicadoresDeSiembraToolStripMenuItem"
-        Me.IndicadoresDeSiembraToolStripMenuItem.Size = New System.Drawing.Size(239, 22)
-        Me.IndicadoresDeSiembraToolStripMenuItem.Text = "Indicadores de Siembra"
         '
         'IndicadoresDeSiembraAnualToolStripMenuItem
         '
@@ -1280,12 +1285,6 @@ Partial Class Principal
         Me.SplitContainer1.Size = New System.Drawing.Size(1230, 690)
         Me.SplitContainer1.SplitterDistance = 589
         Me.SplitContainer1.TabIndex = 11
-        '
-        'ToolStripMenuItem16
-        '
-        Me.ToolStripMenuItem16.Name = "ToolStripMenuItem16"
-        Me.ToolStripMenuItem16.Size = New System.Drawing.Size(313, 22)
-        Me.ToolStripMenuItem16.Text = "Ingreso Comprobante"
         '
         'PictureBox1
         '
@@ -1449,7 +1448,6 @@ Partial Class Principal
     Friend WithEvents VersiónTemporalToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ReporteCuadraturaDiariaToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem30 As System.Windows.Forms.ToolStripMenuItem
-    Friend WithEvents IndicadoresDeSiembraToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RankingDeVentasPorClienteToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents RankingDeVentasPorClienteYVariedadToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
     Friend WithEvents ConsumoPetróleoToolStripMenuItem As System.Windows.Forms.ToolStripMenuItem
@@ -1493,4 +1491,5 @@ Partial Class Principal
     Friend WithEvents ToolStripMenuItem16 As ToolStripMenuItem
     Friend WithEvents CajaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents ProgramaDeSiembraPorTipoBandejaToolStripMenuItem As ToolStripMenuItem
 End Class

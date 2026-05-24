@@ -34,7 +34,7 @@ Partial Class LotesPorSembrar
         Me.FechaSiembraDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.CANTIDADDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.TipoDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.BandejasDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TotalBandejasDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ComentarioDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Aporta_Semilla = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.SPCONSULTALOTESINSEMBRARBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -43,9 +43,14 @@ Partial Class LotesPorSembrar
         Me.dtpFechaSiembra = New System.Windows.Forms.DateTimePicker()
         Me.SP_CONSULTA_LOTE_SIN_SEMBRARTableAdapter = New GestionVivero.DataSetReporteInventarioTableAdapters.SP_CONSULTA_LOTE_SIN_SEMBRARTableAdapter()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.DataResumen = New System.Windows.Forms.DataGridView()
+        Me.TipoBandejaResumen = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TotalBandejasResumen = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGrilla, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SPCONSULTALOTESINSEMBRARBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DataSetReporteInventario, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DataResumen, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'DataGrilla
@@ -57,7 +62,7 @@ Partial Class LotesPorSembrar
         Me.DataGrilla.BackgroundColor = System.Drawing.Color.WhiteSmoke
         Me.DataGrilla.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
         Me.DataGrilla.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
-        Me.DataGrilla.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdPedidodetDataGridViewTextBoxColumn, Me.IdPedidoDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.DescripDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn, Me.FechaSiembraDataGridViewTextBoxColumn, Me.CANTIDADDataGridViewTextBoxColumn, Me.TipoDataGridViewTextBoxColumn, Me.BandejasDataGridViewTextBoxColumn, Me.ComentarioDataGridViewTextBoxColumn, Me.Aporta_Semilla})
+        Me.DataGrilla.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IdPedidodetDataGridViewTextBoxColumn, Me.IdPedidoDataGridViewTextBoxColumn, Me.ClienteDataGridViewTextBoxColumn, Me.DescripDataGridViewTextBoxColumn, Me.DescripcionDataGridViewTextBoxColumn, Me.FechaSiembraDataGridViewTextBoxColumn, Me.CANTIDADDataGridViewTextBoxColumn, Me.TipoDataGridViewTextBoxColumn, Me.TotalBandejasDataGridViewTextBoxColumn, Me.ComentarioDataGridViewTextBoxColumn, Me.Aporta_Semilla})
         Me.DataGrilla.DataSource = Me.SPCONSULTALOTESINSEMBRARBindingSource
         DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window
@@ -80,7 +85,7 @@ Partial Class LotesPorSembrar
         DataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.DarkGreen
         Me.DataGrilla.RowsDefaultCellStyle = DataGridViewCellStyle2
         Me.DataGrilla.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.DataGrilla.Size = New System.Drawing.Size(1109, 638)
+        Me.DataGrilla.Size = New System.Drawing.Size(1109, 470)
         Me.DataGrilla.TabIndex = 27
         '
         'IdPedidodetDataGridViewTextBoxColumn
@@ -148,13 +153,14 @@ Partial Class LotesPorSembrar
         Me.TipoDataGridViewTextBoxColumn.ReadOnly = True
         Me.TipoDataGridViewTextBoxColumn.Width = 53
         '
-        'BandejasDataGridViewTextBoxColumn
+        'TotalBandejasDataGridViewTextBoxColumn
         '
-        Me.BandejasDataGridViewTextBoxColumn.DataPropertyName = "Bandejas"
-        Me.BandejasDataGridViewTextBoxColumn.HeaderText = "Bandejas"
-        Me.BandejasDataGridViewTextBoxColumn.Name = "BandejasDataGridViewTextBoxColumn"
-        Me.BandejasDataGridViewTextBoxColumn.ReadOnly = True
-        Me.BandejasDataGridViewTextBoxColumn.Width = 76
+        Me.TotalBandejasDataGridViewTextBoxColumn.DataPropertyName = "TotalBandejas"
+        Me.TotalBandejasDataGridViewTextBoxColumn.HeaderText = "Total Bandejas"
+        Me.TotalBandejasDataGridViewTextBoxColumn.Name = "TotalBandejasDataGridViewTextBoxColumn"
+        Me.TotalBandejasDataGridViewTextBoxColumn.ReadOnly = True
+        Me.TotalBandejasDataGridViewTextBoxColumn.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.TotalBandejasDataGridViewTextBoxColumn.Width = 90
         '
         'ComentarioDataGridViewTextBoxColumn
         '
@@ -213,6 +219,43 @@ Partial Class LotesPorSembrar
         Me.Button1.TabIndex = 30
         Me.Button1.UseVisualStyleBackColor = False
         '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(12, 524)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(160, 13)
+        Me.Label2.TabIndex = 31
+        Me.Label2.Text = "Resumen de bandejas necesarias"
+        '
+        'DataResumen
+        '
+        Me.DataResumen.AllowUserToAddRows = False
+        Me.DataResumen.AllowUserToDeleteRows = False
+        Me.DataResumen.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill
+        Me.DataResumen.BackgroundColor = System.Drawing.Color.WhiteSmoke
+        Me.DataResumen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DataResumen.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.TipoBandejaResumen, Me.TotalBandejasResumen})
+        Me.DataResumen.Location = New System.Drawing.Point(12, 540)
+        Me.DataResumen.Name = "DataResumen"
+        Me.DataResumen.ReadOnly = True
+        Me.DataResumen.RowHeadersVisible = False
+        Me.DataResumen.Size = New System.Drawing.Size(1085, 93)
+        Me.DataResumen.TabIndex = 32
+        '
+        'TipoBandejaResumen
+        '
+        Me.TipoBandejaResumen.HeaderText = "Tipo de Bandeja"
+        Me.TipoBandejaResumen.Name = "TipoBandejaResumen"
+        Me.TipoBandejaResumen.ReadOnly = True
+        '
+        'TotalBandejasResumen
+        '
+        Me.TotalBandejasResumen.HeaderText = "Total Bandejas"
+        Me.TotalBandejasResumen.Name = "TotalBandejasResumen"
+        Me.TotalBandejasResumen.ReadOnly = True
+        Me.TotalBandejasResumen.DefaultCellStyle.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        '
         'LotesPorSembrar
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -222,14 +265,17 @@ Partial Class LotesPorSembrar
         Me.Controls.Add(Me.dtpFechaSiembra)
         Me.Controls.Add(Me.Label1)
         Me.Controls.Add(Me.DataGrilla)
+        Me.Controls.Add(Me.DataResumen)
+        Me.Controls.Add(Me.Label2)
         Me.MaximizeBox = False
         Me.MinimizeBox = False
         Me.Name = "LotesPorSembrar"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
-        Me.Text = "Siembra"
+        Me.Text = "Lotes por Sembrar"
         CType(Me.DataGrilla, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SPCONSULTALOTESINSEMBRARBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DataSetReporteInventario, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataResumen, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -247,10 +293,14 @@ Partial Class LotesPorSembrar
     Friend WithEvents FechaSiembraDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents CANTIDADDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents TipoDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents BandejasDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents TotalBandejasDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents ComentarioDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents Aporta_Semilla As DataGridViewTextBoxColumn
     Friend WithEvents Label1 As Label
     Friend WithEvents dtpFechaSiembra As DateTimePicker
     Friend WithEvents Button1 As Button
+    Friend WithEvents Label2 As Label
+    Friend WithEvents DataResumen As DataGridView
+    Friend WithEvents TipoBandejaResumen As DataGridViewTextBoxColumn
+    Friend WithEvents TotalBandejasResumen As DataGridViewTextBoxColumn
 End Class

@@ -616,9 +616,7 @@
         CambioPassword.Visible = True
     End Sub
 
-    Private Sub IndicadoresDeSiembraToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles IndicadoresDeSiembraToolStripMenuItem.Click
-        ConsultaControlSiembra.Visible = True
-    End Sub
+
 
     Private Sub RankingDeVentasPorClienteToolStripMenuItem_Click(sender As System.Object, e As System.EventArgs) Handles RankingDeVentasPorClienteToolStripMenuItem.Click
         RankingVenta.Visible = True
@@ -779,5 +777,9 @@
 
     Private Sub CajaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CajaToolStripMenuItem.Click
         Caja.Show()
+    End Sub
+
+    Private Sub ProgramaDeSiembraPorTipoBandejaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProgramaDeSiembraPorTipoBandejaToolStripMenuItem.Click
+        ConsultaControlSiembra.Visible = True
     End Sub
 End Class
