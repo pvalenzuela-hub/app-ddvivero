@@ -15,8 +15,6 @@ Public Class Abono_Deuda
     Dim gFechaContable As Date
     Dim gSaldoAjusteDAI As Integer
     Dim gIdCliente As Integer
-    Private _btnCajaActiva As Button
-    Private _descripcionCajaActiva As String
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
         'cmb_clientebuscar.Items.Clear()
         'Buscar_Cliente(Me.cmb_clientebuscar, Me.txt_clientebuscar.Text)
@@ -794,92 +792,48 @@ Public Class Abono_Deuda
     End Sub
 
     Private Sub InicializaCajaActivaUI()
-        If _btnCajaActiva IsNot Nothing Then
-            ActualizaTextoCajaActiva()
-            Return
-        End If
-
-        _btnCajaActiva = New Button() With {
-            .Location = New Point(845, 669),
-            .Size = New Size(232, 48),
-            .BackColor = Color.White,
-            .TextAlign = ContentAlignment.MiddleCenter,
-            .UseVisualStyleBackColor = False
-        }
-        AddHandler _btnCajaActiva.Click, AddressOf BtnCajaActiva_Click
-        Me.Controls.Add(_btnCajaActiva)
-
         ActualizaTextoCajaActiva()
     End Sub
 
-    Private Sub BtnCajaActiva_Click(sender As Object, e As EventArgs)
-        SeleccionarCajaActiva(False)
-    End Sub
-
-    Private Function SeleccionarCajaActiva(ByVal obligatoria As Boolean) As Boolean
-        Using frm As New Form()
-            frm.Text = "Seleccionar Caja"
-            frm.StartPosition = FormStartPosition.CenterParent
-            frm.FormBorderStyle = FormBorderStyle.FixedDialog
-            frm.MinimizeBox = False
-            frm.MaximizeBox = False
-            frm.ClientSize = New Size(360, 145)
-
-            Dim lblCaja As New Label() With {.Text = "Caja", .Location = New Point(20, 22), .AutoSize = True}
-            Dim cmbCaja As New ComboBox() With {.Location = New Point(110, 18), .Size = New Size(220, 24), .DropDownStyle = ComboBoxStyle.DropDownList}
-            Dim lblCuenta As New Label() With {.Text = "Cuenta", .Location = New Point(20, 56), .AutoSize = True}
-            Dim txtCuenta As New TextBox() With {.Location = New Point(110, 52), .Size = New Size(100, 22), .ReadOnly = True, .TextAlign = HorizontalAlignment.Center}
-            Dim btnOk As New Button() With {.Text = "Aceptar", .Location = New Point(174, 96), .Size = New Size(75, 28), .DialogResult = DialogResult.OK}
-            Dim btnCancel As New Button() With {.Text = "Cancelar", .Location = New Point(255, 96), .Size = New Size(75, 28), .DialogResult = DialogResult.Cancel}
-
-            frm.Controls.AddRange(New Control() {lblCaja, cmbCaja, lblCuenta, txtCuenta, btnOk, btnCancel})
-            frm.AcceptButton = btnOk
-            frm.CancelButton = btnCancel
-
-            Carga_CajasDiarias(cmbCaja, gCuentaCaja)
-            txtCuenta.Text = If(cmbCaja.SelectedValue Is Nothing, String.Empty, Convert.ToString(cmbCaja.SelectedValue))
-
-            AddHandler cmbCaja.SelectedValueChanged,
-                Sub()
-                    txtCuenta.Text = If(cmbCaja.SelectedValue Is Nothing, String.Empty, Convert.ToString(cmbCaja.SelectedValue))
-                End Sub
-
-            If frm.ShowDialog(Me) <> DialogResult.OK OrElse cmbCaja.SelectedValue Is Nothing Then
-                If obligatoria Then
-                    MessageBox.Show("Debe seleccionar una caja para registrar pagos en efectivo.", "Abono Deuda", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                End If
-                Return False
-            End If
-
-            Dim mensaje As String = String.Empty
-            If Not EstableceCajaActiva(Convert.ToString(cmbCaja.SelectedValue), mensaje) Then
-                If mensaje.IndexOf("clave duplicada", StringComparison.OrdinalIgnoreCase) >= 0 OrElse
-                   mensaje.IndexOf("duplicada", StringComparison.OrdinalIgnoreCase) >= 0 OrElse
-                   mensaje.IndexOf("asignada hoy a otro usuario", StringComparison.OrdinalIgnoreCase) >= 0 Then
-                    mensaje = "La caja seleccionada ya está asignada hoy o quedó en un estado inconsistente. Intente con otra caja o libere la actual desde Administración de Caja."
-                End If
-                MessageBox.Show(mensaje, "Selección de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning)
-                Return False
-            End If
-            _descripcionCajaActiva = cmbCaja.Text.Trim()
-            ActualizaTextoCajaActiva()
-            Return True
-        End Using
-    End Function
-
     Private Sub ActualizaTextoCajaActiva()
-        If _btnCajaActiva Is Nothing Then
-            Return
-        End If
-
-        If String.IsNullOrWhiteSpace(gCuentaCaja) Then
-            _btnCajaActiva.Text = "Seleccionar caja activa"
-        ElseIf String.IsNullOrWhiteSpace(_descripcionCajaActiva) Then
-            _btnCajaActiva.Text = "Caja activa" & vbCrLf & gCuentaCaja
-        Else
-            _btnCajaActiva.Text = _descripcionCajaActiva & vbCrLf & gCuentaCaja
+        If txtCajaActiva IsNot Nothing Then
+            If String.IsNullOrWhiteSpace(gCuentaCaja) Then
+                txtCajaActiva.Text = "Sin caja activa"
+            Else
+                Dim descripcion = ObtenerDescripcionCajaActiva(gCuentaCaja)
+                If String.IsNullOrWhiteSpace(descripcion) Then
+                    txtCajaActiva.Text = gCuentaCaja
+                Else
+                    txtCajaActiva.Text = descripcion & " - " & gCuentaCaja
+                End If
+            End If
         End If
     End Sub
+
+    Private Function ObtenerDescripcionCajaActiva(ByVal ctaCtble As String) As String
+        If String.IsNullOrWhiteSpace(ctaCtble) Then
+            Return String.Empty
+        End If
+
+        open()
+        Try
+            Using cmd As SqlCommand = connection.CreateCommand()
+                cmd.CommandText = "SP_CONSULTA_CONTA_CtasDiarias"
+                Using reader = cmd.ExecuteReader()
+                    While reader.Read()
+                        Dim cuenta = Convert.ToString(reader(0)).Trim()
+                        If String.Equals(cuenta, ctaCtble.Trim(), StringComparison.OrdinalIgnoreCase) Then
+                            Return Convert.ToString(reader(1)).Trim()
+                        End If
+                    End While
+                End Using
+            End Using
+        Finally
+            close_conexion()
+        End Try
+
+        Return String.Empty
+    End Function
 
     Private Function AseguraCajaActivaParaEfectivo() As Boolean
         If Not EsPagoEfectivo(cmb_TIPO_PAGO.Text) Then
@@ -889,7 +843,7 @@ Public Class Abono_Deuda
         If String.IsNullOrWhiteSpace(gCuentaCaja) Then
             MessageBox.Show("La caja activa fue liberada o no está asignada. Debe seleccionar una caja antes de registrar un pago en efectivo.",
                             "Abono Deuda", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Return SeleccionarCajaActiva(True)
+            Return False
         End If
 
         Return True

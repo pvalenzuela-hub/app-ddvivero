@@ -27,6 +27,7 @@ Partial Class Registro_Apertura
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.dtp_FechaApertura = New System.Windows.Forms.DateTimePicker()
         Me.GrillaCaja = New System.Windows.Forms.DataGridView()
         Me.NumMov = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -73,6 +74,15 @@ Partial Class Registro_Apertura
         Me.Button4.TabIndex = 146
         Me.Button4.Text = "Confirma Apertura"
         Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(442, 123)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(120, 23)
+        Me.Button3.TabIndex = 147
+        Me.Button3.Text = "Completar días"
+        Me.Button3.UseVisualStyleBackColor = True
         '
         'dtp_FechaApertura
         '
@@ -150,6 +160,7 @@ Partial Class Registro_Apertura
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GrillaCaja)
         Me.Controls.Add(Me.dtp_FechaApertura)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.Button4)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Button2)
@@ -167,6 +178,7 @@ Partial Class Registro_Apertura
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Label6 As System.Windows.Forms.Label
     Friend WithEvents Button4 As System.Windows.Forms.Button
+    Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents dtp_FechaApertura As System.Windows.Forms.DateTimePicker
     Friend WithEvents GrillaCaja As System.Windows.Forms.DataGridView
     Friend WithEvents NumMov As System.Windows.Forms.DataGridViewTextBoxColumn

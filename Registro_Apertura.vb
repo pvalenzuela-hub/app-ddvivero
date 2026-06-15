@@ -41,6 +41,30 @@ Public Class Registro_Apertura
         Apertura_Diaria(cantidades)
     End Sub
 
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim ctaCtble = CuentaCajaSeleccionada()
+        If String.IsNullOrWhiteSpace(ctaCtble) Then
+            MessageBox.Show("Debe seleccionar una caja.", "Apertura de Caja", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Exit Sub
+        End If
+
+        open()
+        Try
+            Using cmd As SqlCommand = connection.CreateCommand()
+                cmd.CommandText = "SP_CONTA_CompletaCajaHeaderDiasSinMovimiento"
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.Add("@Cta_Ctble", SqlDbType.VarChar, 7).Value = ctaCtble
+                cmd.Parameters.Add("@FechaHasta", SqlDbType.Date).Value = dtp_FechaApertura.Value.Date
+                cmd.ExecuteNonQuery()
+            End Using
+        Finally
+            close_conexion()
+        End Try
+
+        MessageBox.Show("Caja completada hasta la fecha seleccionada.", "Apertura de Caja", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Lectura_Saldo_Apertura()
+    End Sub
+
     Private Sub Apertura_Diaria(ByVal cantidades As Integer())
         Dim ctaCtble = CuentaCajaSeleccionada()
         If String.IsNullOrWhiteSpace(ctaCtble) Then
@@ -166,6 +190,8 @@ Public Class Registro_Apertura
         Button1.Text = "Consultar apertura"
         Button1.Size = New Size(120, 23)
         Button1.Location = New Point(442, 58)
+        Button3.Size = New Size(120, 23)
+        Button3.Location = New Point(442, 123)
         GrillaCaja.Location = New Point(66, 173)
         Button4.Location = New Point(81, 682)
         Button2.Location = New Point(386, 682)

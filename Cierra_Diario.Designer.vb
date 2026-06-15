@@ -26,6 +26,7 @@ Partial Class Cierra_Diario
         Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Button1 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.GrillaCaja = New System.Windows.Forms.DataGridView()
         Me.NumMov = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Entrada = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -61,6 +62,15 @@ Partial Class Cierra_Diario
         Me.Button1.TabIndex = 159
         Me.Button1.Text = "Consulta Movimientos"
         Me.Button1.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.Location = New System.Drawing.Point(238, 538)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(150, 40)
+        Me.Button3.TabIndex = 160
+        Me.Button3.Text = "Completar días"
+        Me.Button3.UseVisualStyleBackColor = True
         '
         'GrillaCaja
         '
@@ -316,6 +326,7 @@ Partial Class Cierra_Diario
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.GrillaCaja)
         Me.Controls.Add(Me.dtp_FechaApertura)
+        Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.btn_GrabaCierre)
         Me.Controls.Add(Me.Label6)
         Me.Controls.Add(Me.Button2)
@@ -329,6 +340,7 @@ Partial Class Cierra_Diario
 
     End Sub
     Friend WithEvents Button1 As System.Windows.Forms.Button
+    Friend WithEvents Button3 As System.Windows.Forms.Button
     Friend WithEvents GrillaCaja As System.Windows.Forms.DataGridView
     Friend WithEvents dtp_FechaApertura As System.Windows.Forms.DateTimePicker
     Friend WithEvents btn_GrabaCierre As System.Windows.Forms.Button

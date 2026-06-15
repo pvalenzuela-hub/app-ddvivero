@@ -31,6 +31,32 @@ Public Class Cierra_Diario
         End If
     End Sub
 
+    Private Sub Button3_Click(sender As Object, e As EventArgs) Handles Button3.Click
+        Dim ctaCtble = CuentaCajaSeleccionada()
+        If String.IsNullOrWhiteSpace(ctaCtble) Then
+            MessageBox.Show("Debe seleccionar una caja.", "Cierre Diario", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            Exit Sub
+        End If
+
+        open()
+        Try
+            Using cmd As SqlCommand = connection.CreateCommand()
+                cmd.CommandText = "SP_CONTA_CompletaCajaHeaderDiasSinMovimiento"
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.Add("@Cta_Ctble", SqlDbType.VarChar, 7).Value = ctaCtble
+                cmd.Parameters.Add("@FechaHasta", SqlDbType.Date).Value = dtp_FechaApertura.Value.Date
+                cmd.ExecuteNonQuery()
+            End Using
+        Finally
+            close_conexion()
+        End Try
+
+        MessageBox.Show("Caja completada hasta la fecha seleccionada.", "Cierre Diario", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        If AseguraCajaActivaSeleccionada() Then
+            Consulta_Movimientos()
+        End If
+    End Sub
+
     Private Sub Consulta_Movimientos()
         Dim i As Integer = 0
         Dim dSaldoInicial As Double = 0

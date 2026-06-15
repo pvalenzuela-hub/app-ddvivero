@@ -113,6 +113,8 @@ Partial Class Abono_Deuda
         Me.Button3 = New System.Windows.Forms.Button()
         Me.btnEliminar = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.txtCajaActiva = New System.Windows.Forms.TextBox()
         Me.txtSaldoAjusteDAI = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.chkRebajaDAI = New System.Windows.Forms.CheckBox()
@@ -695,7 +697,7 @@ Partial Class Abono_Deuda
         Me.GrillaPagos.Name = "GrillaPagos"
         Me.GrillaPagos.ReadOnly = True
         Me.GrillaPagos.RowHeadersVisible = False
-        Me.GrillaPagos.Size = New System.Drawing.Size(1318, 274)
+        Me.GrillaPagos.Size = New System.Drawing.Size(1318, 240)
         Me.GrillaPagos.TabIndex = 81
         '
         'id_pago
@@ -948,7 +950,7 @@ Partial Class Abono_Deuda
         Me.Button4.ForeColor = System.Drawing.Color.SeaGreen
         Me.Button4.Image = Global.GestionVivero.My.Resources.Resources.Update
         Me.Button4.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button4.Location = New System.Drawing.Point(233, 669)
+        Me.Button4.Location = New System.Drawing.Point(277, 669)
         Me.Button4.Name = "Button4"
         Me.Button4.Size = New System.Drawing.Size(166, 48)
         Me.Button4.TabIndex = 107
@@ -993,13 +995,33 @@ Partial Class Abono_Deuda
         Me.Button6.BackColor = System.Drawing.Color.White
         Me.Button6.Image = Global.GestionVivero.My.Resources.Resources.New_document
         Me.Button6.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.Button6.Location = New System.Drawing.Point(453, 669)
+        Me.Button6.Location = New System.Drawing.Point(541, 669)
         Me.Button6.Name = "Button6"
         Me.Button6.Size = New System.Drawing.Size(166, 48)
         Me.Button6.TabIndex = 112
         Me.Button6.Text = "Imprime Recibo de Pago"
         Me.Button6.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button6.UseVisualStyleBackColor = False
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label20.ForeColor = System.Drawing.Color.Navy
+        Me.Label20.Location = New System.Drawing.Point(13, 638)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(72, 15)
+        Me.Label20.TabIndex = 121
+        Me.Label20.Text = "Caja activa:"
+        '
+        'txtCajaActiva
+        '
+        Me.txtCajaActiva.BackColor = System.Drawing.Color.White
+        Me.txtCajaActiva.Location = New System.Drawing.Point(87, 635)
+        Me.txtCajaActiva.Name = "txtCajaActiva"
+        Me.txtCajaActiva.ReadOnly = True
+        Me.txtCajaActiva.Size = New System.Drawing.Size(430, 20)
+        Me.txtCajaActiva.TabIndex = 122
         '
         'txtSaldoAjusteDAI
         '
@@ -1068,7 +1090,7 @@ Partial Class Abono_Deuda
         Me.btnDevolucion.ForeColor = System.Drawing.Color.SeaGreen
         Me.btnDevolucion.Image = Global.GestionVivero.My.Resources.Resources.donaciones_40x40
         Me.btnDevolucion.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft
-        Me.btnDevolucion.Location = New System.Drawing.Point(673, 669)
+        Me.btnDevolucion.Location = New System.Drawing.Point(805, 669)
         Me.btnDevolucion.Name = "btnDevolucion"
         Me.btnDevolucion.Size = New System.Drawing.Size(166, 48)
         Me.btnDevolucion.TabIndex = 116
@@ -1214,6 +1236,8 @@ Partial Class Abono_Deuda
         Me.Controls.Add(Me.GroupBox2)
         Me.Controls.Add(Me.grpsaldos)
         Me.Controls.Add(Me.Button7)
+        Me.Controls.Add(Me.txtCajaActiva)
+        Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.btnDevolucion)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button4)
@@ -1239,6 +1263,7 @@ Partial Class Abono_Deuda
         Me.GroupBox2.ResumeLayout(False)
         Me.GroupBox2.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents GroupBox8 As System.Windows.Forms.GroupBox
@@ -1283,6 +1308,8 @@ Partial Class Abono_Deuda
     Friend WithEvents Label4 As Label
     Friend WithEvents Label11 As Label
     Friend WithEvents Button6 As Button
+    Friend WithEvents Label20 As Label
+    Friend WithEvents txtCajaActiva As TextBox
     Friend WithEvents Label14 As Label
     Friend WithEvents cmbDocumento As ComboBox
     Friend WithEvents rbAbonoDocumento As RadioButton

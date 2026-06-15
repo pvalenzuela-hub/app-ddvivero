@@ -149,7 +149,7 @@ Public Class facturaCompra
 
             If DataDetalle.Rows.Count > 0 Then
                 ifila = DataDetalle.CurrentRow.Index
-                Dim sResp = MsgBox("Esta seguro de Eliminar ítem de Compra?", MsgBoxStyle.YesNo, "Factura de Compra")
+                Dim sResp = MsgBox("Esta seguro de Eliminar ï¿½tem de Compra?", MsgBoxStyle.YesNo, "Factura de Compra")
                 If sResp = MsgBoxResult.Yes Then
                     If DataDetalle.Rows(ifila).Cells(0).Value > 0 Then
                         sSsql = "SP_ELIMINA_DETALLE_COMPRA "
@@ -236,7 +236,7 @@ Public Class facturaCompra
                 Lectura_Factura()
             End If
         Else
-            MsgBox("Debe ingresar N° de RUT Proveedor.", MsgBoxStyle.Exclamation, sVentana)
+            MsgBox("Debe ingresar Nï¿½ de RUT Proveedor.", MsgBoxStyle.Exclamation, sVentana)
             txt_RUT_PRO.Focus()
         End If
     End Sub
@@ -621,7 +621,7 @@ Public Class facturaCompra
         ' Insumo
         ' Semilla
         ' Variedad
-        ' descripción
+        ' descripciï¿½n
         ' precio unit.
         ' cantidad
         ' total
@@ -688,7 +688,7 @@ Public Class facturaCompra
 
 
     Private Sub ToolStripMenuItem2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem2.Click
-        'Botón Grabar formulario
+        'Botï¿½n Grabar formulario
         If Trim(txt_RUT_PRO.Text) = "" Then
             MessageBox.Show("Debe ingresar Rut Proveedor")
             txt_RUT_PRO.Focus()
@@ -1006,7 +1006,7 @@ Public Class facturaCompra
         'If txt_CtaCtble.Text <> Nothing Then
 
         '    If Len(txt_CtaCtble.Text) <> 7 Then
-        '        MsgBox("Cuenta Contable Inválida", MsgBoxStyle.Exclamation)
+        '        MsgBox("Cuenta Contable Invï¿½lida", MsgBoxStyle.Exclamation)
         '        txt_CtaCtble.Focus()
         '        Exit Sub
         '    End If
@@ -1062,22 +1062,94 @@ Public Class facturaCompra
             cmb_Semilla.SelectedIndex = -1
             cmb_Variedad.SelectedIndex = -1
 
-            sSsql = "SP_CONSULTA_Cuenta_INSUMO "
-            sSsql += "'" + cmb_Insumos.SelectedItem + "'"
+            CargarDatosInsumoSeleccionado(cmb_Insumos.Text)
+        End If
+    End Sub
+
+    Private Sub CargarDatosInsumoSeleccionado(nombreInsumo As String)
+        Dim precioVenta As Object = Nothing
+        Dim cuentaContable As Object = Nothing
+        Dim centroCosto As Object = Nothing
+            Dim descripcionCuenta As Object = Nothing
+
+        Try
+            Dim dtInsumos As New DataTable()
+
+            sSsql = "SP_CONSULTA_FULL_INSUMOS"
             open()
             command = connection.CreateCommand()
             command.CommandText = sSsql
-            datatbl = command.ExecuteReader()
-            If datatbl.HasRows Then
-                datatbl.Read()
-                txt_CtaCtble.Text = datatbl(0)
-                txt_Ccosto.Text = datatbl(1)
-            Else
-                MsgBox("Insumo No tiene Cuenta Contable Definida. Se debe crear la cuenta contable antes de continuar.", MsgBoxStyle.Exclamation)
-            End If
+
+            Using reader As SqlDataReader = command.ExecuteReader()
+                dtInsumos.Load(reader)
+            End Using
+
             close_conexion()
-        End If
+
+            Dim fila = dtInsumos.AsEnumerable().FirstOrDefault(Function(r) String.Equals(r.Field(Of String)(1), nombreInsumo, StringComparison.OrdinalIgnoreCase))
+            If fila IsNot Nothing Then
+                txt_Descripcion.Text = nombreInsumo
+                precioVenta = ObtenerValorColumna(fila, "Precio_Venta_Neto", "Precio_Venta", "PrecioVenta", "Precio")
+                cuentaContable = ObtenerValorColumna(fila, "Cta_Ctble", "CuentaContable", "Cuenta")
+                centroCosto = ObtenerValorColumna(fila, "CCosto", "C_Costo", "CentroCosto")
+            End If
+
+            If precioVenta IsNot Nothing AndAlso precioVenta IsNot DBNull.Value Then
+                txtprecio.Text = Convert.ToDouble(precioVenta).ToString("0.##")
+            End If
+
+            If cuentaContable Is Nothing OrElse cuentaContable Is DBNull.Value Then
+                sSsql = "SP_CONSULTA_Cuenta_INSUMO '" + nombreInsumo + "'"
+                open()
+                command = connection.CreateCommand()
+                command.CommandText = sSsql
+                datatbl = command.ExecuteReader()
+                If datatbl.HasRows Then
+                    datatbl.Read()
+                    cuentaContable = datatbl(0)
+                    centroCosto = datatbl(1)
+                Else
+                    MsgBox("Insumo No tiene Cuenta Contable Definida. Se debe crear la cuenta contable antes de continuar.", MsgBoxStyle.Exclamation)
+                End If
+                close_conexion()
+            End If
+
+            If cuentaContable IsNot Nothing AndAlso cuentaContable IsNot DBNull.Value Then
+                sSsql = "SP_CONSULTA_CONTA_CodigoCuenta '" + cuentaContable.ToString() + "'"
+                open()
+                command = connection.CreateCommand()
+                command.CommandText = sSsql
+                datatbl = command.ExecuteReader()
+                If datatbl.HasRows Then
+                    datatbl.Read()
+                    descripcionCuenta = datatbl(1)
+                End If
+                close_conexion()
+            End If
+
+            If cuentaContable IsNot Nothing AndAlso cuentaContable IsNot DBNull.Value Then
+                txt_CtaCtble.Text = cuentaContable.ToString()
+            End If
+            If centroCosto IsNot Nothing AndAlso centroCosto IsNot DBNull.Value Then
+                txt_Ccosto.Text = centroCosto.ToString()
+            End If
+            If descripcionCuenta IsNot Nothing AndAlso descripcionCuenta IsNot DBNull.Value Then
+                txt_DescrpCtaCtble.Text = descripcionCuenta.ToString()
+            End If
+        Catch ex As Exception
+            MsgBox(ex.Message)
+            close_conexion()
+        End Try
     End Sub
+
+    Private Function ObtenerValorColumna(fila As DataRow, ParamArray nombres() As String) As Object
+        For Each nombre As String In nombres
+            If fila.Table.Columns.Contains(nombre) AndAlso Not IsDBNull(fila(nombre)) Then
+                Return fila(nombre)
+            End If
+        Next
+        Return Nothing
+    End Function
 
 
 

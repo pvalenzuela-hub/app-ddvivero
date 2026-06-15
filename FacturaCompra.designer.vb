@@ -1070,19 +1070,19 @@ Partial Class facturaCompra
         'ToolStripMenuItem1
         '
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(151, 22)
         Me.ToolStripMenuItem1.Text = "&Nuevo"
         '
         'ToolStripMenuItem2
         '
         Me.ToolStripMenuItem2.Name = "ToolStripMenuItem2"
-        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem2.Size = New System.Drawing.Size(151, 22)
         Me.ToolStripMenuItem2.Text = "&Grabar"
         '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
-        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(152, 22)
+        Me.ToolStripMenuItem3.Size = New System.Drawing.Size(151, 22)
         Me.ToolStripMenuItem3.Text = "&Eliminar"
         '
         'CerrarToolStripMenuItem
@@ -1091,12 +1091,12 @@ Partial Class facturaCompra
         Me.CerrarToolStripMenuItem.Enabled = False
         Me.CerrarToolStripMenuItem.ForeColor = System.Drawing.Color.Navy
         Me.CerrarToolStripMenuItem.Name = "CerrarToolStripMenuItem"
-        Me.CerrarToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.CerrarToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
         '
         'SalirToolStripMenuItem
         '
         Me.SalirToolStripMenuItem.Name = "SalirToolStripMenuItem"
-        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SalirToolStripMenuItem.Size = New System.Drawing.Size(151, 22)
         Me.SalirToolStripMenuItem.Text = "&Cerrar Ventana"
         '
         'GroupBox6
@@ -1360,7 +1360,7 @@ Partial Class facturaCompra
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 14.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.SystemColors.Window
-        Me.ClientSize = New System.Drawing.Size(990, 563)
+        Me.ClientSize = New System.Drawing.Size(990, 657)
         Me.ControlBox = False
         Me.Controls.Add(Me.GroupBox10)
         Me.Controls.Add(Me.GroupBox9)
