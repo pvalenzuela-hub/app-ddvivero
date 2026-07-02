@@ -60,6 +60,7 @@ Partial Class LotesXSembrar
         '
         'SplitContainer1.Panel1
         '
+        Me.SplitContainer1.Panel1.BackColor = System.Drawing.Color.White
         Me.SplitContainer1.Panel1.Controls.Add(Me.Button2)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Button1)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Label2)
