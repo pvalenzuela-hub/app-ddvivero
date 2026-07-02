@@ -177,9 +177,14 @@ Public Class facturaCompra
     End Sub
     Private Sub totales()
         Dim i As Integer
-        Dim totalneto, totalconiva, totaliva As Double
+        Dim totalnetoExacto As Decimal
+        Dim totalneto As Decimal
+        Dim totalconiva As Decimal
+        Dim totaliva As Decimal
+        Dim impuestoEspecifico As Decimal
+
         For i = 0 To DataDetalle.Rows.Count - 1
-            totalneto += Math.Round(DataDetalle.Rows(i).Cells(5).Value * DataDetalle.Rows(i).Cells(6).Value, 0)
+            totalnetoExacto += ObtenerValorMonetario(DataDetalle.Rows(i).Cells(5).Value) * ObtenerValorMonetario(DataDetalle.Rows(i).Cells(6).Value)
             'detiva = Math.Round(DataDetalle.Rows(i).Cells(5).Value * GIVA / 100, 0, MidpointRounding.AwayFromZero)
             'detconiva = DataDetalle.Rows(i).Cells(5).Value + detiva
 
@@ -195,24 +200,47 @@ Public Class facturaCompra
             'totalconiva += detconiva
 
         Next
-        totalneto -= Val(txt_TotalDescuentos.Text)
-        totaliva = Math.Round(totalneto * GIVA / 100, 0, MidpointRounding.AwayFromZero)
-        totalconiva = totalneto + totaliva
-
-        If chk_ImptoEspecifico.Checked = True Then
-            totalconiva += Val(txt_ImptoEspecifico.Text)
+        totalnetoExacto -= ObtenerValorMonetario(txt_TotalDescuentos.Text)
+        If totalnetoExacto < 0D Then
+            totalnetoExacto = 0D
         End If
 
-        gTotalNeto = totalneto
-        gImp_Especifico = Val(txt_ImptoEspecifico.Text)
-        gTotal_Impuesto = totaliva
+        impuestoEspecifico = 0D
+        If chk_ImptoEspecifico.Checked Then
+            impuestoEspecifico = ObtenerValorMonetario(txt_ImptoEspecifico.Text)
+        End If
+
+        totalneto = RedondeaPesoChileno(totalnetoExacto)
+        totalconiva = RedondeaPesoChileno(totalnetoExacto + (totalnetoExacto * CDec(GIVA) / 100D) + impuestoEspecifico)
+
+        ' Ajusta el IVA para que neto + IVA + impuesto especifico coincida con el total final redondeado.
+        totaliva = totalconiva - totalneto - impuestoEspecifico
+        If totaliva < 0D Then
+            totaliva = 0D
+        End If
+
+        gTotalNeto = CDbl(totalneto)
+        gImp_Especifico = CDbl(impuestoEspecifico)
+        gTotal_Impuesto = CDbl(totaliva)
         Me.txt_TOTALNETO.Text = Format(gTotalNeto, "###,###,##0")
         Me.txt_IVA.Text = Format(totaliva, "###,###,##0")
         Me.txt_TOTALFINAL.Text = Format(totalconiva, "###,###,##0")
-        GranTotal = totalconiva
+        GranTotal = CDbl(totalconiva)
 
 
     End Sub
+    Private Function ObtenerValorMonetario(ByVal valor As Object) As Decimal
+        If valor Is Nothing OrElse IsDBNull(valor) Then
+            Return 0D
+        End If
+
+        Return CDec(Val(Reemplaza_Comas(Convert.ToString(valor))))
+    End Function
+
+    Private Function RedondeaPesoChileno(ByVal valor As Decimal) As Decimal
+        Return Math.Round(valor, 0, MidpointRounding.AwayFromZero)
+    End Function
+
     Private Sub TotalPagos()
         Dim i As Integer
         dTotalPagos = 0
