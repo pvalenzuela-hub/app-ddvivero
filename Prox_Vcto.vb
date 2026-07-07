@@ -14,8 +14,7 @@ Public Class Prox_Vcto
         'Ejecutar Consulta
 
         DataCompras.Rows.Clear()
-        ''SP_CONSULTA_COMPRAS_PENDIENTES '01/01/2010','05/08/2010'
-        sSsql = "COMP_COMPRAS_PENDIENTES"
+        sSsql = ConsultaComprasPendientesSql()
         open()
         Command = connection.CreateCommand()
         Command.CommandText = sSsql
@@ -52,6 +51,35 @@ Public Class Prox_Vcto
         txt_SaldoVencido.Text = Format(dSaldoTotalVencido, "###,###,###")
 
     End Sub
+
+    Private Function ConsultaComprasPendientesSql() As String
+        Return "WITH CTE_PagosPagados AS (" &
+               " SELECT CP.IDCOMPRAS, SUM(ISNULL(CP.VALOR_DOC, 0)) AS Total_pagado" &
+               " FROM COMPRA_PAGOS CP" &
+               " WHERE ISNULL(CP.PAGADO, 0) = 1" &
+               " GROUP BY CP.IDCOMPRAS" &
+               "), CTE_PagosPendientes AS (" &
+               " SELECT CP.IDCOMPRAS, CP.VALOR_DOC AS Valor_Cuota_Pendiente, CP.FECHA_VCTO AS Fecha_Vencimiento" &
+               " FROM COMPRA_PAGOS CP" &
+               " WHERE ISNULL(CP.PAGADO, 0) <> 1" &
+               "), CTE_Resultados AS (" &
+               " SELECT A.IDCOMPRAS, A.Tipo_doc, A.Num_doc, CONVERT(varchar(10), A.fecha_doc, 103) AS Fecha, pro.NOMBRE AS Proveedor," &
+               " A.Valor_doc AS Valor_Factura, ISNULL(PP.Total_pagado, 0) AS Total_pagado, A.Valor_doc - ISNULL(PP.Total_pagado, 0) AS Saldo," &
+               " Pend.Valor_Cuota_Pendiente," &
+               " CASE WHEN Pend.Fecha_Vencimiento IS NOT NULL THEN CONVERT(varchar(10), Pend.Fecha_Vencimiento, 103) ELSE 'Pendiente' END AS Fecha_Vencimiento," &
+               " CASE WHEN Pend.Fecha_Vencimiento IS NOT NULL AND CONVERT(date, Pend.Fecha_Vencimiento) < CONVERT(date, GETDATE()) THEN 1 ELSE 0 END AS Vencida," &
+               " Pend.Fecha_Vencimiento AS FechaOrden" &
+               " FROM Compra_Header A" &
+               " INNER JOIN Proveedor pro ON pro.RUT = A.RUT" &
+               " LEFT JOIN CTE_PagosPagados PP ON PP.IDCOMPRAS = A.IDCOMPRAS" &
+               " LEFT JOIN CTE_PagosPendientes Pend ON Pend.IDCOMPRAS = A.IDCOMPRAS" &
+               " WHERE A.Tipo_doc IN ('FA', 'BE')" &
+               " AND A.Valor_doc > ISNULL(PP.Total_pagado, 0)" &
+               ")" &
+               " SELECT Tipo_doc, Num_doc, Fecha, Proveedor, Saldo AS Valor_doc, Total_pagado, Saldo, Valor_Cuota_Pendiente, Fecha_Vencimiento, Vencida" &
+               " FROM CTE_Resultados" &
+               " ORDER BY Vencida DESC, CASE WHEN FechaOrden IS NULL THEN 1 ELSE 0 END, FechaOrden, Num_doc"
+    End Function
 
 
 

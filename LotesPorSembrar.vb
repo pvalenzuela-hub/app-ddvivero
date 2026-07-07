@@ -70,21 +70,22 @@ Public Class LotesPorSembrar
                 Using wb As New XLWorkbook()
                     Dim ws = wb.Worksheets.Add("Lotes por Sembrar")
                     Dim columnasVisibles = ObtenerColumnasVisibles(DataGrilla)
+                    Dim ultimaColumnaDetalle = columnasVisibles.Count
                     If columnasVisibles.Count = 0 Then
                         MessageBox.Show("No hay columnas visibles para exportar.", "Lotes por Sembrar", MessageBoxButtons.OK, MessageBoxIcon.Information)
                         Return
                     End If
 
-                    ConfigurarHojaReporte(ws)
+                    ConfigurarHojaReporte(ws, ultimaColumnaDetalle)
                     rutaLogoTemporal = CrearLogoTemporal()
                     If rutaLogoTemporal <> String.Empty Then
                         AgregarLogo(ws, rutaLogoTemporal)
                     End If
 
-                    EscribirEncabezadoReporte(ws)
+                    EscribirEncabezadoReporte(ws, ultimaColumnaDetalle)
 
                     Dim ultimaFilaDetalle = EscribirDetalle(ws, columnasVisibles)
-                    EscribirResumen(ws, ultimaFilaDetalle)
+                    EscribirResumen(ws, ultimaFilaDetalle, ultimaColumnaDetalle)
 
                     wb.SaveAs(dlg.FileName)
                 End Using
@@ -98,7 +99,7 @@ Public Class LotesPorSembrar
         MessageBox.Show("Exportación completada.", "Lotes por Sembrar", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
 
-    Private Sub ConfigurarHojaReporte(ByVal ws As IXLWorksheet)
+    Private Sub ConfigurarHojaReporte(ByVal ws As IXLWorksheet, ByVal totalColumnas As Integer)
         ws.Style.Font.FontName = "Arial"
         ws.Style.Font.FontSize = 9
         ws.Style.Alignment.Vertical = XLAlignmentVerticalValues.Center
@@ -113,6 +114,9 @@ Public Class LotesPorSembrar
         ws.Column(8).Width = 16.86
         ws.Column(9).Width = 18.57
         ws.Column(10).Width = 22
+        If totalColumnas >= 11 Then
+            ws.Column(11).Width = 13
+        End If
 
         ws.Row(1).Height = 38
         ws.Row(2).Height = 6
@@ -142,8 +146,14 @@ Public Class LotesPorSembrar
         End With
     End Sub
 
-    Private Sub EscribirEncabezadoReporte(ByVal ws As IXLWorksheet)
-        ws.Range(1, 2, 1, 6).Merge()
+    Private Sub EscribirEncabezadoReporte(ByVal ws As IXLWorksheet, ByVal totalColumnas As Integer)
+        Dim columnaCheck As Integer = totalColumnas
+        Dim columnaFecha As Integer = Math.Max(2, totalColumnas - 1)
+        Dim columnaEtiquetaInicio As Integer = Math.Max(7, totalColumnas - 3)
+        Dim columnaEtiquetaFin As Integer = Math.Max(columnaEtiquetaInicio, columnaFecha - 1)
+        Dim columnaTituloFin As Integer = Math.Max(2, columnaEtiquetaInicio - 1)
+
+        ws.Range(1, 2, 1, columnaTituloFin).Merge()
         With ws.Cell(1, 2)
             .Value = "LOTES POR SEMBRAR"
             .Style.Font.Bold = True
@@ -152,8 +162,8 @@ Public Class LotesPorSembrar
             .Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Left
         End With
 
-        ws.Range(1, 7, 1, 8).Merge()
-        With ws.Cell(1, 7)
+        ws.Range(1, columnaEtiquetaInicio, 1, columnaEtiquetaFin).Merge()
+        With ws.Cell(1, columnaEtiquetaInicio)
             .Value = "Hasta Fecha de Siembra:"
             .Style.Font.Bold = True
             .Style.Font.FontSize = 12
@@ -161,7 +171,7 @@ Public Class LotesPorSembrar
             .Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Right
         End With
 
-        With ws.Cell(1, 9)
+        With ws.Cell(1, columnaFecha)
             .Value = dtpFechaSiembra.Value
             .Style.DateFormat.Format = "dd/MM/yyyy"
             .Style.Font.Bold = True
@@ -172,7 +182,7 @@ Public Class LotesPorSembrar
             .Style.Border.OutsideBorderColor = XLColor.FromArgb(125, 156, 115)
         End With
 
-        With ws.Cell(1, 10)
+        With ws.Cell(1, columnaCheck)
             .Value = ChrW(&H2714)
             .Style.Font.Bold = True
             .Style.Font.FontSize = 22
@@ -265,6 +275,11 @@ Public Class LotesPorSembrar
                 cell.Style.Font.FontColor = XLColor.FromArgb(18, 99, 38)
                 cell.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Right
 
+            Case "Aporta_Semilla"
+                cell.Style.Font.Bold = True
+                cell.Style.Font.FontColor = XLColor.FromArgb(18, 99, 38)
+                cell.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center
+
             Case "Comentario"
                 cell.Style.Font.FontSize = 8
                 cell.Style.Font.FontColor = XLColor.FromArgb(18, 99, 38)
@@ -278,13 +293,15 @@ Public Class LotesPorSembrar
         End Select
     End Sub
 
-    Private Sub EscribirResumen(ByVal ws As IXLWorksheet, ByVal ultimaFilaDetalle As Integer)
+    Private Sub EscribirResumen(ByVal ws As IXLWorksheet, ByVal ultimaFilaDetalle As Integer, ByVal totalColumnas As Integer)
         Dim filaTitulo As Integer = ultimaFilaDetalle + 2
         Dim filaEncabezado As Integer = filaTitulo + 1
         Dim filaDatos As Integer = filaEncabezado + 1
         Dim totalGeneral As Decimal = 0D
+        Dim columnaMitad As Integer = CInt(Math.Ceiling(totalColumnas / 2D))
+        Dim columnaInicioTotales As Integer = columnaMitad + 1
 
-        ws.Range(filaTitulo, 1, filaTitulo, 10).Merge()
+        ws.Range(filaTitulo, 1, filaTitulo, totalColumnas).Merge()
         With ws.Cell(filaTitulo, 1)
             .Value = "RESUMEN DE BANDEJAS NECESARIAS"
             .Style.Font.Bold = True
@@ -294,11 +311,11 @@ Public Class LotesPorSembrar
         End With
         ws.Row(filaTitulo).Height = 20
 
-        ws.Range(filaEncabezado, 1, filaEncabezado, 5).Merge()
-        ws.Range(filaEncabezado, 6, filaEncabezado, 10).Merge()
+        ws.Range(filaEncabezado, 1, filaEncabezado, columnaMitad).Merge()
+        ws.Range(filaEncabezado, columnaInicioTotales, filaEncabezado, totalColumnas).Merge()
 
         AplicarEncabezadoResumen(ws.Cell(filaEncabezado, 1), "TIPO DE BANDEJA")
-        AplicarEncabezadoResumen(ws.Cell(filaEncabezado, 6), "TOTAL BANDEJAS")
+        AplicarEncabezadoResumen(ws.Cell(filaEncabezado, columnaInicioTotales), "TOTAL BANDEJAS")
 
         For Each fila As DataGridViewRow In DataResumen.Rows
             If fila.IsNewRow Then
@@ -314,8 +331,8 @@ Public Class LotesPorSembrar
             Decimal.TryParse(Convert.ToString(fila.Cells(1).Value), total)
             totalGeneral += total
 
-            ws.Range(filaDatos, 1, filaDatos, 5).Merge()
-            ws.Range(filaDatos, 6, filaDatos, 10).Merge()
+            ws.Range(filaDatos, 1, filaDatos, columnaMitad).Merge()
+            ws.Range(filaDatos, columnaInicioTotales, filaDatos, totalColumnas).Merge()
 
             With ws.Cell(filaDatos, 1)
                 .Value = tipo
@@ -326,7 +343,7 @@ Public Class LotesPorSembrar
                 .Style.Border.OutsideBorderColor = XLColor.FromArgb(212, 222, 243)
             End With
 
-            With ws.Cell(filaDatos, 6)
+            With ws.Cell(filaDatos, columnaInicioTotales)
                 .Value = total
                 .Style.Font.Bold = True
                 .Style.Font.FontColor = XLColor.FromArgb(18, 51, 133)
@@ -339,8 +356,8 @@ Public Class LotesPorSembrar
             filaDatos += 1
         Next
 
-        ws.Range(filaDatos, 1, filaDatos, 5).Merge()
-        ws.Range(filaDatos, 6, filaDatos, 10).Merge()
+        ws.Range(filaDatos, 1, filaDatos, columnaMitad).Merge()
+        ws.Range(filaDatos, columnaInicioTotales, filaDatos, totalColumnas).Merge()
 
         With ws.Cell(filaDatos, 1)
             .Value = "TOTAL GENERAL"
@@ -352,7 +369,7 @@ Public Class LotesPorSembrar
             .Style.Border.OutsideBorderColor = XLColor.FromArgb(186, 203, 236)
         End With
 
-        With ws.Cell(filaDatos, 6)
+        With ws.Cell(filaDatos, columnaInicioTotales)
             .Value = totalGeneral
             .Style.Font.Bold = True
             .Style.Font.FontSize = 11
@@ -395,6 +412,8 @@ Public Class LotesPorSembrar
                 Return "TIPO"
             Case "TotalBandejas"
                 Return "TOTAL" & vbLf & "BANDEJAS"
+            Case "Aporta_Semilla"
+                Return "APORTA" & vbLf & "SEMILLA S/N"
             Case "Comentario"
                 Return "COMENTARIO"
             Case Else

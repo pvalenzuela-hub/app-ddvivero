@@ -174,11 +174,10 @@ Partial Class LotesPorSembrar
         'Aporta_Semilla
         '
         Me.Aporta_Semilla.DataPropertyName = "Aporta_Semilla"
-        Me.Aporta_Semilla.HeaderText = "Aporta Semilla"
+        Me.Aporta_Semilla.HeaderText = "Aporta Semilla S/N"
         Me.Aporta_Semilla.Name = "Aporta_Semilla"
         Me.Aporta_Semilla.ReadOnly = True
-        Me.Aporta_Semilla.Visible = False
-        Me.Aporta_Semilla.Width = 99
+        Me.Aporta_Semilla.Width = 115
         '
         'SPCONSULTALOTESINSEMBRARBindingSource
         '

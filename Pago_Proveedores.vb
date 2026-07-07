@@ -67,17 +67,27 @@
 
     End Sub
     Private Sub Consulta_Facturas()
-        sSsql = "SP_CONSULTA_Factura_Compra_PendientePago " + txtIdProveedor.Text.ToString()
+        Dim documentos As New DataTable()
+        documentos.Columns.Add("Display", GetType(String))
+        documentos.Columns.Add("IDCOMPRAS", GetType(Integer))
+
+        cmb_Factura.DataSource = Nothing
+        cmb_Factura.Items.Clear()
+
+        sSsql = ConsultaDocumentosCompraPendientesSql(Val(txtIdProveedor.Text))
 
         open()
         command = connection.CreateCommand()
         command.CommandText = sSsql
         datatbl = command.ExecuteReader()
-        cmb_Factura.Items.Clear()
         If datatbl.HasRows Then
             While datatbl.Read = True
-                cmb_Factura.Items.Add(datatbl(0))
+                documentos.Rows.Add(datatbl("TIPO_DOC").ToString.Trim() & " " & datatbl("NUM_DOC").ToString.Trim(), datatbl("IDCOMPRAS"))
             End While
+            cmb_Factura.DisplayMember = "Display"
+            cmb_Factura.ValueMember = "IDCOMPRAS"
+            cmb_Factura.DataSource = documentos
+            cmb_Factura.SelectedIndex = -1
         Else
             MsgBox("Proveedor No tiene Facturas", MsgBoxStyle.Exclamation)
         End If
@@ -86,9 +96,11 @@
     End Sub
     Private Sub Consulta_Pagos()
         Dim i As Integer = 0
-        sSsql = "SP_CONSULTA_DOCCOMPRA_IdProveedor "
-        sSsql += "'FA',"
-        sSsql += RTrim(cmb_Factura.Text.ToString) + "," + txtIdProveedor.Text.ToString()
+        If cmb_Factura.SelectedValue Is Nothing Then
+            Exit Sub
+        End If
+
+        sSsql = ConsultaDocumentoCompraPorIdSql(CInt(cmb_Factura.SelectedValue))
 
         open()
         command = connection.CreateCommand()
@@ -141,6 +153,24 @@
         close_conexion()
     End Sub
 
+    Private Function ConsultaDocumentosCompraPendientesSql(ByVal idProveedor As Integer) As String
+        Return "SELECT TIPO_DOC, NUM_DOC, IDCOMPRAS " &
+               "FROM COMPRA_HEADER " &
+               "WHERE IdProveedor = " & idProveedor.ToString() & " " &
+               "AND (TOTAL_PAGO < VALOR_DOC OR TOTAL_PAGO IS NULL) " &
+               "AND TIPO_DOC IN ('FA','BE','BH') " &
+               "ORDER BY TIPO_DOC, NUM_DOC"
+    End Function
+
+    Private Function ConsultaDocumentoCompraPorIdSql(ByVal idCompras As Integer) As String
+        Return "SELECT a.NUM_DOC, a.TIPO_DOC, RTRIM(CONVERT(char, a.FECHA_DOC, 103)) AS FECHA_DOC, a.RUT, a.VALOR_DOC, " &
+               "a.TIPO_COMPRA, a.Total_Neto, a.Imp_Especifico, a.Total_Impuesto, a.Estado_CONTA, ISNULL(a.TOTAL_PAGO, 0), " &
+               "a.IDCOMPRAS, RTRIM(CONVERT(char, a.Fecha_Declaracion, 103)) AS Fecha_Declaracion, b.NOMBRE, a.Tipo_Factura " &
+               "FROM COMPRA_HEADER a " &
+               "INNER JOIN PROVEEDOR b ON b.RUT = a.RUT " &
+               "WHERE a.IDCOMPRAS = " & idCompras.ToString()
+    End Function
+
     Private Sub BTN_BUSCAR_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles BTN_BUSCAR.Click
         Dim i As Integer
         'Dim x As Integer
@@ -172,7 +202,7 @@
     End Sub
 
     Private Sub cmb_Factura_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_Factura.SelectedIndexChanged
-        If cmb_Factura.SelectedIndex > -1 Then
+        If cmb_Factura.SelectedIndex > -1 AndAlso cmb_Factura.SelectedValue IsNot Nothing Then
             Consulta_Pagos()
         End If
     End Sub
