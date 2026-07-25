@@ -16,8 +16,24 @@
         Dim dSaldo As Double
 
         DataCartola.Rows.Clear()
-        sSsql = "SP_Cartola_Proveedor "
-        sSsql += "'" & txt_RutProveedor.Text & "'"
+        sSsql = "SELECT ch.TIPO_DOC, ch.NUM_DOC, CONVERT(char, ch.FECHA_DOC, 103) FechaCompra, " &
+            "ch.TIPO_COMPRA, " &
+            "CASE WHEN ch.Tipo_Doc = 'NC' THEN ROUND(ch.Total_Neto * 1.19, 0) * -1 ELSE ROUND(ch.Total_Neto * 1.19, 0) END TotalNeto, " &
+            "ch.TOTAL_PAGO, " &
+            "CASE WHEN ch.Tipo_doc = 'NC' THEN (ROUND(ch.Total_Neto * 1.19, 0) - ch.TOTAL_PAGO) * -1 ELSE ROUND(ch.Total_Neto * 1.19, 0) - ch.TOTAL_PAGO END Saldo, " &
+            "ISNULL(pend.Fecha_Vcto, '') AS Fecha_Vcto, " &
+            "ISNULL(pend.MedioPago, '') AS MedioPago " &
+            "FROM COMPRA_HEADER ch " &
+            "OUTER APPLY ( " &
+            "    SELECT TOP 1 CONVERT(char, cp.FECHA_VCTO, 103) AS Fecha_Vcto, " &
+            "           fp.DESCRIPCION AS MedioPago " &
+            "    FROM COMPRA_PAGOS cp " &
+            "    LEFT JOIN FORMAPAGO fp ON fp.IdFPago = cp.IdFPago " &
+            "    WHERE cp.IDCOMPRAS = ch.IDCOMPRAS AND ISNULL(cp.Pagado, 0) = 0 " &
+            "    ORDER BY cp.FECHA_VCTO " &
+            ") pend " &
+            "WHERE ch.RUT = '" & txt_RutProveedor.Text & "' " &
+            "ORDER BY CONVERT(char, ch.FECHA_DOC, 112)"
         open()
         command = connection.CreateCommand()
         command.CommandText = sSsql
@@ -35,6 +51,8 @@
                 DataCartola.Rows(i).Cells(4).Value = datatbl(4)
                 DataCartola.Rows(i).Cells(5).Value = datatbl(5)
                 DataCartola.Rows(i).Cells(6).Value = datatbl(6)
+                DataCartola.Rows(i).Cells(7).Value = datatbl(7)
+                DataCartola.Rows(i).Cells(8).Value = datatbl(8)
                 dTotalNeto += datatbl(4)
                 dTotalPago += datatbl(5)
                 dSaldo += datatbl(6)

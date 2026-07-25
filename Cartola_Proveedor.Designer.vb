@@ -23,12 +23,11 @@ Partial Class Cartola_Proveedor
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Cartola_Proveedor))
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.txt_Ciudad = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.txt_Comuna = New System.Windows.Forms.TextBox()
@@ -41,8 +40,18 @@ Partial Class Cartola_Proveedor
         Me.Button2 = New System.Windows.Forms.Button()
         Me.txt_RutProveedor = New System.Windows.Forms.MaskedTextBox()
         Me.txt_nombre = New System.Windows.Forms.TextBox()
+        Me.Button3 = New System.Windows.Forms.Button()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.DataCartola = New System.Windows.Forms.DataGridView()
+        Me.tipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.doc = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.tipocompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.valordoc = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.pasgado = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.saldo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.FechaVcto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.MedioPago = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox4 = New System.Windows.Forms.GroupBox()
         Me.GroupBox6 = New System.Windows.Forms.GroupBox()
         Me.MaskedTextBox1 = New System.Windows.Forms.MaskedTextBox()
@@ -57,13 +66,6 @@ Partial Class Cartola_Proveedor
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
-        Me.tipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.doc = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Fecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.tipocompra = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.valordoc = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.pasgado = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.saldo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DataCartola, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -91,15 +93,6 @@ Partial Class Cartola_Proveedor
         Me.GroupBox2.TabIndex = 3
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Antecedentes Proveedor"
-        '
-        'Button3
-        '
-        Me.Button3.Image = Global.GestionVivero.My.Resources.Resources.Apply
-        Me.Button3.Location = New System.Drawing.Point(697, 66)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(46, 47)
-        Me.Button3.TabIndex = 17
-        Me.Button3.UseVisualStyleBackColor = True
         '
         'txt_Ciudad
         '
@@ -218,12 +211,22 @@ Partial Class Cartola_Proveedor
         Me.txt_nombre.Size = New System.Drawing.Size(308, 20)
         Me.txt_nombre.TabIndex = 2
         '
+        'Button3
+        '
+        Me.Button3.BackColor = System.Drawing.Color.White
+        Me.Button3.Image = Global.GestionVivero.My.Resources.Resources.Apply
+        Me.Button3.Location = New System.Drawing.Point(838, 78)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(46, 47)
+        Me.Button3.TabIndex = 17
+        Me.Button3.UseVisualStyleBackColor = False
+        '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.DataCartola)
         Me.GroupBox1.Location = New System.Drawing.Point(4, 169)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(807, 329)
+        Me.GroupBox1.Size = New System.Drawing.Size(880, 329)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Detalle de Compras"
@@ -235,22 +238,97 @@ Partial Class Cartola_Proveedor
         Me.DataCartola.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.DisplayedCells
         Me.DataCartola.BackgroundColor = System.Drawing.SystemColors.ControlLightLight
         Me.DataCartola.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataCartola.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.tipo, Me.doc, Me.Fecha, Me.tipocompra, Me.valordoc, Me.pasgado, Me.saldo})
+        Me.DataCartola.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.tipo, Me.doc, Me.Fecha, Me.tipocompra, Me.valordoc, Me.pasgado, Me.saldo, Me.FechaVcto, Me.MedioPago})
         Me.DataCartola.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataCartola.Location = New System.Drawing.Point(3, 16)
         Me.DataCartola.Name = "DataCartola"
         Me.DataCartola.ReadOnly = True
         Me.DataCartola.RowHeadersVisible = False
         Me.DataCartola.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
-        DataGridViewCellStyle8.BackColor = System.Drawing.Color.Azure
-        DataGridViewCellStyle8.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        DataGridViewCellStyle8.ForeColor = System.Drawing.Color.DarkGreen
-        DataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.LightSteelBlue
-        DataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.DarkGreen
-        Me.DataCartola.RowsDefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle4.BackColor = System.Drawing.Color.Azure
+        DataGridViewCellStyle4.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        DataGridViewCellStyle4.ForeColor = System.Drawing.Color.DarkGreen
+        DataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightSteelBlue
+        DataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.DarkGreen
+        Me.DataCartola.RowsDefaultCellStyle = DataGridViewCellStyle4
         Me.DataCartola.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.DataCartola.Size = New System.Drawing.Size(801, 310)
+        Me.DataCartola.Size = New System.Drawing.Size(874, 310)
         Me.DataCartola.TabIndex = 1
+        '
+        'tipo
+        '
+        Me.tipo.HeaderText = "Tipo"
+        Me.tipo.Name = "tipo"
+        Me.tipo.ReadOnly = True
+        Me.tipo.Width = 53
+        '
+        'doc
+        '
+        Me.doc.HeaderText = "Nro. Documento"
+        Me.doc.Name = "doc"
+        Me.doc.ReadOnly = True
+        Me.doc.Width = 101
+        '
+        'Fecha
+        '
+        Me.Fecha.HeaderText = "Fecha"
+        Me.Fecha.Name = "Fecha"
+        Me.Fecha.ReadOnly = True
+        Me.Fecha.Width = 62
+        '
+        'tipocompra
+        '
+        Me.tipocompra.HeaderText = "Tipo Compra"
+        Me.tipocompra.Name = "tipocompra"
+        Me.tipocompra.ReadOnly = True
+        Me.tipocompra.Width = 85
+        '
+        'valordoc
+        '
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle1.Format = "N0"
+        DataGridViewCellStyle1.NullValue = Nothing
+        Me.valordoc.DefaultCellStyle = DataGridViewCellStyle1
+        Me.valordoc.HeaderText = "Total Compra"
+        Me.valordoc.Name = "valordoc"
+        Me.valordoc.ReadOnly = True
+        Me.valordoc.Width = 88
+        '
+        'pasgado
+        '
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle2.Format = "N0"
+        DataGridViewCellStyle2.NullValue = Nothing
+        Me.pasgado.DefaultCellStyle = DataGridViewCellStyle2
+        Me.pasgado.HeaderText = "Valor Pagado"
+        Me.pasgado.Name = "pasgado"
+        Me.pasgado.ReadOnly = True
+        Me.pasgado.Width = 88
+        '
+        'saldo
+        '
+        Me.saldo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        DataGridViewCellStyle3.Format = "N0"
+        DataGridViewCellStyle3.NullValue = Nothing
+        Me.saldo.DefaultCellStyle = DataGridViewCellStyle3
+        Me.saldo.HeaderText = "Saldo"
+        Me.saldo.Name = "saldo"
+        Me.saldo.ReadOnly = True
+        '
+        'FechaVcto
+        '
+        Me.FechaVcto.HeaderText = "Fecha Vcto."
+        Me.FechaVcto.Name = "FechaVcto"
+        Me.FechaVcto.ReadOnly = True
+        Me.FechaVcto.Width = 83
+        '
+        'MedioPago
+        '
+        Me.MedioPago.HeaderText = "Medio Pago"
+        Me.MedioPago.Name = "MedioPago"
+        Me.MedioPago.ReadOnly = True
+        Me.MedioPago.Width = 82
         '
         'GroupBox4
         '
@@ -261,9 +339,9 @@ Partial Class Cartola_Proveedor
         Me.GroupBox4.Controls.Add(Me.Label21)
         Me.GroupBox4.Controls.Add(Me.Label20)
         Me.GroupBox4.Controls.Add(Me.Label19)
-        Me.GroupBox4.Location = New System.Drawing.Point(55, 504)
+        Me.GroupBox4.Location = New System.Drawing.Point(91, 504)
         Me.GroupBox4.Name = "GroupBox4"
-        Me.GroupBox4.Size = New System.Drawing.Size(688, 39)
+        Me.GroupBox4.Size = New System.Drawing.Size(700, 39)
         Me.GroupBox4.TabIndex = 8
         Me.GroupBox4.TabStop = False
         Me.GroupBox4.Text = "SALDOS CARTOLA"
@@ -427,72 +505,12 @@ Partial Class Cartola_Proveedor
         Me.Label19.TabIndex = 37
         Me.Label19.Text = "Total Compras"
         '
-        'tipo
-        '
-        Me.tipo.HeaderText = "Tipo"
-        Me.tipo.Name = "tipo"
-        Me.tipo.ReadOnly = True
-        Me.tipo.Width = 53
-        '
-        'doc
-        '
-        Me.doc.HeaderText = "Nro. Documento"
-        Me.doc.Name = "doc"
-        Me.doc.ReadOnly = True
-        Me.doc.Width = 101
-        '
-        'Fecha
-        '
-        Me.Fecha.HeaderText = "Fecha"
-        Me.Fecha.Name = "Fecha"
-        Me.Fecha.ReadOnly = True
-        Me.Fecha.Width = 62
-        '
-        'tipocompra
-        '
-        Me.tipocompra.HeaderText = "Tipo Compra"
-        Me.tipocompra.Name = "tipocompra"
-        Me.tipocompra.ReadOnly = True
-        Me.tipocompra.Width = 85
-        '
-        'valordoc
-        '
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle5.Format = "N0"
-        DataGridViewCellStyle5.NullValue = Nothing
-        Me.valordoc.DefaultCellStyle = DataGridViewCellStyle5
-        Me.valordoc.HeaderText = "Total Compra"
-        Me.valordoc.Name = "valordoc"
-        Me.valordoc.ReadOnly = True
-        Me.valordoc.Width = 87
-        '
-        'pasgado
-        '
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle6.Format = "N0"
-        DataGridViewCellStyle6.NullValue = Nothing
-        Me.pasgado.DefaultCellStyle = DataGridViewCellStyle6
-        Me.pasgado.HeaderText = "Valor Pagado"
-        Me.pasgado.Name = "pasgado"
-        Me.pasgado.ReadOnly = True
-        Me.pasgado.Width = 88
-        '
-        'saldo
-        '
-        Me.saldo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        DataGridViewCellStyle7.Format = "N0"
-        DataGridViewCellStyle7.NullValue = Nothing
-        Me.saldo.DefaultCellStyle = DataGridViewCellStyle7
-        Me.saldo.HeaderText = "Saldo"
-        Me.saldo.Name = "saldo"
-        Me.saldo.ReadOnly = True
-        '
         'Cartola_Proveedor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(815, 545)
+        Me.BackColor = System.Drawing.Color.White
+        Me.ClientSize = New System.Drawing.Size(907, 545)
         Me.Controls.Add(Me.Button3)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.GroupBox1)
@@ -549,4 +567,6 @@ Partial Class Cartola_Proveedor
     Friend WithEvents valordoc As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents pasgado As System.Windows.Forms.DataGridViewTextBoxColumn
     Friend WithEvents saldo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents FechaVcto As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents MedioPago As System.Windows.Forms.DataGridViewTextBoxColumn
 End Class

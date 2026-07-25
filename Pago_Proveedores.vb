@@ -56,6 +56,7 @@
         'TODO: esta línea de código carga datos en la tabla 'DS_FormaPago.BANCO' Puede moverla o quitarla según sea necesario.
         Me.BANCOTableAdapter.Fill(Me.DS_FormaPago.BANCO)
         Carga_FormaPago(Me.cmb_TIPO_PAGO, 1)
+        ConfigurarGrillaPagosRealizados()
     End Sub
 
     Private Sub cmb_PROVEEDOR_SelectedIndexChanged(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles cmb_PROVEEDOR.SelectedIndexChanged
@@ -63,6 +64,7 @@
             'txt_RutProveedor.Text = zRut(Me.cmb_PROVEEDOR.SelectedIndex)
             txtIdProveedor.Text = gIdProveedor(Me.cmb_PROVEEDOR.SelectedIndex)
             Consulta_Facturas()
+            Carga_Pagos_Realizados()
         End If
 
     End Sub
@@ -324,10 +326,193 @@
 
             close_conexion()
             MsgBox("Pago ha sido actualizado")
+            Carga_Pagos_Realizados()
             Limpia_Campos()
         Else
             MsgBox("Debe seleccionar un Item de Pago.", MsgBoxStyle.Exclamation)
         End If
+    End Sub
+
+    Private Sub ConfigurarGrillaPagosRealizados()
+        DataGridPagosRealizados.Columns.Clear()
+        Dim col As DataGridViewTextBoxColumn
+
+        col = New DataGridViewTextBoxColumn()
+        col.Name = "ColIdPagos"
+        col.HeaderText = "IDPAGOS"
+        col.Visible = False
+        DataGridPagosRealizados.Columns.Add(col)
+
+        col = New DataGridViewTextBoxColumn()
+        col.Name = "ColDocumento"
+        col.HeaderText = "Documento"
+        col.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridPagosRealizados.Columns.Add(col)
+
+        col = New DataGridViewTextBoxColumn()
+        col.Name = "ColFormaPago"
+        col.HeaderText = "Forma Pago"
+        col.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridPagosRealizados.Columns.Add(col)
+
+        col = New DataGridViewTextBoxColumn()
+        col.Name = "ColNumDocPago"
+        col.HeaderText = "Nro. Doc."
+        col.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridPagosRealizados.Columns.Add(col)
+
+        col = New DataGridViewTextBoxColumn()
+        col.Name = "ColBanco"
+        col.HeaderText = "Banco"
+        col.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridPagosRealizados.Columns.Add(col)
+
+        col = New DataGridViewTextBoxColumn()
+        col.Name = "ColMonto"
+        col.HeaderText = "Monto"
+        col.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        col.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        DataGridPagosRealizados.Columns.Add(col)
+
+        col = New DataGridViewTextBoxColumn()
+        col.Name = "ColFechaPago"
+        col.HeaderText = "Fecha Pago"
+        col.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridPagosRealizados.Columns.Add(col)
+
+        col = New DataGridViewTextBoxColumn()
+        col.Name = "ColContabilizado"
+        col.HeaderText = "Contabilizado"
+        col.AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells
+        DataGridPagosRealizados.Columns.Add(col)
+
+        col = New DataGridViewTextBoxColumn()
+        col.Name = "ColIdCompras"
+        col.HeaderText = "IDCOMPRAS"
+        col.Visible = False
+        DataGridPagosRealizados.Columns.Add(col)
+
+        col = New DataGridViewTextBoxColumn()
+        col.Name = "ColIdCmpbteFinal"
+        col.HeaderText = "IdCmpbteFinal"
+        col.Visible = False
+        DataGridPagosRealizados.Columns.Add(col)
+
+        col = New DataGridViewTextBoxColumn()
+        col.Name = "ColIdCmpbtePago"
+        col.HeaderText = "IdCmpbtePago"
+        col.Visible = False
+        DataGridPagosRealizados.Columns.Add(col)
+    End Sub
+
+    Private Sub Carga_Pagos_Realizados()
+        If Val(txtIdProveedor.Text) = 0 Then
+            DataGridPagosRealizados.Rows.Clear()
+            Exit Sub
+        End If
+
+        DataGridPagosRealizados.Rows.Clear()
+        Dim query As String = "SELECT a.IDPAGOS, a.IDCOMPRAS, " &
+            "ch.TIPO_DOC + ' ' + CAST(ch.NUM_DOC AS VARCHAR) AS Documento, " &
+            "fp.DESCRIPCION AS FormaPago, " &
+            "a.NUM_DOCPAGO, a.BANCO, a.VALOR_DOC AS Monto, " &
+            "ISNULL(FORMAT(a.FechaPago, 'dd/MM/yyyy'), '') AS FechaPago, " &
+            "ISNULL(FORMAT(a.FECHA_VCTO, 'dd/MM/yyyy'), '') AS FechaVcto, " &
+            "CASE WHEN a.Estado_Conta = -1 THEN 'SI' ELSE 'NO' END AS Contabilizado, " &
+            "ISNULL(a.IdCmpbte_PagoFinal, 0) AS IdCmpbte_PagoFinal, " &
+            "ISNULL(a.IdCmpbte_Pago, 0) AS IdCmpbte_Pago " &
+            "FROM COMPRA_PAGOS a " &
+            "INNER JOIN COMPRA_HEADER ch ON ch.IDCOMPRAS = a.IDCOMPRAS " &
+            "INNER JOIN FORMAPAGO fp ON fp.IdFPago = a.IdFPago " &
+            "WHERE a.Pagado = 1 AND ch.IdProveedor = " & Val(txtIdProveedor.Text).ToString() &
+            " ORDER BY a.FechaPago DESC"
+
+        open()
+        command = connection.CreateCommand()
+        command.CommandText = query
+        datatbl = command.ExecuteReader()
+
+        Dim i As Integer = 0
+        If datatbl.HasRows Then
+            While datatbl.Read = True
+                DataGridPagosRealizados.Rows.Add()
+                DataGridPagosRealizados.Rows(i).Cells("ColIdPagos").Value = datatbl("IDPAGOS")
+                DataGridPagosRealizados.Rows(i).Cells("ColDocumento").Value = datatbl("Documento").ToString().Trim()
+                DataGridPagosRealizados.Rows(i).Cells("ColFormaPago").Value = datatbl("FormaPago").ToString()
+                DataGridPagosRealizados.Rows(i).Cells("ColNumDocPago").Value = datatbl("NUM_DOCPAGO").ToString()
+                DataGridPagosRealizados.Rows(i).Cells("ColBanco").Value = datatbl("BANCO").ToString()
+                DataGridPagosRealizados.Rows(i).Cells("ColMonto").Value = Format(Val(datatbl("Monto").ToString()), "###,###,###")
+                DataGridPagosRealizados.Rows(i).Cells("ColFechaPago").Value = datatbl("FechaPago").ToString()
+                DataGridPagosRealizados.Rows(i).Cells("ColContabilizado").Value = datatbl("Contabilizado").ToString()
+                DataGridPagosRealizados.Rows(i).Cells("ColIdCompras").Value = datatbl("IDCOMPRAS")
+                DataGridPagosRealizados.Rows(i).Cells("ColIdCmpbteFinal").Value = datatbl("IdCmpbte_PagoFinal")
+                DataGridPagosRealizados.Rows(i).Cells("ColIdCmpbtePago").Value = datatbl("IdCmpbte_Pago")
+                i += 1
+            End While
+        End If
+        close_conexion()
+    End Sub
+
+    Private Sub btn_RevertirPago_Click(sender As Object, e As EventArgs) Handles btn_RevertirPago.Click
+        If DataGridPagosRealizados.SelectedRows.Count = 0 Then
+            MsgBox("Debe seleccionar un pago para revertir.", MsgBoxStyle.Exclamation)
+            Exit Sub
+        End If
+
+        Dim fila As Integer = DataGridPagosRealizados.SelectedRows(0).Index
+        Dim idPagos As Integer = CInt(Val(DataGridPagosRealizados.Rows(fila).Cells("ColIdPagos").Value.ToString()))
+        Dim idCompras As Integer = CInt(Val(DataGridPagosRealizados.Rows(fila).Cells("ColIdCompras").Value.ToString()))
+        Dim idCmpbteFinal As Integer = CInt(Val(DataGridPagosRealizados.Rows(fila).Cells("ColIdCmpbteFinal").Value.ToString()))
+        Dim idCmpbtePago As Integer = CInt(Val(DataGridPagosRealizados.Rows(fila).Cells("ColIdCmpbtePago").Value.ToString()))
+
+        Dim sResp As String = InputBox("CONFIRME REVERSION DE PAGO N°" & Format(idPagos, "######"), "REVERSION DE PAGO", "S")
+        If UCase(sResp) <> "S" Then
+            Exit Sub
+        End If
+
+        open()
+        command = connection.CreateCommand()
+
+        Try
+            If idCmpbteFinal > 0 Then
+                command.CommandText = "DELETE FROM CONTA_Cmpbte_Det WHERE idCmpbte = " & idCmpbteFinal.ToString()
+                command.ExecuteNonQuery()
+                command.CommandText = "DELETE FROM CONTA_Cmpbte_Head WHERE IdCmpbte = " & idCmpbteFinal.ToString()
+                command.ExecuteNonQuery()
+            End If
+
+            If idCmpbtePago > 0 Then
+                command.CommandText = "DELETE FROM CONTA_Cmpbte_Det WHERE idCmpbte = " & idCmpbtePago.ToString()
+                command.ExecuteNonQuery()
+                command.CommandText = "DELETE FROM CONTA_Cmpbte_Head WHERE IdCmpbte = " & idCmpbtePago.ToString()
+                command.ExecuteNonQuery()
+            End If
+
+            command.CommandText = "UPDATE COMPRA_PAGOS SET " &
+                "Pagado = 0, FechaPago = NULL, idcodigo_BANCO = NULL, " &
+                "IdCmpbte_PagoFinal = NULL, IdCmpbte_Pago = NULL, Estado_Conta = 0 " &
+                "WHERE IDPAGOS = " & idPagos.ToString()
+            command.ExecuteNonQuery()
+
+            command.CommandText = "UPDATE COMPRA_HEADER SET Total_Pago = " &
+                "(SELECT ISNULL(SUM(VALOR_DOC), 0) FROM COMPRA_PAGOS WHERE Pagado = 1 AND IDCOMPRAS = " & idCompras.ToString() & ") " &
+                "WHERE IDCOMPRAS = " & idCompras.ToString()
+            command.ExecuteNonQuery()
+
+            close_conexion()
+            MsgBox("Pago revertido exitosamente.", MsgBoxStyle.Information)
+
+            Carga_Pagos_Realizados()
+            If cmb_Factura.SelectedIndex > -1 Then
+                Consulta_Pagos()
+            End If
+        Catch ex As Exception
+            Try
+                close_conexion()
+            Catch
+            End Try
+            MsgBox("Error al revertir pago: " & ex.Message, MsgBoxStyle.Critical)
+        End Try
     End Sub
 
 

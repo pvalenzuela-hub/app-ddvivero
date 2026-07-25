@@ -99,6 +99,11 @@ Partial Class Pago_Proveedores
         Me.GroupBox1.SuspendLayout()
         CType(Me.BANCOBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_FormaPago, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GroupBox11 = New System.Windows.Forms.GroupBox()
+        Me.DataGridPagosRealizados = New System.Windows.Forms.DataGridView()
+        Me.btn_RevertirPago = New System.Windows.Forms.Button()
+        Me.GroupBox11.SuspendLayout()
+        CType(Me.DataGridPagosRealizados, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'BTN_BUSCAR
@@ -762,12 +767,54 @@ Partial Class Pago_Proveedores
         Me.txtIdProveedor.TabIndex = 56
         Me.txtIdProveedor.Visible = False
         '
+        'GroupBox11
+        '
+        Me.GroupBox11.Controls.Add(Me.DataGridPagosRealizados)
+        Me.GroupBox11.Controls.Add(Me.btn_RevertirPago)
+        Me.GroupBox11.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.GroupBox11.Location = New System.Drawing.Point(2, 718)
+        Me.GroupBox11.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.GroupBox11.Name = "GroupBox11"
+        Me.GroupBox11.Padding = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.GroupBox11.Size = New System.Drawing.Size(938, 220)
+        Me.GroupBox11.TabIndex = 57
+        Me.GroupBox11.TabStop = False
+        Me.GroupBox11.Text = "Pagos Realizados al Proveedor"
+        '
+        'DataGridPagosRealizados
+        '
+        Me.DataGridPagosRealizados.AllowUserToAddRows = False
+        Me.DataGridPagosRealizados.AllowUserToDeleteRows = False
+        Me.DataGridPagosRealizados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DataGridPagosRealizados.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
+        Me.DataGridPagosRealizados.Location = New System.Drawing.Point(6, 44)
+        Me.DataGridPagosRealizados.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.DataGridPagosRealizados.Name = "DataGridPagosRealizados"
+        Me.DataGridPagosRealizados.ReadOnly = True
+        Me.DataGridPagosRealizados.RowHeadersVisible = False
+        Me.DataGridPagosRealizados.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders
+        Me.DataGridPagosRealizados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataGridPagosRealizados.Size = New System.Drawing.Size(926, 168)
+        Me.DataGridPagosRealizados.TabIndex = 1
+        '
+        'btn_RevertirPago
+        '
+        Me.btn_RevertirPago.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.btn_RevertirPago.Location = New System.Drawing.Point(8, 15)
+        Me.btn_RevertirPago.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
+        Me.btn_RevertirPago.Name = "btn_RevertirPago"
+        Me.btn_RevertirPago.Size = New System.Drawing.Size(110, 24)
+        Me.btn_RevertirPago.TabIndex = 0
+        Me.btn_RevertirPago.Text = "&Revertir Pago"
+        Me.btn_RevertirPago.UseVisualStyleBackColor = True
+        '
         'Pago_Proveedores
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1058, 711)
+        Me.ClientSize = New System.Drawing.Size(1058, 970)
         Me.Controls.Add(Me.txtIdProveedor)
+        Me.Controls.Add(Me.GroupBox11)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.txt_FechaFactura)
         Me.Controls.Add(Me.Label10)
@@ -804,6 +851,8 @@ Partial Class Pago_Proveedores
         CType(Me.DataGridPago, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox10.ResumeLayout(False)
         Me.GroupBox10.PerformLayout()
+        Me.GroupBox11.ResumeLayout(False)
+        CType(Me.DataGridPagosRealizados, System.ComponentModel.ISupportInitialize).EndInit()
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
@@ -880,4 +929,7 @@ Partial Class Pago_Proveedores
     Friend WithEvents Label14 As Label
     Friend WithEvents txtIDPagos As TextBox
     Friend WithEvents txtIdProveedor As TextBox
+    Friend WithEvents GroupBox11 As GroupBox
+    Friend WithEvents DataGridPagosRealizados As DataGridView
+    Friend WithEvents btn_RevertirPago As Button
 End Class
