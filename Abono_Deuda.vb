@@ -327,7 +327,13 @@ Public Class Abono_Deuda
         If GrillaPagos.Rows.Count > 0 Then
 
             If GrillaPagos.Rows(iFila).Cells("AbonoPedido").Value = "S" Then
-                MsgBox("NOTA: Los Pagos provenientes de Abonos a Pedidos se realizan en forma automática desde la emisión de un documento de Venta, por lo tanto este registro no puede ser eliminado.", MsgBoxStyle.Exclamation)
+                Dim sResp = MsgBox("Este pago proviene de un Abono aplicado automaticamente al generar un documento de Venta. Al eliminarlo, el monto se devolvera al saldo abonado del cliente. Desea continuar?", MsgBoxStyle.YesNo, "Anulacion de Abono")
+                If sResp = MsgBoxResult.Yes Then
+                    Elimina_Pago_Parcial(GrillaPagos.Rows(iFila).Cells("id_pago").Value)
+                    GrillaPagos.Rows.RemoveAt(iFila)
+                    Rescata_Pagos_Historicos(CInt(Val(txt_IdCliente.Text)))
+                    Rescata_Documentos_Ventas(CInt(Val(txt_IdCliente.Text)), 0)
+                End If
             Else
                 If GrillaPagos.Rows(iFila).Cells("estado").Value = 1 Then
                     Dim sResp = MsgBox("Movimiento Contabilizado. Confirme Eliminación de Pago.", MsgBoxStyle.YesNo)
