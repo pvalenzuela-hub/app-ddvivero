@@ -5,11 +5,38 @@ Imports System.IO
 
 Public Class LotesPorSembrar
     Private Sub LotesPorSembrar_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        Me.DataGrilla.DataSource = Nothing
     End Sub
 
     Private Sub EjecutaConsulta()
-        Me.SP_CONSULTA_LOTE_SIN_SEMBRARTableAdapter.Fill(Me.DataSetReporteInventario.SP_CONSULTA_LOTE_SIN_SEMBRAR, dtpFechaSiembra.Value)
+        Dim i As Integer
+        DataGrilla.Rows.Clear()
+
+        sSsql = "SP_CONSULTA_LOTE_SIN_SEMBRAR '" & Format(dtpFechaSiembra.Value, "yyyy-MM-dd") & "'"
+        open()
+        command = connection.CreateCommand()
+        command.CommandText = sSsql
+        datatbl = command.ExecuteReader()
+        If datatbl.HasRows Then
+            i = 0
+            While datatbl.Read = True
+                DataGrilla.Rows.Add()
+                DataGrilla.Rows(i).Cells(0).Value = datatbl(0)
+                DataGrilla.Rows(i).Cells(1).Value = datatbl(1)
+                DataGrilla.Rows(i).Cells(2).Value = datatbl(2)
+                DataGrilla.Rows(i).Cells(3).Value = datatbl(3)
+                DataGrilla.Rows(i).Cells(4).Value = datatbl(4)
+                DataGrilla.Rows(i).Cells(5).Value = datatbl(5)
+                DataGrilla.Rows(i).Cells(6).Value = datatbl(6)
+                DataGrilla.Rows(i).Cells(7).Value = datatbl(7)
+                DataGrilla.Rows(i).Cells(8).Value = datatbl(8)
+                DataGrilla.Rows(i).Cells(9).Value = datatbl(14)
+                DataGrilla.Rows(i).Cells(10).Value = datatbl(12)
+                DataGrilla.Rows(i).Cells(11).Value = datatbl(13)
+                i += 1
+            End While
+        End If
+        close_conexion()
         CargarResumenBandejas()
     End Sub
 
@@ -18,18 +45,24 @@ Public Class LotesPorSembrar
 
         Dim resumen As New Dictionary(Of String, Decimal)()
 
-        For Each fila As DataRow In Me.DataSetReporteInventario.SP_CONSULTA_LOTE_SIN_SEMBRAR.Rows
-            If fila.IsNull("Tipo") OrElse fila.IsNull("TotalBandejas") Then
+        For Each fila As DataGridViewRow In DataGrilla.Rows
+            If fila.IsNewRow Then
                 Continue For
             End If
 
-            Dim tipo As String = fila("Tipo").ToString().Trim()
+            Dim valorTipo = fila.Cells(8).Value
+            Dim valorBandejas = fila.Cells(9).Value
+            If valorTipo Is Nothing OrElse valorBandejas Is Nothing Then
+                Continue For
+            End If
+
+            Dim tipo As String = valorTipo.ToString().Trim()
             If tipo = String.Empty Then
                 Continue For
             End If
 
             Dim bandejas As Decimal = 0D
-            Decimal.TryParse(fila("TotalBandejas").ToString(), bandejas)
+            Decimal.TryParse(valorBandejas.ToString(), bandejas)
 
             If resumen.ContainsKey(tipo) Then
                 resumen(tipo) += bandejas
@@ -116,6 +149,9 @@ Public Class LotesPorSembrar
         ws.Column(10).Width = 22
         If totalColumnas >= 11 Then
             ws.Column(11).Width = 13
+        End If
+        If totalColumnas >= 12 Then
+            ws.Column(12).Width = 18
         End If
 
         ws.Row(1).Height = 38
@@ -255,6 +291,11 @@ Public Class LotesPorSembrar
                 cell.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center
 
             Case "Fecha_Siembra"
+                cell.Style.Font.Bold = True
+                cell.Style.Font.FontColor = XLColor.FromArgb(31, 67, 168)
+                cell.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center
+
+            Case "Fecha_Entrega"
                 cell.Style.Font.Bold = True
                 cell.Style.Font.FontColor = XLColor.FromArgb(31, 67, 168)
                 cell.Style.Alignment.Horizontal = XLAlignmentHorizontalValues.Center
@@ -406,6 +447,8 @@ Public Class LotesPorSembrar
                 Return "VARIEDAD"
             Case "Fecha_Siembra"
                 Return "FECHA" & vbLf & "SIEMBRA"
+            Case "Fecha_Entrega"
+                Return "FEC." & vbLf & "SOLICITADA" & vbLf & "CLIENTE"
             Case "CANTIDAD"
                 Return "CANTIDAD"
             Case "Tipo"
