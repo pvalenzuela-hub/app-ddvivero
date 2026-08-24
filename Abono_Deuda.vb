@@ -75,6 +75,7 @@ Public Class Abono_Deuda
             End If
 
             close_conexion()
+            Carga_Compensaciones()
         Else
             MsgBox("Debe Seleccionar Cliente", MsgBoxStyle.Critical, "Abono Deuda")
         End If
@@ -98,6 +99,11 @@ Public Class Abono_Deuda
         txt_TotalAbonos.Clear()
         GrillaVentas.Rows.Clear()
         GrillaPagos.Rows.Clear()
+        If DataCompensaciones IsNot Nothing Then
+            DataCompensaciones.Rows.Clear()
+            txtMontoCompensacion.Clear()
+            txtMotivoCompensacion.Clear()
+        End If
         txt_clientebuscar.Focus()
         'chkAbonoPedido.Checked = False
         cmbPedido.Items.Clear()
@@ -322,7 +328,188 @@ Public Class Abono_Deuda
         Carga_FormaPago(Me.cmb_TIPO_PAGO, 2)
         AseguraColumnaCajaPago()
         InicializaCajaActivaUI()
+        ConfiguraCompensaciones()
     End Sub
+
+#Region "Compensaciones Comerciales"
+    Private WithEvents DataCompensaciones As DataGridView
+    Private WithEvents btnNuevaCompensacion As Button
+    Private WithEvents btnAnularCompensacion As Button
+    Private WithEvents txtMontoCompensacion As TextBox
+    Private WithEvents txtMotivoCompensacion As TextBox
+
+    Private Sub ConfiguraCompensaciones()
+        Dim grp As New GroupBox()
+        grp.Text = "Compensaciones (Descuentos Pendientes)"
+        grp.Font = New Font("Arial", 9.0!, FontStyle.Regular)
+        grp.Location = New Point(1033, 389)
+        grp.Size = New Size(294, 240)
+        grp.Anchor = AnchorStyles.Top Or AnchorStyles.Right
+        Me.Controls.Add(grp)
+
+        DataCompensaciones = New DataGridView()
+        DataCompensaciones.AllowUserToAddRows = False
+        DataCompensaciones.AllowUserToDeleteRows = False
+        DataCompensaciones.ReadOnly = True
+        DataCompensaciones.RowHeadersVisible = False
+        DataCompensaciones.SelectionMode = DataGridViewSelectionMode.FullRowSelect
+        DataCompensaciones.Location = New Point(6, 19)
+        DataCompensaciones.Size = New Size(282, 115)
+        DataCompensaciones.Columns.Add("IdCompensacion", "N°")
+        DataCompensaciones.Columns("IdCompensacion").Width = 45
+        DataCompensaciones.Columns.Add("FechaCompensacion", "Fecha")
+        DataCompensaciones.Columns("FechaCompensacion").Width = 90
+        DataCompensaciones.Columns.Add("Monto", "Monto")
+        DataCompensaciones.Columns("Monto").Width = 100
+        DataCompensaciones.Columns("Monto").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        DataCompensaciones.Columns.Add("Saldo", "Saldo")
+        DataCompensaciones.Columns("Saldo").Width = 100
+        DataCompensaciones.Columns("Saldo").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        DataCompensaciones.Columns.Add("Motivo", "Motivo")
+        DataCompensaciones.Columns("Motivo").Width = 400
+        DataCompensaciones.Columns.Add("Usuario", "Usuario")
+        DataCompensaciones.Columns("Usuario").Width = 90
+        DataCompensaciones.Columns.Add("TotalAplicado", "Aplicado")
+        DataCompensaciones.Columns("TotalAplicado").Width = 100
+        DataCompensaciones.Columns("TotalAplicado").DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        grp.Controls.Add(DataCompensaciones)
+
+        Dim lblMonto As New Label()
+        lblMonto.Text = "Monto"
+        lblMonto.AutoSize = True
+        lblMonto.Location = New Point(6, 146)
+        grp.Controls.Add(lblMonto)
+
+        txtMontoCompensacion = New TextBox()
+        txtMontoCompensacion.Location = New Point(66, 143)
+        txtMontoCompensacion.Size = New Size(222, 22)
+        txtMontoCompensacion.TextAlign = HorizontalAlignment.Right
+        grp.Controls.Add(txtMontoCompensacion)
+
+        Dim lblMotivo As New Label()
+        lblMotivo.Text = "Motivo"
+        lblMotivo.AutoSize = True
+        lblMotivo.Location = New Point(6, 174)
+        grp.Controls.Add(lblMotivo)
+
+        txtMotivoCompensacion = New TextBox()
+        txtMotivoCompensacion.Location = New Point(66, 171)
+        txtMotivoCompensacion.Size = New Size(222, 22)
+        grp.Controls.Add(txtMotivoCompensacion)
+
+        btnNuevaCompensacion = New Button()
+        btnNuevaCompensacion.Text = "Nueva"
+        btnNuevaCompensacion.Location = New Point(66, 201)
+        btnNuevaCompensacion.Size = New Size(80, 26)
+        grp.Controls.Add(btnNuevaCompensacion)
+
+        btnAnularCompensacion = New Button()
+        btnAnularCompensacion.Text = "Anular"
+        btnAnularCompensacion.Location = New Point(154, 201)
+        btnAnularCompensacion.Size = New Size(80, 26)
+        grp.Controls.Add(btnAnularCompensacion)
+    End Sub
+
+    Private Sub Carga_Compensaciones()
+        If DataCompensaciones Is Nothing Then
+            Exit Sub
+        End If
+        DataCompensaciones.Rows.Clear()
+        If Val(txt_IdCliente.Text) = 0 Then
+            Exit Sub
+        End If
+        Dim i As Integer = 0
+        sSsql = "SP_CONSULTA_COMPENSACIONES_CLIENTE " & Val(txt_IdCliente.Text).ToString()
+        open()
+        command = connection.CreateCommand()
+        command.CommandText = sSsql
+        datatbl = command.ExecuteReader()
+        If datatbl.HasRows Then
+            While datatbl.Read = True
+                DataCompensaciones.Rows.Add()
+                DataCompensaciones.Rows(i).Cells("IdCompensacion").Value = datatbl("IdCompensacion")
+                DataCompensaciones.Rows(i).Cells("FechaCompensacion").Value = datatbl("FechaCompensacion")
+                DataCompensaciones.Rows(i).Cells("Monto").Value = Format(Val(datatbl("Monto").ToString()), "###,###,##0")
+                DataCompensaciones.Rows(i).Cells("Saldo").Value = Format(Val(datatbl("Saldo").ToString()), "###,###,##0")
+                DataCompensaciones.Rows(i).Cells("Motivo").Value = datatbl("Motivo").ToString()
+                DataCompensaciones.Rows(i).Cells("Usuario").Value = datatbl("Usuario").ToString()
+                DataCompensaciones.Rows(i).Cells("TotalAplicado").Value = Format(Val(datatbl("TotalAplicado").ToString()), "###,###,##0")
+                i += 1
+            End While
+        End If
+        close_conexion()
+    End Sub
+
+    Private Sub btnNuevaCompensacion_Click(sender As Object, e As EventArgs) Handles btnNuevaCompensacion.Click
+        If gIdPerfil <> 1 AndAlso gIdPerfil <> 2 Then
+            MsgBox("Solo los perfiles Administrador y Ventas pueden registrar compensaciones comerciales.", MsgBoxStyle.Exclamation, "Compensaciones Comerciales")
+            Exit Sub
+        End If
+        If Val(txt_IdCliente.Text) = 0 Then
+            MsgBox("Debe seleccionar un cliente.", MsgBoxStyle.Exclamation, "Compensaciones Comerciales")
+            Exit Sub
+        End If
+        If Val(txtMontoCompensacion.Text) <= 0 Then
+            MsgBox("Debe ingresar un monto mayor a cero.", MsgBoxStyle.Exclamation, "Compensaciones Comerciales")
+            Exit Sub
+        End If
+        If txtMotivoCompensacion.Text.Trim() = "" Then
+            MsgBox("Debe ingresar el motivo de la compensacion.", MsgBoxStyle.Exclamation, "Compensaciones Comerciales")
+            Exit Sub
+        End If
+
+        sSsql = "SP_INSERTA_COMPENSACION_CLIENTE " & Val(txt_IdCliente.Text).ToString() & ",'" & Format(Now.Date, "d") & "'," & Val(txtMontoCompensacion.Text).ToString().Replace(",", ".") & ",'" & txtMotivoCompensacion.Text.Trim().Replace("'", "''") & "','" & gUSER & "'"
+        open()
+        command = connection.CreateCommand()
+        command.CommandText = sSsql
+        datatbl = command.ExecuteReader()
+        If datatbl.HasRows Then
+            datatbl.Read()
+            If Val(datatbl(0).ToString()) > 0 Then
+                MsgBox("Compensacion registrada correctamente.", MsgBoxStyle.Information, "Compensaciones Comerciales")
+                txtMontoCompensacion.Clear()
+                txtMotivoCompensacion.Clear()
+            Else
+                MsgBox("No fue posible registrar la compensacion.", MsgBoxStyle.Critical, "Compensaciones Comerciales")
+            End If
+        End If
+        close_conexion()
+        Carga_Compensaciones()
+    End Sub
+
+    Private Sub btnAnularCompensacion_Click(sender As Object, e As EventArgs) Handles btnAnularCompensacion.Click
+        If gIdPerfil <> 1 AndAlso gIdPerfil <> 2 Then
+            MsgBox("Solo los perfiles Administrador y Ventas pueden anular compensaciones comerciales.", MsgBoxStyle.Exclamation, "Compensaciones Comerciales")
+            Exit Sub
+        End If
+        If DataCompensaciones.SelectedRows.Count = 0 Then
+            MsgBox("Debe seleccionar una compensacion de la grilla.", MsgBoxStyle.Exclamation, "Compensaciones Comerciales")
+            Exit Sub
+        End If
+        Dim fila As Integer = DataCompensaciones.SelectedRows(0).Index
+        Dim idComp As Integer = CInt(Val(DataCompensaciones.Rows(fila).Cells("IdCompensacion").Value.ToString()))
+        Dim sResp = MsgBox("Confirma anular la compensacion N°" & idComp.ToString() & "?", MsgBoxStyle.YesNo, "Compensaciones Comerciales")
+        If sResp <> MsgBoxResult.Yes Then
+            Exit Sub
+        End If
+
+        sSsql = "SP_ANULA_COMPENSACION_CLIENTE " & idComp.ToString() & ",'" & gUSER & "'"
+        open()
+        command = connection.CreateCommand()
+        command.CommandText = sSsql
+        datatbl = command.ExecuteReader()
+        If datatbl.HasRows Then
+            datatbl.Read()
+            If Val(datatbl(0).ToString()) = 0 Then
+                MsgBox("Compensacion anulada correctamente.", MsgBoxStyle.Information, "Compensaciones Comerciales")
+            Else
+                MsgBox("No es posible anular. La compensacion ya tiene aplicaciones de uso.", MsgBoxStyle.Critical, "Compensaciones Comerciales")
+            End If
+        End If
+        close_conexion()
+        Carga_Compensaciones()
+    End Sub
+#End Region
     Private Sub Elimina_Pago_Actual(iFila As Integer)
         If GrillaPagos.Rows.Count > 0 Then
 

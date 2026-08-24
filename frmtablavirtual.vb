@@ -15,6 +15,7 @@ Public Class frmtablavirtual
     Dim gTotalFinal As Double
     Dim gIdVtahead As Integer = 0
     Dim gESTADO As Integer = 0
+    Dim dDescuentoComercial As Double = 0
     Private fila As Byte
 
     Private Sub frmtablavirtual_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -62,7 +63,7 @@ Public Class frmtablavirtual
 
         If bAgregaGrilla AndAlso sTipoDoc = "NC" Then
             If Val(txtIdVtaDetNC.Text) = 0 Then
-                MsgBox("Debe Seleccionar Documento de Venta para la Nota de Crédito !!!", MsgBoxStyle.Critical, "Documento de Venta")
+                MsgBox("Debe Seleccionar Documento de Venta para la Nota de Crï¿½dito !!!", MsgBoxStyle.Critical, "Documento de Venta")
                 bAgregaGrilla = False
             End If
 
@@ -83,7 +84,7 @@ Public Class frmtablavirtual
                 End If
             Next
             If Not HayGuiaSeleccionada Then
-                MsgBox("Debe Seleccionar Guía a Facturar!!!", MsgBoxStyle.Critical, "Documento de Venta")
+                MsgBox("Debe Seleccionar Guï¿½a a Facturar!!!", MsgBoxStyle.Critical, "Documento de Venta")
                 bAgregaGrilla = False
             End If
 
@@ -111,7 +112,7 @@ Public Class frmtablavirtual
         End If
     End Sub
     Private Sub Agrega_Guias(itipo As Integer)
-        'Agrega Guías en forma automatica desde grilla Guias
+        'Agrega Guï¿½as en forma automatica desde grilla Guias
         Dim i As Integer
         Dim x As Integer
 
@@ -135,7 +136,7 @@ Public Class frmtablavirtual
                             DataGrilla.Rows(x).Cells(5).Value = Reemplaza_Comas(DataGuias.Rows(i).Cells("PrecioGuia").Value)
                             DataGrilla.Rows(x).Cells(6).Value = DataGuias.Rows(i).Cells("CantidadGuia").Value
                             DataGrilla.Rows(x).Cells(7).Value = Math.Round(dPrecio * dCantidad, 0, MidpointRounding.AwayFromZero)
-                            DataGrilla.Rows(x).Cells(8).Value = "Guia N°:" & DataGuias.Rows(i).Cells(1).Value.ToString()
+                            DataGrilla.Rows(x).Cells(8).Value = "Guia Nï¿½:" & DataGuias.Rows(i).Cells(1).Value.ToString()
                             DataGrilla.Rows(x).Cells(9).Value = "0"
                             DataGrilla.Rows(x).Cells("IdVtaDetNC").Value = 0
                             DataGrilla.Rows(x).Cells("Indice").Value = x
@@ -143,7 +144,7 @@ Public Class frmtablavirtual
                             DataGrilla.Rows(x).Cells("CantidadBandejasNC").Value = 0
                             DataGrilla.Rows(x).Cells("IdVtaDet").Value = 0
                         Else
-                            MsgBox("Guía N° " & DataGuias.Rows(i).Cells(1).Value & " ya se encuentra asignada al Documento de Venta", MsgBoxStyle.Critical, "Documento de Venta")
+                            MsgBox("Guï¿½a Nï¿½ " & DataGuias.Rows(i).Cells(1).Value & " ya se encuentra asignada al Documento de Venta", MsgBoxStyle.Critical, "Documento de Venta")
                         End If
                     End If
                 Next
@@ -151,7 +152,7 @@ Public Class frmtablavirtual
                 chk_SelectAll.Checked = False
 
             Case 1
-                'Venta sin Guías
+                'Venta sin Guï¿½as
                 If cmb_Familia_Prod.SelectedIndex > -1 Then
                     DataGrilla.Rows.Add()
                     i = DataGrilla.Rows.Count - 1
@@ -211,7 +212,7 @@ Public Class frmtablavirtual
                     DataGrilla.Rows(i).Cells(5).Value = txtPrecioNeto.Text
                     DataGrilla.Rows(i).Cells(6).Value = txtPlantasDevolucionNC.Text
                     DataGrilla.Rows(i).Cells(7).Value = Math.Round(Val(txtPrecioNeto.Text) * Val(txtPlantasDevolucionNC.Text), 0, MidpointRounding.AwayFromZero)
-                    DataGrilla.Rows(i).Cells(8).Value = "NOTA DE CREDITO Guia N°:" & txtGuiaNC.Text
+                    DataGrilla.Rows(i).Cells(8).Value = "NOTA DE CREDITO Guia Nï¿½:" & txtGuiaNC.Text
                     DataGrilla.Rows(i).Cells(9).Value = "2"
                     DataGrilla.Rows(i).Cells("IdVtaDetNC").Value = txtIdVtaDetNC.Text
                     DataGrilla.Rows(i).Cells("Indice").Value = i
@@ -231,7 +232,7 @@ Public Class frmtablavirtual
 
                     btnSave.Enabled = True
                 Else
-                    MsgBox("Guía N° " & txtGuiaNC.Text & " ya se encuentra asignada en la Nota de Crédito!!!", MsgBoxStyle.Critical, "Documento de Venta")
+                    MsgBox("Guï¿½a Nï¿½ " & txtGuiaNC.Text & " ya se encuentra asignada en la Nota de Crï¿½dito!!!", MsgBoxStyle.Critical, "Documento de Venta")
                 End If
         End Select
         totales()
@@ -255,7 +256,7 @@ Public Class frmtablavirtual
                 fila = DataGrilla.CurrentCell.RowIndex
                 If fila > -1 AndAlso DataGrilla.Rows.Count > 0 Then
                     If DataGrilla.Rows(fila).Cells("tipoventa").Value = 2 Then
-                        MsgBox("No es posible Modificar Nota de Crédito!!!", MsgBoxStyle.Critical, "Documento de Venta")
+                        MsgBox("No es posible Modificar Nota de Crï¿½dito!!!", MsgBoxStyle.Critical, "Documento de Venta")
                         bRetorno = False
                     Else
                         DataGrilla.Rows.RemoveAt(fila)
@@ -288,6 +289,24 @@ Public Class frmtablavirtual
             Else
                 totaliva = Math.Round(total * GIVA / 100, 0, MidpointRounding.AwayFromZero)
                 totalconiva = Math.Round(total + totaliva, 0, MidpointRounding.AwayFromZero)
+            End If
+
+            ' Aplica Descuento Comercial (monto final con IVA incluido)
+            If chkAplicaDescuento.Checked AndAlso Val(txtDescuentoComercial.Text) > 0 Then
+                dDescuentoComercial = Val(txtDescuentoComercial.Text)
+                If dDescuentoComercial > totalconiva Then
+                    dDescuentoComercial = totalconiva
+                End If
+                totalconiva = totalconiva - dDescuentoComercial
+                If sTipoDoc = "BE" Then
+                    total = totalconiva
+                    totaliva = 0
+                Else
+                    total = Math.Round(totalconiva / DFactor_IVA, 0, MidpointRounding.AwayFromZero)
+                    totaliva = totalconiva - total
+                End If
+            Else
+                dDescuentoComercial = 0
             End If
 
             sSsql = "SP_COnsulta_Monto_Escrito " & totalconiva.ToString
@@ -323,7 +342,7 @@ Public Class frmtablavirtual
 
     Function EliminaRegistros(ByVal IdVtaHead As Integer) As Boolean
         Dim bRetorno As Boolean = True
-        Dim sResp = MsgBox("Confirme Eliminación de Documento de Venta", MsgBoxStyle.YesNo)
+        Dim sResp = MsgBox("Confirme Eliminaciï¿½n de Documento de Venta", MsgBoxStyle.YesNo)
         If sResp = MsgBoxResult.Yes Then
             sSsql = "NEWSP_ELIMINA_DOCVENTA " & IdVtaHead.ToString()
             open()
@@ -460,6 +479,11 @@ Public Class frmtablavirtual
         txt_RutFactura.Clear()
         txtAbonoRebajar.Clear()
         txtSaldoAbono.Clear()
+        txtSaldoCompensaciones.Clear()
+        txtDescuentoComercial.Clear()
+        chkAplicaDescuento.Checked = False
+        grpDescuentoComercial.Visible = False
+        dDescuentoComercial = 0
         txt_MontoEscrito.Clear()
         txtEstado.Clear()
         gIdVtahead = 0
@@ -683,6 +707,65 @@ Public Class frmtablavirtual
         If Val(txt_IDcliente.Text) > 0 AndAlso Val(txtIdVtaHead.Text) = 0 Then
             GuiaXFacturar(txt_IDcliente.Text)
         End If
+        Carga_Saldo_Compensaciones()
+    End Sub
+
+    Private Sub Carga_Saldo_Compensaciones()
+        If Val(txt_IDcliente.Text) = 0 Then
+            grpDescuentoComercial.Visible = False
+            txtSaldoCompensaciones.Clear()
+            txtDescuentoComercial.Clear()
+            chkAplicaDescuento.Checked = False
+            Exit Sub
+        End If
+        sSsql = "SELECT ISNULL(SUM(Saldo),0) AS Saldo FROM CLIENTE_COMPENSACION WHERE IdCliente = " & Val(txt_IDcliente.Text).ToString() & " AND Estado = 0"
+        open()
+        command = connection.CreateCommand()
+        command.CommandText = sSsql
+        datatbl = command.ExecuteReader()
+        Dim dSaldo As Double = 0
+        If datatbl.HasRows Then
+            datatbl.Read()
+            dSaldo = Val(datatbl("Saldo").ToString())
+        End If
+        close_conexion()
+
+        If dSaldo > 0 Then
+            txtSaldoCompensaciones.Text = Format(dSaldo, "###,###,##0")
+            grpDescuentoComercial.Visible = True
+        Else
+            grpDescuentoComercial.Visible = False
+            txtSaldoCompensaciones.Clear()
+            txtDescuentoComercial.Clear()
+            chkAplicaDescuento.Checked = False
+        End If
+    End Sub
+
+    Private Sub chkAplicaDescuento_CheckedChanged(sender As Object, e As EventArgs) Handles chkAplicaDescuento.CheckedChanged
+        txtDescuentoComercial.Enabled = chkAplicaDescuento.Checked
+        If chkAplicaDescuento.Checked Then
+            txtDescuentoComercial.Text = txtSaldoCompensaciones.Text.Replace(",", "").Replace(".", "")
+        Else
+            txtDescuentoComercial.Clear()
+        End If
+        If cmb_TIPODOC.SelectedIndex > -1 Then
+            totales()
+        End If
+    End Sub
+
+    Private Sub txtDescuentoComercial_TextChanged(sender As Object, e As EventArgs) Handles txtDescuentoComercial.TextChanged
+        Dim dSaldo As Double = 0
+        If Not String.IsNullOrEmpty(txtSaldoCompensaciones.Text) Then
+            dSaldo = CDbl(Val(txtSaldoCompensaciones.Text.Replace(",", "")))
+        End If
+        If Val(txtDescuentoComercial.Text) > dSaldo Then
+            MsgBox("Monto a aplicar no puede ser superior al saldo disponible de descuentos.", MsgBoxStyle.Exclamation, "Descuento Comercial")
+            txtDescuentoComercial.Clear()
+            Exit Sub
+        End If
+        If cmb_TIPODOC.SelectedIndex > -1 Then
+            totales()
+        End If
     End Sub
 
     Private Sub ToolStripMenuItem6_Click(sender As Object, e As EventArgs)
@@ -796,7 +879,8 @@ Public Class frmtablavirtual
                     sSsql += "'" & DataGrilla.Rows(i).Cells("Insumo").Value & "',"
                     sSsql += DataGrilla.Rows(i).Cells("Indice").Value.ToString() & ","
                     sSsql += DataGrilla.Rows(i).Cells("PromedioPlantasNC").Value.ToString() & ","
-                    sSsql += DataGrilla.Rows(i).Cells("CantidadBandejasNC").Value.ToString()
+                    sSsql += DataGrilla.Rows(i).Cells("CantidadBandejasNC").Value.ToString() & ","
+                    sSsql += dDescuentoComercial.ToString()
 
                     command = connection.CreateCommand
                     command.CommandText = sSsql
@@ -838,7 +922,7 @@ Public Class frmtablavirtual
         HabilitaCampos()
         cmb_TIPODOC.Enabled = False
         btnSave.Enabled = True
-        txtProceso.Text = "MODIFICACIÓN DE DOCUMENTO"
+        txtProceso.Text = "MODIFICACIï¿½N DE DOCUMENTO"
         txt_clientebuscar.Enabled = False
         chkCliente.Enabled = False
         chk_CLienteFactura.Enabled = False
@@ -854,11 +938,11 @@ Public Class frmtablavirtual
     End Sub
 
     Private Sub btnDelete_Click(sender As Object, e As EventArgs) Handles btnDelete.Click
-        txtProceso.Text = "ELIMINACIÓN DE DOCUMENTO"
+        txtProceso.Text = "ELIMINACIï¿½N DE DOCUMENTO"
         If Val(txtIdVtaHead.Text) > 0 Then
             EliminaRegistros(Val(txtIdVtaHead.Text))
         Else
-            MsgBox("No ha seleccionado ningún Documento de Venta!!!", MsgBoxStyle.Critical, "Documento de Venta")
+            MsgBox("No ha seleccionado ningï¿½n Documento de Venta!!!", MsgBoxStyle.Critical, "Documento de Venta")
         End If
     End Sub
 

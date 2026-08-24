@@ -24,6 +24,7 @@
             Me.txt_User.Text = gNomUsuario
         End If
         Label4.Text = "Sistema de Gestión Vivero - V. 2024"
+        VendedoresToolStripMenuItem1.Visible = gIdPerfil = 1
         'opcionAutorizaPedido.Enabled = False
         'Select Case gIdPerfil
         '    Case 1 'Administrador
@@ -562,6 +563,10 @@
     End Sub
 
     Private Sub VendedoresToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles VendedoresToolStripMenuItem1.Click
+        If gIdPerfil <> 1 Then
+            MsgBox("Solo el perfil Administrador puede acceder al módulo Usuarios.", MsgBoxStyle.Exclamation, "Usuarios")
+            Exit Sub
+        End If
         Vendedores.Show()
     End Sub
 

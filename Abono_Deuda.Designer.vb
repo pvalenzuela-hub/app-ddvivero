@@ -697,7 +697,7 @@ Partial Class Abono_Deuda
         Me.GrillaPagos.Name = "GrillaPagos"
         Me.GrillaPagos.ReadOnly = True
         Me.GrillaPagos.RowHeadersVisible = False
-        Me.GrillaPagos.Size = New System.Drawing.Size(1318, 240)
+        Me.GrillaPagos.Size = New System.Drawing.Size(1018, 240)
         Me.GrillaPagos.TabIndex = 81
         '
         'id_pago

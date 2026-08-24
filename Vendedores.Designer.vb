@@ -29,6 +29,7 @@ Partial Class Vendedores
         Me.chkEsCajero = New System.Windows.Forms.CheckBox()
         Me.Button4 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
+        Me.btnRestablecerPassword = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Label1 = New System.Windows.Forms.Label()
@@ -39,6 +40,12 @@ Partial Class Vendedores
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IdPerfil = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Perfil = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.cmbPerfil = New System.Windows.Forms.ComboBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.txtPassword = New System.Windows.Forms.TextBox()
+        Me.Label6 = New System.Windows.Forms.Label()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
         Me.SplitContainer1.Panel2.SuspendLayout()
@@ -62,9 +69,14 @@ Partial Class Vendedores
         Me.SplitContainer1.Panel1.Controls.Add(Me.Button5)
         Me.SplitContainer1.Panel1.Controls.Add(Me.txtUsuario)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Label2)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.cmbPerfil)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.Label5)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.txtPassword)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.Label6)
         Me.SplitContainer1.Panel1.Controls.Add(Me.chkEsCajero)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Button4)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Button3)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.btnRestablecerPassword)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Button2)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Button1)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Label1)
@@ -74,7 +86,7 @@ Partial Class Vendedores
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.DataVendedor)
         Me.SplitContainer1.Size = New System.Drawing.Size(681, 546)
-        Me.SplitContainer1.SplitterDistance = 190
+        Me.SplitContainer1.SplitterDistance = 220
         Me.SplitContainer1.TabIndex = 0
         '
         'txt_Codigo
@@ -89,7 +101,7 @@ Partial Class Vendedores
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(138, 141)
+        Me.Label4.Location = New System.Drawing.Point(166, 141)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(40, 13)
         Me.Label4.TabIndex = 11
@@ -145,12 +157,49 @@ Partial Class Vendedores
         'chkEsCajero
         '
         Me.chkEsCajero.AutoSize = True
-        Me.chkEsCajero.Location = New System.Drawing.Point(207, 175)
+        Me.chkEsCajero.Location = New System.Drawing.Point(207, 199)
         Me.chkEsCajero.Name = "chkEsCajero"
         Me.chkEsCajero.Size = New System.Drawing.Size(77, 17)
         Me.chkEsCajero.TabIndex = 13
         Me.chkEsCajero.Text = "Es Cajero"
         Me.chkEsCajero.UseVisualStyleBackColor = True
+        '
+        'cmbPerfil
+        '
+        Me.cmbPerfil.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
+        Me.cmbPerfil.FormattingEnabled = True
+        Me.cmbPerfil.Location = New System.Drawing.Point(48, 138)
+        Me.cmbPerfil.Name = "cmbPerfil"
+        Me.cmbPerfil.Size = New System.Drawing.Size(110, 21)
+        Me.cmbPerfil.TabIndex = 14
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(4, 141)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(34, 13)
+        Me.Label5.TabIndex = 15
+        Me.Label5.Text = "Perfil"
+        '
+        'txtPassword
+        '
+        Me.txtPassword.Enabled = False
+        Me.txtPassword.Location = New System.Drawing.Point(207, 170)
+        Me.txtPassword.MaxLength = 50
+        Me.txtPassword.Name = "txtPassword"
+        Me.txtPassword.Size = New System.Drawing.Size(259, 20)
+        Me.txtPassword.TabIndex = 16
+        Me.txtPassword.UseSystemPasswordChar = True
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(138, 173)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(61, 13)
+        Me.Label6.TabIndex = 17
+        Me.Label6.Text = "Contraseña"
         '
         'Button4
         '
@@ -175,6 +224,19 @@ Partial Class Vendedores
         Me.Button3.Text = "Eliminar"
         Me.Button3.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         Me.Button3.UseVisualStyleBackColor = True
+        '
+        'btnRestablecerPassword
+        '
+        Me.btnRestablecerPassword.Image = Global.GestionVivero.My.Resources.Resources.Apply
+        Me.btnRestablecerPassword.ImageAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.btnRestablecerPassword.Location = New System.Drawing.Point(589, 171)
+        Me.btnRestablecerPassword.Name = "btnRestablecerPassword"
+        Me.btnRestablecerPassword.Size = New System.Drawing.Size(82, 40)
+        Me.btnRestablecerPassword.TabIndex = 18
+        Me.btnRestablecerPassword.Text = "Reset Clave"
+        Me.btnRestablecerPassword.TextAlign = System.Drawing.ContentAlignment.BottomCenter
+        Me.btnRestablecerPassword.UseVisualStyleBackColor = True
+        Me.btnRestablecerPassword.Visible = False
         '
         'Button2
         '
@@ -223,7 +285,7 @@ Partial Class Vendedores
         Me.DataVendedor.AllowUserToDeleteRows = False
         Me.DataVendedor.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText
         Me.DataVendedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataVendedor.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codigo, Me.Vendedor, Me.Column1, Me.Column2, Me.Column3})
+        Me.DataVendedor.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.codigo, Me.Vendedor, Me.Column1, Me.Column2, Me.Column3, Me.IdPerfil, Me.Perfil})
         Me.DataVendedor.Dock = System.Windows.Forms.DockStyle.Fill
         Me.DataVendedor.Location = New System.Drawing.Point(0, 0)
         Me.DataVendedor.Name = "DataVendedor"
@@ -266,6 +328,19 @@ Partial Class Vendedores
         Me.Column3.Name = "Column3"
         Me.Column3.ReadOnly = True
         '
+        'IdPerfil
+        '
+        Me.IdPerfil.HeaderText = "IdPerfil"
+        Me.IdPerfil.Name = "IdPerfil"
+        Me.IdPerfil.ReadOnly = True
+        Me.IdPerfil.Visible = False
+        '
+        'Perfil
+        '
+        Me.Perfil.HeaderText = "Perfil"
+        Me.Perfil.Name = "Perfil"
+        Me.Perfil.ReadOnly = True
+        '
         'Vendedores
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -287,6 +362,7 @@ Partial Class Vendedores
     Friend WithEvents SplitContainer1 As System.Windows.Forms.SplitContainer
     Friend WithEvents Button4 As System.Windows.Forms.Button
     Friend WithEvents Button3 As System.Windows.Forms.Button
+    Friend WithEvents btnRestablecerPassword As System.Windows.Forms.Button
     Friend WithEvents Button2 As System.Windows.Forms.Button
     Friend WithEvents Button1 As System.Windows.Forms.Button
     Friend WithEvents Label1 As System.Windows.Forms.Label
@@ -305,4 +381,10 @@ Partial Class Vendedores
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents chkEsCajero As CheckBox
+    Friend WithEvents IdPerfil As DataGridViewTextBoxColumn
+    Friend WithEvents Perfil As DataGridViewTextBoxColumn
+    Friend WithEvents cmbPerfil As ComboBox
+    Friend WithEvents Label5 As Label
+    Friend WithEvents txtPassword As TextBox
+    Friend WithEvents Label6 As Label
 End Class

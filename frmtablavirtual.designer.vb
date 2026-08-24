@@ -140,6 +140,12 @@ Partial Class frmtablavirtual
         Me.txtFamilia = New System.Windows.Forms.TextBox()
         Me.txtVariedad = New System.Windows.Forms.TextBox()
         Me.TipoDocumentoTableAdapter = New GestionVivero.DataVentasTableAdapters.TipoDocumentoTableAdapter()
+        Me.grpDescuentoComercial = New System.Windows.Forms.GroupBox()
+        Me.txtSaldoCompensaciones = New System.Windows.Forms.TextBox()
+        Me.chkAplicaDescuento = New System.Windows.Forms.CheckBox()
+        Me.txtDescuentoComercial = New System.Windows.Forms.TextBox()
+        Me.Label25 = New System.Windows.Forms.Label()
+        Me.Label27 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label21 = New System.Windows.Forms.Label()
         Me.Label19 = New System.Windows.Forms.Label()
@@ -620,6 +626,70 @@ Partial Class frmtablavirtual
         Me.Label6.Size = New System.Drawing.Size(36, 15)
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "NETO"
+        '
+        '
+        'grpDescuentoComercial
+        '
+        Me.grpDescuentoComercial.Controls.Add(Me.txtDescuentoComercial)
+        Me.grpDescuentoComercial.Controls.Add(Me.chkAplicaDescuento)
+        Me.grpDescuentoComercial.Controls.Add(Me.txtSaldoCompensaciones)
+        Me.grpDescuentoComercial.Controls.Add(Me.Label25)
+        Me.grpDescuentoComercial.Controls.Add(Me.Label27)
+        Me.grpDescuentoComercial.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpDescuentoComercial.Location = New System.Drawing.Point(760, 597)
+        Me.grpDescuentoComercial.Name = "grpDescuentoComercial"
+        Me.grpDescuentoComercial.Size = New System.Drawing.Size(255, 107)
+        Me.grpDescuentoComercial.TabIndex = 118
+        Me.grpDescuentoComercial.TabStop = False
+        Me.grpDescuentoComercial.Text = "Descuento Comercial"
+        Me.grpDescuentoComercial.Visible = False
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(10, 22)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(95, 14)
+        Me.Label25.TabIndex = 0
+        Me.Label25.Text = "Saldo disponible:"
+        '
+        'txtSaldoCompensaciones
+        '
+        Me.txtSaldoCompensaciones.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.txtSaldoCompensaciones.Location = New System.Drawing.Point(115, 19)
+        Me.txtSaldoCompensaciones.Name = "txtSaldoCompensaciones"
+        Me.txtSaldoCompensaciones.ReadOnly = True
+        Me.txtSaldoCompensaciones.Size = New System.Drawing.Size(125, 20)
+        Me.txtSaldoCompensaciones.TabIndex = 1
+        Me.txtSaldoCompensaciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'chkAplicaDescuento
+        '
+        Me.chkAplicaDescuento.AutoSize = True
+        Me.chkAplicaDescuento.Location = New System.Drawing.Point(10, 48)
+        Me.chkAplicaDescuento.Name = "chkAplicaDescuento"
+        Me.chkAplicaDescuento.Size = New System.Drawing.Size(119, 18)
+        Me.chkAplicaDescuento.TabIndex = 2
+        Me.chkAplicaDescuento.Text = "Aplicar a esta venta"
+        Me.chkAplicaDescuento.UseVisualStyleBackColor = True
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Location = New System.Drawing.Point(10, 76)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(84, 14)
+        Me.Label27.TabIndex = 3
+        Me.Label27.Text = "Monto a aplicar:"
+        '
+        'txtDescuentoComercial
+        '
+        Me.txtDescuentoComercial.Enabled = False
+        Me.txtDescuentoComercial.Location = New System.Drawing.Point(115, 73)
+        Me.txtDescuentoComercial.Name = "txtDescuentoComercial"
+        Me.txtDescuentoComercial.Size = New System.Drawing.Size(125, 20)
+        Me.txtDescuentoComercial.TabIndex = 4
+        Me.txtDescuentoComercial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'GroupBox8
         '
@@ -1470,6 +1540,7 @@ Partial Class frmtablavirtual
         Me.Controls.Add(Me.TXT_Comentario)
         Me.Controls.Add(Me.Label20)
         Me.Controls.Add(Me.GroupBox8)
+        Me.Controls.Add(Me.grpDescuentoComercial)
         Me.Controls.Add(Me.GroupBox4)
         Me.Controls.Add(Me.grpSinGuia)
         Me.Controls.Add(Me.grpConGuia)
@@ -1517,6 +1588,12 @@ Partial Class frmtablavirtual
     Friend WithEvents txt_precio As System.Windows.Forms.TextBox
     Friend WithEvents Label4 As System.Windows.Forms.Label
     Friend WithEvents GroupBox4 As System.Windows.Forms.GroupBox
+    Friend WithEvents grpDescuentoComercial As System.Windows.Forms.GroupBox
+    Friend WithEvents txtSaldoCompensaciones As System.Windows.Forms.TextBox
+    Friend WithEvents chkAplicaDescuento As System.Windows.Forms.CheckBox
+    Friend WithEvents txtDescuentoComercial As System.Windows.Forms.TextBox
+    Friend WithEvents Label25 As System.Windows.Forms.Label
+    Friend WithEvents Label27 As System.Windows.Forms.Label
     Friend WithEvents Label8 As System.Windows.Forms.Label
     Friend WithEvents Label7 As System.Windows.Forms.Label
     Friend WithEvents Label6 As System.Windows.Forms.Label

@@ -331,7 +331,7 @@ Module FUNCIONES
                         gUSER = Convert.ToString(datatbl(2))
                         gNomUsuario = Convert.ToString(datatbl(3))
                         gIdPerfil = Convert.ToInt32(datatbl(5))
-                        gEsAutorizador = Convert.ToBoolean(datatbl("EsAutorizador"))
+                        gEsAutorizador = Not datatbl.IsDBNull(datatbl.GetOrdinal("EsAutorizador")) AndAlso Convert.ToBoolean(datatbl("EsAutorizador"))
                     End If
                 End If
             End If
