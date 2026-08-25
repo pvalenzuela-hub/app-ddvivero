@@ -342,10 +342,11 @@ Public Class Abono_Deuda
         Dim grp As New GroupBox()
         grp.Text = "Compensaciones (Descuentos Pendientes)"
         grp.Font = New Font("Arial", 9.0!, FontStyle.Regular)
-        grp.Location = New Point(1033, 389)
-        grp.Size = New Size(294, 240)
+        grp.Location = New Point(grpsaldos.Left, GrillaPagos.Top)
+        grp.Size = New Size(grpsaldos.Width, GrillaPagos.Height)
         grp.Anchor = AnchorStyles.Top Or AnchorStyles.Right
         Me.Controls.Add(grp)
+        grp.BringToFront()
 
         DataCompensaciones = New DataGridView()
         DataCompensaciones.AllowUserToAddRows = False

@@ -1,6 +1,7 @@
 
 Imports System.Drawing.Printing
 Imports System.Data.SqlClient
+Imports System.Globalization
 Public Class frmtablavirtual
     Dim FormatoImpresion As New StringFormat
     Dim datatbl As SqlClient.SqlDataReader = Nothing
@@ -16,6 +17,10 @@ Public Class frmtablavirtual
     Dim gIdVtahead As Integer = 0
     Dim gESTADO As Integer = 0
     Dim dDescuentoComercial As Double = 0
+    Dim dSaldoCompensaciones As Double = 0
+    Private Const TipoVentaCompensacion As Integer = -1
+    Private cargandoDocumento As Boolean = False
+    Private actualizandoCompensacion As Boolean = False
     Private fila As Byte
 
     Private Sub frmtablavirtual_Load(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles MyBase.Load
@@ -38,8 +43,20 @@ Public Class frmtablavirtual
         gTipo_Venta = 0
         gIdInsumo = 0
         gIdVtahead = 0
+        sTipoDoc = ""
         FormatoImpresion.Alignment = StringAlignment.Far
+        ConfiguraUbicacionCompensacion()
         cmb_TIPODOC.SelectedIndex = -1
+    End Sub
+
+    Private Sub ConfiguraUbicacionCompensacion()
+        grpDescuentoComercial.Location = grpNotaCredito.Location
+        grpDescuentoComercial.Size = New Size(255, 83)
+        Label25.Location = New Point(10, 20)
+        txtSaldoCompensaciones.Location = New Point(115, 17)
+        Label27.Location = New Point(10, 44)
+        txtDescuentoComercial.Location = New Point(115, 41)
+        chkAplicaDescuento.Location = New Point(10, 63)
     End Sub
 
     Private Sub btnAgregar_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btnAgregar.Click
@@ -269,15 +286,65 @@ Public Class frmtablavirtual
         End Try
 
     End Sub
+    Private Function MontoCompensacion(ByVal texto As String) As Double
+        Dim monto As Double
+        Dim sinSeparadores As String = texto.Trim().Replace(".", "").Replace(",", "")
+
+        If sinSeparadores = "" OrElse Not Double.TryParse(sinSeparadores, NumberStyles.None, CultureInfo.InvariantCulture, monto) Then
+            Return 0
+        End If
+
+        Return monto
+    End Function
+
+    Private Function EsLineaCompensacion(ByVal filaGrilla As DataGridViewRow) As Boolean
+        Return Val(Convert.ToString(filaGrilla.Cells("tipoventa").Value)) = TipoVentaCompensacion
+    End Function
+
+    Private Sub EliminaLineaCompensacion()
+        For i As Integer = DataGrilla.Rows.Count - 1 To 0 Step -1
+            If EsLineaCompensacion(DataGrilla.Rows(i)) Then
+                DataGrilla.Rows.RemoveAt(i)
+            End If
+        Next
+    End Sub
+
+    Private Sub MuestraLineaCompensacion(ByVal monto As Double)
+        EliminaLineaCompensacion()
+        If monto <= 0 Then
+            Exit Sub
+        End If
+
+        Dim filaCompensacion As Integer = DataGrilla.Rows.Add()
+        With DataGrilla.Rows(filaCompensacion)
+            .Cells("Insumo").Value = "Compensación saldo a favor"
+            .Cells("Cantidad").Value = 1
+            .Cells("preciounit").Value = -monto
+            .Cells("Total").Value = -monto
+            .Cells("Glosa").Value = "Descuento comercial aplicado"
+            .Cells("tipoventa").Value = TipoVentaCompensacion
+            .Cells("IdVtaDetNC").Value = 0
+            .Cells("Indice").Value = 0
+            .Cells("PromedioPlantasNC").Value = 0
+            .Cells("CantidadBandejasNC").Value = 0
+            .Cells("IdVtaDet").Value = 0
+            .DefaultCellStyle.BackColor = Color.MistyRose
+            .DefaultCellStyle.ForeColor = Color.DarkRed
+        End With
+    End Sub
+
     Private Sub totales()
         Dim i As Integer
         Dim DFactor_IVA As Decimal
         Dim total, totalconiva, totaliva As Double
         Dim dettotal As Double
         DFactor_IVA = 1 + (GIVA / 100)
+        EliminaLineaCompensacion()
         For i = 0 To DataGrilla.Rows.Count - 1
-            dettotal = DataGrilla.Rows(i).Cells(7).Value
-            total += dettotal
+            If Not EsLineaCompensacion(DataGrilla.Rows(i)) Then
+                dettotal = DataGrilla.Rows(i).Cells(7).Value
+                total += dettotal
+            End If
         Next
         If cmb_TIPODOC.SelectedIndex = -1 Then
             MsgBox("DEBE INGRESAR TIPO Y NUMERO DE DOCUMENTO DE VENTA")
@@ -292,10 +359,13 @@ Public Class frmtablavirtual
             End If
 
             ' Aplica Descuento Comercial (monto final con IVA incluido)
-            If chkAplicaDescuento.Checked AndAlso Val(txtDescuentoComercial.Text) > 0 Then
-                dDescuentoComercial = Val(txtDescuentoComercial.Text)
+            If chkAplicaDescuento.Checked AndAlso MontoCompensacion(txtDescuentoComercial.Text) > 0 Then
+                dDescuentoComercial = MontoCompensacion(txtDescuentoComercial.Text)
                 If dDescuentoComercial > totalconiva Then
                     dDescuentoComercial = totalconiva
+                    actualizandoCompensacion = True
+                    txtDescuentoComercial.Text = dDescuentoComercial.ToString("0", CultureInfo.InvariantCulture)
+                    actualizandoCompensacion = False
                 End If
                 totalconiva = totalconiva - dDescuentoComercial
                 If sTipoDoc = "BE" Then
@@ -326,6 +396,7 @@ Public Class frmtablavirtual
             Me.txt_TOTALFINAL.Text = Format(totalconiva, "###,###,##0")
             Me.txtTotalPagos.Text = Format(dTotalPagos, "###,###,##0")
             GranTotal = totalconiva
+            MuestraLineaCompensacion(dDescuentoComercial)
         End If
 
 
@@ -372,49 +443,65 @@ Public Class frmtablavirtual
         Dim i As Integer = 0
         Dim iEstado As Integer = 0
         DataGrilla.Rows.Clear()
-        sSsql = "[dbo].[NEWSP_CONSULTA_DOCVENTA] " & IdVtaHead.ToString()
-        open()
-        command = connection.CreateCommand()
-        command.CommandText = sSsql
-        datatbl = command.ExecuteReader()
-        If datatbl.HasRows Then
-            While datatbl.Read
-                If i = 0 Then
-                    txt_NOM_CLI.Text = datatbl("Cliente")
-                    txt_Rut_Cli.Text = FormatoRut(datatbl("RutCliente"))
-                    txt_NombreClienteFactura.Text = datatbl("ClienteFactura")
-                    txt_RutFactura.Text = FormatoRut(datatbl("RutFactura"))
-                    txtSaldoAbono.Text = datatbl("Saldo_Abonos")
-                    iEstado = datatbl("ESTADO")
-                    txtVendedor.Text = datatbl("Usuario")
-                    txt_IDcliente.Text = datatbl("IDCLIENTE")
-                    cmb_TIPODOC.SelectedValue = datatbl("TipoDocumentoId")
-                    txt_NUM_DOC.Text = datatbl("NUM_DOC")
-                    dtp_FechaDoc.Value = datatbl("FECHA_DOC")
-                    sTipoDoc = RetornaTipoDoc(cmb_TIPODOC.SelectedValue)
-                    dTotalPagos = datatbl("TOTAL_PAGO")
-                    TXT_Comentario.Text = datatbl("COMENTARIO")
-                End If
-                DataGrilla.Rows.Add()
-                DataGrilla.Rows(i).Cells(0).Value = datatbl("IDGUIA")
-                DataGrilla.Rows(i).Cells(1).Value = datatbl("Familia")
-                DataGrilla.Rows(i).Cells(2).Value = datatbl("Variedad")
-                DataGrilla.Rows(i).Cells(3).Value = datatbl("Insumo")
-                DataGrilla.Rows(i).Cells(4).Value = ""
-                DataGrilla.Rows(i).Cells(5).Value = datatbl("PRECIO_UNITARIO")
-                DataGrilla.Rows(i).Cells(6).Value = datatbl("CANTIDAD")
-                DataGrilla.Rows(i).Cells(7).Value = datatbl("TOTAL_NETO")
-                DataGrilla.Rows(i).Cells(8).Value = datatbl("GLOSA")
-                DataGrilla.Rows(i).Cells("tipoventa").Value = datatbl("Tipo_Venta")
-                DataGrilla.Rows(i).Cells("IdVtaDetNC").Value = 0
-                DataGrilla.Rows(i).Cells("Indice").Value = i
-                DataGrilla.Rows(i).Cells("PromedioPlantasNC").Value = 0
-                DataGrilla.Rows(i).Cells("CantidadBandejasNC").Value = 0
-                DataGrilla.Rows(i).Cells("IdVtaDet").Value = datatbl("IdVtaDet")
-                i += 1
-            End While
+        dDescuentoComercial = 0
+        cargandoDocumento = True
+        Try
+            sSsql = "[dbo].[NEWSP_CONSULTA_DOCVENTA] " & IdVtaHead.ToString()
+            open()
+            command = connection.CreateCommand()
+            command.CommandText = sSsql
+            datatbl = command.ExecuteReader()
+            If datatbl.HasRows Then
+                While datatbl.Read
+                    If i = 0 Then
+                        txt_NOM_CLI.Text = datatbl("Cliente")
+                        txt_Rut_Cli.Text = FormatoRut(datatbl("RutCliente"))
+                        txt_NombreClienteFactura.Text = datatbl("ClienteFactura")
+                        txt_RutFactura.Text = FormatoRut(datatbl("RutFactura"))
+                        txtSaldoAbono.Text = datatbl("Saldo_Abonos")
+                        iEstado = datatbl("ESTADO")
+                        txtVendedor.Text = datatbl("Usuario")
+                        txt_IDcliente.Text = datatbl("IDCLIENTE")
+                        cmb_TIPODOC.SelectedValue = datatbl("TipoDocumentoId")
+                        txt_NUM_DOC.Text = datatbl("NUM_DOC")
+                        dtp_FechaDoc.Value = datatbl("FECHA_DOC")
+                        sTipoDoc = RetornaTipoDoc(cmb_TIPODOC.SelectedValue)
+                        dTotalPagos = datatbl("TOTAL_PAGO")
+                        TXT_Comentario.Text = datatbl("COMENTARIO")
+                        dDescuentoComercial = Convert.ToDouble(datatbl("DescuentoComercial"))
+                    End If
+                    DataGrilla.Rows.Add()
+                    DataGrilla.Rows(i).Cells(0).Value = datatbl("IDGUIA")
+                    DataGrilla.Rows(i).Cells(1).Value = datatbl("Familia")
+                    DataGrilla.Rows(i).Cells(2).Value = datatbl("Variedad")
+                    DataGrilla.Rows(i).Cells(3).Value = datatbl("Insumo")
+                    DataGrilla.Rows(i).Cells(4).Value = ""
+                    DataGrilla.Rows(i).Cells(5).Value = datatbl("PRECIO_UNITARIO")
+                    DataGrilla.Rows(i).Cells(6).Value = datatbl("CANTIDAD")
+                    DataGrilla.Rows(i).Cells(7).Value = datatbl("TOTAL_NETO")
+                    DataGrilla.Rows(i).Cells(8).Value = datatbl("GLOSA")
+                    DataGrilla.Rows(i).Cells("tipoventa").Value = datatbl("Tipo_Venta")
+                    DataGrilla.Rows(i).Cells("IdVtaDetNC").Value = 0
+                    DataGrilla.Rows(i).Cells("Indice").Value = i
+                    DataGrilla.Rows(i).Cells("PromedioPlantasNC").Value = 0
+                    DataGrilla.Rows(i).Cells("CantidadBandejasNC").Value = 0
+                    DataGrilla.Rows(i).Cells("IdVtaDet").Value = datatbl("IdVtaDet")
+                    i += 1
+                End While
+            End If
+        Finally
+            close_conexion()
+            cargandoDocumento = False
+        End Try
+        Dim descuentoDocumento As Double = dDescuentoComercial
+        Carga_Saldo_Compensaciones()
+        If descuentoDocumento > 0 Then
+            actualizandoCompensacion = True
+            chkAplicaDescuento.Checked = True
+            txtDescuentoComercial.Text = descuentoDocumento.ToString("0", CultureInfo.InvariantCulture)
+            actualizandoCompensacion = False
+            dDescuentoComercial = descuentoDocumento
         End If
-        close_conexion()
         Select Case iEstado
             Case 0
                 txtEstado.Text = "VIGENTE"
@@ -484,6 +571,8 @@ Public Class frmtablavirtual
         chkAplicaDescuento.Checked = False
         grpDescuentoComercial.Visible = False
         dDescuentoComercial = 0
+        dSaldoCompensaciones = 0
+        sTipoDoc = ""
         txt_MontoEscrito.Clear()
         txtEstado.Clear()
         gIdVtahead = 0
@@ -704,6 +793,9 @@ Public Class frmtablavirtual
         End If
     End Sub
     Private Sub txt_IDcliente_TextChanged(sender As Object, e As EventArgs) Handles txt_IDcliente.TextChanged
+        If cargandoDocumento Then
+            Exit Sub
+        End If
         If Val(txt_IDcliente.Text) > 0 AndAlso Val(txtIdVtaHead.Text) = 0 Then
             GuiaXFacturar(txt_IDcliente.Text)
         End If
@@ -711,7 +803,8 @@ Public Class frmtablavirtual
     End Sub
 
     Private Sub Carga_Saldo_Compensaciones()
-        If Val(txt_IDcliente.Text) = 0 Then
+        dSaldoCompensaciones = 0
+        If Val(txt_IDcliente.Text) = 0 OrElse sTipoDoc = "NC" Then
             grpDescuentoComercial.Visible = False
             txtSaldoCompensaciones.Clear()
             txtDescuentoComercial.Clear()
@@ -723,15 +816,14 @@ Public Class frmtablavirtual
         command = connection.CreateCommand()
         command.CommandText = sSsql
         datatbl = command.ExecuteReader()
-        Dim dSaldo As Double = 0
         If datatbl.HasRows Then
             datatbl.Read()
-            dSaldo = Val(datatbl("Saldo").ToString())
+            dSaldoCompensaciones = Convert.ToDouble(datatbl("Saldo"))
         End If
         close_conexion()
 
-        If dSaldo > 0 Then
-            txtSaldoCompensaciones.Text = Format(dSaldo, "###,###,##0")
+        If dSaldoCompensaciones > 0 Then
+            txtSaldoCompensaciones.Text = Format(dSaldoCompensaciones, "###,###,##0")
             grpDescuentoComercial.Visible = True
         Else
             grpDescuentoComercial.Visible = False
@@ -744,7 +836,7 @@ Public Class frmtablavirtual
     Private Sub chkAplicaDescuento_CheckedChanged(sender As Object, e As EventArgs) Handles chkAplicaDescuento.CheckedChanged
         txtDescuentoComercial.Enabled = chkAplicaDescuento.Checked
         If chkAplicaDescuento.Checked Then
-            txtDescuentoComercial.Text = txtSaldoCompensaciones.Text.Replace(",", "").Replace(".", "")
+            txtDescuentoComercial.Text = dSaldoCompensaciones.ToString("0", CultureInfo.InvariantCulture)
         Else
             txtDescuentoComercial.Clear()
         End If
@@ -754,14 +846,30 @@ Public Class frmtablavirtual
     End Sub
 
     Private Sub txtDescuentoComercial_TextChanged(sender As Object, e As EventArgs) Handles txtDescuentoComercial.TextChanged
-        Dim dSaldo As Double = 0
-        If Not String.IsNullOrEmpty(txtSaldoCompensaciones.Text) Then
-            dSaldo = CDbl(Val(txtSaldoCompensaciones.Text.Replace(",", "")))
-        End If
-        If Val(txtDescuentoComercial.Text) > dSaldo Then
-            MsgBox("Monto a aplicar no puede ser superior al saldo disponible de descuentos.", MsgBoxStyle.Exclamation, "Descuento Comercial")
-            txtDescuentoComercial.Clear()
+        If actualizandoCompensacion Then
             Exit Sub
+        End If
+
+        Dim monto As Double = MontoCompensacion(txtDescuentoComercial.Text)
+        Dim limite As Double = dSaldoCompensaciones
+        If cmb_TIPODOC.SelectedIndex > -1 Then
+            Dim totalDocumento As Double = 0
+            For i As Integer = 0 To DataGrilla.Rows.Count - 1
+                If Not EsLineaCompensacion(DataGrilla.Rows(i)) Then
+                    totalDocumento += Val(Convert.ToString(DataGrilla.Rows(i).Cells("Total").Value))
+                End If
+            Next
+            If sTipoDoc <> "BE" Then
+                totalDocumento = Math.Round(totalDocumento * (1 + (GIVA / 100)), 0, MidpointRounding.AwayFromZero)
+            End If
+            limite = Math.Min(limite, totalDocumento)
+        End If
+
+        If monto > limite Then
+            MsgBox("Monto a aplicar no puede ser superior al saldo disponible ni al total del documento.", MsgBoxStyle.Exclamation, "Descuento Comercial")
+            actualizandoCompensacion = True
+            txtDescuentoComercial.Text = Math.Max(limite, 0).ToString("0", CultureInfo.InvariantCulture)
+            actualizandoCompensacion = False
         End If
         If cmb_TIPODOC.SelectedIndex > -1 Then
             totales()
@@ -817,9 +925,12 @@ Public Class frmtablavirtual
                 End If
                 If sTipoDoc = "NC" Then
                     grpNotaCredito.Visible = True
+                    grpDescuentoComercial.Visible = False
+                    chkAplicaDescuento.Checked = False
                     gTipo_Venta = 2
                 Else
                     grpNotaCredito.Visible = False
+                    Carga_Saldo_Compensaciones()
                 End If
             Else
                 MsgBox("Debe seleccionar Cliente!!!", MsgBoxStyle.Critical, "Documento de Venta")
@@ -854,41 +965,43 @@ Public Class frmtablavirtual
                 open()
 
                 For i = 0 To DataGrilla.Rows.Count - 1
-                    sSsql = "NEWSP_GRABA_DOCUMENTOVENTA "
-                    sSsql += IdVtaHead.ToString() & ","
-                    sSsql += gIdVendedor.ToString() & ","
-                    sSsql += Val(txt_IDcliente.Text).ToString() & ","
-                    sSsql += GranTotal.ToString() & ","
-                    sSsql += "'" & Format(dtp_FechaDoc.Value, "d") & "',"
-                    sSsql += iNumeDoc.ToString() & ","
-                    sSsql += "'" & sTipoDoc & "',"
-                    sSsql += "'" & TXT_Comentario.Text & "',"
-                    sSsql += Val(txtIdClienteFactura.Text).ToString() & ","
-                    sSsql += dTotalNeto.ToString() & ","
-                    sSsql += "'" & gUSER & "',"
-                    sSsql += Val(txtAbonoRebajar.Text).ToString & ","
-                    sSsql += gESTADO.ToString() & ","
-                    sSsql += DataGrilla.Rows(i).Cells("IdVtaDetNC").Value.ToString() & ","
-                    sSsql += "'" & DataGrilla.Rows(i).Cells("Familia").Value & "',"
-                    sSsql += "'" & DataGrilla.Rows(i).Cells("Variedad").Value & "',"
-                    sSsql += DataGrilla.Rows(i).Cells("Cantidad").Value.ToString() & ","
-                    sSsql += DataGrilla.Rows(i).Cells("preciounit").Value.ToString() & ","
-                    sSsql += "'" & DataGrilla.Rows(i).Cells("Glosa").Value & "',"
-                    sSsql += DataGrilla.Rows(i).Cells("numguia").Value.ToString() & ","
-                    sSsql += DataGrilla.Rows(i).Cells("tipoventa").Value.ToString() & ","
-                    sSsql += "'" & DataGrilla.Rows(i).Cells("Insumo").Value & "',"
-                    sSsql += DataGrilla.Rows(i).Cells("Indice").Value.ToString() & ","
-                    sSsql += DataGrilla.Rows(i).Cells("PromedioPlantasNC").Value.ToString() & ","
-                    sSsql += DataGrilla.Rows(i).Cells("CantidadBandejasNC").Value.ToString() & ","
-                    sSsql += dDescuentoComercial.ToString()
+                    If Not EsLineaCompensacion(DataGrilla.Rows(i)) Then
+                        sSsql = "NEWSP_GRABA_DOCUMENTOVENTA "
+                        sSsql += IdVtaHead.ToString() & ","
+                        sSsql += gIdVendedor.ToString() & ","
+                        sSsql += Val(txt_IDcliente.Text).ToString() & ","
+                        sSsql += GranTotal.ToString() & ","
+                        sSsql += "'" & Format(dtp_FechaDoc.Value, "d") & "',"
+                        sSsql += iNumeDoc.ToString() & ","
+                        sSsql += "'" & sTipoDoc & "',"
+                        sSsql += "'" & TXT_Comentario.Text & "',"
+                        sSsql += Val(txtIdClienteFactura.Text).ToString() & ","
+                        sSsql += dTotalNeto.ToString() & ","
+                        sSsql += "'" & gUSER & "',"
+                        sSsql += Val(txtAbonoRebajar.Text).ToString & ","
+                        sSsql += gESTADO.ToString() & ","
+                        sSsql += DataGrilla.Rows(i).Cells("IdVtaDetNC").Value.ToString() & ","
+                        sSsql += "'" & DataGrilla.Rows(i).Cells("Familia").Value & "',"
+                        sSsql += "'" & DataGrilla.Rows(i).Cells("Variedad").Value & "',"
+                        sSsql += DataGrilla.Rows(i).Cells("Cantidad").Value.ToString() & ","
+                        sSsql += DataGrilla.Rows(i).Cells("preciounit").Value.ToString() & ","
+                        sSsql += "'" & DataGrilla.Rows(i).Cells("Glosa").Value & "',"
+                        sSsql += DataGrilla.Rows(i).Cells("numguia").Value.ToString() & ","
+                        sSsql += DataGrilla.Rows(i).Cells("tipoventa").Value.ToString() & ","
+                        sSsql += "'" & DataGrilla.Rows(i).Cells("Insumo").Value & "',"
+                        sSsql += DataGrilla.Rows(i).Cells("Indice").Value.ToString() & ","
+                        sSsql += DataGrilla.Rows(i).Cells("PromedioPlantasNC").Value.ToString() & ","
+                        sSsql += DataGrilla.Rows(i).Cells("CantidadBandejasNC").Value.ToString() & ","
+                        sSsql += dDescuentoComercial.ToString()
 
-                    command = connection.CreateCommand
-                    command.CommandText = sSsql
-                    datatbl.Close()
-                    datatbl = command.ExecuteReader()
-                    If datatbl.HasRows Then
-                        datatbl.Read()
-                        IdVtaHead = datatbl(0)
+                        command = connection.CreateCommand
+                        command.CommandText = sSsql
+                        datatbl.Close()
+                        datatbl = command.ExecuteReader()
+                        If datatbl.HasRows Then
+                            datatbl.Read()
+                            IdVtaHead = datatbl(0)
+                        End If
                     End If
                 Next
                 close_conexion()

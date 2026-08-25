@@ -141,9 +141,9 @@ Partial Class frmtablavirtual
         Me.txtVariedad = New System.Windows.Forms.TextBox()
         Me.TipoDocumentoTableAdapter = New GestionVivero.DataVentasTableAdapters.TipoDocumentoTableAdapter()
         Me.grpDescuentoComercial = New System.Windows.Forms.GroupBox()
-        Me.txtSaldoCompensaciones = New System.Windows.Forms.TextBox()
-        Me.chkAplicaDescuento = New System.Windows.Forms.CheckBox()
         Me.txtDescuentoComercial = New System.Windows.Forms.TextBox()
+        Me.chkAplicaDescuento = New System.Windows.Forms.CheckBox()
+        Me.txtSaldoCompensaciones = New System.Windows.Forms.TextBox()
         Me.Label25 = New System.Windows.Forms.Label()
         Me.Label27 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
@@ -165,6 +165,7 @@ Partial Class frmtablavirtual
         CType(Me.DataVentas, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.grpNotaCredito.SuspendLayout()
         CType(Me.txtCantidadBandejasNC, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.grpDescuentoComercial.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -627,70 +628,6 @@ Partial Class frmtablavirtual
         Me.Label6.TabIndex = 0
         Me.Label6.Text = "NETO"
         '
-        '
-        'grpDescuentoComercial
-        '
-        Me.grpDescuentoComercial.Controls.Add(Me.txtDescuentoComercial)
-        Me.grpDescuentoComercial.Controls.Add(Me.chkAplicaDescuento)
-        Me.grpDescuentoComercial.Controls.Add(Me.txtSaldoCompensaciones)
-        Me.grpDescuentoComercial.Controls.Add(Me.Label25)
-        Me.grpDescuentoComercial.Controls.Add(Me.Label27)
-        Me.grpDescuentoComercial.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.grpDescuentoComercial.Location = New System.Drawing.Point(760, 597)
-        Me.grpDescuentoComercial.Name = "grpDescuentoComercial"
-        Me.grpDescuentoComercial.Size = New System.Drawing.Size(255, 107)
-        Me.grpDescuentoComercial.TabIndex = 118
-        Me.grpDescuentoComercial.TabStop = False
-        Me.grpDescuentoComercial.Text = "Descuento Comercial"
-        Me.grpDescuentoComercial.Visible = False
-        '
-        'Label25
-        '
-        Me.Label25.AutoSize = True
-        Me.Label25.Location = New System.Drawing.Point(10, 22)
-        Me.Label25.Name = "Label25"
-        Me.Label25.Size = New System.Drawing.Size(95, 14)
-        Me.Label25.TabIndex = 0
-        Me.Label25.Text = "Saldo disponible:"
-        '
-        'txtSaldoCompensaciones
-        '
-        Me.txtSaldoCompensaciones.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
-        Me.txtSaldoCompensaciones.Location = New System.Drawing.Point(115, 19)
-        Me.txtSaldoCompensaciones.Name = "txtSaldoCompensaciones"
-        Me.txtSaldoCompensaciones.ReadOnly = True
-        Me.txtSaldoCompensaciones.Size = New System.Drawing.Size(125, 20)
-        Me.txtSaldoCompensaciones.TabIndex = 1
-        Me.txtSaldoCompensaciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
-        'chkAplicaDescuento
-        '
-        Me.chkAplicaDescuento.AutoSize = True
-        Me.chkAplicaDescuento.Location = New System.Drawing.Point(10, 48)
-        Me.chkAplicaDescuento.Name = "chkAplicaDescuento"
-        Me.chkAplicaDescuento.Size = New System.Drawing.Size(119, 18)
-        Me.chkAplicaDescuento.TabIndex = 2
-        Me.chkAplicaDescuento.Text = "Aplicar a esta venta"
-        Me.chkAplicaDescuento.UseVisualStyleBackColor = True
-        '
-        'Label27
-        '
-        Me.Label27.AutoSize = True
-        Me.Label27.Location = New System.Drawing.Point(10, 76)
-        Me.Label27.Name = "Label27"
-        Me.Label27.Size = New System.Drawing.Size(84, 14)
-        Me.Label27.TabIndex = 3
-        Me.Label27.Text = "Monto a aplicar:"
-        '
-        'txtDescuentoComercial
-        '
-        Me.txtDescuentoComercial.Enabled = False
-        Me.txtDescuentoComercial.Location = New System.Drawing.Point(115, 73)
-        Me.txtDescuentoComercial.Name = "txtDescuentoComercial"
-        Me.txtDescuentoComercial.Size = New System.Drawing.Size(125, 20)
-        Me.txtDescuentoComercial.TabIndex = 4
-        Me.txtDescuentoComercial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
-        '
         'GroupBox8
         '
         Me.GroupBox8.Controls.Add(Me.grpOtroCliente)
@@ -863,7 +800,7 @@ Partial Class frmtablavirtual
         Me.txtVendedor.Location = New System.Drawing.Point(95, 652)
         Me.txtVendedor.Name = "txtVendedor"
         Me.txtVendedor.ReadOnly = True
-        Me.txtVendedor.Size = New System.Drawing.Size(698, 20)
+        Me.txtVendedor.Size = New System.Drawing.Size(627, 20)
         Me.txtVendedor.TabIndex = 113
         '
         'Label2
@@ -903,7 +840,7 @@ Partial Class frmtablavirtual
         Me.TXT_Comentario.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TXT_Comentario.Name = "TXT_Comentario"
         Me.TXT_Comentario.ReadOnly = True
-        Me.TXT_Comentario.Size = New System.Drawing.Size(698, 23)
+        Me.TXT_Comentario.Size = New System.Drawing.Size(627, 23)
         Me.TXT_Comentario.TabIndex = 30
         '
         'Label18
@@ -922,7 +859,7 @@ Partial Class frmtablavirtual
         Me.txt_MontoEscrito.Location = New System.Drawing.Point(95, 623)
         Me.txt_MontoEscrito.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txt_MontoEscrito.Name = "txt_MontoEscrito"
-        Me.txt_MontoEscrito.Size = New System.Drawing.Size(698, 22)
+        Me.txt_MontoEscrito.Size = New System.Drawing.Size(627, 22)
         Me.txt_MontoEscrito.TabIndex = 38
         '
         'PrintDialog1
@@ -936,7 +873,7 @@ Partial Class frmtablavirtual
         Me.txt_Anulado.ForeColor = System.Drawing.Color.Red
         Me.txt_Anulado.Location = New System.Drawing.Point(463, 687)
         Me.txt_Anulado.Name = "txt_Anulado"
-        Me.txt_Anulado.Size = New System.Drawing.Size(330, 27)
+        Me.txt_Anulado.Size = New System.Drawing.Size(291, 27)
         Me.txt_Anulado.TabIndex = 39
         Me.txt_Anulado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
@@ -1450,6 +1387,69 @@ Partial Class frmtablavirtual
         '
         Me.TipoDocumentoTableAdapter.ClearBeforeFill = True
         '
+        'grpDescuentoComercial
+        '
+        Me.grpDescuentoComercial.Controls.Add(Me.txtDescuentoComercial)
+        Me.grpDescuentoComercial.Controls.Add(Me.chkAplicaDescuento)
+        Me.grpDescuentoComercial.Controls.Add(Me.txtSaldoCompensaciones)
+        Me.grpDescuentoComercial.Controls.Add(Me.Label25)
+        Me.grpDescuentoComercial.Controls.Add(Me.Label27)
+        Me.grpDescuentoComercial.Font = New System.Drawing.Font("Arial", 8.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.grpDescuentoComercial.Location = New System.Drawing.Point(760, 597)
+        Me.grpDescuentoComercial.Name = "grpDescuentoComercial"
+        Me.grpDescuentoComercial.Size = New System.Drawing.Size(255, 107)
+        Me.grpDescuentoComercial.TabIndex = 118
+        Me.grpDescuentoComercial.TabStop = False
+        Me.grpDescuentoComercial.Text = "Descuento Comercial"
+        Me.grpDescuentoComercial.Visible = False
+        '
+        'txtDescuentoComercial
+        '
+        Me.txtDescuentoComercial.Enabled = False
+        Me.txtDescuentoComercial.Location = New System.Drawing.Point(115, 73)
+        Me.txtDescuentoComercial.Name = "txtDescuentoComercial"
+        Me.txtDescuentoComercial.Size = New System.Drawing.Size(125, 20)
+        Me.txtDescuentoComercial.TabIndex = 4
+        Me.txtDescuentoComercial.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'chkAplicaDescuento
+        '
+        Me.chkAplicaDescuento.AutoSize = True
+        Me.chkAplicaDescuento.Location = New System.Drawing.Point(10, 48)
+        Me.chkAplicaDescuento.Name = "chkAplicaDescuento"
+        Me.chkAplicaDescuento.Size = New System.Drawing.Size(123, 18)
+        Me.chkAplicaDescuento.TabIndex = 2
+        Me.chkAplicaDescuento.Text = "Aplicar a esta venta"
+        Me.chkAplicaDescuento.UseVisualStyleBackColor = True
+        '
+        'txtSaldoCompensaciones
+        '
+        Me.txtSaldoCompensaciones.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
+        Me.txtSaldoCompensaciones.Location = New System.Drawing.Point(115, 19)
+        Me.txtSaldoCompensaciones.Name = "txtSaldoCompensaciones"
+        Me.txtSaldoCompensaciones.ReadOnly = True
+        Me.txtSaldoCompensaciones.Size = New System.Drawing.Size(125, 20)
+        Me.txtSaldoCompensaciones.TabIndex = 1
+        Me.txtSaldoCompensaciones.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Label25
+        '
+        Me.Label25.AutoSize = True
+        Me.Label25.Location = New System.Drawing.Point(10, 22)
+        Me.Label25.Name = "Label25"
+        Me.Label25.Size = New System.Drawing.Size(88, 14)
+        Me.Label25.TabIndex = 0
+        Me.Label25.Text = "Saldo disponible:"
+        '
+        'Label27
+        '
+        Me.Label27.AutoSize = True
+        Me.Label27.Location = New System.Drawing.Point(10, 76)
+        Me.Label27.Name = "Label27"
+        Me.Label27.Size = New System.Drawing.Size(83, 14)
+        Me.Label27.TabIndex = 3
+        Me.Label27.Text = "Monto a aplicar:"
+        '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.Label21)
@@ -1575,6 +1575,8 @@ Partial Class frmtablavirtual
         Me.grpNotaCredito.ResumeLayout(False)
         Me.grpNotaCredito.PerformLayout()
         CType(Me.txtCantidadBandejasNC, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.grpDescuentoComercial.ResumeLayout(False)
+        Me.grpDescuentoComercial.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
