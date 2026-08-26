@@ -1011,13 +1011,14 @@ Public Class frmtablavirtual
                     If sResp = MsgBoxResult.Yes Then
                         Imprime_Factura(IdVtaHead)
                     End If
+                    txtIdVtaHead.Text = IdVtaHead.ToString()
                 End If
-                LimpiaCampos()
                 InhabilitaCampos()
                 btnsearch.Enabled = True
                 btnEdit.Enabled = False
                 btnSave.Enabled = False
                 btnDelete.Enabled = False
+                btnPrint.Enabled = IdVtaHead > 0
                 btnCancel.Visible = False
             Else
                 MsgBox("No existen datos para guardar!!!", MsgBoxStyle.Critical, "Documento de Venta")

@@ -800,7 +800,7 @@ Partial Class frmtablavirtual
         Me.txtVendedor.Location = New System.Drawing.Point(95, 652)
         Me.txtVendedor.Name = "txtVendedor"
         Me.txtVendedor.ReadOnly = True
-        Me.txtVendedor.Size = New System.Drawing.Size(627, 20)
+        Me.txtVendedor.Size = New System.Drawing.Size(652, 20)
         Me.txtVendedor.TabIndex = 113
         '
         'Label2
@@ -840,7 +840,7 @@ Partial Class frmtablavirtual
         Me.TXT_Comentario.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.TXT_Comentario.Name = "TXT_Comentario"
         Me.TXT_Comentario.ReadOnly = True
-        Me.TXT_Comentario.Size = New System.Drawing.Size(627, 23)
+        Me.TXT_Comentario.Size = New System.Drawing.Size(652, 23)
         Me.TXT_Comentario.TabIndex = 30
         '
         'Label18
@@ -859,7 +859,7 @@ Partial Class frmtablavirtual
         Me.txt_MontoEscrito.Location = New System.Drawing.Point(95, 623)
         Me.txt_MontoEscrito.Margin = New System.Windows.Forms.Padding(3, 4, 3, 4)
         Me.txt_MontoEscrito.Name = "txt_MontoEscrito"
-        Me.txt_MontoEscrito.Size = New System.Drawing.Size(627, 22)
+        Me.txt_MontoEscrito.Size = New System.Drawing.Size(652, 22)
         Me.txt_MontoEscrito.TabIndex = 38
         '
         'PrintDialog1
@@ -873,7 +873,7 @@ Partial Class frmtablavirtual
         Me.txt_Anulado.ForeColor = System.Drawing.Color.Red
         Me.txt_Anulado.Location = New System.Drawing.Point(463, 687)
         Me.txt_Anulado.Name = "txt_Anulado"
-        Me.txt_Anulado.Size = New System.Drawing.Size(291, 27)
+        Me.txt_Anulado.Size = New System.Drawing.Size(284, 27)
         Me.txt_Anulado.TabIndex = 39
         Me.txt_Anulado.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
