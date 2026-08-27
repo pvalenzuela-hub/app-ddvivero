@@ -484,7 +484,7 @@
         Inv_Semilla.Show()
     End Sub
 
-    Private Sub InventarioDePlantasToolStripMenuItem_Click(sender As Object, e As EventArgs) 
+    Private Sub InventarioDePlantasToolStripMenuItem_Click(sender As Object, e As EventArgs)
         Reporte_Stock.Show()
     End Sub
 
@@ -780,11 +780,11 @@
         Ajuste_DAI.Show()
     End Sub
 
-    Private Sub CajaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles CajaToolStripMenuItem.Click
-        Caja.Show()
-    End Sub
+
 
     Private Sub ProgramaDeSiembraPorTipoBandejaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProgramaDeSiembraPorTipoBandejaToolStripMenuItem.Click
         ConsultaControlSiembra.Visible = True
     End Sub
+
+
 End Class

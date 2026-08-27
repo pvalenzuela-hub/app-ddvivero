@@ -149,7 +149,6 @@ Partial Class Principal
         Me.AdministracionCajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.DetalleDenominacionesToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.CierrePeríodoAnualToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.CajaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem13 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem24 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem31 = New System.Windows.Forms.ToolStripMenuItem()
@@ -882,7 +881,7 @@ Partial Class Principal
         '
         'ToolStripMenuItem6
         '
-        Me.ToolStripMenuItem6.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem16, Me.ToolStripMenuItem17, Me.ToolStripMenuItem23, Me.ToolStripMenuItem26, Me.ToolStripMenuItem27, Me.ToolStripMenuItem29, Me.ToolStripSeparator5, Me.EntradasToolStripMenuItem, Me.ToolStripSeparator7, Me.ActualizaPagosClienteProveedorToolStripMenuItem, Me.SaldosDiariosToolStripMenuItem, Me.CierrePeríodoAnualToolStripMenuItem, Me.CajaToolStripMenuItem})
+        Me.ToolStripMenuItem6.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem16, Me.ToolStripMenuItem17, Me.ToolStripMenuItem23, Me.ToolStripMenuItem26, Me.ToolStripMenuItem27, Me.ToolStripMenuItem29, Me.ToolStripSeparator5, Me.EntradasToolStripMenuItem, Me.ToolStripSeparator7, Me.ActualizaPagosClienteProveedorToolStripMenuItem, Me.SaldosDiariosToolStripMenuItem, Me.CierrePeríodoAnualToolStripMenuItem})
         Me.ToolStripMenuItem6.Font = New System.Drawing.Font("Arial", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.ToolStripMenuItem6.ForeColor = System.Drawing.Color.FromArgb(CType(CType(0, Byte), Integer), CType(CType(0, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.ToolStripMenuItem6.Name = "ToolStripMenuItem6"
@@ -999,12 +998,6 @@ Partial Class Principal
         Me.CierrePeríodoAnualToolStripMenuItem.Name = "CierrePeríodoAnualToolStripMenuItem"
         Me.CierrePeríodoAnualToolStripMenuItem.Size = New System.Drawing.Size(313, 22)
         Me.CierrePeríodoAnualToolStripMenuItem.Text = "Cierre Período Anual"
-        '
-        'CajaToolStripMenuItem
-        '
-        Me.CajaToolStripMenuItem.Name = "CajaToolStripMenuItem"
-        Me.CajaToolStripMenuItem.Size = New System.Drawing.Size(313, 22)
-        Me.CajaToolStripMenuItem.Text = "Caja"
         '
         'ToolStripMenuItem13
         '
@@ -1489,7 +1482,6 @@ Partial Class Principal
     Friend WithEvents ToolStripMenuItem34 As ToolStripMenuItem
     Friend WithEvents AjusteDAIToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ToolStripMenuItem16 As ToolStripMenuItem
-    Friend WithEvents CajaToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents ProgramaDeSiembraPorTipoBandejaToolStripMenuItem As ToolStripMenuItem
 End Class

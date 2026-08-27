@@ -208,13 +208,14 @@ Public Class Cierra_Diario
         End If
 
         Me.ClientSize = New Size(950, 650)
-        btn_GrabaCierre.Location = New Point(100, 560)
-        Button2.Location = New Point(423, 560)
+        btn_GrabaCierre.Location = New Point(210, 575)
+        Button3.Location = New Point(390, 575)
+        Button2.Location = New Point(580, 575)
 
         _grpConteo = New GroupBox() With {
             .Text = "Conteo de billetes cierre",
-            .Location = New Point(670, 159),
-            .Size = New Size(268, 230),
+            .Location = New Point(650, 160),
+            .Size = New Size(280, 270),
             .Visible = False
         }
 
@@ -225,7 +226,7 @@ Public Class Cierra_Diario
         }
 
         _txtTotalConteo = New TextBox() With {
-            .Location = New Point(110, 21),
+            .Location = New Point(120, 21),
             .Size = New Size(150, 20),
             .ReadOnly = True,
             .TextAlign = HorizontalAlignment.Right
@@ -238,7 +239,7 @@ Public Class Cierra_Diario
         }
 
         _txtDiferencia = New TextBox() With {
-            .Location = New Point(110, 48),
+            .Location = New Point(120, 48),
             .Size = New Size(150, 20),
             .ReadOnly = True,
             .TextAlign = HorizontalAlignment.Right
@@ -246,7 +247,7 @@ Public Class Cierra_Diario
 
         _grillaConteo = New DataGridView() With {
             .Location = New Point(10, 78),
-            .Size = New Size(248, 140),
+            .Size = New Size(260, 180),
             .AllowUserToAddRows = False,
             .AllowUserToDeleteRows = False,
             .RowHeadersVisible = False,

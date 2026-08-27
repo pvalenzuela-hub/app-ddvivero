@@ -22,9 +22,9 @@ Partial Class Cierra_Diario
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.GrillaCaja = New System.Windows.Forms.DataGridView()
@@ -56,16 +56,16 @@ Partial Class Cierra_Diario
         '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(504, 97)
+        Me.Button1.Location = New System.Drawing.Point(430, 88)
         Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(75, 43)
+        Me.Button1.Size = New System.Drawing.Size(120, 48)
         Me.Button1.TabIndex = 159
         Me.Button1.Text = "Consulta Movimientos"
         Me.Button1.UseVisualStyleBackColor = True
         '
         'Button3
         '
-        Me.Button3.Location = New System.Drawing.Point(238, 538)
+        Me.Button3.Location = New System.Drawing.Point(390, 575)
         Me.Button3.Name = "Button3"
         Me.Button3.Size = New System.Drawing.Size(150, 40)
         Me.Button3.TabIndex = 160
@@ -79,10 +79,10 @@ Partial Class Cierra_Diario
         Me.GrillaCaja.BackgroundColor = System.Drawing.Color.White
         Me.GrillaCaja.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GrillaCaja.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.NumMov, Me.Entrada, Me.vcto, Me.Saldo})
-        Me.GrillaCaja.Location = New System.Drawing.Point(2, 159)
+        Me.GrillaCaja.Location = New System.Drawing.Point(20, 160)
         Me.GrillaCaja.Name = "GrillaCaja"
         Me.GrillaCaja.ReadOnly = True
-        Me.GrillaCaja.Size = New System.Drawing.Size(650, 230)
+        Me.GrillaCaja.Size = New System.Drawing.Size(600, 270)
         Me.GrillaCaja.TabIndex = 158
         '
         'NumMov
@@ -97,8 +97,8 @@ Partial Class Cierra_Diario
         'Entrada
         '
         Me.Entrada.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Entrada.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Entrada.DefaultCellStyle = DataGridViewCellStyle4
         Me.Entrada.HeaderText = "Debe"
         Me.Entrada.Name = "Entrada"
         Me.Entrada.ReadOnly = True
@@ -108,8 +108,8 @@ Partial Class Cierra_Diario
         'vcto
         '
         Me.vcto.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.vcto.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.vcto.DefaultCellStyle = DataGridViewCellStyle5
         Me.vcto.HeaderText = "Haber"
         Me.vcto.Name = "vcto"
         Me.vcto.ReadOnly = True
@@ -118,8 +118,8 @@ Partial Class Cierra_Diario
         'Saldo
         '
         Me.Saldo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.Saldo.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.Saldo.DefaultCellStyle = DataGridViewCellStyle6
         Me.Saldo.HeaderText = "Saldo"
         Me.Saldo.Name = "Saldo"
         Me.Saldo.ReadOnly = True
@@ -128,16 +128,16 @@ Partial Class Cierra_Diario
         'dtp_FechaApertura
         '
         Me.dtp_FechaApertura.Format = System.Windows.Forms.DateTimePickerFormat.[Short]
-        Me.dtp_FechaApertura.Location = New System.Drawing.Point(275, 62)
+        Me.dtp_FechaApertura.Location = New System.Drawing.Point(160, 56)
         Me.dtp_FechaApertura.Name = "dtp_FechaApertura"
         Me.dtp_FechaApertura.Size = New System.Drawing.Size(107, 20)
         Me.dtp_FechaApertura.TabIndex = 157
         '
         'btn_GrabaCierre
         '
-        Me.btn_GrabaCierre.Location = New System.Drawing.Point(100, 560)
+        Me.btn_GrabaCierre.Location = New System.Drawing.Point(210, 575)
         Me.btn_GrabaCierre.Name = "btn_GrabaCierre"
-        Me.btn_GrabaCierre.Size = New System.Drawing.Size(132, 40)
+        Me.btn_GrabaCierre.Size = New System.Drawing.Size(160, 40)
         Me.btn_GrabaCierre.TabIndex = 156
         Me.btn_GrabaCierre.Text = "Confirma Cierre"
         Me.btn_GrabaCierre.UseVisualStyleBackColor = True
@@ -146,7 +146,7 @@ Partial Class Cierra_Diario
         '
         Me.Label6.AutoSize = True
         Me.Label6.Font = New System.Drawing.Font("Arial", 12.0!, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label6.Location = New System.Drawing.Point(190, 19)
+        Me.Label6.Location = New System.Drawing.Point(350, 20)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(249, 19)
         Me.Label6.TabIndex = 155
@@ -154,7 +154,7 @@ Partial Class Cierra_Diario
         '
         'Button2
         '
-        Me.Button2.Location = New System.Drawing.Point(423, 560)
+        Me.Button2.Location = New System.Drawing.Point(580, 575)
         Me.Button2.Name = "Button2"
         Me.Button2.Size = New System.Drawing.Size(150, 40)
         Me.Button2.TabIndex = 154
@@ -165,7 +165,7 @@ Partial Class Cierra_Diario
         '
         Me.Label1.AutoSize = True
         Me.Label1.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(139, 67)
+        Me.Label1.Location = New System.Drawing.Point(20, 61)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(77, 15)
         Me.Label1.TabIndex = 153
@@ -175,7 +175,7 @@ Partial Class Cierra_Diario
         '
         Me.Label2.AutoSize = True
         Me.Label2.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label2.Location = New System.Drawing.Point(139, 100)
+        Me.Label2.Location = New System.Drawing.Point(20, 94)
         Me.Label2.Name = "Label2"
         Me.Label2.Size = New System.Drawing.Size(114, 15)
         Me.Label2.TabIndex = 160
@@ -185,16 +185,16 @@ Partial Class Cierra_Diario
         '
         Me.cmb_Cta_Ctble.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.cmb_Cta_Ctble.FormattingEnabled = True
-        Me.cmb_Cta_Ctble.Location = New System.Drawing.Point(275, 97)
+        Me.cmb_Cta_Ctble.Location = New System.Drawing.Point(160, 91)
         Me.cmb_Cta_Ctble.Name = "cmb_Cta_Ctble"
-        Me.cmb_Cta_Ctble.Size = New System.Drawing.Size(223, 21)
+        Me.cmb_Cta_Ctble.Size = New System.Drawing.Size(250, 21)
         Me.cmb_Cta_Ctble.TabIndex = 161
         '
         'Label3
         '
         Me.Label3.AutoSize = True
         Me.Label3.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label3.Location = New System.Drawing.Point(139, 134)
+        Me.Label3.Location = New System.Drawing.Point(20, 128)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(46, 15)
         Me.Label3.TabIndex = 162
@@ -202,7 +202,7 @@ Partial Class Cierra_Diario
         '
         'txt_Cta_Ctble
         '
-        Me.txt_Cta_Ctble.Location = New System.Drawing.Point(275, 133)
+        Me.txt_Cta_Ctble.Location = New System.Drawing.Point(160, 125)
         Me.txt_Cta_Ctble.Name = "txt_Cta_Ctble"
         Me.txt_Cta_Ctble.ReadOnly = True
         Me.txt_Cta_Ctble.Size = New System.Drawing.Size(107, 20)
@@ -210,7 +210,7 @@ Partial Class Cierra_Diario
         '
         'txt_SaldoFinalDiario
         '
-        Me.txt_SaldoFinalDiario.Location = New System.Drawing.Point(828, 529)
+        Me.txt_SaldoFinalDiario.Location = New System.Drawing.Point(800, 485)
         Me.txt_SaldoFinalDiario.Name = "txt_SaldoFinalDiario"
         Me.txt_SaldoFinalDiario.ReadOnly = True
         Me.txt_SaldoFinalDiario.Size = New System.Drawing.Size(107, 20)
@@ -221,7 +221,7 @@ Partial Class Cierra_Diario
         '
         Me.Label4.AutoSize = True
         Me.Label4.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label4.Location = New System.Drawing.Point(719, 441)
+        Me.Label4.Location = New System.Drawing.Point(440, 458)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(78, 15)
         Me.Label4.TabIndex = 165
@@ -231,7 +231,7 @@ Partial Class Cierra_Diario
         '
         Me.Label5.AutoSize = True
         Me.Label5.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label5.Location = New System.Drawing.Point(12, 441)
+        Me.Label5.Location = New System.Drawing.Point(20, 458)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(87, 15)
         Me.Label5.TabIndex = 166
@@ -239,7 +239,7 @@ Partial Class Cierra_Diario
         '
         'txt_Total_Ingresos
         '
-        Me.txt_Total_Ingresos.Location = New System.Drawing.Point(100, 438)
+        Me.txt_Total_Ingresos.Location = New System.Drawing.Point(115, 455)
         Me.txt_Total_Ingresos.Name = "txt_Total_Ingresos"
         Me.txt_Total_Ingresos.ReadOnly = True
         Me.txt_Total_Ingresos.Size = New System.Drawing.Size(107, 20)
@@ -250,7 +250,7 @@ Partial Class Cierra_Diario
         '
         Me.Label7.AutoSize = True
         Me.Label7.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label7.Location = New System.Drawing.Point(227, 441)
+        Me.Label7.Location = New System.Drawing.Point(230, 458)
         Me.Label7.Name = "Label7"
         Me.Label7.Size = New System.Drawing.Size(85, 15)
         Me.Label7.TabIndex = 168
@@ -258,7 +258,7 @@ Partial Class Cierra_Diario
         '
         'txt_Total_Egresos
         '
-        Me.txt_Total_Egresos.Location = New System.Drawing.Point(318, 438)
+        Me.txt_Total_Egresos.Location = New System.Drawing.Point(330, 455)
         Me.txt_Total_Egresos.Name = "txt_Total_Egresos"
         Me.txt_Total_Egresos.ReadOnly = True
         Me.txt_Total_Egresos.Size = New System.Drawing.Size(107, 20)
@@ -269,7 +269,7 @@ Partial Class Cierra_Diario
         '
         Me.Label8.AutoSize = True
         Me.Label8.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label8.Location = New System.Drawing.Point(719, 532)
+        Me.Label8.Location = New System.Drawing.Point(665, 488)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(103, 15)
         Me.Label8.TabIndex = 170
@@ -277,7 +277,7 @@ Partial Class Cierra_Diario
         '
         'txt_Saldo_Diario
         '
-        Me.txt_Saldo_Diario.Location = New System.Drawing.Point(828, 438)
+        Me.txt_Saldo_Diario.Location = New System.Drawing.Point(530, 455)
         Me.txt_Saldo_Diario.Name = "txt_Saldo_Diario"
         Me.txt_Saldo_Diario.ReadOnly = True
         Me.txt_Saldo_Diario.Size = New System.Drawing.Size(107, 20)
@@ -288,7 +288,7 @@ Partial Class Cierra_Diario
         '
         Me.Label9.AutoSize = True
         Me.Label9.Font = New System.Drawing.Font("Microsoft Sans Serif", 9.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label9.Location = New System.Drawing.Point(719, 484)
+        Me.Label9.Location = New System.Drawing.Point(665, 458)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(77, 15)
         Me.Label9.TabIndex = 172
@@ -296,7 +296,7 @@ Partial Class Cierra_Diario
         '
         'txt_Saldo_Inicial
         '
-        Me.txt_Saldo_Inicial.Location = New System.Drawing.Point(828, 481)
+        Me.txt_Saldo_Inicial.Location = New System.Drawing.Point(800, 455)
         Me.txt_Saldo_Inicial.Name = "txt_Saldo_Inicial"
         Me.txt_Saldo_Inicial.ReadOnly = True
         Me.txt_Saldo_Inicial.Size = New System.Drawing.Size(107, 20)
@@ -308,7 +308,7 @@ Partial Class Cierra_Diario
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.BackColor = System.Drawing.Color.White
-        Me.ClientSize = New System.Drawing.Size(950, 472)
+        Me.ClientSize = New System.Drawing.Size(950, 650)
         Me.Controls.Add(Me.txt_Saldo_Inicial)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.txt_Saldo_Diario)
