@@ -196,7 +196,11 @@ Public Class Pedidos
                 DataGrilla.Rows(i).Cells(16).Value = "NO"
             End If
             'cmb_Familia.SelectedIndex = -1
-            'cmb_aportasemilla.SelectedIndex = -1
+            cmb_aportasemilla.SelectedIndex = -1
+            chkSemillaCorriente.Checked = False
+            chkSemillaCorriente.Visible = False
+            chkSemillaCertificada.Checked = False
+            chkSemillaCertificada.Visible = False
             'cmb_variedad.SelectedIndex = -1
             'cmb_TipoBandeja.SelectedIndex = -1
             'txtDias_INV.Clear()
