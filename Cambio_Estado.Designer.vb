@@ -223,11 +223,10 @@ Partial Class Cambio_Estado
         '
         'TSM_Modificar
         '
-        Me.TSM_Modificar.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.TSM_Actualizadatos})
         Me.TSM_Modificar.Enabled = False
         Me.TSM_Modificar.Name = "TSM_Modificar"
         Me.TSM_Modificar.Size = New System.Drawing.Size(249, 22)
-        Me.TSM_Modificar.Text = "Modificar Variedad, Nave y otros"
+        Me.TSM_Modificar.Text = "Modificar datos del lote"
         '
         'TSM_Actualizadatos
         '
@@ -826,6 +825,7 @@ Partial Class Cambio_Estado
         Me.txt_Num_Nave.ForeColor = System.Drawing.Color.White
         Me.txt_Num_Nave.Location = New System.Drawing.Point(911, 79)
         Me.txt_Num_Nave.Name = "txt_Num_Nave"
+        Me.txt_Num_Nave.ReadOnly = True
         Me.txt_Num_Nave.Size = New System.Drawing.Size(67, 22)
         Me.txt_Num_Nave.TabIndex = 145
         '

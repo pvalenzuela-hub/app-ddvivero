@@ -90,6 +90,11 @@ Public Class Cambio_Estado
         txt_CantBandejasConteoInicial.ReadOnly = True
         txt_ubicacion.ReadOnly = True
         txtComentariosLote.ReadOnly = True
+        txt_LoteSemilla.ReadOnly = True
+        txt_FechaEnvasado.ReadOnly = True
+        txt_Num_Nave.ReadOnly = True
+        btn_SelectVariedad.Enabled = False
+        cmbTipoBandeja.Visible = False
         'txt_FechaConteoSiembra.ReadOnly = True
         'txt_ConteoSiembra.ReadOnly = True
         txt_loteshijos.ReadOnly = True
@@ -257,11 +262,10 @@ Public Class Cambio_Estado
             txtEsPreventa.Text = datatbl("Preventa")
             If GEstado_Actual <= 2 AndAlso gIdPerfil = 1 Then
                 TSM_Modificar.Enabled = True
-                TSM_Actualizadatos.Enabled = True
             Else
-                TSM_Actualizadatos.Enabled = False
                 TSM_Modificar.Enabled = False
             End If
+            TSM_Actualizadatos.Enabled = False
 
             If GEstado_Actual < 4 AndAlso gIdPerfil = 1 Then
                 TSM_ModificaPrecioLote.Enabled = True
@@ -410,81 +414,29 @@ Public Class Cambio_Estado
     End Sub
 
     Private Sub ToolStripMenuItem1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles TSM_Modificar.Click
-        REM modifica algunos campos del lote solo para estado <= 2
-        REM Permite modificar Variedad, Precio Unitario, Lote semilla, Batch, Fecha envasado, Nº Nave y Ubicación Lote
-
-        If txt_NumLote.Text <> Nothing Then
-            If GEstado_Actual <= 2 Then
-                REM permite los cambios de btón Variedad, LoteSemilla,fecha envasado,N° nave y ubicacion
-                ' Siempre que Estado = CONTEO DE PLANTAS
-                btn_SelectVariedad.Enabled = True
-                'txt_Precio.ReadOnly = False
-                txt_LoteSemilla.ReadOnly = False
-                txt_FechaEnvasado.ReadOnly = False
-                txt_Num_Nave.ReadOnly = False
-                txt_ubicacion.ReadOnly = False
-                cmbTipoBandeja.Visible = True
-                cmbTipoBandeja.SelectedIndex = -1
-                txtComentariosLote.ReadOnly = False
-
-
-            Else
-                MsgBox("Estado del Lote no Permite Realizar Cambios. No se permite Modificar lotes con entrega de plantas. Los estados Permitidos son: Lotes Creados, Conteo de Siembra y Conteo de Plantas.")
-            End If
-        Else
-            MsgBox("Debe Ingresar Nº de Lote a Modificar.")
-        End If
+        MostrarFormularioActualizaLote()
     End Sub
 
-    Private Sub Button2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles btn_SelectVariedad.Click
-        gQuienLlama = 1
-        SeleccionVariedad.Show()
-    End Sub
-
-    Private Sub ActualizaDatoslote()
-        sSsql = "SP_ACTUALIZAEDatosLote "
-        sSsql += txt_NumLote.Text + ","
-        sSsql += "'" & txt_Semilla.Text & "',"
-        sSsql += "'" & txt_Variedad.Text & "',"
-
-        sSsql += "NULL,"
-
-        sSsql += Val(txt_Num_Nave.Text).ToString & ","
-        sSsql += "'" & txt_LoteSemilla.Text & "',"
-        sSsql += "'" & txt_Batch.Text & "',"
-        sSsql += "'" & txt_FechaEnvasado.Text & "',"
-        sSsql += "'" & txt_ubicacion.Text & "',"
-        sSsql += "'" & txtComentariosLote.Text & "'"
-        open()
-        command = connection.CreateCommand()
-        command.CommandText = sSsql
-        command.ExecuteNonQuery()
-        close_conexion()
-
-        ' Actualiza Tipo de Bandeja si hizo un cambio
-        If cmbTipoBandeja.SelectedIndex > -1 Then
-            sSsql = "Update Pedido_Detalle set IdTipoBandeja=" + cmbTipoBandeja.SelectedValue.ToString() + " Where IdPedidodet=" + txt_NumLote.Text
-            open()
-            command = connection.CreateCommand()
-            command.CommandText = sSsql
-            command.ExecuteNonQuery()
-            close_conexion()
-            cmbTipoBandeja.SelectedIndex = -1
-        End If
-        cmbTipoBandeja.Visible = False
-        MsgBox("Los Datos han sido actualizados.")
-        Reset_Campos()
-        Limpia_Campos()
-        EjecutaConsultaLote()
-    End Sub
-
-    Private Sub ToolStripMenuItem2_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        If Val(txt_Precio.Text) <= 0 Then
-            MsgBox("Precio Unitario incorrecto. vuelva a definir Precio.")
-        Else
-            ActualizaDatoslote()
+    Private Sub MostrarFormularioActualizaLote()
+        If txt_NumLote.Text = "" Then
+            MsgBox("Debe ingresar N° de lote a modificar.")
+            Exit Sub
         End If
 
+        If gIdPerfil <> 1 OrElse GEstado_Actual > 2 Then
+            MsgBox("El estado del lote no permite realizar cambios.")
+            Exit Sub
+        End If
+
+        Dim actualizaLote As New ActualizaLote()
+        actualizaLote.CargarDatos(txt_NumLote.Text, txt_Semilla.Text, txt_Variedad.Text,
+                                  txt_Num_Nave.Text, txt_LoteSemilla.Text, txt_Batch.Text,
+                                  txt_FechaEnvasado.Text, txt_ubicacion.Text, txtComentariosLote.Text,
+                                  cmbTipoBandeja.DataSource)
+
+        If actualizaLote.ShowDialog(Me) = DialogResult.OK Then
+            EjecutaConsultaLote()
+        End If
     End Sub
 
 
@@ -536,9 +488,10 @@ Public Class Cambio_Estado
 
     Private Sub ToolStripMenuItem2_Click_1(sender As Object, e As EventArgs) Handles TSM_ModificaPrecioLote.Click
         If GEstado_Actual < 4 Then
+            Reset_Campos()
             ActualizaPrecioLote.txtPrecioActualNeto.Text = txt_Precio.Text
             ActualizaPrecioLote.txtLote.Text = txt_NumLote.Text
-            ActualizaPrecioLote.Show()
+            ActualizaPrecioLote.ShowDialog(Me)
         Else
             MsgBox("Estado del Lote no permite Modificar Precio Unitario!", MsgBoxStyle.Critical, "Actuasliza Precio de Venta")
         End If
@@ -561,9 +514,7 @@ Public Class Cambio_Estado
 
 
     Private Sub ActualizaDatosToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles TSM_Actualizadatos.Click
-
-        ActualizaDatoslote()
-
+        MostrarFormularioActualizaLote()
     End Sub
 
     Private Sub TSM_ModificaEstadoLote_Click(sender As Object, e As EventArgs) Handles TSM_ModificaEstadoLote.Click

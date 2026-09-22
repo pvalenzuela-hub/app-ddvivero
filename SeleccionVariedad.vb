@@ -1,12 +1,18 @@
 ﻿Public Class SeleccionVariedad
+    Public Property Familia As String
+    Public Property VariedadSeleccionada As String
 
     Private Sub SeleccionVariedad_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
         REM carga tabla de variedades filtrado por familia
 
-        Select Case gQuienLlama
-            Case 1
-                txt_Familia.Text = Cambio_Estado.txt_Semilla.Text
-        End Select
+        If Familia <> "" Then
+            txt_Familia.Text = Familia
+        Else
+            Select Case gQuienLlama
+                Case 1
+                    txt_Familia.Text = Cambio_Estado.txt_Semilla.Text
+            End Select
+        End If
 
 
         sSsql = "SP_CONSULTA_FULL_VARIEDAD_FILTRADO "
@@ -33,6 +39,13 @@
         If DataVariedad.Rows.Count > 0 Then
             Dim FilaGrilla As Integer
             FilaGrilla = DataVariedad.CurrentRow.Index
+            If Familia <> "" Then
+                VariedadSeleccionada = DataVariedad.Rows(FilaGrilla).Cells(1).Value.ToString()
+                DialogResult = DialogResult.OK
+                Close()
+                Exit Sub
+            End If
+
             Select Case gQuienLlama
                 Case 1
                     If Cambio_Estado.txt_Variedad.Text <> DataVariedad.Rows(FilaGrilla).Cells(1).Value Then

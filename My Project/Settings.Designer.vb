@@ -184,7 +184,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("__CONFIGURE_EN_CONNECTIONS_CONFIG__")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=72.60.59.142;Initial Catalog=ddvivero;User ID=vivero_user;Password=sq"& _ 
+            "L_2025!###;TrustServerCertificate=True")>  _
         Public ReadOnly Property ConexionVivero() As String
             Get
                 Return CType(Me("ConexionVivero"),String)
@@ -206,7 +207,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("__CONFIGURE_EN_CONNECTIONS_CONFIG__")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=72.60.59.142;Initial Catalog=ddvivero;User ID=vivero_user;Password=sq"& _ 
+            "L_2025!###;TrustServerCertificate=True")>  _
         Public ReadOnly Property SettingPrueba() As String
             Get
                 Return CType(Me("SettingPrueba"),String)
@@ -216,7 +218,8 @@ Namespace My
         <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
          Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
-         Global.System.Configuration.DefaultSettingValueAttribute("__CONFIGURE_EN_CONNECTIONS_CONFIG__")>  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=72.60.59.142;Initial Catalog=ddvivero;User ID=vivero_user;Password=sq"& _ 
+            "L_2025!###;TrustServerCertificate=True")>  _
         Public ReadOnly Property DBLocal() As String
             Get
                 Return CType(Me("DBLocal"),String)
