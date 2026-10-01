@@ -151,15 +151,6 @@ Public Class facturaCompra
                 ifila = DataDetalle.CurrentRow.Index
                 Dim sResp = MsgBox("Esta seguro de Eliminar �tem de Compra?", MsgBoxStyle.YesNo, "Factura de Compra")
                 If sResp = MsgBoxResult.Yes Then
-                    If DataDetalle.Rows(ifila).Cells(0).Value > 0 Then
-                        sSsql = "SP_ELIMINA_DETALLE_COMPRA "
-                        sSsql += DataDetalle.Rows(ifila).Cells(0).Value.ToString
-                        open()
-                        command = connection.CreateCommand()
-                        command.CommandText = sSsql
-                        command.ExecuteNonQuery()
-                        close_conexion()
-                    End If
                     DataDetalle.Rows.RemoveAt(ifila)
                     MsgBox("Item de Compra ha sido Eliminado.", MsgBoxStyle.Information)
                     totales()
@@ -344,61 +335,69 @@ Public Class facturaCompra
             sSsql += "'E'"
         End If
         open()
-        command = connection.CreateCommand()
-        command.CommandText = sSsql
-        datatbl = command.ExecuteReader()
-
-        datatbl.Read()
-        dIDCompras = datatbl(0)
-        close_conexion()
-
-        open()
-        REM Graba Detalle Documento de Compra
-        For i = 0 To DataDetalle.Rows.Count - 1
-            'sPrecio = Replace(DataDetalle.Rows(i).Cells(3).Value, ",", ".")
-            If IsDBNull(DataDetalle.Rows(i).Cells(9).Value) Then
-                DataDetalle.Rows(i).Cells(9).Value = 0
-            End If
-            sSsql = "SP_INSERTA_DOCDETALLE_COMPRA " + Str(dIDCompras) + ","
-            sSsql += DataDetalle.Rows(i).Cells(0).Value.ToString + ","
-            sSsql += "'" + DataDetalle.Rows(i).Cells(1).Value + "',"
-            sSsql += "'" + DataDetalle.Rows(i).Cells(2).Value + "',"
-            sSsql += "'" + DataDetalle.Rows(i).Cells(3).Value + "',"
-            sSsql += "'" + DataDetalle.Rows(i).Cells(4).Value + "',"
-            sSsql += DataDetalle.Rows(i).Cells(5).Value.ToString + ","
-            sSsql += DataDetalle.Rows(i).Cells(6).Value.ToString + ","
-            sSsql += Val(DataDetalle.Rows(i).Cells(9).Value).ToString + ","
-            sSsql += "'" + DataDetalle.Rows(i).Cells(11).Value + "',"
-            sSsql += Val(DataDetalle.Rows(i).Cells(12).Value).ToString + ","
-
-            If chk_Stock.Checked = True Then
-                sSsql += "'S'"
-            Else
-                sSsql += "'N'"
-            End If
-
+        Dim transaccion As SqlTransaction = connection.BeginTransaction()
+        Try
             command = connection.CreateCommand()
+            command.Transaction = transaccion
             command.CommandText = sSsql
-            command.ExecuteNonQuery()
-        Next
-        close_conexion()
-        'GRABAR COMPRA_PAGOS si fueron ingresados
-        'NUM_DOC,TIPO_DOC,TIPO_PAGO,NUM_DOCPAGO,BANCO,FECHA_VCTO,VALOR_DOC
-        'Item,Forma Pago,Documento,Banco,Fecha Vcto,Monto
-        If DataGridPago.Rows.Count - 1 >= 0 Then
-            open()
-            command = connection.CreateCommand()
-            '@TIPO_DOC,@NUM_DOC,@TIPO_PAGO,@NUM_DOCPAGO,@BANCO,@FECHA_VCTO,@VALOR_DOC,@TIPO_TRANSAC
 
-            For i = 0 To DataGridPago.Rows.Count - 1
-                sSsql = "SP_INSERTA_PAGOS_COMPRAS " + Str(dIDCompras) + ",'" + DataGridPago.Rows(i).Cells(1).Value + "','" + DataGridPago.Rows(i).Cells(2).Value + "',"
-                sSsql += "'" + DataGridPago.Rows(i).Cells(3).Value + "','" + DataGridPago.Rows(i).Cells(4).Value + "'," + DataGridPago.Rows(i).Cells(5).Value.ToString
+            Using lectorEncabezado As SqlDataReader = command.ExecuteReader()
+                If Not lectorEncabezado.Read() Then
+                    Throw New InvalidOperationException("No fue posible guardar el encabezado de la factura.")
+                End If
+                dIDCompras = lectorEncabezado(0)
+            End Using
 
+            REM Graba Detalle Documento de Compra
+            For i = 0 To DataDetalle.Rows.Count - 1
+                If IsDBNull(DataDetalle.Rows(i).Cells(9).Value) Then
+                    DataDetalle.Rows(i).Cells(9).Value = 0
+                End If
+                sSsql = "SP_INSERTA_DOCDETALLE_COMPRA " + Str(dIDCompras) + ","
+                sSsql += DataDetalle.Rows(i).Cells(0).Value.ToString + ","
+                sSsql += "'" + DataDetalle.Rows(i).Cells(1).Value + "',"
+                sSsql += "'" + DataDetalle.Rows(i).Cells(2).Value + "',"
+                sSsql += "'" + DataDetalle.Rows(i).Cells(3).Value + "',"
+                sSsql += "'" + DataDetalle.Rows(i).Cells(4).Value + "',"
+                sSsql += DataDetalle.Rows(i).Cells(5).Value.ToString + ","
+                sSsql += DataDetalle.Rows(i).Cells(6).Value.ToString + ","
+                sSsql += Val(DataDetalle.Rows(i).Cells(9).Value).ToString + ","
+                sSsql += "'" + DataDetalle.Rows(i).Cells(11).Value + "',"
+                sSsql += Val(DataDetalle.Rows(i).Cells(12).Value).ToString + ","
+
+                If chk_Stock.Checked = True Then
+                    sSsql += "'S'"
+                Else
+                    sSsql += "'N'"
+                End If
+
+                command = connection.CreateCommand()
+                command.Transaction = transaccion
                 command.CommandText = sSsql
                 command.ExecuteNonQuery()
             Next
+
+            ' Los pagos son opcionales y se registran si fueron ingresados.
+            If DataGridPago.Rows.Count > 0 Then
+                command = connection.CreateCommand()
+                command.Transaction = transaccion
+                For i = 0 To DataGridPago.Rows.Count - 1
+                    sSsql = "SP_INSERTA_PAGOS_COMPRAS " + Str(dIDCompras) + ",'" + DataGridPago.Rows(i).Cells(1).Value + "','" + DataGridPago.Rows(i).Cells(2).Value + "',"
+                    sSsql += "'" + DataGridPago.Rows(i).Cells(3).Value + "','" + DataGridPago.Rows(i).Cells(4).Value + "'," + DataGridPago.Rows(i).Cells(5).Value.ToString
+
+                    command.CommandText = sSsql
+                    command.ExecuteNonQuery()
+                Next
+            End If
+
+            transaccion.Commit()
+        Catch ex As Exception
+            transaccion.Rollback()
+            bOK = False
+            MsgBox("No fue posible guardar la factura. No se aplicaron cambios." & Chr(13) & ex.Message, MsgBoxStyle.Critical, sVentana)
+        Finally
             close_conexion()
-        End If
+        End Try
 
         'If sTipo_Compra = "INVER" Then
         '' Actualiza Inventario de Compras
@@ -473,6 +472,10 @@ Public Class facturaCompra
             If Val(txt_TOTALCOMPRA.Text) <> GranTotal Then
                 bOK = False
                 mensaje += " SUMA DE VALORES DE PRODUCTOS DEBE COINCIDIR CON TOTAL COMPRA." + Chr(13)
+            End If
+            If DataDetalle.Rows.Count = 0 Then
+                bOK = False
+                mensaje += " DEBE INGRESAR AL MENOS UN PRODUCTO O INSUMO." + Chr(13)
             End If
             dTotalPagos = 0
             For i = 0 To DataGridPago.Rows.Count - 1
