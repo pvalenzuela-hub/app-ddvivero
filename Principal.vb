@@ -25,16 +25,7 @@
         End If
         Label4.Text = "Sistema de Gestión Vivero - V. 2024"
         VendedoresToolStripMenuItem1.Visible = gIdPerfil = 1
-        'opcionAutorizaPedido.Enabled = False
-        'Select Case gIdPerfil
-        '    Case 1 'Administrador
-        '        opcionAutorizaPedido.Enabled = True
-        '        opcionParametros.Enabled = True
-        '    Case 2
-
-        '    Case Else
-
-        'End Select
+        opcionParametros.Enabled = gIdPerfil = 1
     End Sub
 
     Private Sub SalirToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
@@ -571,6 +562,10 @@
     End Sub
 
     Private Sub ParámetrosGeneralesToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles opcionParametros.Click
+        If gIdPerfil <> 1 Then
+            MsgBox("Solo el perfil Administrador puede acceder a Parámetros Generales.", MsgBoxStyle.Exclamation, "Parámetros Generales")
+            Exit Sub
+        End If
         ParametrosSistema.Show()
     End Sub
 
