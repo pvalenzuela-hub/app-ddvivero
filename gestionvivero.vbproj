@@ -40,7 +40,7 @@
     </TargetFrameworkProfile>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
-    <PublishUrl>D:\publicar\viveroDD\ViveroDD_Version238\</PublishUrl>
+    <PublishUrl>D:\publicaciones\ViveroDyD\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Web</InstallFrom>
     <UpdateEnabled>true</UpdateEnabled>
@@ -50,13 +50,14 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>http://btpvivero.cl/INSTALADOR/</InstallUrl>
-    <ProductName>Sistema Gestion Vivero</ProductName>
+    <InstallUrl>https://apps.datnexia.com/viverodyd/</InstallUrl>
+    <ProductName>Vivero D&amp;D</ProductName>
     <PublisherName>Gestion</PublisherName>
     <MinimumRequiredVersion>1.0.0.7</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.html</WebPage>
-    <ApplicationRevision>239</ApplicationRevision>
+    <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
+    <ApplicationRevision>240</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
