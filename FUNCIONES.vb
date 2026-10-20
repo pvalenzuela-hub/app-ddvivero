@@ -412,6 +412,73 @@ Module FUNCIONES
             close_conexion()
         End Try
     End Function
+    Public Sub AbrirFichaTecnicaVariedad(ByVal familia As String, ByVal variedad As String)
+        Dim ruta As String
+
+        open()
+
+        Try
+            Using cmd As SqlCommand = connection.CreateCommand()
+                cmd.CommandText = "SP_CONSULTA_FichaTecnicaVariedad"
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.Add("@Familia", SqlDbType.VarChar, 50).Value = familia.Trim()
+                cmd.Parameters.Add("@Variedad", SqlDbType.VarChar, 50).Value = variedad.Trim()
+
+                ruta = Convert.ToString(cmd.ExecuteScalar())
+            End Using
+        Finally
+            close_conexion()
+        End Try
+
+        AbrirPdf(ruta, "No se encontró la ficha técnica de la variedad " & variedad.Trim() & ".")
+    End Sub
+    Public Sub AbrirFichaTecnicaProducto(ByVal idProd As Integer)
+        Dim ruta As String
+
+        open()
+
+        Try
+            Using cmd As SqlCommand = connection.CreateCommand()
+                cmd.CommandText = "SP_CONSULTA_FichaTecnicaProducto"
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.Add("@IdProd", SqlDbType.Int).Value = idProd
+
+                ruta = Convert.ToString(cmd.ExecuteScalar())
+            End Using
+        Finally
+            close_conexion()
+        End Try
+
+        AbrirPdf(ruta, "No se encontró la ficha técnica del producto.")
+    End Sub
+    Private Sub AbrirPdf(ByVal ruta As String, ByVal mensajeSinFicha As String)
+        ' Abre el PDF con el visor predeterminado de Windows.
+        If String.IsNullOrWhiteSpace(ruta) Then
+            MsgBox(mensajeSinFicha, MsgBoxStyle.Exclamation, "Ficha Técnica")
+            Return
+        End If
+
+        ruta = ruta.Trim()
+        If EsDireccionWeb(ruta) Then
+            ' Algunas fichas son páginas web: se abren en el navegador predeterminado.
+            If Not ruta.StartsWith("http://", StringComparison.OrdinalIgnoreCase) AndAlso
+               Not ruta.StartsWith("https://", StringComparison.OrdinalIgnoreCase) Then
+                ruta = "https://" & ruta
+            End If
+        ElseIf Not File.Exists(ruta) Then
+            MsgBox("No se encuentra el archivo de la ficha técnica:" & vbCrLf & ruta, MsgBoxStyle.Exclamation, "Ficha Técnica")
+            Return
+        End If
+
+        Try
+            Process.Start(New ProcessStartInfo(ruta) With {.UseShellExecute = True})
+        Catch ex As Exception
+            MsgBox("No se pudo abrir la ficha técnica:" & vbCrLf & ex.Message, MsgBoxStyle.Critical, "Ficha Técnica")
+        End Try
+    End Sub
+    Private Function EsDireccionWeb(ByVal ruta As String) As Boolean
+        Return Text.RegularExpressions.Regex.IsMatch(ruta, "^(https?://|www\.|[a-z0-9-]+(\.[a-z0-9-]+)*\.(cl|com|net|org)(/|$))", Text.RegularExpressions.RegexOptions.IgnoreCase)
+    End Function
     Public Function GuardarCajaActivaUsuarioSP(ByVal idUsuario As String, ByVal ctaCtble As String, ByRef mensaje As String) As Boolean
         If String.IsNullOrWhiteSpace(idUsuario) Then
             mensaje = "Usuario no válido."

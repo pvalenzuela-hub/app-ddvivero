@@ -1180,8 +1180,7 @@ Public Class Pedidos
     End Function
 
     Private Sub Button1_Click(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles Button1.Click
-        gQuienLlama = 1
-        Visualiza_PDF.Visible = True
+        AbrirFichaTecnicaVariedad(cmb_Familia.Text, cmb_variedad.Text)
     End Sub
 
     Private Sub txtDescto_KeyPress(sender As Object, e As System.Windows.Forms.KeyPressEventArgs) Handles txtDescto.KeyPress

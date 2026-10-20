@@ -162,6 +162,18 @@ Partial Class Cambio_Estado
         Me.Label18 = New System.Windows.Forms.Label()
         Me.txt_LoteOriginal = New System.Windows.Forms.MaskedTextBox()
         Me.DataBitacora = New System.Windows.Forms.DataGridView()
+        Me.tabBitacora = New System.Windows.Forms.TabControl()
+        Me.tpBitacora = New System.Windows.Forms.TabPage()
+        Me.tpAplicaciones = New System.Windows.Forms.TabPage()
+        Me.DataAplicaciones = New System.Windows.Forms.DataGridView()
+        Me.apFecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.apProducto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.apTipo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.apDosis = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.apAplicador = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.apMotivo = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.apObservaciones = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.apLotes = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.cant = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -188,6 +200,10 @@ Partial Class Cambio_Estado
         Me.GroupBox1.SuspendLayout()
         Me.GroupBox5.SuspendLayout()
         CType(Me.DataBitacora, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.tabBitacora.SuspendLayout()
+        Me.tpBitacora.SuspendLayout()
+        Me.tpAplicaciones.SuspendLayout()
+        CType(Me.DataAplicaciones, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -1727,6 +1743,108 @@ Partial Class Cambio_Estado
         Me.txt_LoteOriginal.TabIndex = 130
         Me.txt_LoteOriginal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
+        'tabBitacora
+        '
+        Me.tabBitacora.Controls.Add(Me.tpBitacora)
+        Me.tabBitacora.Controls.Add(Me.tpAplicaciones)
+        Me.tabBitacora.Location = New System.Drawing.Point(7, 612)
+        Me.tabBitacora.Name = "tabBitacora"
+        Me.tabBitacora.SelectedIndex = 0
+        Me.tabBitacora.Size = New System.Drawing.Size(1323, 140)
+        Me.tabBitacora.TabIndex = 131
+        '
+        'tpBitacora
+        '
+        Me.tpBitacora.Controls.Add(Me.DataBitacora)
+        Me.tpBitacora.Location = New System.Drawing.Point(4, 25)
+        Me.tpBitacora.Name = "tpBitacora"
+        Me.tpBitacora.Size = New System.Drawing.Size(1315, 111)
+        Me.tpBitacora.TabIndex = 0
+        Me.tpBitacora.Text = "Bitácora"
+        Me.tpBitacora.UseVisualStyleBackColor = True
+        '
+        'tpAplicaciones
+        '
+        Me.tpAplicaciones.Controls.Add(Me.DataAplicaciones)
+        Me.tpAplicaciones.Location = New System.Drawing.Point(4, 25)
+        Me.tpAplicaciones.Name = "tpAplicaciones"
+        Me.tpAplicaciones.Size = New System.Drawing.Size(1315, 111)
+        Me.tpAplicaciones.TabIndex = 1
+        Me.tpAplicaciones.Text = "Aplicaciones de productos"
+        Me.tpAplicaciones.UseVisualStyleBackColor = True
+        '
+        'DataAplicaciones
+        '
+        Me.DataAplicaciones.AllowUserToAddRows = False
+        Me.DataAplicaciones.AllowUserToDeleteRows = False
+        Me.DataAplicaciones.BackgroundColor = System.Drawing.SystemColors.Window
+        Me.DataAplicaciones.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
+        Me.DataAplicaciones.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.apFecha, Me.apProducto, Me.apTipo, Me.apDosis, Me.apAplicador, Me.apMotivo, Me.apObservaciones, Me.apLotes})
+        Me.DataAplicaciones.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DataAplicaciones.Location = New System.Drawing.Point(0, 0)
+        Me.DataAplicaciones.Name = "DataAplicaciones"
+        Me.DataAplicaciones.ReadOnly = True
+        Me.DataAplicaciones.RowHeadersVisible = False
+        Me.DataAplicaciones.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DataAplicaciones.Size = New System.Drawing.Size(1315, 111)
+        Me.DataAplicaciones.TabIndex = 0
+        '
+        'apFecha
+        '
+        Me.apFecha.HeaderText = "Fecha y hora"
+        Me.apFecha.Name = "apFecha"
+        Me.apFecha.ReadOnly = True
+        Me.apFecha.Width = 115
+        '
+        'apProducto
+        '
+        Me.apProducto.HeaderText = "Producto"
+        Me.apProducto.Name = "apProducto"
+        Me.apProducto.ReadOnly = True
+        Me.apProducto.Width = 200
+        '
+        'apTipo
+        '
+        Me.apTipo.HeaderText = "Tipo"
+        Me.apTipo.Name = "apTipo"
+        Me.apTipo.ReadOnly = True
+        Me.apTipo.Width = 110
+        '
+        'apDosis
+        '
+        Me.apDosis.HeaderText = "Dosis"
+        Me.apDosis.Name = "apDosis"
+        Me.apDosis.ReadOnly = True
+        Me.apDosis.Width = 120
+        '
+        'apAplicador
+        '
+        Me.apAplicador.HeaderText = "Aplicador"
+        Me.apAplicador.Name = "apAplicador"
+        Me.apAplicador.ReadOnly = True
+        Me.apAplicador.Width = 160
+        '
+        'apMotivo
+        '
+        Me.apMotivo.HeaderText = "Motivo"
+        Me.apMotivo.Name = "apMotivo"
+        Me.apMotivo.ReadOnly = True
+        Me.apMotivo.Width = 180
+        '
+        'apObservaciones
+        '
+        Me.apObservaciones.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill
+        Me.apObservaciones.HeaderText = "Observaciones"
+        Me.apObservaciones.Name = "apObservaciones"
+        Me.apObservaciones.ReadOnly = True
+        '
+        'apLotes
+        '
+        Me.apLotes.HeaderText = "Lotes en la aplicación"
+        Me.apLotes.Name = "apLotes"
+        Me.apLotes.ReadOnly = True
+        Me.apLotes.Width = 90
+        '
         'DataBitacora
         '
         Me.DataBitacora.AllowUserToAddRows = False
@@ -1744,7 +1862,8 @@ Partial Class Cambio_Estado
         DataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.[False]
         Me.DataBitacora.DefaultCellStyle = DataGridViewCellStyle5
         Me.DataBitacora.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically
-        Me.DataBitacora.Location = New System.Drawing.Point(7, 615)
+        Me.DataBitacora.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.DataBitacora.Location = New System.Drawing.Point(0, 0)
         Me.DataBitacora.Margin = New System.Windows.Forms.Padding(3, 6, 3, 6)
         Me.DataBitacora.Name = "DataBitacora"
         Me.DataBitacora.ReadOnly = True
@@ -1755,8 +1874,8 @@ Partial Class Cambio_Estado
         DataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.DarkGreen
         Me.DataBitacora.RowsDefaultCellStyle = DataGridViewCellStyle6
         Me.DataBitacora.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.DataBitacora.Size = New System.Drawing.Size(1323, 99)
-        Me.DataBitacora.TabIndex = 131
+        Me.DataBitacora.Size = New System.Drawing.Size(1315, 111)
+        Me.DataBitacora.TabIndex = 0
         '
         'DataGridViewTextBoxColumn1
         '
@@ -1901,10 +2020,10 @@ Partial Class Cambio_Estado
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1330, 714)
+        Me.ClientSize = New System.Drawing.Size(1330, 754)
         Me.Controls.Add(Me.txtPreventa2)
         Me.Controls.Add(Me.txtPreventa1)
-        Me.Controls.Add(Me.DataBitacora)
+        Me.Controls.Add(Me.tabBitacora)
         Me.Controls.Add(Me.txt_LoteOriginal)
         Me.Controls.Add(Me.Label18)
         Me.Controls.Add(Me.txt_Estado)
@@ -1932,6 +2051,10 @@ Partial Class Cambio_Estado
         Me.GroupBox5.ResumeLayout(False)
         Me.GroupBox5.PerformLayout()
         CType(Me.DataBitacora, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DataAplicaciones, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.tpAplicaciones.ResumeLayout(False)
+        Me.tpBitacora.ResumeLayout(False)
+        Me.tabBitacora.ResumeLayout(False)
         Me.ContextMenuStrip1.ResumeLayout(False)
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -2012,6 +2135,18 @@ Partial Class Cambio_Estado
     Friend WithEvents txt_Num_Nave As System.Windows.Forms.TextBox
     Friend WithEvents Label28 As System.Windows.Forms.Label
     Friend WithEvents DataBitacora As System.Windows.Forms.DataGridView
+    Friend WithEvents tabBitacora As System.Windows.Forms.TabControl
+    Friend WithEvents tpBitacora As System.Windows.Forms.TabPage
+    Friend WithEvents tpAplicaciones As System.Windows.Forms.TabPage
+    Friend WithEvents DataAplicaciones As System.Windows.Forms.DataGridView
+    Friend WithEvents apFecha As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents apProducto As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents apTipo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents apDosis As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents apAplicador As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents apMotivo As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents apObservaciones As System.Windows.Forms.DataGridViewTextBoxColumn
+    Friend WithEvents apLotes As System.Windows.Forms.DataGridViewTextBoxColumn
     Public WithEvents txt_NumLote As System.Windows.Forms.MaskedTextBox
     Friend WithEvents txt_Batch As System.Windows.Forms.MaskedTextBox
     Friend WithEvents txt_FechaEnvasado As System.Windows.Forms.MaskedTextBox

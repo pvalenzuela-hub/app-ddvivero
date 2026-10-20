@@ -103,21 +103,6 @@
     <Reference Include="DocumentFormat.OpenXml.Framework, Version=3.0.1.0, Culture=neutral, PublicKeyToken=8fb06cb64d019a17, processorArchitecture=MSIL">
       <HintPath>packages\DocumentFormat.OpenXml.Framework.3.0.1\lib\net46\DocumentFormat.OpenXml.Framework.dll</HintPath>
     </Reference>
-    <Reference Include="EO.Base, Version=24.1.93.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
-      <HintPath>packages\EO.WebBrowser.24.1.93\lib\EO.Base.dll</HintPath>
-    </Reference>
-    <Reference Include="EO.Pdf, Version=24.1.93.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
-      <HintPath>packages\EO.Pdf.24.1.93\lib\EO.Pdf.dll</HintPath>
-    </Reference>
-    <Reference Include="EO.WebBrowser, Version=24.1.93.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
-      <HintPath>packages\EO.WebBrowser.24.1.93\lib\EO.WebBrowser.dll</HintPath>
-    </Reference>
-    <Reference Include="EO.WebBrowser.WinForm, Version=24.1.93.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
-      <HintPath>packages\EO.WebBrowser.WinForm.24.1.93\lib\EO.WebBrowser.WinForm.dll</HintPath>
-    </Reference>
-    <Reference Include="EO.WebEngine, Version=24.1.93.0, Culture=neutral, PublicKeyToken=e92353a6bf73fffc, processorArchitecture=MSIL">
-      <HintPath>packages\EO.WebBrowser.24.1.93\lib\EO.WebEngine.dll</HintPath>
-    </Reference>
     <Reference Include="ExcelNumberFormat, Version=1.1.0.0, Culture=neutral, PublicKeyToken=23c6f5d73be07eca, processorArchitecture=MSIL">
       <HintPath>packages\ExcelNumberFormat.1.1.0\lib\net20\ExcelNumberFormat.dll</HintPath>
     </Reference>
@@ -396,10 +381,10 @@
     <Compile Include="Analisis_Cuenta.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Aplic_Producto.Designer.vb">
-      <DependentUpon>Aplic_Producto.vb</DependentUpon>
+    <Compile Include="AplicacionProductos.Designer.vb">
+      <DependentUpon>AplicacionProductos.vb</DependentUpon>
     </Compile>
-    <Compile Include="Aplic_Producto.vb">
+    <Compile Include="AplicacionProductos.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ApplicationEvents.vb">
@@ -1604,12 +1589,6 @@
     <Compile Include="Ventana_ayuda.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Visualiza_PDF.Designer.vb">
-      <DependentUpon>Visualiza_PDF.vb</DependentUpon>
-    </Compile>
-    <Compile Include="Visualiza_PDF.vb">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Include="win_Ingredientes.Designer.vb">
       <DependentUpon>win_Ingredientes.vb</DependentUpon>
     </Compile>
@@ -1647,10 +1626,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Analisis_Cuenta.resx">
       <DependentUpon>Analisis_Cuenta.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Aplic_Producto.resx">
-      <DependentUpon>Aplic_Producto.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="AutorizacionPedidos.resx">
@@ -2250,10 +2225,6 @@
     <EmbeddedResource Include="VentaMensual.rdlc" />
     <EmbeddedResource Include="Ventana_ayuda.resx">
       <DependentUpon>Ventana_ayuda.vb</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Visualiza_PDF.resx">
-      <DependentUpon>Visualiza_PDF.vb</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="win_Ingredientes.resx">

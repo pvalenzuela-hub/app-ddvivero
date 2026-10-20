@@ -164,8 +164,7 @@
             If e.ColumnIndex = 10 And e.RowIndex >= 0 Then
                 ''botón Ver Ficha
                 gIdProd = DataGrilla.Rows(e.RowIndex).Cells(0).Value
-                gQuienLlama = 2
-                Visualiza_PDF.Show()
+                AbrirFichaTecnicaProducto(gIdProd)
             End If
 
         End If

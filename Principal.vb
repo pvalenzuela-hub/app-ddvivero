@@ -299,7 +299,7 @@
     End Sub
 
     Private Sub AplicaciónDeProductosToolStripMenuItem_Click(ByVal sender As System.Object, ByVal e As System.EventArgs)
-        Aplic_Producto.Visible = True
+        AplicacionProductos.Visible = True
     End Sub
 
     Private Sub ToolStripMenuItem4_Click_1(ByVal sender As System.Object, ByVal e As System.EventArgs) Handles ToolStripMenuItem4.Click
@@ -667,7 +667,7 @@
     End Sub
 
     Private Sub AplicaciónDeProductosToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles AplicaciónDeProductosToolStripMenuItem1.Click
-        Aplic_Producto.Visible = True
+        AplicacionProductos.Visible = True
     End Sub
 
     Private Sub ControlDeLotesToolStripMenuItem1_Click(sender As Object, e As EventArgs) Handles ControlDeLotesToolStripMenuItem1.Click

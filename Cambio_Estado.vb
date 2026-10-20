@@ -121,7 +121,38 @@ Public Class Cambio_Estado
     Public Sub EjecutaConsultaLote()
         Recupera_Lote()
         Recupera_detalle_bitacora()
+        Recupera_aplicaciones_lote()
 
+    End Sub
+
+    Private Sub Recupera_aplicaciones_lote()
+        DataAplicaciones.Rows.Clear()
+        tpAplicaciones.Text = "Aplicaciones de productos"
+
+        Try
+            open()
+            Using cmd As SqlCommand = connection.CreateCommand()
+                cmd.CommandText = "SP_APLICACION_POR_LOTE"
+                cmd.CommandType = CommandType.StoredProcedure
+                cmd.Parameters.Add("@IdPedidodet", SqlDbType.Int).Value = CInt(Val(txt_NumLote.Text))
+
+                Using dr As SqlDataReader = cmd.ExecuteReader()
+                    While dr.Read()
+                        Dim dosis = Convert.ToDouble(dr("Dosis")).ToString("#,##0.####") & " " &
+                                    AplicacionProductos.NombreUnidad(dr("Unidad").ToString()) &
+                                    AplicacionProductos.SufijoDosis(dr("FormaDosis").ToString())
+                        DataAplicaciones.Rows.Add(Convert.ToDateTime(dr("FechaAplicacion")).ToString("dd-MM-yyyy HH:mm"),
+                                                  dr("Producto"), dr("Tipo"), dosis, dr("Aplicador"),
+                                                  dr("Motivo"), dr("Observaciones"), dr("CantLotes"))
+                    End While
+                End Using
+            End Using
+            tpAplicaciones.Text = "Aplicaciones de productos (" & DataAplicaciones.Rows.Count & ")"
+        Catch ex As SqlException
+            tpAplicaciones.Text = "Aplicaciones de productos (no disponible)"
+        Finally
+            close_conexion()
+        End Try
     End Sub
 
 
