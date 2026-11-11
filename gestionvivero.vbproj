@@ -48,16 +48,16 @@
     <UpdateInterval>7</UpdateInterval>
     <UpdateIntervalUnits>Days</UpdateIntervalUnits>
     <UpdatePeriodically>false</UpdatePeriodically>
-    <UpdateRequired>false</UpdateRequired>
+    <UpdateRequired>true</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <InstallUrl>https://apps.datnexia.com/viverodyd/</InstallUrl>
     <ProductName>Vivero D&amp;D</ProductName>
     <PublisherName>Gestion</PublisherName>
-    <MinimumRequiredVersion>1.0.0.7</MinimumRequiredVersion>
+    <MinimumRequiredVersion>1.0.0.242</MinimumRequiredVersion>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.html</WebPage>
     <OpenBrowserOnPublish>false</OpenBrowserOnPublish>
-    <ApplicationRevision>242</ApplicationRevision>
+    <ApplicationRevision>243</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
