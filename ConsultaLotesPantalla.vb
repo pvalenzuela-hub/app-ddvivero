@@ -1,11 +1,22 @@
 ﻿Imports ClosedXML.Excel
 Imports System.IO
+Imports System.Data.SqlClient
 Public Class ConsultaLotesPantalla
     Private Sub ConsultaLotesPantalla_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
         Me.SP_CONSULTA_FULL_FAMILIA_PRODUCTOTableAdapter.Fill(Me.GESTDataSet.SP_CONSULTA_FULL_FAMILIA_PRODUCTO)
         cmbVariedad.SelectedIndex = -1
         cmbSemilla.SelectedIndex = -1
+
+        ' Ocultar lotes del reporte de venta: solo autorizadores.
+        btnOcultarVenta.Visible = gEsAutorizador
+        btnMostrarVenta.Visible = gEsAutorizador
+        chkVerOcultos.Visible = gEsAutorizador
+        lblOcultos.Visible = gEsAutorizador
+        If Not gEsAutorizador Then
+            SplitContainer1.SplitterDistance = 43
+        End If
+
         CargaGrillaLotes()
         'If gEsAutorizador Then
         '    chkTodo.Visible = True
@@ -37,6 +48,13 @@ Public Class ConsultaLotesPantalla
             sSsql += "0"
         End If
 
+        If gEsAutorizador AndAlso chkVerOcultos.Checked Then
+            sSsql += ",1"
+        Else
+            sSsql += ",0"
+        End If
+
+        Dim iOcultos As Integer = 0
         open()
         command = connection.CreateCommand()
         command.CommandText = sSsql
@@ -68,13 +86,115 @@ Public Class ConsultaLotesPantalla
                 End If
 
 
-                If datatbl("Atraso") = 1 Then
+                If CBool(datatbl("Oculto")) Then
+                    GrillaLotes.Rows(i).Cells("oculto").Value = "Sí"
+                    GrillaLotes.Rows(i).Cells("motivooculto").Value = datatbl("MotivoOculto")
+                    GrillaLotes.Rows(i).DefaultCellStyle.BackColor = Color.LightGray
+                    GrillaLotes.Rows(i).DefaultCellStyle.ForeColor = Color.DimGray
+                    iOcultos += 1
+                ElseIf datatbl("Atraso") = 1 Then
                     GrillaLotes.Rows(i).DefaultCellStyle.BackColor = Color.LightGreen
                 End If
                 i += 1
             End While
         End If
         close_conexion()
+
+        lblOcultos.Text = If(chkVerOcultos.Checked, iOcultos & " lote(s) oculto(s) en la lista, marcados en gris.", "")
+    End Sub
+
+    ' Números de lote de las filas seleccionadas (por celda o por fila).
+    Private Function LotesSeleccionados(ByVal soloOcultos As Boolean) As List(Of Integer)
+        Dim lotes As New List(Of Integer)
+        For Each celda As DataGridViewCell In GrillaLotes.SelectedCells
+            Dim fila = GrillaLotes.Rows(celda.RowIndex)
+            Dim esOculto = Convert.ToString(fila.Cells("oculto").Value) = "Sí"
+            Dim lote = CInt(fila.Cells("nlote").Value)
+            If (Not soloOcultos OrElse esOculto) AndAlso Not lotes.Contains(lote) Then
+                lotes.Add(lote)
+            End If
+        Next
+        lotes.Sort()
+        Return lotes
+    End Function
+
+    Private Sub btnOcultarVenta_Click(sender As Object, e As EventArgs) Handles btnOcultarVenta.Click
+        If Not gEsAutorizador Then Exit Sub
+
+        Dim lotes = LotesSeleccionados(False)
+        If lotes.Count = 0 Then
+            MsgBox("Seleccione en la grilla uno o más lotes para ocultar.", MsgBoxStyle.Exclamation, "Ocultar de la venta")
+            Exit Sub
+        End If
+
+        If MsgBox("¿Ocultar " & lotes.Count & " lote(s) del reporte de lotes a la venta?" & vbCrLf & vbCrLf &
+                  "Lotes: " & String.Join(", ", lotes) & vbCrLf & vbCrLf &
+                  "Dejarán de aparecer en el reporte (también con ""Todo"") hasta que se vuelvan a mostrar.",
+                  MsgBoxStyle.YesNo Or MsgBoxStyle.Question, "Ocultar de la venta") <> MsgBoxResult.Yes Then
+            Exit Sub
+        End If
+
+        Dim motivo = InputBox("Motivo (opcional), por ejemplo: datos en revisión.", "Ocultar de la venta").Trim()
+        If motivo.Length > 200 Then motivo = motivo.Substring(0, 200)
+
+        Try
+            open()
+            For Each lote In lotes
+                Using cmd As SqlCommand = connection.CreateCommand()
+                    cmd.CommandText = "SP_LOTE_VENTA_OCULTAR"
+                    cmd.CommandType = CommandType.StoredProcedure
+                    cmd.Parameters.Add("@IdPedidodet", SqlDbType.Int).Value = lote
+                    cmd.Parameters.Add("@Usuario", SqlDbType.VarChar, 10).Value = gUSER
+                    cmd.Parameters.Add("@Motivo", SqlDbType.VarChar, 200).Value = If(motivo = "", CObj(DBNull.Value), motivo)
+                    cmd.ExecuteNonQuery()
+                End Using
+            Next
+        Catch ex As SqlException
+            MsgBox("No se pudieron ocultar los lotes:" & vbCrLf & ex.Message, MsgBoxStyle.Critical, "Ocultar de la venta")
+        Finally
+            close_conexion()
+        End Try
+
+        CargaGrillaLotes()
+    End Sub
+
+    Private Sub btnMostrarVenta_Click(sender As Object, e As EventArgs) Handles btnMostrarVenta.Click
+        If Not gEsAutorizador Then Exit Sub
+
+        Dim lotes = LotesSeleccionados(True)
+        If lotes.Count = 0 Then
+            MsgBox("Seleccione en la grilla uno o más lotes ocultos (en gris)." & vbCrLf &
+                   "Para verlos, marque ""Ver lotes ocultos"".", MsgBoxStyle.Exclamation, "Volver a mostrar")
+            Exit Sub
+        End If
+
+        If MsgBox("¿Volver a mostrar " & lotes.Count & " lote(s) en el reporte de lotes a la venta?" & vbCrLf & vbCrLf &
+                  "Lotes: " & String.Join(", ", lotes),
+                  MsgBoxStyle.YesNo Or MsgBoxStyle.Question, "Volver a mostrar") <> MsgBoxResult.Yes Then
+            Exit Sub
+        End If
+
+        Try
+            open()
+            For Each lote In lotes
+                Using cmd As SqlCommand = connection.CreateCommand()
+                    cmd.CommandText = "SP_LOTE_VENTA_MOSTRAR"
+                    cmd.CommandType = CommandType.StoredProcedure
+                    cmd.Parameters.Add("@IdPedidodet", SqlDbType.Int).Value = lote
+                    cmd.ExecuteNonQuery()
+                End Using
+            Next
+        Catch ex As SqlException
+            MsgBox("No se pudieron mostrar los lotes:" & vbCrLf & ex.Message, MsgBoxStyle.Critical, "Volver a mostrar")
+        Finally
+            close_conexion()
+        End Try
+
+        CargaGrillaLotes()
+    End Sub
+
+    Private Sub chkVerOcultos_CheckedChanged(sender As Object, e As EventArgs) Handles chkVerOcultos.CheckedChanged
+        CargaGrillaLotes()
     End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles btnReporteExcel.Click
         Try

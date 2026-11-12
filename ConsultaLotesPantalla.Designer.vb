@@ -62,6 +62,12 @@ Partial Class ConsultaLotesPantalla
         Me.Ciclo = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.ndias = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.nuevafecha = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.oculto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.motivooculto = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.btnOcultarVenta = New System.Windows.Forms.Button()
+        Me.btnMostrarVenta = New System.Windows.Forms.Button()
+        Me.chkVerOcultos = New System.Windows.Forms.CheckBox()
+        Me.lblOcultos = New System.Windows.Forms.Label()
         CType(Me.GrillaLotes, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SplitContainer1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SplitContainer1.Panel1.SuspendLayout()
@@ -79,12 +85,12 @@ Partial Class ConsultaLotesPantalla
         Me.GrillaLotes.AllowUserToResizeRows = False
         Me.GrillaLotes.BackgroundColor = System.Drawing.Color.White
         Me.GrillaLotes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.GrillaLotes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.nlote, Me.cliente, Me.semilla, Me.variedad, Me.aportasemilla, Me.pedido, Me.fechaconteos, Me.tipo, Me.saldoplanta, Me.saldobandeja, Me.fechasiembra, Me.fechaentrega, Me.estadolote, Me.ubicacion, Me.numnave, Me.diasvivero, Me.FechaAutorizacionCliente, Me.Periodo, Me.Ciclo, Me.ndias, Me.nuevafecha})
+        Me.GrillaLotes.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.nlote, Me.cliente, Me.semilla, Me.variedad, Me.aportasemilla, Me.pedido, Me.fechaconteos, Me.tipo, Me.saldoplanta, Me.saldobandeja, Me.fechasiembra, Me.fechaentrega, Me.estadolote, Me.ubicacion, Me.numnave, Me.diasvivero, Me.FechaAutorizacionCliente, Me.Periodo, Me.Ciclo, Me.ndias, Me.nuevafecha, Me.oculto, Me.motivooculto})
         Me.GrillaLotes.Dock = System.Windows.Forms.DockStyle.Fill
         Me.GrillaLotes.Location = New System.Drawing.Point(0, 0)
         Me.GrillaLotes.Name = "GrillaLotes"
         Me.GrillaLotes.RowHeadersVisible = False
-        Me.GrillaLotes.Size = New System.Drawing.Size(1303, 632)
+        Me.GrillaLotes.Size = New System.Drawing.Size(1303, 599)
         Me.GrillaLotes.TabIndex = 0
         '
         'SplitContainer1
@@ -104,13 +110,56 @@ Partial Class ConsultaLotesPantalla
         Me.SplitContainer1.Panel1.Controls.Add(Me.Label2)
         Me.SplitContainer1.Panel1.Controls.Add(Me.Label1)
         Me.SplitContainer1.Panel1.Controls.Add(Me.btnReporteExcel)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.btnOcultarVenta)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.btnMostrarVenta)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.chkVerOcultos)
+        Me.SplitContainer1.Panel1.Controls.Add(Me.lblOcultos)
         '
         'SplitContainer1.Panel2
         '
         Me.SplitContainer1.Panel2.Controls.Add(Me.GrillaLotes)
         Me.SplitContainer1.Size = New System.Drawing.Size(1303, 679)
-        Me.SplitContainer1.SplitterDistance = 43
+        Me.SplitContainer1.SplitterDistance = 76
         Me.SplitContainer1.TabIndex = 1
+        '
+        'btnOcultarVenta
+        '
+        Me.btnOcultarVenta.Location = New System.Drawing.Point(9, 45)
+        Me.btnOcultarVenta.Name = "btnOcultarVenta"
+        Me.btnOcultarVenta.Size = New System.Drawing.Size(150, 26)
+        Me.btnOcultarVenta.TabIndex = 8
+        Me.btnOcultarVenta.Text = "Ocultar de la venta"
+        Me.ToolTip1.SetToolTip(Me.btnOcultarVenta, "Oculta del reporte los lotes seleccionados en la grilla")
+        Me.btnOcultarVenta.UseVisualStyleBackColor = True
+        '
+        'btnMostrarVenta
+        '
+        Me.btnMostrarVenta.Location = New System.Drawing.Point(165, 45)
+        Me.btnMostrarVenta.Name = "btnMostrarVenta"
+        Me.btnMostrarVenta.Size = New System.Drawing.Size(150, 26)
+        Me.btnMostrarVenta.TabIndex = 9
+        Me.btnMostrarVenta.Text = "Volver a mostrar"
+        Me.ToolTip1.SetToolTip(Me.btnMostrarVenta, "Vuelve a incluir en el reporte los lotes ocultos seleccionados")
+        Me.btnMostrarVenta.UseVisualStyleBackColor = True
+        '
+        'chkVerOcultos
+        '
+        Me.chkVerOcultos.AutoSize = True
+        Me.chkVerOcultos.Location = New System.Drawing.Point(330, 50)
+        Me.chkVerOcultos.Name = "chkVerOcultos"
+        Me.chkVerOcultos.Size = New System.Drawing.Size(110, 17)
+        Me.chkVerOcultos.TabIndex = 10
+        Me.chkVerOcultos.Text = "Ver lotes ocultos"
+        Me.chkVerOcultos.UseVisualStyleBackColor = True
+        '
+        'lblOcultos
+        '
+        Me.lblOcultos.AutoSize = True
+        Me.lblOcultos.ForeColor = System.Drawing.Color.DimGray
+        Me.lblOcultos.Location = New System.Drawing.Point(460, 51)
+        Me.lblOcultos.Name = "lblOcultos"
+        Me.lblOcultos.Size = New System.Drawing.Size(0, 13)
+        Me.lblOcultos.TabIndex = 11
         '
         'chkTodo
         '
@@ -373,6 +422,20 @@ Partial Class ConsultaLotesPantalla
         Me.nuevafecha.Name = "nuevafecha"
         Me.nuevafecha.ReadOnly = True
         '
+        'oculto
+        '
+        Me.oculto.HeaderText = "Oculto"
+        Me.oculto.Name = "oculto"
+        Me.oculto.ReadOnly = True
+        Me.oculto.Width = 55
+        '
+        'motivooculto
+        '
+        Me.motivooculto.HeaderText = "Motivo oculto"
+        Me.motivooculto.Name = "motivooculto"
+        Me.motivooculto.ReadOnly = True
+        Me.motivooculto.Width = 180
+        '
         'ConsultaLotesPantalla
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -432,4 +495,10 @@ Partial Class ConsultaLotesPantalla
     Friend WithEvents Ciclo As DataGridViewTextBoxColumn
     Friend WithEvents ndias As DataGridViewTextBoxColumn
     Friend WithEvents nuevafecha As DataGridViewTextBoxColumn
+    Friend WithEvents oculto As DataGridViewTextBoxColumn
+    Friend WithEvents motivooculto As DataGridViewTextBoxColumn
+    Friend WithEvents btnOcultarVenta As Button
+    Friend WithEvents btnMostrarVenta As Button
+    Friend WithEvents chkVerOcultos As CheckBox
+    Friend WithEvents lblOcultos As Label
 End Class
